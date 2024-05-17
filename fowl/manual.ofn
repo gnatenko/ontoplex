@@ -1,0 +1,295 @@
+Prefix(:=<Ontoplex/>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(fowl:=<https://github.com/gavel-tool/python-gavel-owl/>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<urn:absolute:Ontoplex>
+
+Declaration(Class(<urn:absolute:Ontoplex/Bound>))
+Declaration(Class(<urn:absolute:Ontoplex/Class>))
+Declaration(Class(<urn:absolute:Ontoplex/Problem>))
+Declaration(Class(<urn:absolute:Ontoplex/Savitch>))
+Declaration(ObjectProperty(<urn:absolute:Ontoplex/classDefinition>))
+Declaration(ObjectProperty(<urn:absolute:Ontoplex/dSpace>))
+Declaration(ObjectProperty(<urn:absolute:Ontoplex/dTime>))
+Declaration(ObjectProperty(<urn:absolute:Ontoplex/equals>))
+Declaration(ObjectProperty(<urn:absolute:Ontoplex/in>))
+Declaration(ObjectProperty(<urn:absolute:Ontoplex/isComplete>))
+Declaration(ObjectProperty(<urn:absolute:Ontoplex/isCompleteLogSpace>))
+Declaration(ObjectProperty(<urn:absolute:Ontoplex/isCompletePolyTime>))
+Declaration(ObjectProperty(<urn:absolute:Ontoplex/isHard>))
+Declaration(ObjectProperty(<urn:absolute:Ontoplex/isHardLogSpace>))
+Declaration(ObjectProperty(<urn:absolute:Ontoplex/isHardPolyTime>))
+Declaration(ObjectProperty(<urn:absolute:Ontoplex/isReducible>))
+Declaration(ObjectProperty(<urn:absolute:Ontoplex/isReducibleLogSpace>))
+Declaration(ObjectProperty(<urn:absolute:Ontoplex/isReduciblePolyTime>))
+Declaration(ObjectProperty(<urn:absolute:Ontoplex/nSpace>))
+Declaration(ObjectProperty(<urn:absolute:Ontoplex/nTime>))
+Declaration(ObjectProperty(<urn:absolute:Ontoplex/step>))
+Declaration(ObjectProperty(<urn:absolute:Ontoplex/strictSubset>))
+Declaration(ObjectProperty(<urn:absolute:Ontoplex/subset>))
+Declaration(NamedIndividual(<urn:absolute:Ontoplex/DirectedReachability>))
+Declaration(NamedIndividual(<urn:absolute:Ontoplex/ExpSpace>))
+Declaration(NamedIndividual(<urn:absolute:Ontoplex/ExpTime>))
+Declaration(NamedIndividual(<urn:absolute:Ontoplex/L>))
+Declaration(NamedIndividual(<urn:absolute:Ontoplex/NExpSpace>))
+Declaration(NamedIndividual(<urn:absolute:Ontoplex/NL>))
+Declaration(NamedIndividual(<urn:absolute:Ontoplex/NP>))
+Declaration(NamedIndividual(<urn:absolute:Ontoplex/NPSpace>))
+Declaration(NamedIndividual(<urn:absolute:Ontoplex/P>))
+Declaration(NamedIndividual(<urn:absolute:Ontoplex/PSpace>))
+Declaration(NamedIndividual(<urn:absolute:Ontoplex/QBF>))
+Declaration(NamedIndividual(<urn:absolute:Ontoplex/Reg>))
+Declaration(NamedIndividual(<urn:absolute:Ontoplex/SAT>))
+Declaration(NamedIndividual(<urn:absolute:Ontoplex/const>))
+Declaration(NamedIndividual(<urn:absolute:Ontoplex/exp>))
+Declaration(NamedIndividual(<urn:absolute:Ontoplex/log>))
+Declaration(NamedIndividual(<urn:absolute:Ontoplex/poly>))
+Declaration(NamedIndividual(<urn:absolute:Ontoplex/2ExpTime>))
+Declaration(NamedIndividual(<urn:absolute:Ontoplex/2exp>))
+Declaration(AnnotationProperty(fowl:tptp_annotation))
+
+############################
+#   Object Properties
+############################
+
+# Object Property: <urn:absolute:Ontoplex/classDefinition> (<urn:absolute:Ontoplex/classDefinition>)
+
+ObjectPropertyDomain(<urn:absolute:Ontoplex/classDefinition> <urn:absolute:Ontoplex/Class>)
+ObjectPropertyRange(<urn:absolute:Ontoplex/classDefinition> <urn:absolute:Ontoplex/Bound>)
+
+# Object Property: <urn:absolute:Ontoplex/dSpace> (<urn:absolute:Ontoplex/dSpace>)
+
+SubObjectPropertyOf(<urn:absolute:Ontoplex/dSpace> <urn:absolute:Ontoplex/classDefinition>)
+FunctionalObjectProperty(<urn:absolute:Ontoplex/dSpace>)
+InverseFunctionalObjectProperty(<urn:absolute:Ontoplex/dSpace>)
+
+# Object Property: <urn:absolute:Ontoplex/dTime> (<urn:absolute:Ontoplex/dTime>)
+
+SubObjectPropertyOf(<urn:absolute:Ontoplex/dTime> <urn:absolute:Ontoplex/classDefinition>)
+FunctionalObjectProperty(<urn:absolute:Ontoplex/dTime>)
+InverseFunctionalObjectProperty(<urn:absolute:Ontoplex/dTime>)
+
+# Object Property: <urn:absolute:Ontoplex/equals> (<urn:absolute:Ontoplex/equals>)
+
+AnnotationAssertion(fowl:tptp_annotation <urn:absolute:Ontoplex/equals> "![X,Y]:(('subset'(X,Y)&'subset'(Y,X)) => 'equals'(X,Y))")
+SubObjectPropertyOf(<urn:absolute:Ontoplex/equals> <urn:absolute:Ontoplex/subset>)
+SubObjectPropertyOf(<urn:absolute:Ontoplex/equals> ObjectInverseOf(<urn:absolute:Ontoplex/subset>))
+TransitiveObjectProperty(<urn:absolute:Ontoplex/equals>)
+
+# Object Property: <urn:absolute:Ontoplex/in> (<urn:absolute:Ontoplex/in>)
+
+ObjectPropertyDomain(<urn:absolute:Ontoplex/in> <urn:absolute:Ontoplex/Problem>)
+ObjectPropertyRange(<urn:absolute:Ontoplex/in> <urn:absolute:Ontoplex/Class>)
+
+# Object Property: <urn:absolute:Ontoplex/isComplete> (<urn:absolute:Ontoplex/isComplete>)
+
+AnnotationAssertion(fowl:tptp_annotation <urn:absolute:Ontoplex/isComplete> "![X, Y, Z]:('isComplete'(X, Y, Z) <=> 'isHard'(X, Y, Z) & 'in'(X, Y))")
+
+# Object Property: <urn:absolute:Ontoplex/isCompleteLogSpace> (<urn:absolute:Ontoplex/isCompleteLogSpace>)
+
+SubObjectPropertyOf(<urn:absolute:Ontoplex/isCompleteLogSpace> <urn:absolute:Ontoplex/in>)
+SubObjectPropertyOf(<urn:absolute:Ontoplex/isCompleteLogSpace> <urn:absolute:Ontoplex/isCompletePolyTime>)
+SubObjectPropertyOf(<urn:absolute:Ontoplex/isCompleteLogSpace> <urn:absolute:Ontoplex/isHardLogSpace>)
+
+# Object Property: <urn:absolute:Ontoplex/isCompletePolyTime> (<urn:absolute:Ontoplex/isCompletePolyTime>)
+
+SubObjectPropertyOf(<urn:absolute:Ontoplex/isCompletePolyTime> <urn:absolute:Ontoplex/in>)
+SubObjectPropertyOf(<urn:absolute:Ontoplex/isCompletePolyTime> <urn:absolute:Ontoplex/isComplete>)
+SubObjectPropertyOf(<urn:absolute:Ontoplex/isCompletePolyTime> <urn:absolute:Ontoplex/isHardPolyTime>)
+
+# Object Property: <urn:absolute:Ontoplex/isHard> (<urn:absolute:Ontoplex/isHard>)
+
+SubObjectPropertyOf(<urn:absolute:Ontoplex/isHard> owl:topObjectProperty)
+ObjectPropertyDomain(<urn:absolute:Ontoplex/isHard> <urn:absolute:Ontoplex/Problem>)
+
+# Object Property: <urn:absolute:Ontoplex/isHardLogSpace> (<urn:absolute:Ontoplex/isHardLogSpace>)
+
+AnnotationAssertion(fowl:tptp_annotation <urn:absolute:Ontoplex/isHardLogSpace> "![X,Y]:('isHardLogSpace'(X, Y) <=> 'isHard'(X, Y, 'log'))")
+SubObjectPropertyOf(<urn:absolute:Ontoplex/isHardLogSpace> <urn:absolute:Ontoplex/isHardPolyTime>)
+
+# Object Property: <urn:absolute:Ontoplex/isHardPolyTime> (<urn:absolute:Ontoplex/isHardPolyTime>)
+
+AnnotationAssertion(fowl:tptp_annotation <urn:absolute:Ontoplex/isHardPolyTime> "![X,Y]:('isHardPolyTime'(X, Y) <=> 'isHard'(X, Y, 'poly'))")
+SubObjectPropertyOf(<urn:absolute:Ontoplex/isHardPolyTime> <urn:absolute:Ontoplex/isHard>)
+
+# Object Property: <urn:absolute:Ontoplex/isReducible> (<urn:absolute:Ontoplex/isReducible>)
+
+ObjectPropertyDomain(<urn:absolute:Ontoplex/isReducible> <urn:absolute:Ontoplex/Problem>)
+ObjectPropertyRange(<urn:absolute:Ontoplex/isReducible> <urn:absolute:Ontoplex/Problem>)
+
+# Object Property: <urn:absolute:Ontoplex/isReducibleLogSpace> (<urn:absolute:Ontoplex/isReducibleLogSpace>)
+
+AnnotationAssertion(fowl:tptp_annotation <urn:absolute:Ontoplex/isReducibleLogSpace> "![X,Y]:('isReducibleLogSpace'(X, Y) <=> 'isReducible'(X, Y, 'log'))")
+SubObjectPropertyOf(<urn:absolute:Ontoplex/isReducibleLogSpace> <urn:absolute:Ontoplex/isReduciblePolyTime>)
+TransitiveObjectProperty(<urn:absolute:Ontoplex/isReducibleLogSpace>)
+
+# Object Property: <urn:absolute:Ontoplex/isReduciblePolyTime> (<urn:absolute:Ontoplex/isReduciblePolyTime>)
+
+AnnotationAssertion(fowl:tptp_annotation <urn:absolute:Ontoplex/isReduciblePolyTime> "![X,Y]:('isReduciblePolyTime'(X, Y) <=> 'isReducible'(X, Y, 'poly'))")
+SubObjectPropertyOf(<urn:absolute:Ontoplex/isReduciblePolyTime> <urn:absolute:Ontoplex/isReducible>)
+TransitiveObjectProperty(<urn:absolute:Ontoplex/isReduciblePolyTime>)
+
+# Object Property: <urn:absolute:Ontoplex/nSpace> (<urn:absolute:Ontoplex/nSpace>)
+
+SubObjectPropertyOf(<urn:absolute:Ontoplex/nSpace> <urn:absolute:Ontoplex/classDefinition>)
+FunctionalObjectProperty(<urn:absolute:Ontoplex/nSpace>)
+InverseFunctionalObjectProperty(<urn:absolute:Ontoplex/nSpace>)
+
+# Object Property: <urn:absolute:Ontoplex/nTime> (<urn:absolute:Ontoplex/nTime>)
+
+SubObjectPropertyOf(<urn:absolute:Ontoplex/nTime> <urn:absolute:Ontoplex/classDefinition>)
+FunctionalObjectProperty(<urn:absolute:Ontoplex/nTime>)
+InverseFunctionalObjectProperty(<urn:absolute:Ontoplex/nTime>)
+
+# Object Property: <urn:absolute:Ontoplex/step> (<urn:absolute:Ontoplex/step>)
+
+FunctionalObjectProperty(<urn:absolute:Ontoplex/step>)
+InverseFunctionalObjectProperty(<urn:absolute:Ontoplex/step>)
+ObjectPropertyDomain(<urn:absolute:Ontoplex/step> <urn:absolute:Ontoplex/Bound>)
+ObjectPropertyRange(<urn:absolute:Ontoplex/step> <urn:absolute:Ontoplex/Bound>)
+
+# Object Property: <urn:absolute:Ontoplex/strictSubset> (<urn:absolute:Ontoplex/strictSubset>)
+
+AnnotationAssertion(fowl:tptp_annotation <urn:absolute:Ontoplex/strictSubset> "![X,Y]:(('strictSubset'(X,Y)) => ?[Z]:('in'(Z,Y) & ~'in'(Z, X)))")
+AnnotationAssertion(fowl:tptp_annotation <urn:absolute:Ontoplex/strictSubset> "![X,Y]:(('strictSubset'(X,Y)) => ~'equals'(X,Y))")
+SubObjectPropertyOf(<urn:absolute:Ontoplex/strictSubset> <urn:absolute:Ontoplex/subset>)
+TransitiveObjectProperty(<urn:absolute:Ontoplex/strictSubset>)
+
+# Object Property: <urn:absolute:Ontoplex/subset> (<urn:absolute:Ontoplex/subset>)
+
+TransitiveObjectProperty(<urn:absolute:Ontoplex/subset>)
+ObjectPropertyDomain(<urn:absolute:Ontoplex/subset> <urn:absolute:Ontoplex/Class>)
+ObjectPropertyRange(<urn:absolute:Ontoplex/subset> <urn:absolute:Ontoplex/Class>)
+
+
+
+############################
+#   Classes
+############################
+
+# Class: <urn:absolute:Ontoplex/Bound> (<urn:absolute:Ontoplex/Bound>)
+
+SubClassOf(<urn:absolute:Ontoplex/Bound> ObjectSomeValuesFrom(ObjectInverseOf(<urn:absolute:Ontoplex/dSpace>) owl:Thing))
+SubClassOf(<urn:absolute:Ontoplex/Bound> ObjectSomeValuesFrom(ObjectInverseOf(<urn:absolute:Ontoplex/dTime>) owl:Thing))
+SubClassOf(<urn:absolute:Ontoplex/Bound> ObjectSomeValuesFrom(ObjectInverseOf(<urn:absolute:Ontoplex/nSpace>) owl:Thing))
+SubClassOf(<urn:absolute:Ontoplex/Bound> ObjectSomeValuesFrom(ObjectInverseOf(<urn:absolute:Ontoplex/nTime>) owl:Thing))
+
+# Class: <urn:absolute:Ontoplex/Class> (<urn:absolute:Ontoplex/Class>)
+
+
+# Class: <urn:absolute:Ontoplex/Problem> (<urn:absolute:Ontoplex/Problem>)
+
+
+# Class: <urn:absolute:Ontoplex/Savitch> (<urn:absolute:Ontoplex/Savitch>)
+
+SubClassOf(<urn:absolute:Ontoplex/Savitch> ObjectSomeValuesFrom(<urn:absolute:Ontoplex/step> <urn:absolute:Ontoplex/Savitch>))
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: <urn:absolute:Ontoplex/DirectedReachability> (<urn:absolute:Ontoplex/DirectedReachability>)
+
+ObjectPropertyAssertion(<urn:absolute:Ontoplex/isCompleteLogSpace> <urn:absolute:Ontoplex/DirectedReachability> <urn:absolute:Ontoplex/NL>)
+
+# Individual: <urn:absolute:Ontoplex/ExpSpace> (<urn:absolute:Ontoplex/ExpSpace>)
+
+ObjectPropertyAssertion(<urn:absolute:Ontoplex/dSpace> <urn:absolute:Ontoplex/ExpSpace> <urn:absolute:Ontoplex/exp>)
+
+# Individual: <urn:absolute:Ontoplex/ExpTime> (<urn:absolute:Ontoplex/ExpTime>)
+
+ObjectPropertyAssertion(<urn:absolute:Ontoplex/dTime> <urn:absolute:Ontoplex/ExpTime> <urn:absolute:Ontoplex/exp>)
+
+# Individual: <urn:absolute:Ontoplex/L> (<urn:absolute:Ontoplex/L>)
+
+ObjectPropertyAssertion(<urn:absolute:Ontoplex/dSpace> <urn:absolute:Ontoplex/L> <urn:absolute:Ontoplex/log>)
+
+# Individual: <urn:absolute:Ontoplex/NExpSpace> (<urn:absolute:Ontoplex/NExpSpace>)
+
+ObjectPropertyAssertion(<urn:absolute:Ontoplex/nSpace> <urn:absolute:Ontoplex/NExpSpace> <urn:absolute:Ontoplex/exp>)
+
+# Individual: <urn:absolute:Ontoplex/NL> (<urn:absolute:Ontoplex/NL>)
+
+ObjectPropertyAssertion(<urn:absolute:Ontoplex/nSpace> <urn:absolute:Ontoplex/NL> <urn:absolute:Ontoplex/log>)
+
+# Individual: <urn:absolute:Ontoplex/NP> (<urn:absolute:Ontoplex/NP>)
+
+ObjectPropertyAssertion(<urn:absolute:Ontoplex/nTime> <urn:absolute:Ontoplex/NP> <urn:absolute:Ontoplex/poly>)
+
+# Individual: <urn:absolute:Ontoplex/NPSpace> (<urn:absolute:Ontoplex/NPSpace>)
+
+ObjectPropertyAssertion(<urn:absolute:Ontoplex/nSpace> <urn:absolute:Ontoplex/NPSpace> <urn:absolute:Ontoplex/poly>)
+
+# Individual: <urn:absolute:Ontoplex/P> (<urn:absolute:Ontoplex/P>)
+
+ObjectPropertyAssertion(<urn:absolute:Ontoplex/dTime> <urn:absolute:Ontoplex/P> <urn:absolute:Ontoplex/poly>)
+
+# Individual: <urn:absolute:Ontoplex/PSpace> (<urn:absolute:Ontoplex/PSpace>)
+
+ObjectPropertyAssertion(<urn:absolute:Ontoplex/dSpace> <urn:absolute:Ontoplex/PSpace> <urn:absolute:Ontoplex/poly>)
+
+# Individual: <urn:absolute:Ontoplex/QBF> (<urn:absolute:Ontoplex/QBF>)
+
+ObjectPropertyAssertion(<urn:absolute:Ontoplex/isCompletePolyTime> <urn:absolute:Ontoplex/QBF> <urn:absolute:Ontoplex/PSpace>)
+
+# Individual: <urn:absolute:Ontoplex/Reg> (<urn:absolute:Ontoplex/Reg>)
+
+ObjectPropertyAssertion(<urn:absolute:Ontoplex/dSpace> <urn:absolute:Ontoplex/Reg> <urn:absolute:Ontoplex/const>)
+
+# Individual: <urn:absolute:Ontoplex/SAT> (<urn:absolute:Ontoplex/SAT>)
+
+ObjectPropertyAssertion(<urn:absolute:Ontoplex/isCompletePolyTime> <urn:absolute:Ontoplex/SAT> <urn:absolute:Ontoplex/NP>)
+
+# Individual: <urn:absolute:Ontoplex/const> (<urn:absolute:Ontoplex/const>)
+
+ClassAssertion(<urn:absolute:Ontoplex/Bound> <urn:absolute:Ontoplex/const>)
+ClassAssertion(ObjectSomeValuesFrom(<urn:absolute:Ontoplex/step> owl:Thing) <urn:absolute:Ontoplex/const>)
+ClassAssertion(ObjectMaxCardinality(0 ObjectInverseOf(<urn:absolute:Ontoplex/step>)) <urn:absolute:Ontoplex/const>)
+ObjectPropertyAssertion(<urn:absolute:Ontoplex/step> <urn:absolute:Ontoplex/const> <urn:absolute:Ontoplex/log>)
+
+# Individual: <urn:absolute:Ontoplex/exp> (<urn:absolute:Ontoplex/exp>)
+
+ClassAssertion(<urn:absolute:Ontoplex/Bound> <urn:absolute:Ontoplex/exp>)
+ObjectPropertyAssertion(<urn:absolute:Ontoplex/step> <urn:absolute:Ontoplex/exp> <urn:absolute:Ontoplex/2exp>)
+
+# Individual: <urn:absolute:Ontoplex/log> (<urn:absolute:Ontoplex/log>)
+
+ObjectPropertyAssertion(<urn:absolute:Ontoplex/step> <urn:absolute:Ontoplex/log> <urn:absolute:Ontoplex/poly>)
+
+# Individual: <urn:absolute:Ontoplex/poly> (<urn:absolute:Ontoplex/poly>)
+
+ClassAssertion(<urn:absolute:Ontoplex/Savitch> <urn:absolute:Ontoplex/poly>)
+ObjectPropertyAssertion(<urn:absolute:Ontoplex/step> <urn:absolute:Ontoplex/poly> <urn:absolute:Ontoplex/exp>)
+
+# Individual: <urn:absolute:Ontoplex/2ExpTime> (<urn:absolute:Ontoplex/2ExpTime>)
+
+ClassAssertion(<urn:absolute:Ontoplex/Class> <urn:absolute:Ontoplex/2ExpTime>)
+ObjectPropertyAssertion(<urn:absolute:Ontoplex/dTime> <urn:absolute:Ontoplex/2ExpTime> <urn:absolute:Ontoplex/2exp>)
+
+# Individual: <urn:absolute:Ontoplex/2exp> (<urn:absolute:Ontoplex/2exp>)
+
+ClassAssertion(<urn:absolute:Ontoplex/Bound> <urn:absolute:Ontoplex/2exp>)
+
+
+SubClassOf(ObjectSomeValuesFrom(ObjectInverseOf(<urn:absolute:Ontoplex/step>) owl:Thing) ObjectSomeValuesFrom(<urn:absolute:Ontoplex/step> owl:Thing))
+DisjointClasses(<urn:absolute:Ontoplex/Bound> <urn:absolute:Ontoplex/Class> <urn:absolute:Ontoplex/Problem>)
+SubObjectPropertyOf(ObjectPropertyChain(<urn:absolute:Ontoplex/dSpace> <urn:absolute:Ontoplex/step> ObjectInverseOf(<urn:absolute:Ontoplex/dSpace>)) <urn:absolute:Ontoplex/strictSubset>)
+SubObjectPropertyOf(ObjectPropertyChain(<urn:absolute:Ontoplex/dSpace> ObjectInverseOf(<urn:absolute:Ontoplex/nSpace>)) <urn:absolute:Ontoplex/subset>)
+SubObjectPropertyOf(ObjectPropertyChain(<urn:absolute:Ontoplex/dTime> <urn:absolute:Ontoplex/step> ObjectInverseOf(<urn:absolute:Ontoplex/dTime>)) <urn:absolute:Ontoplex/strictSubset>)
+SubObjectPropertyOf(ObjectPropertyChain(<urn:absolute:Ontoplex/dTime> ObjectInverseOf(<urn:absolute:Ontoplex/dSpace>)) <urn:absolute:Ontoplex/subset>)
+SubObjectPropertyOf(ObjectPropertyChain(<urn:absolute:Ontoplex/dTime> ObjectInverseOf(<urn:absolute:Ontoplex/nTime>)) <urn:absolute:Ontoplex/subset>)
+SubObjectPropertyOf(ObjectPropertyChain(<urn:absolute:Ontoplex/in> <urn:absolute:Ontoplex/subset>) <urn:absolute:Ontoplex/in>)
+SubObjectPropertyOf(ObjectPropertyChain(<urn:absolute:Ontoplex/isHardLogSpace> ObjectInverseOf(<urn:absolute:Ontoplex/subset>)) <urn:absolute:Ontoplex/isHardLogSpace>)
+SubObjectPropertyOf(ObjectPropertyChain(<urn:absolute:Ontoplex/isHardPolyTime> ObjectInverseOf(<urn:absolute:Ontoplex/subset>)) <urn:absolute:Ontoplex/isHardPolyTime>)
+SubObjectPropertyOf(ObjectPropertyChain(<urn:absolute:Ontoplex/nSpace> <urn:absolute:Ontoplex/step> ObjectInverseOf(<urn:absolute:Ontoplex/dTime>)) <urn:absolute:Ontoplex/subset>)
+SubObjectPropertyOf(ObjectPropertyChain(<urn:absolute:Ontoplex/nTime> <urn:absolute:Ontoplex/step> ObjectInverseOf(<urn:absolute:Ontoplex/dTime>)) <urn:absolute:Ontoplex/subset>)
+SubObjectPropertyOf(ObjectPropertyChain(<urn:absolute:Ontoplex/nTime> ObjectInverseOf(<urn:absolute:Ontoplex/nSpace>)) <urn:absolute:Ontoplex/subset>)
+SubObjectPropertyOf(ObjectPropertyChain(ObjectInverseOf(<urn:absolute:Ontoplex/isReducibleLogSpace>) <urn:absolute:Ontoplex/isHardLogSpace>) <urn:absolute:Ontoplex/isHardLogSpace>)
+SubObjectPropertyOf(ObjectPropertyChain(ObjectInverseOf(<urn:absolute:Ontoplex/isReduciblePolyTime>) <urn:absolute:Ontoplex/isHardPolyTime>) <urn:absolute:Ontoplex/isHardPolyTime>)
+)
