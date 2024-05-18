@@ -1,0 +1,3 @@
+fof (query, conjecture,
+    'urn_absolute_Ontoplex_subset'('urn_absolute_Ontoplex_PSpace', 'urn_absolute_Ontoplex_NPSpace')
+).

@@ -32,6 +32,8 @@ Declaration(ObjectProperty(<urn:absolute:Ontoplex/nTime>))
 Declaration(ObjectProperty(<urn:absolute:Ontoplex/step>))
 Declaration(ObjectProperty(<urn:absolute:Ontoplex/strictSubset>))
 Declaration(ObjectProperty(<urn:absolute:Ontoplex/subset>))
+Declaration(ObjectProperty(<urn:absolute:Ontoplex/tentacleSavitchDSpace>))
+Declaration(ObjectProperty(<urn:absolute:Ontoplex/tentacleSavitchNSpace>))
 Declaration(NamedIndividual(<urn:absolute:Ontoplex/DirectedReachability>))
 Declaration(NamedIndividual(<urn:absolute:Ontoplex/ExpSpace>))
 Declaration(NamedIndividual(<urn:absolute:Ontoplex/ExpTime>))
@@ -166,6 +168,14 @@ TransitiveObjectProperty(<urn:absolute:Ontoplex/subset>)
 ObjectPropertyDomain(<urn:absolute:Ontoplex/subset> <urn:absolute:Ontoplex/Class>)
 ObjectPropertyRange(<urn:absolute:Ontoplex/subset> <urn:absolute:Ontoplex/Class>)
 
+# Object Property: <urn:absolute:Ontoplex/tentacleSavitchDSpace> (<urn:absolute:Ontoplex/tentacleSavitchDSpace>)
+
+SubObjectPropertyOf(<urn:absolute:Ontoplex/tentacleSavitchDSpace> <urn:absolute:Ontoplex/dSpace>)
+
+# Object Property: <urn:absolute:Ontoplex/tentacleSavitchNSpace> (<urn:absolute:Ontoplex/tentacleSavitchNSpace>)
+
+SubObjectPropertyOf(<urn:absolute:Ontoplex/tentacleSavitchNSpace> <urn:absolute:Ontoplex/nSpace>)
+
 
 
 ############################
@@ -188,6 +198,8 @@ SubClassOf(<urn:absolute:Ontoplex/Bound> ObjectSomeValuesFrom(ObjectInverseOf(<u
 # Class: <urn:absolute:Ontoplex/Savitch> (<urn:absolute:Ontoplex/Savitch>)
 
 SubClassOf(<urn:absolute:Ontoplex/Savitch> ObjectSomeValuesFrom(<urn:absolute:Ontoplex/step> <urn:absolute:Ontoplex/Savitch>))
+SubClassOf(<urn:absolute:Ontoplex/Savitch> ObjectSomeValuesFrom(ObjectInverseOf(<urn:absolute:Ontoplex/tentacleSavitchDSpace>) owl:Thing))
+SubClassOf(<urn:absolute:Ontoplex/Savitch> ObjectSomeValuesFrom(ObjectInverseOf(<urn:absolute:Ontoplex/tentacleSavitchNSpace>) owl:Thing))
 
 
 ############################
@@ -290,6 +302,7 @@ SubObjectPropertyOf(ObjectPropertyChain(<urn:absolute:Ontoplex/isHardPolyTime> O
 SubObjectPropertyOf(ObjectPropertyChain(<urn:absolute:Ontoplex/nSpace> <urn:absolute:Ontoplex/step> ObjectInverseOf(<urn:absolute:Ontoplex/dTime>)) <urn:absolute:Ontoplex/subset>)
 SubObjectPropertyOf(ObjectPropertyChain(<urn:absolute:Ontoplex/nTime> <urn:absolute:Ontoplex/step> ObjectInverseOf(<urn:absolute:Ontoplex/dTime>)) <urn:absolute:Ontoplex/subset>)
 SubObjectPropertyOf(ObjectPropertyChain(<urn:absolute:Ontoplex/nTime> ObjectInverseOf(<urn:absolute:Ontoplex/nSpace>)) <urn:absolute:Ontoplex/subset>)
+SubObjectPropertyOf(ObjectPropertyChain(<urn:absolute:Ontoplex/tentacleSavitchNSpace> ObjectInverseOf(<urn:absolute:Ontoplex/tentacleSavitchDSpace>)) <urn:absolute:Ontoplex/subset>)
 SubObjectPropertyOf(ObjectPropertyChain(ObjectInverseOf(<urn:absolute:Ontoplex/isReducibleLogSpace>) <urn:absolute:Ontoplex/isHardLogSpace>) <urn:absolute:Ontoplex/isHardLogSpace>)
 SubObjectPropertyOf(ObjectPropertyChain(ObjectInverseOf(<urn:absolute:Ontoplex/isReduciblePolyTime>) <urn:absolute:Ontoplex/isHardPolyTime>) <urn:absolute:Ontoplex/isHardPolyTime>)
 )
