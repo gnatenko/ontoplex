@@ -14,7 +14,7 @@ We used OWL 2 to express the 'main rules' of complexity and first-order logic fo
 
 [1] Simon Flügel, Martin Glauer, Fabian Neuhaus, and Janna Hastings. When one
 logic is not enough: Integrating first-order annotations in OWL ontologies.
-Preprint:1–16, 2024. https://doi.org/10.3233/SW-243440
+Preprint:1–16, 2024. [(link)](https://doi.org/10.3233/SW-243440)
 
 
 ## What's in the Repo
@@ -28,14 +28,14 @@ You will find two folders:
 
 2. **tptp/**
 
-    (a) The *core.tptp* file is a translation of *core.ofn* to the TPTP syntax of first-order reasoners (https://tptp.org/TPTP/SyntaxBNF.html), obtained with the use of *gavel* (https://github.com/gavel-tool/python-gavel-owl).
+    (a) The *core.tptp* file is a translation of *core.ofn* to the [TPTP syntax](https://tptp.org/TPTP/SyntaxBNF.html) of first-order reasoners, obtained with the use of [*gavel*](https://github.com/gavel-tool/python-gavel-owl).
 
     (b) The *example_query.tptp* contains an example first-order reasoning question to Ontoplex.
 
 
 ## Using Ontoplex
 
-You can work with *core.ofn* file directly in Protégé. For using first-order axioms you will need a suitable reasoner, such as Vampire (https://vprover.github.io). You can then run our example query by merging *core.tptp* and *example_query.tptp* into one file and feeding it to Vampire. For example, like this:
+You can work with *core.ofn* file directly in Protégé. For using first-order axioms you will need a suitable reasoner, such as [Vampire](https://vprover.github.io). You can then run our example query by merging *core.tptp* and *example_query.tptp* into one file and feeding it to Vampire. For example, like this:
 
 ```
 cat $1 $2 > problem.tptp && vampire/build/bin/vampire_rel ./problem.tptp; rm problem.tptp
