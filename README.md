@@ -23,7 +23,7 @@ You will find two folders:
 
 1. **fowl/**
     (a) The *core.ofn* file written in Functional OWL Syntax with first-order axioms included as annotations. This is the latest version of Ontoplex. You can open it in Protégé and explore.
-    
+
     (b) the *extracted-from-petting-zoo.ofn* file created with the help of GPT4 from the webpage https://complexityzoo.net/Petting_Zoo. It is a result of our ongoing experiments on using neural networks to populate the ontology with facts.
 
 2. **tptp/**
@@ -31,3 +31,16 @@ You will find two folders:
     (a) The *core.tptp* file is a translation of *core.ofn* to the TPTP syntax of first-order reasoners (https://tptp.org/TPTP/SyntaxBNF.html), obtained with the use of *gavel* (https://github.com/gavel-tool/python-gavel-owl).
 
     (b) The *example_query.tptp* contains an example first-order reasoning question to Ontoplex.
+
+
+## Using Ontoplex
+
+You can work with *core.ofn* file directly in Protégé. For using first-order axioms you will need a suitable reasoner, such as Vampire (https://vprover.github.io). You can then run our example query by merging *core.tptp* and *example_query.tptp* into one file and feeding it to Vampire. For example, like this:
+
+```
+cat $1 $2 > problem.tptp && vampire/build/bin/vampire_rel ./problem.tptp; rm problem.tptp
+```
+
+## I still don't understand what it's all about
+
+~~We neither~~ We are working on documentation and a tutorial. Please come back a bit later.
