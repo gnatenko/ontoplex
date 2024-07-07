@@ -23,9 +23,11 @@ You will find two folders:
 
 1. **fowl/**
     (a) The *core.ofn* file written in Functional OWL Syntax with first-order axioms included as annotations. This is the latest version of Ontoplex. You can open it in Protégé and explore.
+    
     (b) the *extracted-from-petting-zoo.ofn* file created with the help of GPT4 from the webpage https://complexityzoo.net/Petting_Zoo. It is a result of our ongoing experiments on using neural networks to populate the ontology with facts.
 
 2. **tptp/**
+
     (a) The *core.tptp* file is a translation of *core.ofn* to the TPTP syntax of first-order reasoners (https://tptp.org/TPTP/SyntaxBNF.html), obtained with the use of *gavel* (https://github.com/gavel-tool/python-gavel-owl).
 
     (b) The *example_query.tptp* contains an example first-order reasoning question to Ontoplex.
