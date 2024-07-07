@@ -1,3 +1,3 @@
 fof (query, conjecture,
-    'urn_absolute_Ontoplex_subset'('urn_absolute_Ontoplex_PSpace', 'urn_absolute_Ontoplex_NPSpace')
+    ?[X]:('problem'(X) & (![Y, Z]:(('hasBase'(Y, 'aM') & 'hasPower'(Y, X) & 'hasBase'(Z, 'qMA') & 'hasPower'(Z, X)) => 'notSubset'(Y, Z))))
 ).

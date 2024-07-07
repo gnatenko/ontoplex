@@ -1,0 +1,129 @@
+Prefix(:=<urn:absolute:Ontoplex/>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(fowl:=<https://github.com/gavel-tool/python-gavel-owl/>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<urn:absolute:Ontoplex/gen-abox-pz>
+
+Declaration(Class(:Class))
+Declaration(Class(:Problem))
+Declaration(ObjectProperty(:equals))
+Declaration(ObjectProperty(:in))
+Declaration(ObjectProperty(:isComplete))
+Declaration(ObjectProperty(:isCompletePolyTime))
+Declaration(ObjectProperty(:strictSubset))
+Declaration(ObjectProperty(:subset))
+Declaration(NamedIndividual(:BPP))
+Declaration(NamedIndividual(:EXP))
+Declaration(NamedIndividual(:GeographyWinners))
+Declaration(NamedIndividual(:GoWinners))
+Declaration(NamedIndividual(:GraphIsomorphism))
+Declaration(NamedIndividual(:GraphReachability))
+Declaration(NamedIndividual(:MatrixMultiplication))
+Declaration(NamedIndividual(:NP))
+Declaration(NamedIndividual(:NP-complete))
+Declaration(NamedIndividual(:P))
+Declaration(NamedIndividual(:PSPACE))
+Declaration(NamedIndividual(:QBF))
+Declaration(NamedIndividual(:SAT))
+Declaration(NamedIndividual(:TSP))
+Declaration(NamedIndividual(:Tautology))
+Declaration(NamedIndividual(:coNP))
+Declaration(NamedIndividual(:coNP-complete))
+Declaration(NamedIndividual(<Ontoplex/2SAT>))
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: :BPP (:BPP)
+
+ClassAssertion(:Class :BPP)
+ObjectPropertyAssertion(:equals :BPP :P)
+
+# Individual: :EXP (:EXP)
+
+ClassAssertion(:Class :EXP)
+
+# Individual: :GeographyWinners (:GeographyWinners)
+
+ClassAssertion(:Problem :GeographyWinners)
+ObjectPropertyAssertion(:isComplete :GeographyWinners :PSPACE)
+
+# Individual: :GoWinners (:GoWinners)
+
+ClassAssertion(:Problem :GoWinners)
+ObjectPropertyAssertion(:isComplete :GoWinners :PSPACE)
+
+# Individual: :GraphIsomorphism (:GraphIsomorphism)
+
+ClassAssertion(:Problem :GraphIsomorphism)
+ObjectPropertyAssertion(:in :GraphIsomorphism :NP)
+
+# Individual: :GraphReachability (:GraphReachability)
+
+ClassAssertion(:Problem :GraphReachability)
+ObjectPropertyAssertion(:in :GraphReachability :P)
+
+# Individual: :MatrixMultiplication (:MatrixMultiplication)
+
+ClassAssertion(:Problem :MatrixMultiplication)
+ObjectPropertyAssertion(:in :MatrixMultiplication :P)
+
+# Individual: :NP (:NP)
+
+ClassAssertion(:Class :NP)
+ObjectPropertyAssertion(:strictSubset :NP :EXP)
+ObjectPropertyAssertion(:subset :NP :PSPACE)
+
+# Individual: :NP-complete (:NP-complete)
+
+ClassAssertion(:Class :NP-complete)
+
+# Individual: :P (:P)
+
+ClassAssertion(:Class :P)
+ObjectPropertyAssertion(:strictSubset :P :EXP)
+ObjectPropertyAssertion(:subset :P :PSPACE)
+
+# Individual: :PSPACE (:PSPACE)
+
+ClassAssertion(:Class :PSPACE)
+ObjectPropertyAssertion(:strictSubset :PSPACE :EXP)
+
+# Individual: :QBF (:QBF)
+
+ClassAssertion(:Problem :QBF)
+ObjectPropertyAssertion(:isComplete :QBF :PSPACE)
+
+# Individual: :SAT (:SAT)
+
+ClassAssertion(:Problem :SAT)
+ObjectPropertyAssertion(:isCompletePolyTime :SAT :NP)
+
+# Individual: :TSP (:TSP)
+
+ClassAssertion(:Problem :TSP)
+ObjectPropertyAssertion(:isCompletePolyTime :TSP :NP)
+
+# Individual: :Tautology (:Tautology)
+
+ClassAssertion(:Problem :Tautology)
+ObjectPropertyAssertion(:isCompletePolyTime :Tautology :coNP)
+
+# Individual: :coNP-complete (:coNP-complete)
+
+ClassAssertion(:Class :coNP-complete)
+
+# Individual: <Ontoplex/2SAT> (<Ontoplex/2SAT>)
+
+ClassAssertion(:Problem <Ontoplex/2SAT>)
+ObjectPropertyAssertion(:in <Ontoplex/2SAT> :P)
+
+
+)

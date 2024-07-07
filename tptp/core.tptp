@@ -1,0 +1,560 @@
+% ![X,Y]:('isReducibleLogSpace'(X, Y) <=> 'isReducible'(X, Y, 'log'))
+fof(annotation_axiom0,axiom,(![X,Y]:('isReducibleLogSpace'(X,Y)<=>'isReducible'(X,Y,'log')))).
+% ![X,Y]:('isHardLogSpace'(X, Y) <=> 'isHard'(X, Y, 'log'))
+fof(annotation_axiom1,axiom,(![X,Y]:('isHardLogSpace'(X,Y)<=>'isHard'(X,Y,'log')))).
+% ![X,Y]:('isReduciblePolyTime'(X, Y) <=> 'isReducible'(X, Y, 'poly'))
+fof(annotation_axiom2,axiom,(![X,Y]:('isReduciblePolyTime'(X,Y)<=>'isReducible'(X,Y,'poly')))).
+% ![X,Y]:(~'subset'(X, Y) | ~'notSubset'(X,Y))
+fof(annotation_axiom3,axiom,(![X,Y]:(~'subset'(X,Y)|~'notSubset'(X,Y)))).
+% ![X,Y]:(('Class'(X) & 'Problem'(Y)) => ?[Z]:('hasBase'(Z, X) & 'hasPower'(Z, Y)))
+fof(annotation_axiom4,axiom,(![X,Y]:(('class'(X)&'problem'(Y))=>?[Z]:('hasBase'(Z,X)&'hasPower'(Z,Y))))).
+% ![X, Y, Z]:('isComplete'(X, Y, Z) <=> ('isHard'(X, Y, Z) & 'in'(X, Y)))
+fof(annotation_axiom5,axiom,(![X,Y,Z]:('isComplete'(X,Y,Z)<=>('isHard'(X,Y,Z)&'in'(X,Y))))).
+% ![X,Y]:('isHardPolyTime'(X, Y) <=> 'isHard'(X, Y, 'poly'))
+fof(annotation_axiom6,axiom,(![X,Y]:('isHardPolyTime'(X,Y)<=>'isHard'(X,Y,'poly')))).
+% ![X,Y]:(('subset'(X,Y)&'subset'(Y,X)) => 'equals'(X,Y))
+fof(annotation_axiom7,axiom,(![X,Y]:(('subset'(X,Y)&'subset'(Y,X))=>'equals'(X,Y)))).
+% ![X, Y, Z, U, V]:(('hasBase'(X, U) & 'hasBase'(Y, V) & 'hasPower'(X, Z) & 'hasPower'(Y, Z) & 'subset'(U, V)) => 'subset'(X, Y))
+fof(annotation_axiom8,axiom,(![X,Y,Z,U,V]:(('hasBase'(X,U)&'hasBase'(Y,V)&'hasPower'(X,Z)&'hasPower'(Y,Z)&'subset'(U,V))=>'subset'(X,Y)))).
+% ![X, Y, U, V]:(('hasBase'(X, U) & 'hasPower'(X, V) & 'hasBase'(Y, U) & 'hasPower'(Y, V)) => X = Y)
+fof(annotation_axiom9,axiom,(![X,Y,U,V]:(('hasBase'(X,U)&'hasPower'(X,V)&'hasBase'(Y,U)&'hasPower'(Y,V))=>(X=Y)))).
+% ![X,Y]:(('strictSubset'(X,Y)) => ?[Z]:('in'(Z,Y) & ~'in'(Z, X)))
+fof(annotation_axiom10,axiom,(![X,Y]:('strictSubset'(X,Y)=>?[Z]:('in'(Z,Y)&~'in'(Z,X))))).
+% ![X,Y]:(('strictSubset'(X,Y)) => ~'equals'(X,Y))
+fof(annotation_axiom11,axiom,(![X,Y]:('strictSubset'(X,Y)=>~'equals'(X,Y)))).
+% background axiom: domain consists of objects and data
+fof(axiom0,axiom,(![X]:('http___www_w3_org_2002_07_owl_Thing'(X)|'http___www_w3_org_2000_01_rdf_schema_Literal'(X)))).
+% background axiom: object domain and data domain are disjoint
+fof(axiom1,axiom,(![X]:('http___www_w3_org_2002_07_owl_Thing'(X)=>~'http___www_w3_org_2000_01_rdf_schema_Literal'(X)))).
+% background axiom: there are things
+fof(axiom2,axiom,(?[X]:'http___www_w3_org_2002_07_owl_Thing'(X))).
+% background axiom: there are literals
+fof(axiom3,axiom,(?[X]:'http___www_w3_org_2000_01_rdf_schema_Literal'(X))).
+% facets can only be applied to literals
+fof(axiom4,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_minExclusive'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom5,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_fractionDigits'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom6,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_pattern'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom7,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_minLength'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom8,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_minInclusive'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom9,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_totalDigits'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom10,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_length'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom11,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_maxExclusive'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom12,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_maxLength'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom13,axiom,(![X,Y]:('http___www_w3_org_1999_02_22_rdf_syntax_ns_langRange'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom14,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_maxInclusive'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% ObjectPropertyRange(<isReducible> <Problem>)
+fof(axiom15,axiom,(![X0,X1]:('isReducible'(X0,X1)=>'problem'(X1)))).
+% ObjectPropertyAssertion(<nTime> <NP> <poly>)
+fof(axiom16,axiom,('nTime'('nP','poly'))).
+% ObjectPropertyAssertion(<nTime> <NP> <poly>)
+fof(axiom17,axiom,('http___www_w3_org_2002_07_owl_Thing'('nP'))).
+% ObjectPropertyAssertion(<nTime> <NP> <poly>)
+fof(axiom18,axiom,('http___www_w3_org_2002_07_owl_Thing'('poly'))).
+% ObjectPropertyAssertion(<nSpace> <NL> <log>)
+fof(axiom19,axiom,('nSpace'('nL','log'))).
+% ObjectPropertyAssertion(<nSpace> <NL> <log>)
+fof(axiom20,axiom,('http___www_w3_org_2002_07_owl_Thing'('nL'))).
+% ObjectPropertyAssertion(<nSpace> <NL> <log>)
+fof(axiom21,axiom,('http___www_w3_org_2002_07_owl_Thing'('log'))).
+% ObjectPropertyAssertion(<dTime> <P> <poly>)
+fof(axiom22,axiom,('dTime'('p','poly'))).
+% ObjectPropertyAssertion(<dTime> <P> <poly>)
+fof(axiom23,axiom,('http___www_w3_org_2002_07_owl_Thing'('p'))).
+% ObjectPropertyAssertion(<dTime> <P> <poly>)
+fof(axiom24,axiom,('http___www_w3_org_2002_07_owl_Thing'('poly'))).
+% Declaration(ObjectProperty(<isHardPolyTime>))
+fof(axiom25,axiom,(![X,Y]:('isHardPolyTime'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isHardPolyTime>))
+fof(axiom26,axiom,(![X,Y]:('isHardPolyTime'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(NamedIndividual(<ExpTime>))
+fof(axiom27,axiom,('http___www_w3_org_2002_07_owl_Thing'('expTime'))).
+% InverseFunctionalObjectProperty(<step>)
+fof(axiom28,axiom,(![X0,X1,X2]:(('step'(X1,X0)&'step'(X2,X0))=>(X1=X2)))).
+% ClassAssertion(<Bound> <2exp>)
+fof(axiom29,axiom,('bound'('2exp'))).
+% ClassAssertion(<Bound> <2exp>)
+fof(axiom30,axiom,('http___www_w3_org_2002_07_owl_Thing'('2exp'))).
+% Declaration(ObjectProperty(<isCompleteLogSpace>))
+fof(axiom31,axiom,(![X,Y]:('isCompleteLogSpace'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isCompleteLogSpace>))
+fof(axiom32,axiom,(![X,Y]:('isCompleteLogSpace'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(NamedIndividual(<PP_with_oracle_Ver92>))
+fof(axiom33,axiom,('http___www_w3_org_2002_07_owl_Thing'('pP_with_oracle_Ver92'))).
+% Declaration(NamedIndividual(<oracle_Ver92>))
+fof(axiom34,axiom,('http___www_w3_org_2002_07_owl_Thing'('oracle_Ver92'))).
+% ObjectPropertyAssertion(<dSpace> <ExpSpace> <exp>)
+fof(axiom35,axiom,('dSpace'('expSpace','exp'))).
+% ObjectPropertyAssertion(<dSpace> <ExpSpace> <exp>)
+fof(axiom36,axiom,('http___www_w3_org_2002_07_owl_Thing'('expSpace'))).
+% ObjectPropertyAssertion(<dSpace> <ExpSpace> <exp>)
+fof(axiom37,axiom,('http___www_w3_org_2002_07_owl_Thing'('exp'))).
+% SubClassOf(<Savitch> ObjectSomeValuesFrom(ObjectInverseOf(<tentacleSavitchDSpace>) owl:Thing))
+fof(axiom38,axiom,(![X0]:('savitch'(X0)=>?[X1]:('tentacleSavitchDSpace'(X1,X0)&'http___www_w3_org_2002_07_owl_Thing'(X1))))).
+% SubObjectPropertyOf(ObjectPropertyChain( <dTime> ObjectInverseOf(<nTime>) ) <subset>)
+fof(axiom39,axiom,(![X0,X1]:(?[X2]:('dTime'(X0,X2)&'nTime'(X1,X2))=>'subset'(X0,X1)))).
+% SubObjectPropertyOf(<nSpace> <classDefinition>)
+fof(axiom40,axiom,(![X0,X1]:('nSpace'(X0,X1)=>'classDefinition'(X0,X1)))).
+% Declaration(NamedIndividual(<PP>))
+fof(axiom41,axiom,('http___www_w3_org_2002_07_owl_Thing'('pP'))).
+% Declaration(ObjectProperty(<subset>))
+fof(axiom42,axiom,(![X,Y]:('subset'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<subset>))
+fof(axiom43,axiom,(![X,Y]:('subset'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(ObjectProperty(<isReduciblePolyTime>))
+fof(axiom44,axiom,(![X,Y]:('isReduciblePolyTime'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isReduciblePolyTime>))
+fof(axiom45,axiom,(![X,Y]:('isReduciblePolyTime'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% SubObjectPropertyOf(<isCompletePolyTime> <isHardPolyTime>)
+fof(axiom46,axiom,(![X0,X1]:('isCompletePolyTime'(X0,X1)=>'isHardPolyTime'(X0,X1)))).
+% ObjectPropertyAssertion(<notSubset> <AM_with_oracle_Ver92> <PP_with_oracle_Ver92>)
+fof(axiom47,axiom,('notSubset'('aM_with_oracle_Ver92','pP_with_oracle_Ver92'))).
+% ObjectPropertyAssertion(<notSubset> <AM_with_oracle_Ver92> <PP_with_oracle_Ver92>)
+fof(axiom48,axiom,('http___www_w3_org_2002_07_owl_Thing'('aM_with_oracle_Ver92'))).
+% ObjectPropertyAssertion(<notSubset> <AM_with_oracle_Ver92> <PP_with_oracle_Ver92>)
+fof(axiom49,axiom,('http___www_w3_org_2002_07_owl_Thing'('pP_with_oracle_Ver92'))).
+% Declaration(NamedIndividual(<L>))
+fof(axiom50,axiom,('http___www_w3_org_2002_07_owl_Thing'('l'))).
+% Declaration(NamedIndividual(<NP>))
+fof(axiom51,axiom,('http___www_w3_org_2002_07_owl_Thing'('nP'))).
+% SubObjectPropertyOf(<equals> ObjectInverseOf(<subset>))
+fof(axiom52,axiom,(![X0,X1]:('equals'(X0,X1)=>'subset'(X1,X0)))).
+% Declaration(NamedIndividual(<AM_with_oracle_Ver92>))
+fof(axiom53,axiom,('http___www_w3_org_2002_07_owl_Thing'('aM_with_oracle_Ver92'))).
+% Declaration(ObjectProperty(<hasBase>))
+fof(axiom54,axiom,(![X,Y]:('hasBase'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<hasBase>))
+fof(axiom55,axiom,(![X,Y]:('hasBase'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ClassAssertion(ObjectSomeValuesFrom(<step> owl:Thing) <const>)
+fof(axiom56,axiom,(?[X0]:('step'('const',X0)&'http___www_w3_org_2002_07_owl_Thing'(X0)))).
+% ClassAssertion(ObjectSomeValuesFrom(<step> owl:Thing) <const>)
+fof(axiom57,axiom,('http___www_w3_org_2002_07_owl_Thing'('const'))).
+% ObjectPropertyAssertion(<dTime> <2ExpTime> <2exp>)
+fof(axiom58,axiom,('dTime'('2ExpTime','2exp'))).
+% ObjectPropertyAssertion(<dTime> <2ExpTime> <2exp>)
+fof(axiom59,axiom,('http___www_w3_org_2002_07_owl_Thing'('2ExpTime'))).
+% ObjectPropertyAssertion(<dTime> <2ExpTime> <2exp>)
+fof(axiom60,axiom,('http___www_w3_org_2002_07_owl_Thing'('2exp'))).
+% Declaration(ObjectProperty(<nSpace>))
+fof(axiom61,axiom,(![X,Y]:('nSpace'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<nSpace>))
+fof(axiom62,axiom,(![X,Y]:('nSpace'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ClassAssertion(<Class> <PP>)
+fof(axiom63,axiom,('class'('pP'))).
+% ClassAssertion(<Class> <PP>)
+fof(axiom64,axiom,('http___www_w3_org_2002_07_owl_Thing'('pP'))).
+% ObjectPropertyRange(<hasBase> <Class>)
+fof(axiom65,axiom,(![X0,X1]:('hasBase'(X0,X1)=>'class'(X1)))).
+% Declaration(ObjectProperty(<isHard>))
+fof(axiom66,axiom,(![X,Y]:('isHard'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isHard>))
+fof(axiom67,axiom,(![X,Y]:('isHard'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(NamedIndividual(<DirectedReachability>))
+fof(axiom68,axiom,('http___www_w3_org_2002_07_owl_Thing'('directedReachability'))).
+% Declaration(ObjectProperty(<tentacleSavitchDSpace>))
+fof(axiom69,axiom,(![X,Y]:('tentacleSavitchDSpace'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<tentacleSavitchDSpace>))
+fof(axiom70,axiom,(![X,Y]:('tentacleSavitchDSpace'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% FunctionalObjectProperty(<dTime>)
+fof(axiom71,axiom,(![X0,X1,X2]:(('dTime'(X0,X1)&'dTime'(X0,X2))=>(X1=X2)))).
+% SubObjectPropertyOf(ObjectPropertyChain( <dTime> ObjectInverseOf(<dSpace>) ) <subset>)
+fof(axiom72,axiom,(![X0,X1]:(?[X2]:('dTime'(X0,X2)&'dSpace'(X1,X2))=>'subset'(X0,X1)))).
+% Declaration(ObjectProperty(<hasPower>))
+fof(axiom73,axiom,(![X,Y]:('hasPower'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<hasPower>))
+fof(axiom74,axiom,(![X,Y]:('hasPower'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ClassAssertion(<Bound> <const>)
+fof(axiom75,axiom,('bound'('const'))).
+% ClassAssertion(<Bound> <const>)
+fof(axiom76,axiom,('http___www_w3_org_2002_07_owl_Thing'('const'))).
+% ObjectPropertyDomain(<notSubset> <Class>)
+fof(axiom77,axiom,(![X0,X1]:('notSubset'(X0,X1)=>'class'(X0)))).
+% ObjectPropertyAssertion(<dSpace> <L> <log>)
+fof(axiom78,axiom,('dSpace'('l','log'))).
+% ObjectPropertyAssertion(<dSpace> <L> <log>)
+fof(axiom79,axiom,('http___www_w3_org_2002_07_owl_Thing'('l'))).
+% ObjectPropertyAssertion(<dSpace> <L> <log>)
+fof(axiom80,axiom,('http___www_w3_org_2002_07_owl_Thing'('log'))).
+% Declaration(NamedIndividual(<poly>))
+fof(axiom81,axiom,('http___www_w3_org_2002_07_owl_Thing'('poly'))).
+% SubObjectPropertyOf(<isReduciblePolyTime> <isReducible>)
+fof(axiom82,axiom,(![X0,X1]:('isReduciblePolyTime'(X0,X1)=>'isReducible'(X0,X1)))).
+% Declaration(ObjectProperty(<in>))
+fof(axiom83,axiom,(![X,Y]:('in'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<in>))
+fof(axiom84,axiom,(![X,Y]:('in'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ObjectPropertyDomain(<step> <Bound>)
+fof(axiom85,axiom,(![X0,X1]:('step'(X0,X1)=>'bound'(X0)))).
+% Declaration(ObjectProperty(<notSubset>))
+fof(axiom86,axiom,(![X,Y]:('notSubset'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<notSubset>))
+fof(axiom87,axiom,(![X,Y]:('notSubset'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% SubObjectPropertyOf(ObjectPropertyChain( <nTime> <step> ObjectInverseOf(<dTime>) ) <subset>)
+fof(axiom88,axiom,(![X0,X1]:(?[X2,X3]:('nTime'(X0,X2)&'step'(X2,X3)&'dTime'(X1,X3))=>'subset'(X0,X1)))).
+% SubObjectPropertyOf(ObjectPropertyChain( <notSubset> ObjectInverseOf(<subset>) ) <notSubset>)
+fof(axiom89,axiom,(![X0,X1]:(?[X2]:('notSubset'(X0,X2)&'subset'(X1,X2))=>'notSubset'(X0,X1)))).
+% SubObjectPropertyOf(<isCompletePolyTime> <isComplete>)
+fof(axiom90,axiom,(![X0,X1]:('isCompletePolyTime'(X0,X1)=>'isComplete'(X0,X1)))).
+% Declaration(ObjectProperty(<dSpace>))
+fof(axiom91,axiom,(![X,Y]:('dSpace'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<dSpace>))
+fof(axiom92,axiom,(![X,Y]:('dSpace'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% SubObjectPropertyOf(<isCompletePolyTime> <in>)
+fof(axiom93,axiom,(![X0,X1]:('isCompletePolyTime'(X0,X1)=>'in'(X0,X1)))).
+% ClassAssertion(<Problem> <oracle_Ver92>)
+fof(axiom94,axiom,('problem'('oracle_Ver92'))).
+% ClassAssertion(<Problem> <oracle_Ver92>)
+fof(axiom95,axiom,('http___www_w3_org_2002_07_owl_Thing'('oracle_Ver92'))).
+% Declaration(Class(<Savitch>))
+fof(axiom96,axiom,(![X]:('savitch'(X)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% ObjectPropertyAssertion(<step> <const> <log>)
+fof(axiom97,axiom,('step'('const','log'))).
+% ObjectPropertyAssertion(<step> <const> <log>)
+fof(axiom98,axiom,('http___www_w3_org_2002_07_owl_Thing'('const'))).
+% ObjectPropertyAssertion(<step> <const> <log>)
+fof(axiom99,axiom,('http___www_w3_org_2002_07_owl_Thing'('log'))).
+% DisjointClasses(<Bound> <Class> <Problem>)
+fof(axiom100,axiom,(![X0]:~('bound'(X0)&'class'(X0)))).
+% DisjointClasses(<Bound> <Class> <Problem>)
+fof(axiom101,axiom,(![X1]:~('bound'(X1)&'problem'(X1)))).
+% DisjointClasses(<Bound> <Class> <Problem>)
+fof(axiom102,axiom,(![X2]:~('class'(X2)&'problem'(X2)))).
+% ObjectPropertyAssertion(<step> <log> <poly>)
+fof(axiom103,axiom,('step'('log','poly'))).
+% ObjectPropertyAssertion(<step> <log> <poly>)
+fof(axiom104,axiom,('http___www_w3_org_2002_07_owl_Thing'('log'))).
+% ObjectPropertyAssertion(<step> <log> <poly>)
+fof(axiom105,axiom,('http___www_w3_org_2002_07_owl_Thing'('poly'))).
+% SubObjectPropertyOf(<isHard> owl:topObjectProperty)
+fof(axiom106,axiom,(![X0,X1]:('isHard'(X0,X1)=>'http___www_w3_org_2002_07_owl_topObjectProperty'(X0,X1)))).
+% ObjectPropertyAssertion(<isCompletePolyTime> <SAT> <NP>)
+fof(axiom107,axiom,('isCompletePolyTime'('sAT','nP'))).
+% ObjectPropertyAssertion(<isCompletePolyTime> <SAT> <NP>)
+fof(axiom108,axiom,('http___www_w3_org_2002_07_owl_Thing'('sAT'))).
+% ObjectPropertyAssertion(<isCompletePolyTime> <SAT> <NP>)
+fof(axiom109,axiom,('http___www_w3_org_2002_07_owl_Thing'('nP'))).
+% Declaration(ObjectProperty(<isReducibleLogSpace>))
+fof(axiom110,axiom,(![X,Y]:('isReducibleLogSpace'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isReducibleLogSpace>))
+fof(axiom111,axiom,(![X,Y]:('isReducibleLogSpace'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(NamedIndividual(<QBF>))
+fof(axiom112,axiom,('http___www_w3_org_2002_07_owl_Thing'('qBF'))).
+% Declaration(ObjectProperty(<isComplete>))
+fof(axiom113,axiom,(![X,Y]:('isComplete'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isComplete>))
+fof(axiom114,axiom,(![X,Y]:('isComplete'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(ObjectProperty(<strictSubset>))
+fof(axiom115,axiom,(![X,Y]:('strictSubset'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<strictSubset>))
+fof(axiom116,axiom,(![X,Y]:('strictSubset'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(NamedIndividual(<const>))
+fof(axiom117,axiom,('http___www_w3_org_2002_07_owl_Thing'('const'))).
+% Declaration(NamedIndividual(<PSpace>))
+fof(axiom118,axiom,('http___www_w3_org_2002_07_owl_Thing'('pSpace'))).
+% ClassAssertion(<Problem> <SAT>)
+fof(axiom119,axiom,('problem'('sAT'))).
+% ClassAssertion(<Problem> <SAT>)
+fof(axiom120,axiom,('http___www_w3_org_2002_07_owl_Thing'('sAT'))).
+% Declaration(ObjectProperty(<isHardLogSpace>))
+fof(axiom121,axiom,(![X,Y]:('isHardLogSpace'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isHardLogSpace>))
+fof(axiom122,axiom,(![X,Y]:('isHardLogSpace'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% FunctionalObjectProperty(<nTime>)
+fof(axiom123,axiom,(![X0,X1,X2]:(('nTime'(X0,X1)&'nTime'(X0,X2))=>(X1=X2)))).
+% ObjectPropertyAssertion(<hasPower> <AM_with_oracle_Ver92> <oracle_Ver92>)
+fof(axiom124,axiom,('hasPower'('aM_with_oracle_Ver92','oracle_Ver92'))).
+% ObjectPropertyAssertion(<hasPower> <AM_with_oracle_Ver92> <oracle_Ver92>)
+fof(axiom125,axiom,('http___www_w3_org_2002_07_owl_Thing'('aM_with_oracle_Ver92'))).
+% ObjectPropertyAssertion(<hasPower> <AM_with_oracle_Ver92> <oracle_Ver92>)
+fof(axiom126,axiom,('http___www_w3_org_2002_07_owl_Thing'('oracle_Ver92'))).
+% ObjectPropertyAssertion(<nSpace> <NPSpace> <poly>)
+fof(axiom127,axiom,('nSpace'('nPSpace','poly'))).
+% ObjectPropertyAssertion(<nSpace> <NPSpace> <poly>)
+fof(axiom128,axiom,('http___www_w3_org_2002_07_owl_Thing'('nPSpace'))).
+% ObjectPropertyAssertion(<nSpace> <NPSpace> <poly>)
+fof(axiom129,axiom,('http___www_w3_org_2002_07_owl_Thing'('poly'))).
+% FunctionalObjectProperty(<hasPower>)
+fof(axiom130,axiom,(![X0,X1,X2]:(('hasPower'(X0,X1)&'hasPower'(X0,X2))=>(X1=X2)))).
+% SubObjectPropertyOf(ObjectPropertyChain( <dTime> <step> ObjectInverseOf(<dTime>) ) <strictSubset>)
+fof(axiom131,axiom,(![X0,X1]:(?[X2,X3]:('dTime'(X0,X2)&'step'(X2,X3)&'dTime'(X1,X3))=>'strictSubset'(X0,X1)))).
+% ObjectPropertyDomain(<subset> <Class>)
+fof(axiom132,axiom,(![X0,X1]:('subset'(X0,X1)=>'class'(X0)))).
+% Declaration(NamedIndividual(<exp>))
+fof(axiom133,axiom,('http___www_w3_org_2002_07_owl_Thing'('exp'))).
+% ObjectPropertyDomain(<isReducible> <Problem>)
+fof(axiom134,axiom,(![X0,X1]:('isReducible'(X0,X1)=>'problem'(X0)))).
+% ObjectPropertyDomain(<hasPower> <Class>)
+fof(axiom135,axiom,(![X0,X1]:('hasPower'(X0,X1)=>'class'(X0)))).
+% Declaration(NamedIndividual(<AM>))
+fof(axiom136,axiom,('http___www_w3_org_2002_07_owl_Thing'('aM'))).
+% FunctionalObjectProperty(<nSpace>)
+fof(axiom137,axiom,(![X0,X1,X2]:(('nSpace'(X0,X1)&'nSpace'(X0,X2))=>(X1=X2)))).
+% SubObjectPropertyOf(<strictSubset> <subset>)
+fof(axiom138,axiom,(![X0,X1]:('strictSubset'(X0,X1)=>'subset'(X0,X1)))).
+% SubObjectPropertyOf(ObjectPropertyChain( <isHardLogSpace> ObjectInverseOf(<subset>) ) <isHardLogSpace>)
+fof(axiom139,axiom,(![X0,X1]:(?[X2]:('isHardLogSpace'(X0,X2)&'subset'(X1,X2))=>'isHardLogSpace'(X0,X1)))).
+% ObjectPropertyAssertion(<hasBase> <PP_with_oracle_Ver92> <PP>)
+fof(axiom140,axiom,('hasBase'('pP_with_oracle_Ver92','pP'))).
+% ObjectPropertyAssertion(<hasBase> <PP_with_oracle_Ver92> <PP>)
+fof(axiom141,axiom,('http___www_w3_org_2002_07_owl_Thing'('pP_with_oracle_Ver92'))).
+% ObjectPropertyAssertion(<hasBase> <PP_with_oracle_Ver92> <PP>)
+fof(axiom142,axiom,('http___www_w3_org_2002_07_owl_Thing'('pP'))).
+% Declaration(ObjectProperty(<equals>))
+fof(axiom143,axiom,(![X,Y]:('equals'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<equals>))
+fof(axiom144,axiom,(![X,Y]:('equals'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(Class(<Problem>))
+fof(axiom145,axiom,(![X]:('problem'(X)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% InverseFunctionalObjectProperty(<dTime>)
+fof(axiom146,axiom,(![X0,X1,X2]:(('dTime'(X1,X0)&'dTime'(X2,X0))=>(X1=X2)))).
+% ClassAssertion(<Class> <QMA>)
+fof(axiom147,axiom,('class'('qMA'))).
+% ClassAssertion(<Class> <QMA>)
+fof(axiom148,axiom,('http___www_w3_org_2002_07_owl_Thing'('qMA'))).
+% FunctionalObjectProperty(<hasBase>)
+fof(axiom149,axiom,(![X0,X1,X2]:(('hasBase'(X0,X1)&'hasBase'(X0,X2))=>(X1=X2)))).
+% SubObjectPropertyOf(<isCompleteLogSpace> <in>)
+fof(axiom150,axiom,(![X0,X1]:('isCompleteLogSpace'(X0,X1)=>'in'(X0,X1)))).
+% SubObjectPropertyOf(ObjectPropertyChain( <dSpace> ObjectInverseOf(<nSpace>) ) <subset>)
+fof(axiom151,axiom,(![X0,X1]:(?[X2]:('dSpace'(X0,X2)&'nSpace'(X1,X2))=>'subset'(X0,X1)))).
+% ObjectPropertyAssertion(<dSpace> <PSpace> <poly>)
+fof(axiom152,axiom,('dSpace'('pSpace','poly'))).
+% ObjectPropertyAssertion(<dSpace> <PSpace> <poly>)
+fof(axiom153,axiom,('http___www_w3_org_2002_07_owl_Thing'('pSpace'))).
+% ObjectPropertyAssertion(<dSpace> <PSpace> <poly>)
+fof(axiom154,axiom,('http___www_w3_org_2002_07_owl_Thing'('poly'))).
+% SubObjectPropertyOf(<isCompleteLogSpace> <isHardLogSpace>)
+fof(axiom155,axiom,(![X0,X1]:('isCompleteLogSpace'(X0,X1)=>'isHardLogSpace'(X0,X1)))).
+% SubObjectPropertyOf(ObjectPropertyChain( <dSpace> <step> ObjectInverseOf(<dSpace>) ) <strictSubset>)
+fof(axiom156,axiom,(![X0,X1]:(?[X2,X3]:('dSpace'(X0,X2)&'step'(X2,X3)&'dSpace'(X1,X3))=>'strictSubset'(X0,X1)))).
+% Declaration(Class(<Class>))
+fof(axiom157,axiom,(![X]:('class'(X)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<tentacleSavitchNSpace>))
+fof(axiom158,axiom,(![X,Y]:('tentacleSavitchNSpace'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<tentacleSavitchNSpace>))
+fof(axiom159,axiom,(![X,Y]:('tentacleSavitchNSpace'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(NamedIndividual(<SAT>))
+fof(axiom160,axiom,('http___www_w3_org_2002_07_owl_Thing'('sAT'))).
+% ObjectPropertyAssertion(<hasPower> <PP_with_oracle_Ver92> <oracle_Ver92>)
+fof(axiom161,axiom,('hasPower'('pP_with_oracle_Ver92','oracle_Ver92'))).
+% ObjectPropertyAssertion(<hasPower> <PP_with_oracle_Ver92> <oracle_Ver92>)
+fof(axiom162,axiom,('http___www_w3_org_2002_07_owl_Thing'('pP_with_oracle_Ver92'))).
+% ObjectPropertyAssertion(<hasPower> <PP_with_oracle_Ver92> <oracle_Ver92>)
+fof(axiom163,axiom,('http___www_w3_org_2002_07_owl_Thing'('oracle_Ver92'))).
+% ObjectPropertyAssertion(<step> <poly> <exp>)
+fof(axiom164,axiom,('step'('poly','exp'))).
+% ObjectPropertyAssertion(<step> <poly> <exp>)
+fof(axiom165,axiom,('http___www_w3_org_2002_07_owl_Thing'('poly'))).
+% ObjectPropertyAssertion(<step> <poly> <exp>)
+fof(axiom166,axiom,('http___www_w3_org_2002_07_owl_Thing'('exp'))).
+% ClassAssertion(ObjectMaxCardinality(0 ObjectInverseOf(<step>) owl:Thing) <const>)
+fof(axiom167,axiom,(![X0]:~('step'(X0,'const')&'http___www_w3_org_2002_07_owl_Thing'(X0)))).
+% ClassAssertion(ObjectMaxCardinality(0 ObjectInverseOf(<step>) owl:Thing) <const>)
+fof(axiom168,axiom,('http___www_w3_org_2002_07_owl_Thing'('const'))).
+% Declaration(ObjectProperty(<step>))
+fof(axiom169,axiom,(![X,Y]:('step'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<step>))
+fof(axiom170,axiom,(![X,Y]:('step'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ObjectPropertyRange(<notSubset> <Class>)
+fof(axiom171,axiom,(![X0,X1]:('notSubset'(X0,X1)=>'class'(X1)))).
+% SubClassOf(<Bound> ObjectSomeValuesFrom(ObjectInverseOf(<dTime>) owl:Thing))
+fof(axiom172,axiom,(![X0]:('bound'(X0)=>?[X1]:('dTime'(X1,X0)&'http___www_w3_org_2002_07_owl_Thing'(X1))))).
+% Declaration(NamedIndividual(<NExpSpace>))
+fof(axiom173,axiom,('http___www_w3_org_2002_07_owl_Thing'('nExpSpace'))).
+% ObjectPropertyRange(<classDefinition> <Bound>)
+fof(axiom174,axiom,(![X0,X1]:('classDefinition'(X0,X1)=>'bound'(X1)))).
+% SubObjectPropertyOf(<tentacleSavitchDSpace> <dSpace>)
+fof(axiom175,axiom,(![X0,X1]:('tentacleSavitchDSpace'(X0,X1)=>'dSpace'(X0,X1)))).
+% SubObjectPropertyOf(<isHardLogSpace> <isHardPolyTime>)
+fof(axiom176,axiom,(![X0,X1]:('isHardLogSpace'(X0,X1)=>'isHardPolyTime'(X0,X1)))).
+% SubObjectPropertyOf(<equals> <subset>)
+fof(axiom177,axiom,(![X0,X1]:('equals'(X0,X1)=>'subset'(X0,X1)))).
+% SubClassOf(<Savitch> ObjectSomeValuesFrom(<step> <Savitch>))
+fof(axiom178,axiom,(![X0]:('savitch'(X0)=>?[X1]:('step'(X0,X1)&'savitch'(X1))))).
+% ObjectPropertyDomain(<classDefinition> <Class>)
+fof(axiom179,axiom,(![X0,X1]:('classDefinition'(X0,X1)=>'class'(X0)))).
+% SubObjectPropertyOf(<tentacleSavitchNSpace> <nSpace>)
+fof(axiom180,axiom,(![X0,X1]:('tentacleSavitchNSpace'(X0,X1)=>'nSpace'(X0,X1)))).
+% TransitiveObjectProperty(<isReduciblePolyTime>)
+fof(axiom181,axiom,(![X0,X1,X2]:(('isReduciblePolyTime'(X0,X1)&'isReduciblePolyTime'(X1,X2))=>'isReduciblePolyTime'(X0,X2)))).
+% SubObjectPropertyOf(ObjectPropertyChain( <tentacleSavitchNSpace> ObjectInverseOf(<tentacleSavitchDSpace>) ) <subset>)
+fof(axiom182,axiom,(![X0,X1]:(?[X2]:('tentacleSavitchNSpace'(X0,X2)&'tentacleSavitchDSpace'(X1,X2))=>'subset'(X0,X1)))).
+% Declaration(NamedIndividual(<NL>))
+fof(axiom183,axiom,('http___www_w3_org_2002_07_owl_Thing'('nL'))).
+% SubObjectPropertyOf(<isHardPolyTime> <isHard>)
+fof(axiom184,axiom,(![X0,X1]:('isHardPolyTime'(X0,X1)=>'isHard'(X0,X1)))).
+% ObjectPropertyDomain(<hasBase> <Class>)
+fof(axiom185,axiom,(![X0,X1]:('hasBase'(X0,X1)=>'class'(X0)))).
+% SubObjectPropertyOf(ObjectPropertyChain( ObjectInverseOf(<isReducibleLogSpace>) <isHardLogSpace> ) <isHardLogSpace>)
+fof(axiom186,axiom,(![X0,X1]:(?[X2]:('isReducibleLogSpace'(X2,X0)&'isHardLogSpace'(X2,X1))=>'isHardLogSpace'(X0,X1)))).
+% ObjectPropertyAssertion(<isCompletePolyTime> <QBF> <PSpace>)
+fof(axiom187,axiom,('isCompletePolyTime'('qBF','pSpace'))).
+% ObjectPropertyAssertion(<isCompletePolyTime> <QBF> <PSpace>)
+fof(axiom188,axiom,('http___www_w3_org_2002_07_owl_Thing'('qBF'))).
+% ObjectPropertyAssertion(<isCompletePolyTime> <QBF> <PSpace>)
+fof(axiom189,axiom,('http___www_w3_org_2002_07_owl_Thing'('pSpace'))).
+% TransitiveObjectProperty(<subset>)
+fof(axiom190,axiom,(![X0,X1,X2]:(('subset'(X0,X1)&'subset'(X1,X2))=>'subset'(X0,X2)))).
+% FunctionalObjectProperty(<dSpace>)
+fof(axiom191,axiom,(![X0,X1,X2]:(('dSpace'(X0,X1)&'dSpace'(X0,X2))=>(X1=X2)))).
+% Declaration(NamedIndividual(<P>))
+fof(axiom192,axiom,('http___www_w3_org_2002_07_owl_Thing'('p'))).
+% Declaration(ObjectProperty(<classDefinition>))
+fof(axiom193,axiom,(![X,Y]:('classDefinition'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<classDefinition>))
+fof(axiom194,axiom,(![X,Y]:('classDefinition'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% InverseFunctionalObjectProperty(<nTime>)
+fof(axiom195,axiom,(![X0,X1,X2]:(('nTime'(X1,X0)&'nTime'(X2,X0))=>(X1=X2)))).
+% SubObjectPropertyOf(ObjectPropertyChain( <nTime> ObjectInverseOf(<nSpace>) ) <subset>)
+fof(axiom196,axiom,(![X0,X1]:(?[X2]:('nTime'(X0,X2)&'nSpace'(X1,X2))=>'subset'(X0,X1)))).
+% ObjectPropertyAssertion(<dTime> <ExpTime> <exp>)
+fof(axiom197,axiom,('dTime'('expTime','exp'))).
+% ObjectPropertyAssertion(<dTime> <ExpTime> <exp>)
+fof(axiom198,axiom,('http___www_w3_org_2002_07_owl_Thing'('expTime'))).
+% ObjectPropertyAssertion(<dTime> <ExpTime> <exp>)
+fof(axiom199,axiom,('http___www_w3_org_2002_07_owl_Thing'('exp'))).
+% Declaration(NamedIndividual(<ExpSpace>))
+fof(axiom200,axiom,('http___www_w3_org_2002_07_owl_Thing'('expSpace'))).
+% Declaration(NamedIndividual(<log>))
+fof(axiom201,axiom,('http___www_w3_org_2002_07_owl_Thing'('log'))).
+% SubClassOf(<Savitch> ObjectSomeValuesFrom(ObjectInverseOf(<tentacleSavitchNSpace>) owl:Thing))
+fof(axiom202,axiom,(![X0]:('savitch'(X0)=>?[X1]:('tentacleSavitchNSpace'(X1,X0)&'http___www_w3_org_2002_07_owl_Thing'(X1))))).
+% Declaration(NamedIndividual(<2exp>))
+fof(axiom203,axiom,('http___www_w3_org_2002_07_owl_Thing'('2exp'))).
+% ObjectPropertyRange(<step> <Bound>)
+fof(axiom204,axiom,(![X0,X1]:('step'(X0,X1)=>'bound'(X1)))).
+% SubClassOf(<Bound> ObjectSomeValuesFrom(ObjectInverseOf(<dSpace>) owl:Thing))
+fof(axiom205,axiom,(![X0]:('bound'(X0)=>?[X1]:('dSpace'(X1,X0)&'http___www_w3_org_2002_07_owl_Thing'(X1))))).
+% ClassAssertion(<Class> <2ExpTime>)
+fof(axiom206,axiom,('class'('2ExpTime'))).
+% ClassAssertion(<Class> <2ExpTime>)
+fof(axiom207,axiom,('http___www_w3_org_2002_07_owl_Thing'('2ExpTime'))).
+% InverseFunctionalObjectProperty(<nSpace>)
+fof(axiom208,axiom,(![X0,X1,X2]:(('nSpace'(X1,X0)&'nSpace'(X2,X0))=>(X1=X2)))).
+% ObjectPropertyAssertion(<hasBase> <AM_with_oracle_Ver92> <AM>)
+fof(axiom209,axiom,('hasBase'('aM_with_oracle_Ver92','aM'))).
+% ObjectPropertyAssertion(<hasBase> <AM_with_oracle_Ver92> <AM>)
+fof(axiom210,axiom,('http___www_w3_org_2002_07_owl_Thing'('aM_with_oracle_Ver92'))).
+% ObjectPropertyAssertion(<hasBase> <AM_with_oracle_Ver92> <AM>)
+fof(axiom211,axiom,('http___www_w3_org_2002_07_owl_Thing'('aM'))).
+% Declaration(NamedIndividual(<NPSpace>))
+fof(axiom212,axiom,('http___www_w3_org_2002_07_owl_Thing'('nPSpace'))).
+% SubObjectPropertyOf(<isCompleteLogSpace> <isCompletePolyTime>)
+fof(axiom213,axiom,(![X0,X1]:('isCompleteLogSpace'(X0,X1)=>'isCompletePolyTime'(X0,X1)))).
+% ObjectPropertyAssertion(<step> <exp> <2exp>)
+fof(axiom214,axiom,('step'('exp','2exp'))).
+% ObjectPropertyAssertion(<step> <exp> <2exp>)
+fof(axiom215,axiom,('http___www_w3_org_2002_07_owl_Thing'('exp'))).
+% ObjectPropertyAssertion(<step> <exp> <2exp>)
+fof(axiom216,axiom,('http___www_w3_org_2002_07_owl_Thing'('2exp'))).
+% ClassAssertion(<Class> <AM>)
+fof(axiom217,axiom,('class'('aM'))).
+% ClassAssertion(<Class> <AM>)
+fof(axiom218,axiom,('http___www_w3_org_2002_07_owl_Thing'('aM'))).
+% Declaration(NamedIndividual(<QMA>))
+fof(axiom219,axiom,('http___www_w3_org_2002_07_owl_Thing'('qMA'))).
+% ObjectPropertyAssertion(<subset> <QMA> <PP>)
+fof(axiom220,axiom,('subset'('qMA','pP'))).
+% ObjectPropertyAssertion(<subset> <QMA> <PP>)
+fof(axiom221,axiom,('http___www_w3_org_2002_07_owl_Thing'('qMA'))).
+% ObjectPropertyAssertion(<subset> <QMA> <PP>)
+fof(axiom222,axiom,('http___www_w3_org_2002_07_owl_Thing'('pP'))).
+% SubObjectPropertyOf(ObjectPropertyChain( ObjectInverseOf(<isReduciblePolyTime>) <isHardPolyTime> ) <isHardPolyTime>)
+fof(axiom223,axiom,(![X0,X1]:(?[X2]:('isReduciblePolyTime'(X2,X0)&'isHardPolyTime'(X2,X1))=>'isHardPolyTime'(X0,X1)))).
+% Declaration(ObjectProperty(<nTime>))
+fof(axiom224,axiom,(![X,Y]:('nTime'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<nTime>))
+fof(axiom225,axiom,(![X,Y]:('nTime'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ObjectPropertyRange(<subset> <Class>)
+fof(axiom226,axiom,(![X0,X1]:('subset'(X0,X1)=>'class'(X1)))).
+% Declaration(NamedIndividual(<Reg>))
+fof(axiom227,axiom,('http___www_w3_org_2002_07_owl_Thing'('reg'))).
+% SubObjectPropertyOf(<nTime> <classDefinition>)
+fof(axiom228,axiom,(![X0,X1]:('nTime'(X0,X1)=>'classDefinition'(X0,X1)))).
+% Declaration(Class(<Bound>))
+fof(axiom229,axiom,(![X]:('bound'(X)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% SubObjectPropertyOf(ObjectPropertyChain( <isHardPolyTime> ObjectInverseOf(<subset>) ) <isHardPolyTime>)
+fof(axiom230,axiom,(![X0,X1]:(?[X2]:('isHardPolyTime'(X0,X2)&'subset'(X1,X2))=>'isHardPolyTime'(X0,X1)))).
+% SubObjectPropertyOf(<dTime> <classDefinition>)
+fof(axiom231,axiom,(![X0,X1]:('dTime'(X0,X1)=>'classDefinition'(X0,X1)))).
+% SubObjectPropertyOf(<isReducibleLogSpace> <isReduciblePolyTime>)
+fof(axiom232,axiom,(![X0,X1]:('isReducibleLogSpace'(X0,X1)=>'isReduciblePolyTime'(X0,X1)))).
+% ObjectPropertyAssertion(<dSpace> <Reg> <const>)
+fof(axiom233,axiom,('dSpace'('reg','const'))).
+% ObjectPropertyAssertion(<dSpace> <Reg> <const>)
+fof(axiom234,axiom,('http___www_w3_org_2002_07_owl_Thing'('reg'))).
+% ObjectPropertyAssertion(<dSpace> <Reg> <const>)
+fof(axiom235,axiom,('http___www_w3_org_2002_07_owl_Thing'('const'))).
+% TransitiveObjectProperty(<strictSubset>)
+fof(axiom236,axiom,(![X0,X1,X2]:(('strictSubset'(X0,X1)&'strictSubset'(X1,X2))=>'strictSubset'(X0,X2)))).
+% ObjectPropertyDomain(<isHard> <Problem>)
+fof(axiom237,axiom,(![X0,X1]:('isHard'(X0,X1)=>'problem'(X0)))).
+% TransitiveObjectProperty(<isReducibleLogSpace>)
+fof(axiom238,axiom,(![X0,X1,X2]:(('isReducibleLogSpace'(X0,X1)&'isReducibleLogSpace'(X1,X2))=>'isReducibleLogSpace'(X0,X2)))).
+% Declaration(NamedIndividual(<2ExpTime>))
+fof(axiom239,axiom,('http___www_w3_org_2002_07_owl_Thing'('2ExpTime'))).
+% ObjectPropertyDomain(<in> <Problem>)
+fof(axiom240,axiom,(![X0,X1]:('in'(X0,X1)=>'problem'(X0)))).
+% FunctionalObjectProperty(<step>)
+fof(axiom241,axiom,(![X0,X1,X2]:(('step'(X0,X1)&'step'(X0,X2))=>(X1=X2)))).
+% SubClassOf(<Bound> ObjectSomeValuesFrom(ObjectInverseOf(<nTime>) owl:Thing))
+fof(axiom242,axiom,(![X0]:('bound'(X0)=>?[X1]:('nTime'(X1,X0)&'http___www_w3_org_2002_07_owl_Thing'(X1))))).
+% Declaration(ObjectProperty(<dTime>))
+fof(axiom243,axiom,(![X,Y]:('dTime'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<dTime>))
+fof(axiom244,axiom,(![X,Y]:('dTime'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ObjectPropertyRange(<in> <Class>)
+fof(axiom245,axiom,(![X0,X1]:('in'(X0,X1)=>'class'(X1)))).
+% SubObjectPropertyOf(ObjectPropertyChain( <nSpace> <step> ObjectInverseOf(<dTime>) ) <subset>)
+fof(axiom246,axiom,(![X0,X1]:(?[X2,X3]:('nSpace'(X0,X2)&'step'(X2,X3)&'dTime'(X1,X3))=>'subset'(X0,X1)))).
+% SubClassOf(ObjectSomeValuesFrom(ObjectInverseOf(<step>) owl:Thing) ObjectSomeValuesFrom(<step> owl:Thing))
+fof(axiom247,axiom,(![X0]:(?[X1]:('step'(X1,X0)&'http___www_w3_org_2002_07_owl_Thing'(X1))=>?[X2]:('step'(X0,X2)&'http___www_w3_org_2002_07_owl_Thing'(X2))))).
+% Declaration(ObjectProperty(<isReducible>))
+fof(axiom248,axiom,(![X,Y]:('isReducible'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isReducible>))
+fof(axiom249,axiom,(![X,Y]:('isReducible'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ClassAssertion(<Bound> <exp>)
+fof(axiom250,axiom,('bound'('exp'))).
+% ClassAssertion(<Bound> <exp>)
+fof(axiom251,axiom,('http___www_w3_org_2002_07_owl_Thing'('exp'))).
+% SubClassOf(<Bound> ObjectSomeValuesFrom(ObjectInverseOf(<nSpace>) owl:Thing))
+fof(axiom252,axiom,(![X0]:('bound'(X0)=>?[X1]:('nSpace'(X1,X0)&'http___www_w3_org_2002_07_owl_Thing'(X1))))).
+% SubObjectPropertyOf(ObjectPropertyChain( <in> <subset> ) <in>)
+fof(axiom253,axiom,(![X0,X1]:(?[X2]:('in'(X0,X2)&'subset'(X2,X1))=>'in'(X0,X1)))).
+% InverseFunctionalObjectProperty(<dSpace>)
+fof(axiom254,axiom,(![X0,X1,X2]:(('dSpace'(X1,X0)&'dSpace'(X2,X0))=>(X1=X2)))).
+% ObjectPropertyAssertion(<isCompleteLogSpace> <DirectedReachability> <NL>)
+fof(axiom255,axiom,('isCompleteLogSpace'('directedReachability','nL'))).
+% ObjectPropertyAssertion(<isCompleteLogSpace> <DirectedReachability> <NL>)
+fof(axiom256,axiom,('http___www_w3_org_2002_07_owl_Thing'('directedReachability'))).
+% ObjectPropertyAssertion(<isCompleteLogSpace> <DirectedReachability> <NL>)
+fof(axiom257,axiom,('http___www_w3_org_2002_07_owl_Thing'('nL'))).
+% SubObjectPropertyOf(<dSpace> <classDefinition>)
+fof(axiom258,axiom,(![X0,X1]:('dSpace'(X0,X1)=>'classDefinition'(X0,X1)))).
+% ObjectPropertyAssertion(<nSpace> <NExpSpace> <exp>)
+fof(axiom259,axiom,('nSpace'('nExpSpace','exp'))).
+% ObjectPropertyAssertion(<nSpace> <NExpSpace> <exp>)
+fof(axiom260,axiom,('http___www_w3_org_2002_07_owl_Thing'('nExpSpace'))).
+% ObjectPropertyAssertion(<nSpace> <NExpSpace> <exp>)
+fof(axiom261,axiom,('http___www_w3_org_2002_07_owl_Thing'('exp'))).
+% ClassAssertion(<Savitch> <poly>)
+fof(axiom262,axiom,('savitch'('poly'))).
+% ClassAssertion(<Savitch> <poly>)
+fof(axiom263,axiom,('http___www_w3_org_2002_07_owl_Thing'('poly'))).
+% Declaration(ObjectProperty(<isCompletePolyTime>))
+fof(axiom264,axiom,(![X,Y]:('isCompletePolyTime'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isCompletePolyTime>))
+fof(axiom265,axiom,(![X,Y]:('isCompletePolyTime'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% TransitiveObjectProperty(<equals>)
+fof(axiom266,axiom,(![X0,X1,X2]:(('equals'(X0,X1)&'equals'(X1,X2))=>'equals'(X0,X2)))).
+% background axiom: all pairs of things are connected via owl:topObjectProperty
+fof(axiom267,axiom,(![X,Y]:('http___www_w3_org_2002_07_owl_topObjectProperty'(X,Y)<=>('http___www_w3_org_2002_07_owl_Thing'(X)&'http___www_w3_org_2002_07_owl_Thing'(Y))))).

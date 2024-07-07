@@ -1,0 +1,366 @@
+Prefix(:=<>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(fowl:=<https://github.com/gavel-tool/python-gavel-owl/>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(
+Declaration(Class(:Bound))
+Declaration(Class(:Class))
+Declaration(Class(:Problem))
+Declaration(Class(:Savitch))
+Declaration(ObjectProperty(:classDefinition))
+Declaration(ObjectProperty(:dSpace))
+Declaration(ObjectProperty(:dTime))
+Declaration(ObjectProperty(:equals))
+Declaration(ObjectProperty(:hasBase))
+Declaration(ObjectProperty(:hasPower))
+Declaration(ObjectProperty(:in))
+Declaration(ObjectProperty(:isComplete))
+Declaration(ObjectProperty(:isCompleteLogSpace))
+Declaration(ObjectProperty(:isCompletePolyTime))
+Declaration(ObjectProperty(:isHard))
+Declaration(ObjectProperty(:isHardLogSpace))
+Declaration(ObjectProperty(:isHardPolyTime))
+Declaration(ObjectProperty(:isReducible))
+Declaration(ObjectProperty(:isReducibleLogSpace))
+Declaration(ObjectProperty(:isReduciblePolyTime))
+Declaration(ObjectProperty(:nSpace))
+Declaration(ObjectProperty(:nTime))
+Declaration(ObjectProperty(:notSubset))
+Declaration(ObjectProperty(:step))
+Declaration(ObjectProperty(:strictSubset))
+Declaration(ObjectProperty(:subset))
+Declaration(ObjectProperty(:tentacleSavitchDSpace))
+Declaration(ObjectProperty(:tentacleSavitchNSpace))
+Declaration(NamedIndividual(:AM))
+Declaration(NamedIndividual(:AM_with_oracle_Ver92))
+Declaration(NamedIndividual(:DirectedReachability))
+Declaration(NamedIndividual(:ExpSpace))
+Declaration(NamedIndividual(:ExpTime))
+Declaration(NamedIndividual(:L))
+Declaration(NamedIndividual(:NExpSpace))
+Declaration(NamedIndividual(:NL))
+Declaration(NamedIndividual(:NP))
+Declaration(NamedIndividual(:NPSpace))
+Declaration(NamedIndividual(:P))
+Declaration(NamedIndividual(:PP))
+Declaration(NamedIndividual(:PP_with_oracle_Ver92))
+Declaration(NamedIndividual(:PSpace))
+Declaration(NamedIndividual(:QBF))
+Declaration(NamedIndividual(:QMA))
+Declaration(NamedIndividual(:Reg))
+Declaration(NamedIndividual(:SAT))
+Declaration(NamedIndividual(:const))
+Declaration(NamedIndividual(:exp))
+Declaration(NamedIndividual(:log))
+Declaration(NamedIndividual(:oracle_Ver92))
+Declaration(NamedIndividual(:poly))
+Declaration(NamedIndividual(<2ExpTime>))
+Declaration(NamedIndividual(<2exp>))
+Declaration(AnnotationProperty(fowl:tptp_annotation))
+
+############################
+#   Object Properties
+############################
+
+# Object Property: :classDefinition (:classDefinition)
+
+ObjectPropertyDomain(:classDefinition :Class)
+ObjectPropertyRange(:classDefinition :Bound)
+
+# Object Property: :dSpace (:dSpace)
+
+SubObjectPropertyOf(:dSpace :classDefinition)
+FunctionalObjectProperty(:dSpace)
+InverseFunctionalObjectProperty(:dSpace)
+
+# Object Property: :dTime (:dTime)
+
+SubObjectPropertyOf(:dTime :classDefinition)
+FunctionalObjectProperty(:dTime)
+InverseFunctionalObjectProperty(:dTime)
+
+# Object Property: :equals (:equals)
+
+AnnotationAssertion(fowl:tptp_annotation :equals "![X,Y]:(('subset'(X,Y)&'subset'(Y,X)) => 'equals'(X,Y))")
+SubObjectPropertyOf(:equals :subset)
+SubObjectPropertyOf(:equals ObjectInverseOf(:subset))
+TransitiveObjectProperty(:equals)
+
+# Object Property: :hasBase (:hasBase)
+
+AnnotationAssertion(fowl:tptp_annotation :hasBase "![X, Y, U, V]:(('hasBase'(X, U) & 'hasPower'(X, V) & 'hasBase'(Y, U) & 'hasPower'(Y, V)) => X = Y)")
+AnnotationAssertion(fowl:tptp_annotation :hasBase "![X, Y, Z, U, V]:(('hasBase'(X, U) & 'hasBase'(Y, V) & 'hasPower'(X, Z) & 'hasPower'(Y, Z) & 'subset'(U, V)) => 'subset'(X, Y))")
+AnnotationAssertion(fowl:tptp_annotation :hasBase "![X,Y]:(('Class'(X) & 'Problem'(Y)) => ?[Z]:('hasBase'(Z, X) & 'hasPower'(Z, Y)))")
+FunctionalObjectProperty(:hasBase)
+ObjectPropertyDomain(:hasBase :Class)
+ObjectPropertyRange(:hasBase :Class)
+
+# Object Property: :hasPower (:hasPower)
+
+FunctionalObjectProperty(:hasPower)
+ObjectPropertyDomain(:hasPower :Class)
+
+# Object Property: :in (:in)
+
+ObjectPropertyDomain(:in :Problem)
+ObjectPropertyRange(:in :Class)
+
+# Object Property: :isComplete (:isComplete)
+
+AnnotationAssertion(fowl:tptp_annotation :isComplete "![X, Y, Z]:('isComplete'(X, Y, Z) <=> ('isHard'(X, Y, Z) & 'in'(X, Y)))")
+
+# Object Property: :isCompleteLogSpace (:isCompleteLogSpace)
+
+SubObjectPropertyOf(:isCompleteLogSpace :in)
+SubObjectPropertyOf(:isCompleteLogSpace :isCompletePolyTime)
+SubObjectPropertyOf(:isCompleteLogSpace :isHardLogSpace)
+
+# Object Property: :isCompletePolyTime (:isCompletePolyTime)
+
+SubObjectPropertyOf(:isCompletePolyTime :in)
+SubObjectPropertyOf(:isCompletePolyTime :isComplete)
+SubObjectPropertyOf(:isCompletePolyTime :isHardPolyTime)
+
+# Object Property: :isHard (:isHard)
+
+SubObjectPropertyOf(:isHard owl:topObjectProperty)
+ObjectPropertyDomain(:isHard :Problem)
+
+# Object Property: :isHardLogSpace (:isHardLogSpace)
+
+AnnotationAssertion(fowl:tptp_annotation :isHardLogSpace "![X,Y]:('isHardLogSpace'(X, Y) <=> 'isHard'(X, Y, 'log'))")
+SubObjectPropertyOf(:isHardLogSpace :isHardPolyTime)
+
+# Object Property: :isHardPolyTime (:isHardPolyTime)
+
+AnnotationAssertion(fowl:tptp_annotation :isHardPolyTime "![X,Y]:('isHardPolyTime'(X, Y) <=> 'isHard'(X, Y, 'poly'))")
+SubObjectPropertyOf(:isHardPolyTime :isHard)
+
+# Object Property: :isReducible (:isReducible)
+
+ObjectPropertyDomain(:isReducible :Problem)
+ObjectPropertyRange(:isReducible :Problem)
+
+# Object Property: :isReducibleLogSpace (:isReducibleLogSpace)
+
+AnnotationAssertion(fowl:tptp_annotation :isReducibleLogSpace "![X,Y]:('isReducibleLogSpace'(X, Y) <=> 'isReducible'(X, Y, 'log'))")
+SubObjectPropertyOf(:isReducibleLogSpace :isReduciblePolyTime)
+TransitiveObjectProperty(:isReducibleLogSpace)
+
+# Object Property: :isReduciblePolyTime (:isReduciblePolyTime)
+
+AnnotationAssertion(fowl:tptp_annotation :isReduciblePolyTime "![X,Y]:('isReduciblePolyTime'(X, Y) <=> 'isReducible'(X, Y, 'poly'))")
+SubObjectPropertyOf(:isReduciblePolyTime :isReducible)
+TransitiveObjectProperty(:isReduciblePolyTime)
+
+# Object Property: :nSpace (:nSpace)
+
+SubObjectPropertyOf(:nSpace :classDefinition)
+FunctionalObjectProperty(:nSpace)
+InverseFunctionalObjectProperty(:nSpace)
+
+# Object Property: :nTime (:nTime)
+
+SubObjectPropertyOf(:nTime :classDefinition)
+FunctionalObjectProperty(:nTime)
+InverseFunctionalObjectProperty(:nTime)
+
+# Object Property: :notSubset (:notSubset)
+
+AnnotationAssertion(fowl:tptp_annotation :notSubset "![X,Y]:(~'subset'(X, Y) | ~'notSubset'(X,Y))")
+ObjectPropertyDomain(:notSubset :Class)
+ObjectPropertyRange(:notSubset :Class)
+
+# Object Property: :step (:step)
+
+FunctionalObjectProperty(:step)
+InverseFunctionalObjectProperty(:step)
+ObjectPropertyDomain(:step :Bound)
+ObjectPropertyRange(:step :Bound)
+
+# Object Property: :strictSubset (:strictSubset)
+
+AnnotationAssertion(fowl:tptp_annotation :strictSubset "![X,Y]:(('strictSubset'(X,Y)) => ?[Z]:('in'(Z,Y) & ~'in'(Z, X)))")
+AnnotationAssertion(fowl:tptp_annotation :strictSubset "![X,Y]:(('strictSubset'(X,Y)) => ~'equals'(X,Y))")
+SubObjectPropertyOf(:strictSubset :subset)
+TransitiveObjectProperty(:strictSubset)
+
+# Object Property: :subset (:subset)
+
+TransitiveObjectProperty(:subset)
+ObjectPropertyDomain(:subset :Class)
+ObjectPropertyRange(:subset :Class)
+
+# Object Property: :tentacleSavitchDSpace (:tentacleSavitchDSpace)
+
+SubObjectPropertyOf(:tentacleSavitchDSpace :dSpace)
+
+# Object Property: :tentacleSavitchNSpace (:tentacleSavitchNSpace)
+
+SubObjectPropertyOf(:tentacleSavitchNSpace :nSpace)
+
+
+
+############################
+#   Classes
+############################
+
+# Class: :Bound (:Bound)
+
+SubClassOf(:Bound ObjectSomeValuesFrom(ObjectInverseOf(:dSpace) owl:Thing))
+SubClassOf(:Bound ObjectSomeValuesFrom(ObjectInverseOf(:dTime) owl:Thing))
+SubClassOf(:Bound ObjectSomeValuesFrom(ObjectInverseOf(:nSpace) owl:Thing))
+SubClassOf(:Bound ObjectSomeValuesFrom(ObjectInverseOf(:nTime) owl:Thing))
+
+# Class: :Class (:Class)
+
+
+# Class: :Problem (:Problem)
+
+
+# Class: :Savitch (:Savitch)
+
+SubClassOf(:Savitch ObjectSomeValuesFrom(:step :Savitch))
+SubClassOf(:Savitch ObjectSomeValuesFrom(ObjectInverseOf(:tentacleSavitchDSpace) owl:Thing))
+SubClassOf(:Savitch ObjectSomeValuesFrom(ObjectInverseOf(:tentacleSavitchNSpace) owl:Thing))
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: :AM (:AM)
+
+ClassAssertion(:Class :AM)
+
+# Individual: :AM_with_oracle_Ver92 (:AM_with_oracle_Ver92)
+
+ObjectPropertyAssertion(:hasBase :AM_with_oracle_Ver92 :AM)
+ObjectPropertyAssertion(:hasPower :AM_with_oracle_Ver92 :oracle_Ver92)
+ObjectPropertyAssertion(:notSubset :AM_with_oracle_Ver92 :PP_with_oracle_Ver92)
+
+# Individual: :DirectedReachability (:DirectedReachability)
+
+ObjectPropertyAssertion(:isCompleteLogSpace :DirectedReachability :NL)
+
+# Individual: :ExpSpace (:ExpSpace)
+
+ObjectPropertyAssertion(:dSpace :ExpSpace :exp)
+
+# Individual: :ExpTime (:ExpTime)
+
+ObjectPropertyAssertion(:dTime :ExpTime :exp)
+
+# Individual: :L (:L)
+
+ObjectPropertyAssertion(:dSpace :L :log)
+
+# Individual: :NExpSpace (:NExpSpace)
+
+ObjectPropertyAssertion(:nSpace :NExpSpace :exp)
+
+# Individual: :NL (:NL)
+
+ObjectPropertyAssertion(:nSpace :NL :log)
+
+# Individual: :NP (:NP)
+
+ObjectPropertyAssertion(:nTime :NP :poly)
+
+# Individual: :NPSpace (:NPSpace)
+
+ObjectPropertyAssertion(:nSpace :NPSpace :poly)
+
+# Individual: :P (:P)
+
+ObjectPropertyAssertion(:dTime :P :poly)
+
+# Individual: :PP (:PP)
+
+ClassAssertion(:Class :PP)
+
+# Individual: :PP_with_oracle_Ver92 (:PP_with_oracle_Ver92)
+
+ObjectPropertyAssertion(:hasBase :PP_with_oracle_Ver92 :PP)
+ObjectPropertyAssertion(:hasPower :PP_with_oracle_Ver92 :oracle_Ver92)
+
+# Individual: :PSpace (:PSpace)
+
+ObjectPropertyAssertion(:dSpace :PSpace :poly)
+
+# Individual: :QBF (:QBF)
+
+ObjectPropertyAssertion(:isCompletePolyTime :QBF :PSpace)
+
+# Individual: :QMA (:QMA)
+
+ClassAssertion(:Class :QMA)
+ObjectPropertyAssertion(:subset :QMA :PP)
+
+# Individual: :Reg (:Reg)
+
+ObjectPropertyAssertion(:dSpace :Reg :const)
+
+# Individual: :SAT (:SAT)
+
+ClassAssertion(:Problem :SAT)
+ObjectPropertyAssertion(:isCompletePolyTime :SAT :NP)
+
+# Individual: :const (:const)
+
+ClassAssertion(:Bound :const)
+ClassAssertion(ObjectSomeValuesFrom(:step owl:Thing) :const)
+ClassAssertion(ObjectMaxCardinality(0 ObjectInverseOf(:step)) :const)
+ObjectPropertyAssertion(:step :const :log)
+
+# Individual: :exp (:exp)
+
+ClassAssertion(:Bound :exp)
+ObjectPropertyAssertion(:step :exp <2exp>)
+
+# Individual: :log (:log)
+
+ObjectPropertyAssertion(:step :log :poly)
+
+# Individual: :oracle_Ver92 (:oracle_Ver92)
+
+ClassAssertion(:Problem :oracle_Ver92)
+
+# Individual: :poly (:poly)
+
+ClassAssertion(:Savitch :poly)
+ObjectPropertyAssertion(:step :poly :exp)
+
+# Individual: <2ExpTime> (<2ExpTime>)
+
+ClassAssertion(:Class <2ExpTime>)
+ObjectPropertyAssertion(:dTime <2ExpTime> <2exp>)
+
+# Individual: <2exp> (<2exp>)
+
+ClassAssertion(:Bound <2exp>)
+
+
+SubClassOf(ObjectSomeValuesFrom(ObjectInverseOf(:step) owl:Thing) ObjectSomeValuesFrom(:step owl:Thing))
+DisjointClasses(:Bound :Class :Problem)
+SubObjectPropertyOf(ObjectPropertyChain(:dSpace :step ObjectInverseOf(:dSpace)) :strictSubset)
+SubObjectPropertyOf(ObjectPropertyChain(:dSpace ObjectInverseOf(:nSpace)) :subset)
+SubObjectPropertyOf(ObjectPropertyChain(:dTime :step ObjectInverseOf(:dTime)) :strictSubset)
+SubObjectPropertyOf(ObjectPropertyChain(:dTime ObjectInverseOf(:dSpace)) :subset)
+SubObjectPropertyOf(ObjectPropertyChain(:dTime ObjectInverseOf(:nTime)) :subset)
+SubObjectPropertyOf(ObjectPropertyChain(:in :subset) :in)
+SubObjectPropertyOf(ObjectPropertyChain(:isHardLogSpace ObjectInverseOf(:subset)) :isHardLogSpace)
+SubObjectPropertyOf(ObjectPropertyChain(:isHardPolyTime ObjectInverseOf(:subset)) :isHardPolyTime)
+SubObjectPropertyOf(ObjectPropertyChain(:nSpace :step ObjectInverseOf(:dTime)) :subset)
+SubObjectPropertyOf(ObjectPropertyChain(:nTime :step ObjectInverseOf(:dTime)) :subset)
+SubObjectPropertyOf(ObjectPropertyChain(:nTime ObjectInverseOf(:nSpace)) :subset)
+SubObjectPropertyOf(ObjectPropertyChain(:notSubset ObjectInverseOf(:subset)) :notSubset)
+SubObjectPropertyOf(ObjectPropertyChain(:tentacleSavitchNSpace ObjectInverseOf(:tentacleSavitchDSpace)) :subset)
+SubObjectPropertyOf(ObjectPropertyChain(ObjectInverseOf(:isReducibleLogSpace) :isHardLogSpace) :isHardLogSpace)
+SubObjectPropertyOf(ObjectPropertyChain(ObjectInverseOf(:isReduciblePolyTime) :isHardPolyTime) :isHardPolyTime)
+)
