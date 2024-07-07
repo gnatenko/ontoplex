@@ -8,13 +8,7 @@ This is an ongoing project on creating a practical tool for theoreticians: a kno
 
 Ontoplex is a Semantic Web style ontology. It represents complexity classes and decision problems as nodes of a graph and relations between them as (hyper)edges of that graph. It then uses axioms (=rules) to constrain the structure of the graph accoding to the theorems of complexity theory.
 
-We used OWL 2 to express the 'main rules' of complexity and first-order logic for more sophisticated things (still, it's not enough, and we are planning to adopt some second-order axioms =). FOWL framework [1] allows to combine the two levels and use off-the-shelf OWL 2 and first-order reasoners for suitable tasks.
-
---
-
-[1] Simon Flügel, Martin Glauer, Fabian Neuhaus, and Janna Hastings. When one
-logic is not enough: Integrating first-order annotations in OWL ontologies.
-Preprint:1–16, 2024. [(link)](https://doi.org/10.3233/SW-243440)
+We used OWL 2 to express the 'main rules' of complexity and first-order logic for more sophisticated things (still, it's not enough, and we are planning to adopt some second-order axioms =). [FOWL framework]((https://doi.org/10.3233/SW-243440)) allows to combine the two levels and use off-the-shelf OWL 2 and first-order reasoners for suitable tasks.
 
 
 ## What's in the Repo
