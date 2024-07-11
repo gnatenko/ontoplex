@@ -37,4 +37,4 @@ cat core.tptp example_query.tptp > problem.tptp && vampire/build/bin/vampire_rel
 
 ## I still don't understand what it's all about
 
-~~We neither~~ We are working on documentation and a tutorial. Please come back a bit later.
+~~We neither~~ Check [Ontoplex Wiki](https://github.com/gnatenko/ontoplex/wiki) for documentation and a tutorial.
