@@ -1,0 +1,67 @@
+Prefix(:=<>)
+
+Ontology(<Ontoplex/PSpace>
+  
+  Declaration(Class(:DecisionProblem))
+  Declaration(Class(:ComplexityClass))
+  
+  Declaration(NamedIndividual(:PSPACE))
+  Declaration(NamedIndividual(:NPSPACE))
+  Declaration(NamedIndividual(:AP))
+  Declaration(NamedIndividual(:CZK))
+  Declaration(NamedIndividual(:IP))
+  Declaration(NamedIndividual(:PsharpP))
+  Declaration(NamedIndividual(:QBF))
+  Declaration(NamedIndividual(:PH))
+  Declaration(NamedIndividual(:EXP))
+  
+  ClassAssertion(:ComplexityClass :PSPACE)
+  ClassAssertion(:ComplexityClass :NPSPACE)
+  ClassAssertion(:ComplexityClass :AP)
+  ClassAssertion(:ComplexityClass :CZK)
+  ClassAssertion(:ComplexityClass :IP)
+  ClassAssertion(:ComplexityClass :PsharpP)
+  ClassAssertion(:ComplexityClass :PH)
+  ClassAssertion(:ComplexityClass :EXP)
+  
+  ClassAssertion(:DecisionProblem :QBF)
+  
+  Declaration(ObjectProperty(:isEqualTo))
+  Declaration(ObjectProperty(:isSubClassOf))
+  Declaration(ObjectProperty(:isContainedIn))
+  Declaration(ObjectProperty(:strictlyContains))
+  Declaration(ObjectProperty(:isCompleteProblem))
+  Declaration(ObjectProperty(:hasDescriptiveComplexity))
+  
+  ObjectPropertyDomain(:isEqualTo :ComplexityClass)
+  ObjectPropertyRange(:isEqualTo :ComplexityClass)
+  
+  ObjectPropertyDomain(:isSubClassOf :ComplexityClass)
+  ObjectPropertyRange(:isSubClassOf :ComplexityClass)
+  
+  ObjectPropertyDomain(:isContainedIn :DecisionProblem)
+  ObjectPropertyRange(:isContainedIn :ComplexityClass)
+  
+  ObjectPropertyDomain(:strictlyContains :ComplexityClass)
+  ObjectPropertyRange(:strictlyContains :ComplexityClass)
+  
+  ObjectPropertyDomain(:isCompleteProblem :ComplexityClass)
+  ObjectPropertyRange(:isCompleteProblem :DecisionProblem)
+  
+  ObjectPropertyDomain(:hasDescriptiveComplexity :ComplexityClass)
+  ObjectPropertyRange(:hasDescriptiveComplexity :LogicalFormalism)
+  
+  ObjectPropertyAssertion(:isEqualTo :PSPACE :NPSPACE)
+  ObjectPropertyAssertion(:isEqualTo :PSPACE :AP)
+  ObjectPropertyAssertion(:isEqualTo :PSPACE :CZK)
+  ObjectPropertyAssertion(:isEqualTo :PSPACE :IP)
+  
+  ObjectPropertyAssertion(:isSubClassOf :PSPACE :EXP)
+  
+  ObjectPropertyAssertion(:isContainedIn :QBF :PSPACE)
+  
+  ObjectPropertyAssertion(:hasDescriptiveComplexity :PSPACE :FO_2toNtoConst)
+  ObjectPropertyAssertion(:hasDescriptiveComplexity :PSPACE :FO_PFP)
+  ObjectPropertyAssertion(:hasDescriptiveComplexity :PSPACE :SO_NtoConst)
+  ObjectPropertyAssertion(:hasDescriptiveComplexity :PSPACE :SO_TC)
+)
