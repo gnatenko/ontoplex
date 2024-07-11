@@ -17,7 +17,7 @@ You will find two folders:
 
 1. **fowl/**
 
-    (a) The *core.ofn* file written in Functional OWL Syntax with first-order axioms included as annotations. This is the latest version of Ontoplex axioms, hand-written by us. You can open it in Protégé and explore. Please refer to [Ontoplex Wiki](https://github.com/gnatenko/ontoplex/wiki) for an explanation of the axioms. 
+    (a) The *core.ofn* file written in Functional OWL Syntax with first-order axioms included as annotations. This is the latest version of Ontoplex axioms, hand-written by us. You can open it in Protégé and explore.
 
     (b) the *extracted/* subfolder contains ICOs---individual class ontologies---created with the help of GPT4-o from descriptions of complexity classes at [Complexity Zoo](https://complexityzoo.net), and also an ontology extracted from the general [introduction to complexity](https://complexityzoo.net/Petting_Zoo) at the same website. It is a result of our ongoing experiments on using neural networks to populate the ontology with facts. Note that the original output of GPT4-o has gone through substantial human correction before being added to the repo.
 
@@ -38,4 +38,4 @@ cat core.tptp example_query.tptp > problem.tptp && vampire/build/bin/vampire_rel
 
 ## I still don't understand what it's all about
 
-~~We neither~~ Check [Ontoplex Wiki](https://github.com/gnatenko/ontoplex/wiki) for documentation and a tutorial.
+~~We neither~~ We are working on documentation and a tutorial, which will be available soon.
