@@ -7,10 +7,11 @@ Prefix(fowl:=<https://github.com/gavel-tool/python-gavel-owl/>)
 Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
 
 
-Ontology(
+Ontology(<urn:absolute:Ontoplex/core>
+
 Declaration(Class(:Bound))
-Declaration(Class(:Class))
-Declaration(Class(:Problem))
+Declaration(Class(:ComplexityClass))
+Declaration(Class(:DecisionProblem))
 Declaration(Class(:Savitch))
 Declaration(ObjectProperty(:classDefinition))
 Declaration(ObjectProperty(:dSpace))
@@ -59,8 +60,8 @@ Declaration(NamedIndividual(:exp))
 Declaration(NamedIndividual(:log))
 Declaration(NamedIndividual(:oracle_Ver92))
 Declaration(NamedIndividual(:poly))
-Declaration(NamedIndividual(<2ExpTime>))
-Declaration(NamedIndividual(<2exp>))
+Declaration(NamedIndividual(:2ExpTime))
+Declaration(NamedIndividual(:2exp))
 Declaration(AnnotationProperty(fowl:tptp_annotation))
 
 ############################
@@ -69,7 +70,7 @@ Declaration(AnnotationProperty(fowl:tptp_annotation))
 
 # Object Property: :classDefinition (:classDefinition)
 
-ObjectPropertyDomain(:classDefinition :Class)
+ObjectPropertyDomain(:classDefinition :ComplexityClass)
 ObjectPropertyRange(:classDefinition :Bound)
 
 # Object Property: :dSpace (:dSpace)
@@ -97,18 +98,18 @@ AnnotationAssertion(fowl:tptp_annotation :hasBase "![X, Y, U, V]:(('hasBase'(X, 
 AnnotationAssertion(fowl:tptp_annotation :hasBase "![X, Y, Z, U, V]:(('hasBase'(X, U) & 'hasBase'(Y, V) & 'hasPower'(X, Z) & 'hasPower'(Y, Z) & 'subset'(U, V)) => 'subset'(X, Y))")
 AnnotationAssertion(fowl:tptp_annotation :hasBase "![X,Y]:(('Class'(X) & 'Problem'(Y)) => ?[Z]:('hasBase'(Z, X) & 'hasPower'(Z, Y)))")
 FunctionalObjectProperty(:hasBase)
-ObjectPropertyDomain(:hasBase :Class)
-ObjectPropertyRange(:hasBase :Class)
+ObjectPropertyDomain(:hasBase :ComplexityClass)
+ObjectPropertyRange(:hasBase :ComplexityClass)
 
 # Object Property: :hasPower (:hasPower)
 
 FunctionalObjectProperty(:hasPower)
-ObjectPropertyDomain(:hasPower :Class)
+ObjectPropertyDomain(:hasPower :ComplexityClass)
 
 # Object Property: :in (:in)
 
-ObjectPropertyDomain(:in :Problem)
-ObjectPropertyRange(:in :Class)
+ObjectPropertyDomain(:in :DecisionProblem)
+ObjectPropertyRange(:in :ComplexityClass)
 
 # Object Property: :isComplete (:isComplete)
 
@@ -129,7 +130,7 @@ SubObjectPropertyOf(:isCompletePolyTime :isHardPolyTime)
 # Object Property: :isHard (:isHard)
 
 SubObjectPropertyOf(:isHard owl:topObjectProperty)
-ObjectPropertyDomain(:isHard :Problem)
+ObjectPropertyDomain(:isHard :DecisionProblem)
 
 # Object Property: :isHardLogSpace (:isHardLogSpace)
 
@@ -143,8 +144,8 @@ SubObjectPropertyOf(:isHardPolyTime :isHard)
 
 # Object Property: :isReducible (:isReducible)
 
-ObjectPropertyDomain(:isReducible :Problem)
-ObjectPropertyRange(:isReducible :Problem)
+ObjectPropertyDomain(:isReducible :DecisionProblem)
+ObjectPropertyRange(:isReducible :DecisionProblem)
 
 # Object Property: :isReducibleLogSpace (:isReducibleLogSpace)
 
@@ -173,8 +174,8 @@ InverseFunctionalObjectProperty(:nTime)
 # Object Property: :notSubset (:notSubset)
 
 AnnotationAssertion(fowl:tptp_annotation :notSubset "![X,Y]:(~'subset'(X, Y) | ~'notSubset'(X,Y))")
-ObjectPropertyDomain(:notSubset :Class)
-ObjectPropertyRange(:notSubset :Class)
+ObjectPropertyDomain(:notSubset :ComplexityClass)
+ObjectPropertyRange(:notSubset :ComplexityClass)
 
 # Object Property: :step (:step)
 
@@ -193,8 +194,8 @@ TransitiveObjectProperty(:strictSubset)
 # Object Property: :subset (:subset)
 
 TransitiveObjectProperty(:subset)
-ObjectPropertyDomain(:subset :Class)
-ObjectPropertyRange(:subset :Class)
+ObjectPropertyDomain(:subset :ComplexityClass)
+ObjectPropertyRange(:subset :ComplexityClass)
 
 # Object Property: :tentacleSavitchDSpace (:tentacleSavitchDSpace)
 
@@ -217,10 +218,10 @@ SubClassOf(:Bound ObjectSomeValuesFrom(ObjectInverseOf(:dTime) owl:Thing))
 SubClassOf(:Bound ObjectSomeValuesFrom(ObjectInverseOf(:nSpace) owl:Thing))
 SubClassOf(:Bound ObjectSomeValuesFrom(ObjectInverseOf(:nTime) owl:Thing))
 
-# Class: :Class (:Class)
+# Class: :ComplexityClass (:ComplexityClass)
 
 
-# Class: :Problem (:Problem)
+# Class: :DecisionProblem (:DecisionProblem)
 
 
 # Class: :Savitch (:Savitch)
@@ -236,7 +237,7 @@ SubClassOf(:Savitch ObjectSomeValuesFrom(ObjectInverseOf(:tentacleSavitchNSpace)
 
 # Individual: :AM (:AM)
 
-ClassAssertion(:Class :AM)
+ClassAssertion(:ComplexityClass :AM)
 
 # Individual: :AM_with_oracle_Ver92 (:AM_with_oracle_Ver92)
 
@@ -282,7 +283,7 @@ ObjectPropertyAssertion(:dTime :P :poly)
 
 # Individual: :PP (:PP)
 
-ClassAssertion(:Class :PP)
+ClassAssertion(:ComplexityClass :PP)
 
 # Individual: :PP_with_oracle_Ver92 (:PP_with_oracle_Ver92)
 
@@ -299,7 +300,7 @@ ObjectPropertyAssertion(:isCompletePolyTime :QBF :PSpace)
 
 # Individual: :QMA (:QMA)
 
-ClassAssertion(:Class :QMA)
+ClassAssertion(:ComplexityClass :QMA)
 ObjectPropertyAssertion(:subset :QMA :PP)
 
 # Individual: :Reg (:Reg)
@@ -308,7 +309,7 @@ ObjectPropertyAssertion(:dSpace :Reg :const)
 
 # Individual: :SAT (:SAT)
 
-ClassAssertion(:Problem :SAT)
+ClassAssertion(:DecisionProblem :SAT)
 ObjectPropertyAssertion(:isCompletePolyTime :SAT :NP)
 
 # Individual: :const (:const)
@@ -321,7 +322,7 @@ ObjectPropertyAssertion(:step :const :log)
 # Individual: :exp (:exp)
 
 ClassAssertion(:Bound :exp)
-ObjectPropertyAssertion(:step :exp <2exp>)
+ObjectPropertyAssertion(:step :exp :2exp)
 
 # Individual: :log (:log)
 
@@ -329,25 +330,25 @@ ObjectPropertyAssertion(:step :log :poly)
 
 # Individual: :oracle_Ver92 (:oracle_Ver92)
 
-ClassAssertion(:Problem :oracle_Ver92)
+ClassAssertion(:DecisionProblem :oracle_Ver92)
 
 # Individual: :poly (:poly)
 
 ClassAssertion(:Savitch :poly)
 ObjectPropertyAssertion(:step :poly :exp)
 
-# Individual: <2ExpTime> (<2ExpTime>)
+# Individual: :2ExpTime (:2ExpTime)
 
-ClassAssertion(:Class <2ExpTime>)
-ObjectPropertyAssertion(:dTime <2ExpTime> <2exp>)
+ClassAssertion(:ComplexityClass :2ExpTime)
+ObjectPropertyAssertion(:dTime :2ExpTime :2exp)
 
-# Individual: <2exp> (<2exp>)
+# Individual: :2exp (:2exp)
 
-ClassAssertion(:Bound <2exp>)
+ClassAssertion(:Bound :2exp)
 
 
 SubClassOf(ObjectSomeValuesFrom(ObjectInverseOf(:step) owl:Thing) ObjectSomeValuesFrom(:step owl:Thing))
-DisjointClasses(:Bound :Class :Problem)
+DisjointClasses(:Bound :ComplexityClass :DecisionProblem)
 SubObjectPropertyOf(ObjectPropertyChain(:dSpace :step ObjectInverseOf(:dSpace)) :strictSubset)
 SubObjectPropertyOf(ObjectPropertyChain(:dSpace ObjectInverseOf(:nSpace)) :subset)
 SubObjectPropertyOf(ObjectPropertyChain(:dTime :step ObjectInverseOf(:dTime)) :strictSubset)
