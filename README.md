@@ -23,7 +23,7 @@ You will find two folders:
 
 2. **tptp/**
 
-    (a) The *core.tptp* file is a translation of *core.ofn* to the [TPTP syntax](https://tptp.org/TPTP/SyntaxBNF.html) of first-order reasoners. The translation was made by [*gavel-owl*](https://github.com/gavel-tool/python-gavel-owl), a tool by the authors of the [FOWL framework]((https://doi.org/10.3233/SW-243440)).
+    (a) The *core.tptp* file is a translation of *core.ofn* to the [TPTP syntax](https://tptp.org/TPTP/SyntaxBNF.html) of first-order reasoners. The translation was made by [*gavel-owl*](https://github.com/gavel-tool/python-gavel-owl), a tool by the authors of the [FOWL framework](https://doi.org/10.3233/SW-243440).
 
     (b) The *example_query.tptp* contains an example first-order reasoning question to Ontoplex.
 
