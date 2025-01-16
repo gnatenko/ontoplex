@@ -33,6 +33,7 @@ Declaration(ObjectProperty(:hasRestriction_unique_onSpace_TM))
 Declaration(ObjectProperty(:hasRestriction_unique_onTime_TM))
 Declaration(ObjectProperty(:imposesUpperBound))
 Declaration(ObjectProperty(:isClassOfComplementsFor))
+Declaration(ObjectProperty(:isComplementOf))
 Declaration(ObjectProperty(:isDefinedFor))
 Declaration(ObjectProperty(:isEqualTo))
 Declaration(ObjectProperty(:isFromHierarchy))
@@ -71,7 +72,6 @@ Declaration(ObjectProperty(:sigma))
 Declaration(NamedIndividual(:AC))
 Declaration(NamedIndividual(:AC0))
 Declaration(NamedIndividual(:BooleanCircuits))
-Declaration(NamedIndividual(:BooleanSatisfiability))
 Declaration(NamedIndividual(:Const))
 Declaration(NamedIndividual(:Depth))
 Declaration(NamedIndividual(:DirectedReachability))
@@ -101,6 +101,7 @@ Declaration(NamedIndividual(:Time))
 Declaration(NamedIndividual(:TuringMachine))
 Declaration(NamedIndividual(:UndirectedReachability))
 Declaration(NamedIndividual(:_2CnfSatisfiability))
+Declaration(NamedIndividual(:_3CnfSatisfiability))
 Declaration(NamedIndividual(:_3Colouring))
 Declaration(NamedIndividual(:coNL))
 Declaration(NamedIndividual(:coNP))
@@ -185,6 +186,14 @@ ObjectPropertyRange(:imposesUpperBound :Bound)
 # Object Property: :isClassOfComplementsFor (:isClassOfComplementsFor)
 
 SymmetricObjectProperty(:isClassOfComplementsFor)
+ObjectPropertyDomain(:isClassOfComplementsFor :ComplexityClass)
+ObjectPropertyRange(:isClassOfComplementsFor :ComplexityClass)
+
+# Object Property: :isComplementOf (:isComplementOf)
+
+SymmetricObjectProperty(:isComplementOf)
+ObjectPropertyDomain(:isComplementOf :DecisionProblem)
+ObjectPropertyRange(:isComplementOf :DecisionProblem)
 
 # Object Property: :isDefinedFor (:isDefinedFor)
 
@@ -203,22 +212,26 @@ TransitiveObjectProperty(:isEqualTo)
 # Object Property: :isHardFor (:isHardFor)
 
 AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isHardFor "![X, Y]:('isHardFor'(X, Y) <=> ?[H]:('isHardnessOf'(H, X) & 'isHardnessFor'(H, Y)))")
+AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isHardFor "![coP, P, C, coC]:('isComplementOf'(coP, P) & 'isHardFor'(P, C) & 'isClassOfComplementsFor'(C, coC) => 'isHardFor'(coP, coC))")
 ObjectPropertyDomain(:isHardFor :DecisionProblem)
 ObjectPropertyRange(:isHardFor :ComplexityClass)
 
 # Object Property: :isHardFor_wrtAC0 (:isHardFor_wrtAC0)
 
 AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isHardFor_wrtAC0 "![X, Y]:('isHardFor_wrtAC0'(X, Y) <=> ?[H]:('isHardnessOf'(H, X) & 'isHardnessFor'(H, Y) & 'isHardnessWtr'(H, 'FAC0')))")
+AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isHardFor_wrtAC0 "![coP, P, C, coC]:('isComplementOf'(coP, P) & 'isHardFor_wrtAC0'(P, C) & 'isClassOfComplementsFor'(C, coC) => 'isHardFor_wrtAC0'(coP, coC))")
 SubObjectPropertyOf(:isHardFor_wrtAC0 :isHardFor_wrtLogSpace)
 
 # Object Property: :isHardFor_wrtLogSpace (:isHardFor_wrtLogSpace)
 
 AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isHardFor_wrtLogSpace "![X, Y]:('isHardFor_wrtLogSpace'(X, Y) <=> ?[H]:('isHardnessOf'(H, X) & 'isHardnessFor'(H, Y) & 'isHardnessWtr'(H, 'FL')))")
+AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isHardFor_wrtLogSpace "![coP, P, C, coC]:('isComplementOf'(coP, P) & 'isHardFor_wrtLogSpace'(P, C) & 'isClassOfComplementsFor'(C, coC) => 'isHardFor_wrtLogSpace'(coP, coC))")
 SubObjectPropertyOf(:isHardFor_wrtLogSpace :isHardFor_wrtPolyTime)
 
 # Object Property: :isHardFor_wrtPolyTime (:isHardFor_wrtPolyTime)
 
 AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isHardFor_wrtPolyTime "![X, Y]:('isHardFor_wrtPolyTime'(X, Y) <=> ?[H]:('isHardnessOf'(H, X) & 'isHardnessFor'(H, Y) & 'isHardnessWtr'(H, 'FP')))")
+AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isHardFor_wrtPolyTime "![coP, P, C, coC]:('isComplementOf'(coP, P) & 'isHardFor_wrtPolyTime'(P, C) & 'isClassOfComplementsFor'(C, coC) => 'isHardFor_wrtPolyTime'(coP, coC))")
 SubObjectPropertyOf(:isHardFor_wrtPolyTime :isHardFor)
 
 # Object Property: :isLevelOf (:isLevelOf)
@@ -367,13 +380,6 @@ ObjectPropertyAssertion(:isSubClassOf :AC0 :AC)
 
 ClassAssertion(:Model :BooleanCircuits)
 
-# Individual: :BooleanSatisfiability (:BooleanSatisfiability)
-
-ClassAssertion(:DecisionProblem :BooleanSatisfiability)
-ObjectPropertyAssertion(:isHardFor_wrtLogSpace :BooleanSatisfiability :NP)
-ObjectPropertyAssertion(:isMemberOf :BooleanSatisfiability :NP)
-ObjectPropertyAssertion(:isReducibleTo_inLogSpace :BooleanSatisfiability :_3Colouring)
-
 # Individual: :Const (:Const)
 
 ClassAssertion(:Bound :Const)
@@ -433,6 +439,7 @@ ObjectPropertyAssertion(:lessLess :Log :PolyLog)
 
 # Individual: :NExpSpace (:NExpSpace)
 
+ClassAssertion(:ComplexityClass :NExpSpace)
 ObjectPropertyAssertion(:extendsByNondeterminism :NExpSpace :ExpSpace)
 
 # Individual: :NL (:NL)
@@ -448,6 +455,7 @@ ObjectPropertyAssertion(:sigma :NP :ph_level_1)
 
 # Individual: :NPSpace (:NPSpace)
 
+ClassAssertion(:ComplexityClass :NPSpace)
 ObjectPropertyAssertion(:extendsByNondeterminism :NPSpace :PSpace)
 
 # Individual: :P (:P)
@@ -523,6 +531,13 @@ ObjectPropertyAssertion(:isMemberOf :UndirectedReachability :L)
 ClassAssertion(:DecisionProblem :_2CnfSatisfiability)
 ObjectPropertyAssertion(:isHardFor_wrtLogSpace :_2CnfSatisfiability :P)
 ObjectPropertyAssertion(:isMemberOf :_2CnfSatisfiability :P)
+
+# Individual: :_3CnfSatisfiability (:_3CnfSatisfiability)
+
+ClassAssertion(:DecisionProblem :_3CnfSatisfiability)
+ObjectPropertyAssertion(:isHardFor_wrtLogSpace :_3CnfSatisfiability :NP)
+ObjectPropertyAssertion(:isMemberOf :_3CnfSatisfiability :NP)
+ObjectPropertyAssertion(:isReducibleTo_inLogSpace :_3CnfSatisfiability :_3Colouring)
 
 # Individual: :_3Colouring (:_3Colouring)
 
@@ -633,6 +648,7 @@ SubObjectPropertyOf(ObjectPropertyChain(:isOnLevel :isLevelOf) :isFromHierarchy)
 SubObjectPropertyOf(ObjectPropertyChain(:isOnLevel :next ObjectInverseOf(:isOnLevel)) :isSubClassOf)
 SubObjectPropertyOf(ObjectPropertyChain(:sigma ObjectInverseOf(:pi)) :isClassOfComplementsFor)
 SubObjectPropertyOf(ObjectPropertyChain(ObjectInverseOf(:isReducibleTo) :isHardFor) :isHardFor)
+SubObjectPropertyOf(ObjectPropertyChain(ObjectInverseOf(:isReducibleTo_inAC0) :isHardFor_wrtAC0) :isHardFor_wrtAC0)
 SubObjectPropertyOf(ObjectPropertyChain(ObjectInverseOf(:isReducibleTo_inLogSpace) :isHardFor_wrtLogSpace) :isHardFor_wrtLogSpace)
 SubObjectPropertyOf(ObjectPropertyChain(ObjectInverseOf(:isReducibleTo_inPolyTime) :isHardFor_wrtPolyTime) :isHardFor_wrtPolyTime)
 SubObjectPropertyOf(ObjectPropertyChain(ObjectInverseOf(:next) :isLevelOf) :isLevelOf)
