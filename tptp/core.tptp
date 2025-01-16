@@ -840,3 +840,2005 @@ fof(axiom418,axiom,('isDefinedFor'('l','turingMachine'))).
 fof(axiom419,axiom,('http___www_w3_org_2002_07_owl_Thing'('l'))).
 % ObjectPropertyAssertion(<isDefinedFor> <L> <TuringMachine>)
 fof(axiom420,axiom,('http___www_w3_org_2002_07_owl_Thing'('turingMachine'))).
+% background axiom: domain consists of objects and data
+fof(axiom0,axiom,(![X]:('http___www_w3_org_2002_07_owl_Thing'(X)|'http___www_w3_org_2000_01_rdf_schema_Literal'(X)))).
+% background axiom: object domain and data domain are disjoint
+fof(axiom1,axiom,(![X]:('http___www_w3_org_2002_07_owl_Thing'(X)=>~'http___www_w3_org_2000_01_rdf_schema_Literal'(X)))).
+% background axiom: there are things
+fof(axiom2,axiom,(?[X]:'http___www_w3_org_2002_07_owl_Thing'(X))).
+% background axiom: there are literals
+fof(axiom3,axiom,(?[X]:'http___www_w3_org_2000_01_rdf_schema_Literal'(X))).
+% facets can only be applied to literals
+fof(axiom4,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_minExclusive'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom5,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_fractionDigits'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom6,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_pattern'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom7,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_minLength'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom8,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_minInclusive'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom9,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_totalDigits'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom10,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_length'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom11,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_maxExclusive'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom12,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_maxLength'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom13,axiom,(![X,Y]:('http___www_w3_org_1999_02_22_rdf_syntax_ns_langRange'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom14,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_maxInclusive'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% Declaration(Class(<Measure>))
+fof(axiom15,axiom,(![X]:('measure'(X)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% ClassAssertion(<ComplexityClass> <NL>)
+fof(axiom16,axiom,('complexityClass'('nL'))).
+% ClassAssertion(<ComplexityClass> <NL>)
+fof(axiom17,axiom,('http___www_w3_org_2002_07_owl_Thing'('nL'))).
+% FunctionalObjectProperty(<extendsByNondeterminism>)
+fof(axiom18,axiom,(![X0,X1,X2]:(('extendsByNondeterminism'(X0,X1)&'extendsByNondeterminism'(X0,X2))=>(X1=X2)))).
+% ObjectPropertyAssertion(<isReducibleTo_inLogSpace> <BooleanSatisfiability> <_3Colouring>)
+fof(axiom19,axiom,('isReducibleTo_inLogSpace'('booleanSatisfiability','_3Colouring'))).
+% ObjectPropertyAssertion(<isReducibleTo_inLogSpace> <BooleanSatisfiability> <_3Colouring>)
+fof(axiom20,axiom,('http___www_w3_org_2002_07_owl_Thing'('booleanSatisfiability'))).
+% ObjectPropertyAssertion(<isReducibleTo_inLogSpace> <BooleanSatisfiability> <_3Colouring>)
+fof(axiom21,axiom,('http___www_w3_org_2002_07_owl_Thing'('_3Colouring'))).
+% SubClassOf(<DecisionProblem> <Function>)
+fof(axiom22,axiom,(![X0]:('decisionProblem'(X0)=>'function'(X0)))).
+% ClassAssertion(<Bound> <Exp>)
+fof(axiom23,axiom,('bound'('exp'))).
+% ClassAssertion(<Bound> <Exp>)
+fof(axiom24,axiom,('http___www_w3_org_2002_07_owl_Thing'('exp'))).
+% SubObjectPropertyOf(<isStrictSubClassOf> <isSubClassOf>)
+fof(axiom25,axiom,(![X0,X1]:('isStrictSubClassOf'(X0,X1)=>'isSubClassOf'(X0,X1)))).
+% SymmetricObjectProperty(<isEqualTo>)
+fof(axiom26,axiom,(![X0,X1]:('isEqualTo'(X0,X1)=>'isEqualTo'(X1,X0)))).
+% ClassAssertion(<ComplexityClass> <ExpTime>)
+fof(axiom27,axiom,('complexityClass'('expTime'))).
+% ClassAssertion(<ComplexityClass> <ExpTime>)
+fof(axiom28,axiom,('http___www_w3_org_2002_07_owl_Thing'('expTime'))).
+% Declaration(ObjectProperty(<isHardnessWrt>))
+fof(axiom29,axiom,(![X,Y]:('isHardnessWrt'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isHardnessWrt>))
+fof(axiom30,axiom,(![X,Y]:('isHardnessWrt'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(ObjectProperty(<isClassOfComplementsFor>))
+fof(axiom31,axiom,(![X,Y]:('isClassOfComplementsFor'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isClassOfComplementsFor>))
+fof(axiom32,axiom,(![X,Y]:('isClassOfComplementsFor'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% DisjointClasses(<Function> <FunctionClass>)
+fof(axiom33,axiom,(![X0]:~('function'(X0)&'functionClass'(X0)))).
+% ObjectPropertyDomain(<extends> <ComplexityClass>)
+fof(axiom34,axiom,(![X0,X1]:('extends'(X0,X1)=>'complexityClass'(X0)))).
+% Declaration(ObjectProperty(<lessLess>))
+fof(axiom35,axiom,(![X,Y]:('lessLess'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<lessLess>))
+fof(axiom36,axiom,(![X,Y]:('lessLess'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ObjectPropertyDomain(<dTime> ObjectSomeValuesFrom(<isDefinedFor> ObjectOneOf(<TuringMachine>)))
+fof(axiom37,axiom,(![X0,X1]:('dTime'(X0,X1)=>?[X2]:('isDefinedFor'(X0,X2)&(X2='turingMachine'))))).
+% ClassAssertion(<ComplexityClass> <ExpSpace>)
+fof(axiom38,axiom,('complexityClass'('expSpace'))).
+% ClassAssertion(<ComplexityClass> <ExpSpace>)
+fof(axiom39,axiom,('http___www_w3_org_2002_07_owl_Thing'('expSpace'))).
+% Declaration(NamedIndividual(<_2CnfSatisfiability>))
+fof(axiom40,axiom,('http___www_w3_org_2002_07_owl_Thing'('_2CnfSatisfiability'))).
+% FunctionalObjectProperty(<hasRestriction_unique_onSpace_TM>)
+fof(axiom41,axiom,(![X0,X1,X2]:(('hasRestriction_unique_onSpace_TM'(X0,X1)&'hasRestriction_unique_onSpace_TM'(X0,X2))=>(X1=X2)))).
+% SubObjectPropertyOf(<pi> <isOnLevel>)
+fof(axiom42,axiom,(![X0,X1]:('pi'(X0,X1)=>'isOnLevel'(X0,X1)))).
+% SubObjectPropertyOf(<dTime> <metaLink>)
+fof(axiom43,axiom,(![X0,X1]:('dTime'(X0,X1)=>'metaLink'(X0,X1)))).
+% ObjectPropertyAssertion(<lessLess> <Const> <Log>)
+fof(axiom44,axiom,('lessLess'('const','log'))).
+% ObjectPropertyAssertion(<lessLess> <Const> <Log>)
+fof(axiom45,axiom,('http___www_w3_org_2002_07_owl_Thing'('const'))).
+% ObjectPropertyAssertion(<lessLess> <Const> <Log>)
+fof(axiom46,axiom,('http___www_w3_org_2002_07_owl_Thing'('log'))).
+% InverseFunctionalObjectProperty(<hasRestriction>)
+fof(axiom47,axiom,(![X0,X1,X2]:(('hasRestriction'(X1,X0)&'hasRestriction'(X2,X0))=>(X1=X2)))).
+% SubObjectPropertyOf(ObjectPropertyChain( ObjectInverseOf(<isReducibleTo_inLogSpace>) <isHardFor_wrtLogSpace> ) <isHardFor_wrtLogSpace>)
+fof(axiom48,axiom,(![X0,X1]:(?[X2]:('isReducibleTo_inLogSpace'(X2,X0)&'isHardFor_wrtLogSpace'(X2,X1))=>'isHardFor_wrtLogSpace'(X0,X1)))).
+% ClassAssertion(<Model> <BooleanCircuits>)
+fof(axiom49,axiom,('model'('booleanCircuits'))).
+% ClassAssertion(<Model> <BooleanCircuits>)
+fof(axiom50,axiom,('http___www_w3_org_2002_07_owl_Thing'('booleanCircuits'))).
+% ObjectPropertyRange(<isReducibleTo> <DecisionProblem>)
+fof(axiom51,axiom,(![X0,X1]:('isReducibleTo'(X0,X1)=>'decisionProblem'(X1)))).
+% ObjectPropertyAssertion(<extendsByNondeterminism> <NL> <L>)
+fof(axiom52,axiom,('extendsByNondeterminism'('nL','l'))).
+% ObjectPropertyAssertion(<extendsByNondeterminism> <NL> <L>)
+fof(axiom53,axiom,('http___www_w3_org_2002_07_owl_Thing'('nL'))).
+% ObjectPropertyAssertion(<extendsByNondeterminism> <NL> <L>)
+fof(axiom54,axiom,('http___www_w3_org_2002_07_owl_Thing'('l'))).
+% SubObjectPropertyOf(<extends> <isSuperClassOf>)
+fof(axiom55,axiom,(![X0,X1]:('extends'(X0,X1)=>'isSuperClassOf'(X0,X1)))).
+% ObjectPropertyAssertion(<isMemberOf> <_3Colouring> <NP>)
+fof(axiom56,axiom,('isMemberOf'('_3Colouring','nP'))).
+% ObjectPropertyAssertion(<isMemberOf> <_3Colouring> <NP>)
+fof(axiom57,axiom,('http___www_w3_org_2002_07_owl_Thing'('_3Colouring'))).
+% ObjectPropertyAssertion(<isMemberOf> <_3Colouring> <NP>)
+fof(axiom58,axiom,('http___www_w3_org_2002_07_owl_Thing'('nP'))).
+% ClassAssertion(<DecisionProblem> <QbfSatisfiability>)
+fof(axiom59,axiom,('decisionProblem'('qbfSatisfiability'))).
+% ClassAssertion(<DecisionProblem> <QbfSatisfiability>)
+fof(axiom60,axiom,('http___www_w3_org_2002_07_owl_Thing'('qbfSatisfiability'))).
+% ClassAssertion(<Measure> <Space>)
+fof(axiom61,axiom,('measure'('space'))).
+% ClassAssertion(<Measure> <Space>)
+fof(axiom62,axiom,('http___www_w3_org_2002_07_owl_Thing'('space'))).
+% Declaration(ObjectProperty(<reducesFrom>))
+fof(axiom63,axiom,(![X,Y]:('reducesFrom'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<reducesFrom>))
+fof(axiom64,axiom,(![X,Y]:('reducesFrom'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(ObjectProperty(<isMemberOf>))
+fof(axiom65,axiom,(![X,Y]:('isMemberOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isMemberOf>))
+fof(axiom66,axiom,(![X,Y]:('isMemberOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_ExpSpace> <Exp>)
+fof(axiom67,axiom,('imposesUpperBound'('restriction_ExpSpace','exp'))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_ExpSpace> <Exp>)
+fof(axiom68,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_ExpSpace'))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_ExpSpace> <Exp>)
+fof(axiom69,axiom,('http___www_w3_org_2002_07_owl_Thing'('exp'))).
+% ClassAssertion(<ComplexityClass> <PSpace>)
+fof(axiom70,axiom,('complexityClass'('pSpace'))).
+% ClassAssertion(<ComplexityClass> <PSpace>)
+fof(axiom71,axiom,('http___www_w3_org_2002_07_owl_Thing'('pSpace'))).
+% FunctionalObjectProperty(<hasRestriction_onTime>)
+fof(axiom72,axiom,(![X0,X1,X2]:(('hasRestriction_onTime'(X0,X1)&'hasRestriction_onTime'(X0,X2))=>(X1=X2)))).
+% Declaration(ObjectProperty(<isHardFor>))
+fof(axiom73,axiom,(![X,Y]:('isHardFor'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isHardFor>))
+fof(axiom74,axiom,(![X,Y]:('isHardFor'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ObjectPropertyAssertion(<extendsByNondeterminism> <NP> <P>)
+fof(axiom75,axiom,('extendsByNondeterminism'('nP','p'))).
+% ObjectPropertyAssertion(<extendsByNondeterminism> <NP> <P>)
+fof(axiom76,axiom,('http___www_w3_org_2002_07_owl_Thing'('nP'))).
+% ObjectPropertyAssertion(<extendsByNondeterminism> <NP> <P>)
+fof(axiom77,axiom,('http___www_w3_org_2002_07_owl_Thing'('p'))).
+% SubObjectPropertyOf(<isSubClassOf_SavitchTheorem> <isSubClassOf>)
+fof(axiom78,axiom,(![X0,X1]:('isSubClassOf_SavitchTheorem'(X0,X1)=>'isSubClassOf'(X0,X1)))).
+% SubObjectPropertyOf(<isHardFor_wrtPolyTime> <isHardFor>)
+fof(axiom79,axiom,(![X0,X1]:('isHardFor_wrtPolyTime'(X0,X1)=>'isHardFor'(X0,X1)))).
+% Declaration(NamedIndividual(<PSpace>))
+fof(axiom80,axiom,('http___www_w3_org_2002_07_owl_Thing'('pSpace'))).
+% Declaration(NamedIndividual(<Log>))
+fof(axiom81,axiom,('http___www_w3_org_2002_07_owl_Thing'('log'))).
+% Declaration(ObjectProperty(<isHardFor_wrtPolyTime>))
+fof(axiom82,axiom,(![X,Y]:('isHardFor_wrtPolyTime'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isHardFor_wrtPolyTime>))
+fof(axiom83,axiom,(![X,Y]:('isHardFor_wrtPolyTime'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(ObjectProperty(<isHardnessOf>))
+fof(axiom84,axiom,(![X,Y]:('isHardnessOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isHardnessOf>))
+fof(axiom85,axiom,(![X,Y]:('isHardnessOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(NamedIndividual(<QbfSatisfiability>))
+fof(axiom86,axiom,('http___www_w3_org_2002_07_owl_Thing'('qbfSatisfiability'))).
+% SubObjectPropertyOf(<nSpace> <metaLink>)
+fof(axiom87,axiom,(![X0,X1]:('nSpace'(X0,X1)=>'metaLink'(X0,X1)))).
+% ObjectPropertyAssertion(<hasRestriction> <PSpace> <restriction_PSpace>)
+fof(axiom88,axiom,('hasRestriction'('pSpace','restriction_PSpace'))).
+% ObjectPropertyAssertion(<hasRestriction> <PSpace> <restriction_PSpace>)
+fof(axiom89,axiom,('http___www_w3_org_2002_07_owl_Thing'('pSpace'))).
+% ObjectPropertyAssertion(<hasRestriction> <PSpace> <restriction_PSpace>)
+fof(axiom90,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_PSpace'))).
+% Declaration(ObjectProperty(<sigma>))
+fof(axiom91,axiom,(![X,Y]:('sigma'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<sigma>))
+fof(axiom92,axiom,(![X,Y]:('sigma'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% SubObjectPropertyOf(<imposesUpperBound> <metaLink>)
+fof(axiom93,axiom,(![X0,X1]:('imposesUpperBound'(X0,X1)=>'metaLink'(X0,X1)))).
+% Declaration(ObjectProperty(<isEqualTo>))
+fof(axiom94,axiom,(![X,Y]:('isEqualTo'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isEqualTo>))
+fof(axiom95,axiom,(![X,Y]:('isEqualTo'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(ObjectProperty(<imposesUpperBound>))
+fof(axiom96,axiom,(![X,Y]:('imposesUpperBound'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<imposesUpperBound>))
+fof(axiom97,axiom,(![X,Y]:('imposesUpperBound'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ObjectPropertyAssertion(<isMemberOf> <_2CnfSatisfiability> <P>)
+fof(axiom98,axiom,('isMemberOf'('_2CnfSatisfiability','p'))).
+% ObjectPropertyAssertion(<isMemberOf> <_2CnfSatisfiability> <P>)
+fof(axiom99,axiom,('http___www_w3_org_2002_07_owl_Thing'('_2CnfSatisfiability'))).
+% ObjectPropertyAssertion(<isMemberOf> <_2CnfSatisfiability> <P>)
+fof(axiom100,axiom,('http___www_w3_org_2002_07_owl_Thing'('p'))).
+% Declaration(ObjectProperty(<reducesTo>))
+fof(axiom101,axiom,(![X,Y]:('reducesTo'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<reducesTo>))
+fof(axiom102,axiom,(![X,Y]:('reducesTo'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% SymmetricObjectProperty(<isClassOfComplementsFor>)
+fof(axiom103,axiom,(![X0,X1]:('isClassOfComplementsFor'(X0,X1)=>'isClassOfComplementsFor'(X1,X0)))).
+% ClassAssertion(<FunctionClass> <FL>)
+fof(axiom104,axiom,('functionClass'('fL'))).
+% ClassAssertion(<FunctionClass> <FL>)
+fof(axiom105,axiom,('http___www_w3_org_2002_07_owl_Thing'('fL'))).
+% ObjectPropertyAssertion(<isMemberOf> <QbfSatisfiability> <PSpace>)
+fof(axiom106,axiom,('isMemberOf'('qbfSatisfiability','pSpace'))).
+% ObjectPropertyAssertion(<isMemberOf> <QbfSatisfiability> <PSpace>)
+fof(axiom107,axiom,('http___www_w3_org_2002_07_owl_Thing'('qbfSatisfiability'))).
+% ObjectPropertyAssertion(<isMemberOf> <QbfSatisfiability> <PSpace>)
+fof(axiom108,axiom,('http___www_w3_org_2002_07_owl_Thing'('pSpace'))).
+% Declaration(NamedIndividual(<BooleanCircuits>))
+fof(axiom109,axiom,('http___www_w3_org_2002_07_owl_Thing'('booleanCircuits'))).
+% SubObjectPropertyOf(<isSubClassOf_SavitchTheorem> <metaLink>)
+fof(axiom110,axiom,(![X0,X1]:('isSubClassOf_SavitchTheorem'(X0,X1)=>'metaLink'(X0,X1)))).
+% ObjectPropertyAssertion(<hasRestriction> <ExpSpace> <restriction_ExpSpace>)
+fof(axiom111,axiom,('hasRestriction'('expSpace','restriction_ExpSpace'))).
+% ObjectPropertyAssertion(<hasRestriction> <ExpSpace> <restriction_ExpSpace>)
+fof(axiom112,axiom,('http___www_w3_org_2002_07_owl_Thing'('expSpace'))).
+% ObjectPropertyAssertion(<hasRestriction> <ExpSpace> <restriction_ExpSpace>)
+fof(axiom113,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_ExpSpace'))).
+% Declaration(NamedIndividual(<NExpSpace>))
+fof(axiom114,axiom,('http___www_w3_org_2002_07_owl_Thing'('nExpSpace'))).
+% Declaration(NamedIndividual(<TuringMachine>))
+fof(axiom115,axiom,('http___www_w3_org_2002_07_owl_Thing'('turingMachine'))).
+% ClassAssertion(<DecisionProblem> <_2CnfSatisfiability>)
+fof(axiom116,axiom,('decisionProblem'('_2CnfSatisfiability'))).
+% ClassAssertion(<DecisionProblem> <_2CnfSatisfiability>)
+fof(axiom117,axiom,('http___www_w3_org_2002_07_owl_Thing'('_2CnfSatisfiability'))).
+% Declaration(NamedIndividual(<restriction_PTime>))
+fof(axiom118,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_PTime'))).
+% Declaration(Class(<ComplexityClass>))
+fof(axiom119,axiom,(![X]:('complexityClass'(X)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_ExpTime> <Time>)
+fof(axiom120,axiom,('restrictsMeasure'('restriction_ExpTime','time'))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_ExpTime> <Time>)
+fof(axiom121,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_ExpTime'))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_ExpTime> <Time>)
+fof(axiom122,axiom,('http___www_w3_org_2002_07_owl_Thing'('time'))).
+% Declaration(NamedIndividual(<NL>))
+fof(axiom123,axiom,('http___www_w3_org_2002_07_owl_Thing'('nL'))).
+% SubObjectPropertyOf(<sigma> <isOnLevel>)
+fof(axiom124,axiom,(![X0,X1]:('sigma'(X0,X1)=>'isOnLevel'(X0,X1)))).
+% ClassAssertion(<Restriction> <restriction_LogSpace>)
+fof(axiom125,axiom,('restriction'('restriction_LogSpace'))).
+% ClassAssertion(<Restriction> <restriction_LogSpace>)
+fof(axiom126,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_LogSpace'))).
+% ClassAssertion(<FunctionClass> <FP>)
+fof(axiom127,axiom,('functionClass'('fP'))).
+% ClassAssertion(<FunctionClass> <FP>)
+fof(axiom128,axiom,('http___www_w3_org_2002_07_owl_Thing'('fP'))).
+% ObjectPropertyAssertion(<isDefinedFor> <ExpSpace> <TuringMachine>)
+fof(axiom129,axiom,('isDefinedFor'('expSpace','turingMachine'))).
+% ObjectPropertyAssertion(<isDefinedFor> <ExpSpace> <TuringMachine>)
+fof(axiom130,axiom,('http___www_w3_org_2002_07_owl_Thing'('expSpace'))).
+% ObjectPropertyAssertion(<isDefinedFor> <ExpSpace> <TuringMachine>)
+fof(axiom131,axiom,('http___www_w3_org_2002_07_owl_Thing'('turingMachine'))).
+% ObjectPropertyRange(<extends> <ComplexityClass>)
+fof(axiom132,axiom,(![X0,X1]:('extends'(X0,X1)=>'complexityClass'(X1)))).
+% SubObjectPropertyOf(<delta> <isOnLevel>)
+fof(axiom133,axiom,(![X0,X1]:('delta'(X0,X1)=>'isOnLevel'(X0,X1)))).
+% ObjectPropertyDomain(<lessLess> <Bound>)
+fof(axiom134,axiom,(![X0,X1]:('lessLess'(X0,X1)=>'bound'(X0)))).
+% ObjectPropertyAssertion(<lessLess> <Poly> <Exp>)
+fof(axiom135,axiom,('lessLess'('poly','exp'))).
+% ObjectPropertyAssertion(<lessLess> <Poly> <Exp>)
+fof(axiom136,axiom,('http___www_w3_org_2002_07_owl_Thing'('poly'))).
+% ObjectPropertyAssertion(<lessLess> <Poly> <Exp>)
+fof(axiom137,axiom,('http___www_w3_org_2002_07_owl_Thing'('exp'))).
+% SubObjectPropertyOf(<hasRestriction> <metaLink>)
+fof(axiom138,axiom,(![X0,X1]:('hasRestriction'(X0,X1)=>'metaLink'(X0,X1)))).
+% SubObjectPropertyOf(ObjectPropertyChain( <isFromHierarchy> ObjectInverseOf(<isUnionOf>) ) <isSubClassOf>)
+fof(axiom139,axiom,(![X0,X1]:(?[X2]:('isFromHierarchy'(X0,X2)&'isUnionOf'(X1,X2))=>'isSubClassOf'(X0,X1)))).
+% TransitiveObjectProperty(<lessLess>)
+fof(axiom140,axiom,(![X0,X1,X2]:(('lessLess'(X0,X1)&'lessLess'(X1,X2))=>'lessLess'(X0,X2)))).
+% Declaration(NamedIndividual(<FL>))
+fof(axiom141,axiom,('http___www_w3_org_2002_07_owl_Thing'('fL'))).
+% ClassAssertion(<Model> <TuringMachine>)
+fof(axiom142,axiom,('model'('turingMachine'))).
+% ClassAssertion(<Model> <TuringMachine>)
+fof(axiom143,axiom,('http___www_w3_org_2002_07_owl_Thing'('turingMachine'))).
+% Declaration(Class(<Model>))
+fof(axiom144,axiom,(![X]:('model'(X)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isReducibleTo_inLogSpace>))
+fof(axiom145,axiom,(![X,Y]:('isReducibleTo_inLogSpace'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isReducibleTo_inLogSpace>))
+fof(axiom146,axiom,(![X,Y]:('isReducibleTo_inLogSpace'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(NamedIndividual(<Poly>))
+fof(axiom147,axiom,('http___www_w3_org_2002_07_owl_Thing'('poly'))).
+% ObjectPropertyAssertion(<isFunctionVersionOf> <FL> <L>)
+fof(axiom148,axiom,('isFunctionVersionOf'('fL','l'))).
+% ObjectPropertyAssertion(<isFunctionVersionOf> <FL> <L>)
+fof(axiom149,axiom,('http___www_w3_org_2002_07_owl_Thing'('fL'))).
+% ObjectPropertyAssertion(<isFunctionVersionOf> <FL> <L>)
+fof(axiom150,axiom,('http___www_w3_org_2002_07_owl_Thing'('l'))).
+% SubObjectPropertyOf(ObjectPropertyChain( <isOnLevel> <next> ObjectInverseOf(<isOnLevel>) ) <isSubClassOf>)
+fof(axiom151,axiom,(![X0,X1]:(?[X2,X3]:('isOnLevel'(X0,X2)&'next'(X2,X3)&'isOnLevel'(X1,X3))=>'isSubClassOf'(X0,X1)))).
+% SubClassOf(ObjectSomeValuesFrom(<restrictsMeasure> ObjectOneOf(<Space>)) ObjectSomeValuesFrom(ObjectInverseOf(<hasRestriction_onSpace>) owl:Thing))
+fof(axiom152,axiom,(![X0]:(?[X1]:('restrictsMeasure'(X0,X1)&(X1='space'))=>?[X2]:('hasRestriction_onSpace'(X2,X0)&'http___www_w3_org_2002_07_owl_Thing'(X2))))).
+% FunctionalObjectProperty(<hasRestriction_onSpace>)
+fof(axiom153,axiom,(![X0,X1,X2]:(('hasRestriction_onSpace'(X0,X1)&'hasRestriction_onSpace'(X0,X2))=>(X1=X2)))).
+% Declaration(NamedIndividual(<Depth>))
+fof(axiom154,axiom,('http___www_w3_org_2002_07_owl_Thing'('depth'))).
+% Declaration(Class(<__sys_Label>))
+fof(axiom155,axiom,(![X]:('__sys_Label'(X)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(NamedIndividual(<Const>))
+fof(axiom156,axiom,('http___www_w3_org_2002_07_owl_Thing'('const'))).
+% ObjectPropertyRange(<hasRestriction> <Restriction>)
+fof(axiom157,axiom,(![X0,X1]:('hasRestriction'(X0,X1)=>'restriction'(X1)))).
+% SubClassOf(ObjectIntersectionOf(ObjectSomeValuesFrom(<hasRestriction_onTime> owl:Thing) ObjectSomeValuesFrom(<isDefinedFor> ObjectOneOf(<TuringMachine>))) ObjectSomeValuesFrom(<hasRestriction_unique_onTime_TM> owl:Thing))
+fof(axiom158,axiom,(![X0]:((?[X1]:('hasRestriction_onTime'(X0,X1)&'http___www_w3_org_2002_07_owl_Thing'(X1))&?[X2]:('isDefinedFor'(X0,X2)&(X2='turingMachine')))=>?[X3]:('hasRestriction_unique_onTime_TM'(X0,X3)&'http___www_w3_org_2002_07_owl_Thing'(X3))))).
+% Declaration(Class(<DecisionProblem>))
+fof(axiom159,axiom,(![X]:('decisionProblem'(X)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% SubClassOf(Annotation(rdfs:comment "Savitch's Theorem"^^xsd:string) ObjectSomeValuesFrom(<extendsByNondeterminism> <__sys_SavitchCompatible>) ObjectSomeValuesFrom(<isSubClassOf_SavitchTheorem> owl:Thing))
+fof(axiom160,axiom,(![X0]:(?[X1]:('extendsByNondeterminism'(X0,X1)&'__sys_SavitchCompatible'(X1))=>?[X2]:('isSubClassOf_SavitchTheorem'(X0,X2)&'http___www_w3_org_2002_07_owl_Thing'(X2))))).
+% ObjectPropertyDomain(<imposesUpperBound> <Restriction>)
+fof(axiom161,axiom,(![X0,X1]:('imposesUpperBound'(X0,X1)=>'restriction'(X0)))).
+% Declaration(ObjectProperty(<pi>))
+fof(axiom162,axiom,(![X,Y]:('pi'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<pi>))
+fof(axiom163,axiom,(![X,Y]:('pi'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(ObjectProperty(<nTime>))
+fof(axiom164,axiom,(![X,Y]:('nTime'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<nTime>))
+fof(axiom165,axiom,(![X,Y]:('nTime'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(Class(<Bound>))
+fof(axiom166,axiom,(![X]:('bound'(X)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% ObjectPropertyDomain(<isDefinedFor> <ComplexityClass>)
+fof(axiom167,axiom,(![X0,X1]:('isDefinedFor'(X0,X1)=>'complexityClass'(X0)))).
+% ClassAssertion(<DecisionProblem> <UndirectedReachability>)
+fof(axiom168,axiom,('decisionProblem'('undirectedReachability'))).
+% ClassAssertion(<DecisionProblem> <UndirectedReachability>)
+fof(axiom169,axiom,('http___www_w3_org_2002_07_owl_Thing'('undirectedReachability'))).
+% Declaration(ObjectProperty(<isHardnessFor>))
+fof(axiom170,axiom,(![X,Y]:('isHardnessFor'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isHardnessFor>))
+fof(axiom171,axiom,(![X,Y]:('isHardnessFor'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(NamedIndividual(<restriction_ExpTime>))
+fof(axiom172,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_ExpTime'))).
+% InverseObjectProperties(<isSubClassOf> <isSuperClassOf>)
+fof(axiom173,axiom,(![X0,X1]:('isSubClassOf'(X0,X1)<=>'isSuperClassOf'(X1,X0)))).
+% Declaration(ObjectProperty(<isOnLevel>))
+fof(axiom174,axiom,(![X,Y]:('isOnLevel'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isOnLevel>))
+fof(axiom175,axiom,(![X,Y]:('isOnLevel'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_ExpTime> <Exp>)
+fof(axiom176,axiom,('imposesUpperBound'('restriction_ExpTime','exp'))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_ExpTime> <Exp>)
+fof(axiom177,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_ExpTime'))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_ExpTime> <Exp>)
+fof(axiom178,axiom,('http___www_w3_org_2002_07_owl_Thing'('exp'))).
+% ClassAssertion(<Restriction> <restriction_PTime>)
+fof(axiom179,axiom,('restriction'('restriction_PTime'))).
+% ClassAssertion(<Restriction> <restriction_PTime>)
+fof(axiom180,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_PTime'))).
+% Declaration(Class(<MetaNode>))
+fof(axiom181,axiom,(![X]:('metaNode'(X)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% ObjectPropertyAssertion(<extendsByNondeterminism> <NExpSpace> <ExpSpace>)
+fof(axiom182,axiom,('extendsByNondeterminism'('nExpSpace','expSpace'))).
+% ObjectPropertyAssertion(<extendsByNondeterminism> <NExpSpace> <ExpSpace>)
+fof(axiom183,axiom,('http___www_w3_org_2002_07_owl_Thing'('nExpSpace'))).
+% ObjectPropertyAssertion(<extendsByNondeterminism> <NExpSpace> <ExpSpace>)
+fof(axiom184,axiom,('http___www_w3_org_2002_07_owl_Thing'('expSpace'))).
+% ObjectPropertyRange(<isHardFor> <ComplexityClass>)
+fof(axiom185,axiom,(![X0,X1]:('isHardFor'(X0,X1)=>'complexityClass'(X1)))).
+% SubObjectPropertyOf(<isReducibleTo_inPolyTime> <isReducibleTo>)
+fof(axiom186,axiom,(![X0,X1]:('isReducibleTo_inPolyTime'(X0,X1)=>'isReducibleTo'(X0,X1)))).
+% ObjectPropertyDomain(<isMemberOf> <Function>)
+fof(axiom187,axiom,(![X0,X1]:('isMemberOf'(X0,X1)=>'function'(X0)))).
+% ObjectPropertyRange(<isMemberOf> <FunctionClass>)
+fof(axiom188,axiom,(![X0,X1]:('isMemberOf'(X0,X1)=>'functionClass'(X1)))).
+% Declaration(ObjectProperty(<extendsByNondeterminism>))
+fof(axiom189,axiom,(![X,Y]:('extendsByNondeterminism'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<extendsByNondeterminism>))
+fof(axiom190,axiom,(![X,Y]:('extendsByNondeterminism'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ClassAssertion(<Bound> <PolyLog>)
+fof(axiom191,axiom,('bound'('polyLog'))).
+% ClassAssertion(<Bound> <PolyLog>)
+fof(axiom192,axiom,('http___www_w3_org_2002_07_owl_Thing'('polyLog'))).
+% Declaration(ObjectProperty(<restrictsMeasure>))
+fof(axiom193,axiom,(![X,Y]:('restrictsMeasure'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<restrictsMeasure>))
+fof(axiom194,axiom,(![X,Y]:('restrictsMeasure'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ObjectPropertyRange(<isDefinedFor> <Model>)
+fof(axiom195,axiom,(![X0,X1]:('isDefinedFor'(X0,X1)=>'model'(X1)))).
+% Declaration(ObjectProperty(<isUnionOf>))
+fof(axiom196,axiom,(![X,Y]:('isUnionOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isUnionOf>))
+fof(axiom197,axiom,(![X,Y]:('isUnionOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(ObjectProperty(<isLevelOf>))
+fof(axiom198,axiom,(![X,Y]:('isLevelOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isLevelOf>))
+fof(axiom199,axiom,(![X,Y]:('isLevelOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ClassAssertion(<Restriction> <restriction_ExpSpace>)
+fof(axiom200,axiom,('restriction'('restriction_ExpSpace'))).
+% ClassAssertion(<Restriction> <restriction_ExpSpace>)
+fof(axiom201,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_ExpSpace'))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_PTime> <Time>)
+fof(axiom202,axiom,('restrictsMeasure'('restriction_PTime','time'))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_PTime> <Time>)
+fof(axiom203,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_PTime'))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_PTime> <Time>)
+fof(axiom204,axiom,('http___www_w3_org_2002_07_owl_Thing'('time'))).
+% Declaration(ObjectProperty(<isDefinedFor>))
+fof(axiom205,axiom,(![X,Y]:('isDefinedFor'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isDefinedFor>))
+fof(axiom206,axiom,(![X,Y]:('isDefinedFor'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(NamedIndividual(<ExpTime>))
+fof(axiom207,axiom,('http___www_w3_org_2002_07_owl_Thing'('expTime'))).
+% ObjectPropertyAssertion(<isMemberOf> <DirectedReachability> <NL>)
+fof(axiom208,axiom,('isMemberOf'('directedReachability','nL'))).
+% ObjectPropertyAssertion(<isMemberOf> <DirectedReachability> <NL>)
+fof(axiom209,axiom,('http___www_w3_org_2002_07_owl_Thing'('directedReachability'))).
+% ObjectPropertyAssertion(<isMemberOf> <DirectedReachability> <NL>)
+fof(axiom210,axiom,('http___www_w3_org_2002_07_owl_Thing'('nL'))).
+% ClassAssertion(<__sys_SavitchCompatible> <Poly>)
+fof(axiom211,axiom,('__sys_SavitchCompatible'('poly'))).
+% ClassAssertion(<__sys_SavitchCompatible> <Poly>)
+fof(axiom212,axiom,('http___www_w3_org_2002_07_owl_Thing'('poly'))).
+% ClassAssertion(<Bound> <Log>)
+fof(axiom213,axiom,('bound'('log'))).
+% ClassAssertion(<Bound> <Log>)
+fof(axiom214,axiom,('http___www_w3_org_2002_07_owl_Thing'('log'))).
+% ObjectPropertyDomain(<hasRestriction> <ComplexityClass>)
+fof(axiom215,axiom,(![X0,X1]:('hasRestriction'(X0,X1)=>'complexityClass'(X0)))).
+% SubObjectPropertyOf(ObjectPropertyChain( <extendsByNondeterminism> <dTime> ) <nTime>)
+fof(axiom216,axiom,(![X0,X1]:(?[X2]:('extendsByNondeterminism'(X0,X2)&'dTime'(X2,X1))=>'nTime'(X0,X1)))).
+% SubObjectPropertyOf(<isSubClassOf_SavitchTheorem> <extendsByNondeterminism>)
+fof(axiom217,axiom,(![X0,X1]:('isSubClassOf_SavitchTheorem'(X0,X1)=>'extendsByNondeterminism'(X0,X1)))).
+% ObjectPropertyAssertion(<isDefinedFor> <PSpace> <TuringMachine>)
+fof(axiom218,axiom,('isDefinedFor'('pSpace','turingMachine'))).
+% ObjectPropertyAssertion(<isDefinedFor> <PSpace> <TuringMachine>)
+fof(axiom219,axiom,('http___www_w3_org_2002_07_owl_Thing'('pSpace'))).
+% ObjectPropertyAssertion(<isDefinedFor> <PSpace> <TuringMachine>)
+fof(axiom220,axiom,('http___www_w3_org_2002_07_owl_Thing'('turingMachine'))).
+% ObjectPropertyAssertion(<isMemberOf> <UndirectedReachability> <L>)
+fof(axiom221,axiom,('isMemberOf'('undirectedReachability','l'))).
+% ObjectPropertyAssertion(<isMemberOf> <UndirectedReachability> <L>)
+fof(axiom222,axiom,('http___www_w3_org_2002_07_owl_Thing'('undirectedReachability'))).
+% ObjectPropertyAssertion(<isMemberOf> <UndirectedReachability> <L>)
+fof(axiom223,axiom,('http___www_w3_org_2002_07_owl_Thing'('l'))).
+% SubObjectPropertyOf(<isReducibleTo_inLogSpace> <isReducibleTo_inPolyTime>)
+fof(axiom224,axiom,(![X0,X1]:('isReducibleTo_inLogSpace'(X0,X1)=>'isReducibleTo_inPolyTime'(X0,X1)))).
+% SubClassOf(<Hierarchy> <MetaNode>)
+fof(axiom225,axiom,(![X0]:('hierarchy'(X0)=>'metaNode'(X0)))).
+% SubClassOf(ObjectSomeValuesFrom(ObjectInverseOf(<lessLess>) <__sys_SavitchCompatible>) <__sys_SavitchCompatible>)
+fof(axiom226,axiom,(![X0]:(?[X1]:('lessLess'(X1,X0)&'__sys_SavitchCompatible'(X1))=>'__sys_SavitchCompatible'(X0)))).
+% SubClassOf(ObjectSomeValuesFrom(<dSpace> <__sys_SavitchCompatible>) <__sys_SavitchCompatible>)
+fof(axiom227,axiom,(![X0]:(?[X1]:('dSpace'(X0,X1)&'__sys_SavitchCompatible'(X1))=>'__sys_SavitchCompatible'(X0)))).
+% ClassAssertion(<ComplexityClass> <P>)
+fof(axiom228,axiom,('complexityClass'('p'))).
+% ClassAssertion(<ComplexityClass> <P>)
+fof(axiom229,axiom,('http___www_w3_org_2002_07_owl_Thing'('p'))).
+% ObjectPropertyDomain(<restrictsMeasure> <Restriction>)
+fof(axiom230,axiom,(![X0,X1]:('restrictsMeasure'(X0,X1)=>'restriction'(X0)))).
+% ClassAssertion(<Restriction> <restriction_ExpTime>)
+fof(axiom231,axiom,('restriction'('restriction_ExpTime'))).
+% ClassAssertion(<Restriction> <restriction_ExpTime>)
+fof(axiom232,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_ExpTime'))).
+% Declaration(NamedIndividual(<L>))
+fof(axiom233,axiom,('http___www_w3_org_2002_07_owl_Thing'('l'))).
+% Declaration(NamedIndividual(<NP>))
+fof(axiom234,axiom,('http___www_w3_org_2002_07_owl_Thing'('nP'))).
+% Declaration(ObjectProperty(<nSpace>))
+fof(axiom235,axiom,(![X,Y]:('nSpace'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<nSpace>))
+fof(axiom236,axiom,(![X,Y]:('nSpace'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ObjectPropertyAssertion(<hasRestriction> <L> <restriction_LogSpace>)
+fof(axiom237,axiom,('hasRestriction'('l','restriction_LogSpace'))).
+% ObjectPropertyAssertion(<hasRestriction> <L> <restriction_LogSpace>)
+fof(axiom238,axiom,('http___www_w3_org_2002_07_owl_Thing'('l'))).
+% ObjectPropertyAssertion(<hasRestriction> <L> <restriction_LogSpace>)
+fof(axiom239,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_LogSpace'))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_LogSpace> <Space>)
+fof(axiom240,axiom,('restrictsMeasure'('restriction_LogSpace','space'))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_LogSpace> <Space>)
+fof(axiom241,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_LogSpace'))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_LogSpace> <Space>)
+fof(axiom242,axiom,('http___www_w3_org_2002_07_owl_Thing'('space'))).
+% SubClassOf(<ComplexityClass> <FunctionClass>)
+fof(axiom243,axiom,(![X0]:('complexityClass'(X0)=>'functionClass'(X0)))).
+% Declaration(NamedIndividual(<DirectedReachability>))
+fof(axiom244,axiom,('http___www_w3_org_2002_07_owl_Thing'('directedReachability'))).
+% ClassAssertion(<DecisionProblem> <DirectedReachability>)
+fof(axiom245,axiom,('decisionProblem'('directedReachability'))).
+% ClassAssertion(<DecisionProblem> <DirectedReachability>)
+fof(axiom246,axiom,('http___www_w3_org_2002_07_owl_Thing'('directedReachability'))).
+% TransitiveObjectProperty(<isSubClassOf>)
+fof(axiom247,axiom,(![X0,X1,X2]:(('isSubClassOf'(X0,X1)&'isSubClassOf'(X1,X2))=>'isSubClassOf'(X0,X2)))).
+% Declaration(NamedIndividual(<restriction_PSpace>))
+fof(axiom248,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_PSpace'))).
+% ObjectPropertyAssertion(<isDefinedFor> <ExpTime> <TuringMachine>)
+fof(axiom249,axiom,('isDefinedFor'('expTime','turingMachine'))).
+% ObjectPropertyAssertion(<isDefinedFor> <ExpTime> <TuringMachine>)
+fof(axiom250,axiom,('http___www_w3_org_2002_07_owl_Thing'('expTime'))).
+% ObjectPropertyAssertion(<isDefinedFor> <ExpTime> <TuringMachine>)
+fof(axiom251,axiom,('http___www_w3_org_2002_07_owl_Thing'('turingMachine'))).
+% ObjectPropertyAssertion(<extendsByNondeterminism> <NPSpace> <PSpace>)
+fof(axiom252,axiom,('extendsByNondeterminism'('nPSpace','pSpace'))).
+% ObjectPropertyAssertion(<extendsByNondeterminism> <NPSpace> <PSpace>)
+fof(axiom253,axiom,('http___www_w3_org_2002_07_owl_Thing'('nPSpace'))).
+% ObjectPropertyAssertion(<extendsByNondeterminism> <NPSpace> <PSpace>)
+fof(axiom254,axiom,('http___www_w3_org_2002_07_owl_Thing'('pSpace'))).
+% ObjectPropertyRange(<lessLess> <Bound>)
+fof(axiom255,axiom,(![X0,X1]:('lessLess'(X0,X1)=>'bound'(X1)))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_PSpace> <Space>)
+fof(axiom256,axiom,('restrictsMeasure'('restriction_PSpace','space'))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_PSpace> <Space>)
+fof(axiom257,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_PSpace'))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_PSpace> <Space>)
+fof(axiom258,axiom,('http___www_w3_org_2002_07_owl_Thing'('space'))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_ExpSpace> <Space>)
+fof(axiom259,axiom,('restrictsMeasure'('restriction_ExpSpace','space'))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_ExpSpace> <Space>)
+fof(axiom260,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_ExpSpace'))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_ExpSpace> <Space>)
+fof(axiom261,axiom,('http___www_w3_org_2002_07_owl_Thing'('space'))).
+% SubObjectPropertyOf(<hasRestriction_onSpace> <hasRestriction>)
+fof(axiom262,axiom,(![X0,X1]:('hasRestriction_onSpace'(X0,X1)=>'hasRestriction'(X0,X1)))).
+% FunctionalObjectProperty(<imposesUpperBound>)
+fof(axiom263,axiom,(![X0,X1,X2]:(('imposesUpperBound'(X0,X1)&'imposesUpperBound'(X0,X2))=>(X1=X2)))).
+% ClassAssertion(<Measure> <Time>)
+fof(axiom264,axiom,('measure'('time'))).
+% ClassAssertion(<Measure> <Time>)
+fof(axiom265,axiom,('http___www_w3_org_2002_07_owl_Thing'('time'))).
+% InverseFunctionalObjectProperty(<extendsByNondeterminism>)
+fof(axiom266,axiom,(![X0,X1,X2]:(('extendsByNondeterminism'(X1,X0)&'extendsByNondeterminism'(X2,X0))=>(X1=X2)))).
+% SubObjectPropertyOf(<hasRestriction_unique_onSpace_TM> <hasRestriction_onSpace>)
+fof(axiom267,axiom,(![X0,X1]:('hasRestriction_unique_onSpace_TM'(X0,X1)=>'hasRestriction_onSpace'(X0,X1)))).
+% ObjectPropertyAssertion(<isFunctionVersionOf> <FP> <P>)
+fof(axiom268,axiom,('isFunctionVersionOf'('fP','p'))).
+% ObjectPropertyAssertion(<isFunctionVersionOf> <FP> <P>)
+fof(axiom269,axiom,('http___www_w3_org_2002_07_owl_Thing'('fP'))).
+% ObjectPropertyAssertion(<isFunctionVersionOf> <FP> <P>)
+fof(axiom270,axiom,('http___www_w3_org_2002_07_owl_Thing'('p'))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_LogSpace> <Log>)
+fof(axiom271,axiom,('imposesUpperBound'('restriction_LogSpace','log'))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_LogSpace> <Log>)
+fof(axiom272,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_LogSpace'))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_LogSpace> <Log>)
+fof(axiom273,axiom,('http___www_w3_org_2002_07_owl_Thing'('log'))).
+% FunctionalObjectProperty(<restrictsMeasure>)
+fof(axiom274,axiom,(![X0,X1,X2]:(('restrictsMeasure'(X0,X1)&'restrictsMeasure'(X0,X2))=>(X1=X2)))).
+% Declaration(ObjectProperty(<dSpace>))
+fof(axiom275,axiom,(![X,Y]:('dSpace'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<dSpace>))
+fof(axiom276,axiom,(![X,Y]:('dSpace'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% SubClassOf(<Restriction> <MetaNode>)
+fof(axiom277,axiom,(![X0]:('restriction'(X0)=>'metaNode'(X0)))).
+% SubClassOf(ObjectIntersectionOf(ObjectSomeValuesFrom(<hasRestriction_onSpace> owl:Thing) ObjectSomeValuesFrom(<isDefinedFor> ObjectOneOf(<TuringMachine>))) ObjectSomeValuesFrom(<hasRestriction_unique_onSpace_TM> owl:Thing))
+fof(axiom278,axiom,(![X0]:((?[X1]:('hasRestriction_onSpace'(X0,X1)&'http___www_w3_org_2002_07_owl_Thing'(X1))&?[X2]:('isDefinedFor'(X0,X2)&(X2='turingMachine')))=>?[X3]:('hasRestriction_unique_onSpace_TM'(X0,X3)&'http___www_w3_org_2002_07_owl_Thing'(X3))))).
+% ClassAssertion(<Bound> <Const>)
+fof(axiom279,axiom,('bound'('const'))).
+% ClassAssertion(<Bound> <Const>)
+fof(axiom280,axiom,('http___www_w3_org_2002_07_owl_Thing'('const'))).
+% Declaration(NamedIndividual(<Size>))
+fof(axiom281,axiom,('http___www_w3_org_2002_07_owl_Thing'('size'))).
+% ObjectPropertyAssertion(<lessLess> <Log> <PolyLog>)
+fof(axiom282,axiom,('lessLess'('log','polyLog'))).
+% ObjectPropertyAssertion(<lessLess> <Log> <PolyLog>)
+fof(axiom283,axiom,('http___www_w3_org_2002_07_owl_Thing'('log'))).
+% ObjectPropertyAssertion(<lessLess> <Log> <PolyLog>)
+fof(axiom284,axiom,('http___www_w3_org_2002_07_owl_Thing'('polyLog'))).
+% SubObjectPropertyOf(<isHardFor_wrtLogSpace> <isHardFor_wrtPolyTime>)
+fof(axiom285,axiom,(![X0,X1]:('isHardFor_wrtLogSpace'(X0,X1)=>'isHardFor_wrtPolyTime'(X0,X1)))).
+% Declaration(NamedIndividual(<FP>))
+fof(axiom286,axiom,('http___www_w3_org_2002_07_owl_Thing'('fP'))).
+% FunctionalObjectProperty(<hasRestriction_unique_onTime_TM>)
+fof(axiom287,axiom,(![X0,X1,X2]:(('hasRestriction_unique_onTime_TM'(X0,X1)&'hasRestriction_unique_onTime_TM'(X0,X2))=>(X1=X2)))).
+% ClassAssertion(<Measure> <Size>)
+fof(axiom288,axiom,('measure'('size'))).
+% ClassAssertion(<Measure> <Size>)
+fof(axiom289,axiom,('http___www_w3_org_2002_07_owl_Thing'('size'))).
+% ObjectPropertyAssertion(<lessLess> <PolyLog> <Poly>)
+fof(axiom290,axiom,('lessLess'('polyLog','poly'))).
+% ObjectPropertyAssertion(<lessLess> <PolyLog> <Poly>)
+fof(axiom291,axiom,('http___www_w3_org_2002_07_owl_Thing'('polyLog'))).
+% ObjectPropertyAssertion(<lessLess> <PolyLog> <Poly>)
+fof(axiom292,axiom,('http___www_w3_org_2002_07_owl_Thing'('poly'))).
+% TransitiveObjectProperty(<isStrictSubClassOf>)
+fof(axiom293,axiom,(![X0,X1,X2]:(('isStrictSubClassOf'(X0,X1)&'isStrictSubClassOf'(X1,X2))=>'isStrictSubClassOf'(X0,X2)))).
+% Declaration(Class(<Function>))
+fof(axiom294,axiom,(![X]:('function'(X)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% SubObjectPropertyOf(<restrictsMeasure> <metaLink>)
+fof(axiom295,axiom,(![X0,X1]:('restrictsMeasure'(X0,X1)=>'metaLink'(X0,X1)))).
+% SubObjectPropertyOf(<dSpace> <metaLink>)
+fof(axiom296,axiom,(![X0,X1]:('dSpace'(X0,X1)=>'metaLink'(X0,X1)))).
+% ClassAssertion(<DecisionProblem> <_3Colouring>)
+fof(axiom297,axiom,('decisionProblem'('_3Colouring'))).
+% ClassAssertion(<DecisionProblem> <_3Colouring>)
+fof(axiom298,axiom,('http___www_w3_org_2002_07_owl_Thing'('_3Colouring'))).
+% ClassAssertion(<DecisionProblem> <BooleanSatisfiability>)
+fof(axiom299,axiom,('decisionProblem'('booleanSatisfiability'))).
+% ClassAssertion(<DecisionProblem> <BooleanSatisfiability>)
+fof(axiom300,axiom,('http___www_w3_org_2002_07_owl_Thing'('booleanSatisfiability'))).
+% ObjectPropertyAssertion(<isDefinedFor> <P> <TuringMachine>)
+fof(axiom301,axiom,('isDefinedFor'('p','turingMachine'))).
+% ObjectPropertyAssertion(<isDefinedFor> <P> <TuringMachine>)
+fof(axiom302,axiom,('http___www_w3_org_2002_07_owl_Thing'('p'))).
+% ObjectPropertyAssertion(<isDefinedFor> <P> <TuringMachine>)
+fof(axiom303,axiom,('http___www_w3_org_2002_07_owl_Thing'('turingMachine'))).
+% Declaration(NamedIndividual(<_3Colouring>))
+fof(axiom304,axiom,('http___www_w3_org_2002_07_owl_Thing'('_3Colouring'))).
+% SubObjectPropertyOf(<extendsByNondeterminism> <extends>)
+fof(axiom305,axiom,(![X0,X1]:('extendsByNondeterminism'(X0,X1)=>'extends'(X0,X1)))).
+% Declaration(NamedIndividual(<UndirectedReachability>))
+fof(axiom306,axiom,('http___www_w3_org_2002_07_owl_Thing'('undirectedReachability'))).
+% ObjectPropertyDomain(<isHardFor> <DecisionProblem>)
+fof(axiom307,axiom,(![X0,X1]:('isHardFor'(X0,X1)=>'decisionProblem'(X0)))).
+% Declaration(ObjectProperty(<isFunctionVersionOf>))
+fof(axiom308,axiom,(![X,Y]:('isFunctionVersionOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isFunctionVersionOf>))
+fof(axiom309,axiom,(![X,Y]:('isFunctionVersionOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(ObjectProperty(<extends>))
+fof(axiom310,axiom,(![X,Y]:('extends'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<extends>))
+fof(axiom311,axiom,(![X,Y]:('extends'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% SubObjectPropertyOf(<nTime> <metaLink>)
+fof(axiom312,axiom,(![X0,X1]:('nTime'(X0,X1)=>'metaLink'(X0,X1)))).
+% SubObjectPropertyOf(<hasRestriction_unique_onTime_TM> <hasRestriction_onTime>)
+fof(axiom313,axiom,(![X0,X1]:('hasRestriction_unique_onTime_TM'(X0,X1)=>'hasRestriction_onTime'(X0,X1)))).
+% SubObjectPropertyOf(ObjectPropertyChain( <hasRestriction_unique_onTime_TM> <imposesUpperBound> ) <dTime>)
+fof(axiom314,axiom,(![X0,X1]:(?[X2]:('hasRestriction_unique_onTime_TM'(X0,X2)&'imposesUpperBound'(X2,X1))=>'dTime'(X0,X1)))).
+% SubObjectPropertyOf(<isEqualTo> <isSubClassOf>)
+fof(axiom315,axiom,(![X0,X1]:('isEqualTo'(X0,X1)=>'isSubClassOf'(X0,X1)))).
+% ObjectPropertyRange(<isSubClassOf> <FunctionClass>)
+fof(axiom316,axiom,(![X0,X1]:('isSubClassOf'(X0,X1)=>'functionClass'(X1)))).
+% SubObjectPropertyOf(ObjectPropertyChain( <hasRestriction_unique_onSpace_TM> <imposesUpperBound> ) <dSpace>)
+fof(axiom317,axiom,(![X0,X1]:(?[X2]:('hasRestriction_unique_onSpace_TM'(X0,X2)&'imposesUpperBound'(X2,X1))=>'dSpace'(X0,X1)))).
+% Declaration(ObjectProperty(<next>))
+fof(axiom318,axiom,(![X,Y]:('next'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<next>))
+fof(axiom319,axiom,(![X,Y]:('next'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(ObjectProperty(<isReducibleTo>))
+fof(axiom320,axiom,(![X,Y]:('isReducibleTo'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isReducibleTo>))
+fof(axiom321,axiom,(![X,Y]:('isReducibleTo'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_PSpace> <Poly>)
+fof(axiom322,axiom,('imposesUpperBound'('restriction_PSpace','poly'))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_PSpace> <Poly>)
+fof(axiom323,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_PSpace'))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_PSpace> <Poly>)
+fof(axiom324,axiom,('http___www_w3_org_2002_07_owl_Thing'('poly'))).
+% ObjectPropertyAssertion(<hasRestriction> <P> <restriction_PTime>)
+fof(axiom325,axiom,('hasRestriction'('p','restriction_PTime'))).
+% ObjectPropertyAssertion(<hasRestriction> <P> <restriction_PTime>)
+fof(axiom326,axiom,('http___www_w3_org_2002_07_owl_Thing'('p'))).
+% ObjectPropertyAssertion(<hasRestriction> <P> <restriction_PTime>)
+fof(axiom327,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_PTime'))).
+% Declaration(ObjectProperty(<hasRestriction_unique_onTime_TM>))
+fof(axiom328,axiom,(![X,Y]:('hasRestriction_unique_onTime_TM'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<hasRestriction_unique_onTime_TM>))
+fof(axiom329,axiom,(![X,Y]:('hasRestriction_unique_onTime_TM'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(NamedIndividual(<restriction_ExpSpace>))
+fof(axiom330,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_ExpSpace'))).
+% SubObjectPropertyOf(Annotation(rdfs:comment "Space Hierarchy Theorem"^^xsd:string) ObjectPropertyChain( <dSpace> <lessLess> ObjectInverseOf(<dSpace>) ) <isStrictSubClassOf_SpaceHierarchyTheorem>)
+fof(axiom331,axiom,(![X0,X1]:(?[X2,X3]:('dSpace'(X0,X2)&'lessLess'(X2,X3)&'dSpace'(X1,X3))=>'isStrictSubClassOf_SpaceHierarchyTheorem'(X0,X1)))).
+% ClassAssertion(<Restriction> <restriction_PSpace>)
+fof(axiom332,axiom,('restriction'('restriction_PSpace'))).
+% ClassAssertion(<Restriction> <restriction_PSpace>)
+fof(axiom333,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_PSpace'))).
+% Declaration(ObjectProperty(<hasRestriction_onTime>))
+fof(axiom334,axiom,(![X,Y]:('hasRestriction_onTime'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<hasRestriction_onTime>))
+fof(axiom335,axiom,(![X,Y]:('hasRestriction_onTime'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(ObjectProperty(<hasRestriction_onSpace>))
+fof(axiom336,axiom,(![X,Y]:('hasRestriction_onSpace'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<hasRestriction_onSpace>))
+fof(axiom337,axiom,(![X,Y]:('hasRestriction_onSpace'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(ObjectProperty(<hasOracle>))
+fof(axiom338,axiom,(![X,Y]:('hasOracle'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<hasOracle>))
+fof(axiom339,axiom,(![X,Y]:('hasOracle'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ObjectPropertyRange(<restrictsMeasure> <Measure>)
+fof(axiom340,axiom,(![X0,X1]:('restrictsMeasure'(X0,X1)=>'measure'(X1)))).
+% Declaration(ObjectProperty(<isStrictSubClassOf_SpaceHierarchyTheorem>))
+fof(axiom341,axiom,(![X,Y]:('isStrictSubClassOf_SpaceHierarchyTheorem'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isStrictSubClassOf_SpaceHierarchyTheorem>))
+fof(axiom342,axiom,(![X,Y]:('isStrictSubClassOf_SpaceHierarchyTheorem'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% SubObjectPropertyOf(<hasRestriction_onTime> <hasRestriction>)
+fof(axiom343,axiom,(![X0,X1]:('hasRestriction_onTime'(X0,X1)=>'hasRestriction'(X0,X1)))).
+% Declaration(NamedIndividual(<Exp>))
+fof(axiom344,axiom,('http___www_w3_org_2002_07_owl_Thing'('exp'))).
+% Declaration(NamedIndividual(<Time>))
+fof(axiom345,axiom,('http___www_w3_org_2002_07_owl_Thing'('time'))).
+% Declaration(NamedIndividual(<P>))
+fof(axiom346,axiom,('http___www_w3_org_2002_07_owl_Thing'('p'))).
+% Declaration(NamedIndividual(<ExpSpace>))
+fof(axiom347,axiom,('http___www_w3_org_2002_07_owl_Thing'('expSpace'))).
+% Declaration(Class(<Hierarchy>))
+fof(axiom348,axiom,(![X]:('hierarchy'(X)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% ObjectPropertyRange(<imposesUpperBound> <Bound>)
+fof(axiom349,axiom,(![X0,X1]:('imposesUpperBound'(X0,X1)=>'bound'(X1)))).
+% FunctionalObjectProperty(<isDefinedFor>)
+fof(axiom350,axiom,(![X0,X1,X2]:(('isDefinedFor'(X0,X1)&'isDefinedFor'(X0,X2))=>(X1=X2)))).
+% ClassAssertion(<ComplexityClass> <L>)
+fof(axiom351,axiom,('complexityClass'('l'))).
+% ClassAssertion(<ComplexityClass> <L>)
+fof(axiom352,axiom,('http___www_w3_org_2002_07_owl_Thing'('l'))).
+% SubObjectPropertyOf(ObjectPropertyChain( ObjectInverseOf(<isReducibleTo_inPolyTime>) <isHardFor_wrtPolyTime> ) <isHardFor_wrtPolyTime>)
+fof(axiom353,axiom,(![X0,X1]:(?[X2]:('isReducibleTo_inPolyTime'(X2,X0)&'isHardFor_wrtPolyTime'(X2,X1))=>'isHardFor_wrtPolyTime'(X0,X1)))).
+% SubObjectPropertyOf(<isStrictSubClassOf_SpaceHierarchyTheorem> <metaLink>)
+fof(axiom354,axiom,(![X0,X1]:('isStrictSubClassOf_SpaceHierarchyTheorem'(X0,X1)=>'metaLink'(X0,X1)))).
+% ObjectPropertyDomain(<isReducibleTo> <DecisionProblem>)
+fof(axiom355,axiom,(![X0,X1]:('isReducibleTo'(X0,X1)=>'decisionProblem'(X0)))).
+% SubObjectPropertyOf(ObjectPropertyChain( ObjectInverseOf(<isReducibleTo>) <isHardFor> ) <isHardFor>)
+fof(axiom356,axiom,(![X0,X1]:(?[X2]:('isReducibleTo'(X2,X0)&'isHardFor'(X2,X1))=>'isHardFor'(X0,X1)))).
+% SubObjectPropertyOf(<isDefinedFor> <metaLink>)
+fof(axiom357,axiom,(![X0,X1]:('isDefinedFor'(X0,X1)=>'metaLink'(X0,X1)))).
+% ObjectPropertyAssertion(<hasRestriction> <ExpTime> <restriction_ExpTime>)
+fof(axiom358,axiom,('hasRestriction'('expTime','restriction_ExpTime'))).
+% ObjectPropertyAssertion(<hasRestriction> <ExpTime> <restriction_ExpTime>)
+fof(axiom359,axiom,('http___www_w3_org_2002_07_owl_Thing'('expTime'))).
+% ObjectPropertyAssertion(<hasRestriction> <ExpTime> <restriction_ExpTime>)
+fof(axiom360,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_ExpTime'))).
+% Declaration(NamedIndividual(<NPSpace>))
+fof(axiom361,axiom,('http___www_w3_org_2002_07_owl_Thing'('nPSpace'))).
+% Declaration(ObjectProperty(<isSubClassOf>))
+fof(axiom362,axiom,(![X,Y]:('isSubClassOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isSubClassOf>))
+fof(axiom363,axiom,(![X,Y]:('isSubClassOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% SubClassOf(ObjectSomeValuesFrom(<restrictsMeasure> ObjectOneOf(<Time>)) ObjectSomeValuesFrom(ObjectInverseOf(<hasRestriction_onTime>) owl:Thing))
+fof(axiom364,axiom,(![X0]:(?[X1]:('restrictsMeasure'(X0,X1)&(X1='time'))=>?[X2]:('hasRestriction_onTime'(X2,X0)&'http___www_w3_org_2002_07_owl_Thing'(X2))))).
+% Declaration(ObjectProperty(<isPowerOf>))
+fof(axiom365,axiom,(![X,Y]:('isPowerOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isPowerOf>))
+fof(axiom366,axiom,(![X,Y]:('isPowerOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ObjectPropertyAssertion(<isHardFor_wrtLogSpace> <BooleanSatisfiability> <NP>)
+fof(axiom367,axiom,('isHardFor_wrtLogSpace'('booleanSatisfiability','nP'))).
+% ObjectPropertyAssertion(<isHardFor_wrtLogSpace> <BooleanSatisfiability> <NP>)
+fof(axiom368,axiom,('http___www_w3_org_2002_07_owl_Thing'('booleanSatisfiability'))).
+% ObjectPropertyAssertion(<isHardFor_wrtLogSpace> <BooleanSatisfiability> <NP>)
+fof(axiom369,axiom,('http___www_w3_org_2002_07_owl_Thing'('nP'))).
+% ClassAssertion(<Measure> <Depth>)
+fof(axiom370,axiom,('measure'('depth'))).
+% ClassAssertion(<Measure> <Depth>)
+fof(axiom371,axiom,('http___www_w3_org_2002_07_owl_Thing'('depth'))).
+% Declaration(NamedIndividual(<PolyLog>))
+fof(axiom372,axiom,('http___www_w3_org_2002_07_owl_Thing'('polyLog'))).
+% Declaration(ObjectProperty(<hasRestriction>))
+fof(axiom373,axiom,(![X,Y]:('hasRestriction'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<hasRestriction>))
+fof(axiom374,axiom,(![X,Y]:('hasRestriction'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(ObjectProperty(<isStrictSubClassOf>))
+fof(axiom375,axiom,(![X,Y]:('isStrictSubClassOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isStrictSubClassOf>))
+fof(axiom376,axiom,(![X,Y]:('isStrictSubClassOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% SubObjectPropertyOf(ObjectPropertyChain( <isOnLevel> <isLevelOf> ) <isFromHierarchy>)
+fof(axiom377,axiom,(![X0,X1]:(?[X2]:('isOnLevel'(X0,X2)&'isLevelOf'(X2,X1))=>'isFromHierarchy'(X0,X1)))).
+% Declaration(ObjectProperty(<metaLink>))
+fof(axiom378,axiom,(![X,Y]:('metaLink'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<metaLink>))
+fof(axiom379,axiom,(![X,Y]:('metaLink'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(ObjectProperty(<isFromHierarchy>))
+fof(axiom380,axiom,(![X,Y]:('isFromHierarchy'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isFromHierarchy>))
+fof(axiom381,axiom,(![X,Y]:('isFromHierarchy'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_PTime> <Poly>)
+fof(axiom382,axiom,('imposesUpperBound'('restriction_PTime','poly'))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_PTime> <Poly>)
+fof(axiom383,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_PTime'))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_PTime> <Poly>)
+fof(axiom384,axiom,('http___www_w3_org_2002_07_owl_Thing'('poly'))).
+% Declaration(Class(<__sys_SavitchCompatible>))
+fof(axiom385,axiom,(![X]:('__sys_SavitchCompatible'(X)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(NamedIndividual(<restriction_LogSpace>))
+fof(axiom386,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_LogSpace'))).
+% Declaration(ObjectProperty(<isSubClassOf_SavitchTheorem>))
+fof(axiom387,axiom,(![X,Y]:('isSubClassOf_SavitchTheorem'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isSubClassOf_SavitchTheorem>))
+fof(axiom388,axiom,(![X,Y]:('isSubClassOf_SavitchTheorem'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ClassAssertion(<Bound> <Poly>)
+fof(axiom389,axiom,('bound'('poly'))).
+% ClassAssertion(<Bound> <Poly>)
+fof(axiom390,axiom,('http___www_w3_org_2002_07_owl_Thing'('poly'))).
+% Declaration(NamedIndividual(<BooleanSatisfiability>))
+fof(axiom391,axiom,('http___www_w3_org_2002_07_owl_Thing'('booleanSatisfiability'))).
+% Declaration(ObjectProperty(<isHardFor_wrtLogSpace>))
+fof(axiom392,axiom,(![X,Y]:('isHardFor_wrtLogSpace'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isHardFor_wrtLogSpace>))
+fof(axiom393,axiom,(![X,Y]:('isHardFor_wrtLogSpace'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% SubClassOf(<__sys_SavitchCompatible> <__sys_Label>)
+fof(axiom394,axiom,(![X0]:('__sys_SavitchCompatible'(X0)=>'__sys_Label'(X0)))).
+% Declaration(ObjectProperty(<hasRestriction_unique_onSpace_TM>))
+fof(axiom395,axiom,(![X,Y]:('hasRestriction_unique_onSpace_TM'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<hasRestriction_unique_onSpace_TM>))
+fof(axiom396,axiom,(![X,Y]:('hasRestriction_unique_onSpace_TM'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(ObjectProperty(<dTime>))
+fof(axiom397,axiom,(![X,Y]:('dTime'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<dTime>))
+fof(axiom398,axiom,(![X,Y]:('dTime'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(ObjectProperty(<delta>))
+fof(axiom399,axiom,(![X,Y]:('delta'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<delta>))
+fof(axiom400,axiom,(![X,Y]:('delta'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ObjectPropertyDomain(<isSubClassOf> <FunctionClass>)
+fof(axiom401,axiom,(![X0,X1]:('isSubClassOf'(X0,X1)=>'functionClass'(X0)))).
+% TransitiveObjectProperty(<isEqualTo>)
+fof(axiom402,axiom,(![X0,X1,X2]:(('isEqualTo'(X0,X1)&'isEqualTo'(X1,X2))=>'isEqualTo'(X0,X2)))).
+% Declaration(Class(<FunctionClass>))
+fof(axiom403,axiom,(![X]:('functionClass'(X)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% SubObjectPropertyOf(ObjectPropertyChain( <extendsByNondeterminism> <dSpace> ) <nSpace>)
+fof(axiom404,axiom,(![X0,X1]:(?[X2]:('extendsByNondeterminism'(X0,X2)&'dSpace'(X2,X1))=>'nSpace'(X0,X1)))).
+% SubObjectPropertyOf(ObjectPropertyChain( <isMemberOf> <isSubClassOf> ) <isMemberOf>)
+fof(axiom405,axiom,(![X0,X1]:(?[X2]:('isMemberOf'(X0,X2)&'isSubClassOf'(X2,X1))=>'isMemberOf'(X0,X1)))).
+% Declaration(ObjectProperty(<isSuperClassOf>))
+fof(axiom406,axiom,(![X,Y]:('isSuperClassOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isSuperClassOf>))
+fof(axiom407,axiom,(![X,Y]:('isSuperClassOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% SubObjectPropertyOf(<isStrictSubClassOf_SpaceHierarchyTheorem> <isStrictSubClassOf>)
+fof(axiom408,axiom,(![X0,X1]:('isStrictSubClassOf_SpaceHierarchyTheorem'(X0,X1)=>'isStrictSubClassOf'(X0,X1)))).
+% Declaration(NamedIndividual(<Space>))
+fof(axiom409,axiom,('http___www_w3_org_2002_07_owl_Thing'('space'))).
+% Declaration(ObjectProperty(<isReducibleTo_inPolyTime>))
+fof(axiom410,axiom,(![X,Y]:('isReducibleTo_inPolyTime'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isReducibleTo_inPolyTime>))
+fof(axiom411,axiom,(![X,Y]:('isReducibleTo_inPolyTime'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ClassAssertion(<ComplexityClass> <NP>)
+fof(axiom412,axiom,('complexityClass'('nP'))).
+% ClassAssertion(<ComplexityClass> <NP>)
+fof(axiom413,axiom,('http___www_w3_org_2002_07_owl_Thing'('nP'))).
+% ObjectPropertyAssertion(<isMemberOf> <BooleanSatisfiability> <NP>)
+fof(axiom414,axiom,('isMemberOf'('booleanSatisfiability','nP'))).
+% ObjectPropertyAssertion(<isMemberOf> <BooleanSatisfiability> <NP>)
+fof(axiom415,axiom,('http___www_w3_org_2002_07_owl_Thing'('booleanSatisfiability'))).
+% ObjectPropertyAssertion(<isMemberOf> <BooleanSatisfiability> <NP>)
+fof(axiom416,axiom,('http___www_w3_org_2002_07_owl_Thing'('nP'))).
+% Declaration(Class(<Restriction>))
+fof(axiom417,axiom,(![X]:('restriction'(X)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% ObjectPropertyAssertion(<isDefinedFor> <L> <TuringMachine>)
+fof(axiom418,axiom,('isDefinedFor'('l','turingMachine'))).
+% ObjectPropertyAssertion(<isDefinedFor> <L> <TuringMachine>)
+fof(axiom419,axiom,('http___www_w3_org_2002_07_owl_Thing'('l'))).
+% ObjectPropertyAssertion(<isDefinedFor> <L> <TuringMachine>)
+fof(axiom420,axiom,('http___www_w3_org_2002_07_owl_Thing'('turingMachine'))).
+% background axiom: domain consists of objects and data
+fof(axiom0,axiom,(![X]:('http___www_w3_org_2002_07_owl_Thing'(X)|'http___www_w3_org_2000_01_rdf_schema_Literal'(X)))).
+% background axiom: object domain and data domain are disjoint
+fof(axiom1,axiom,(![X]:('http___www_w3_org_2002_07_owl_Thing'(X)=>~'http___www_w3_org_2000_01_rdf_schema_Literal'(X)))).
+% background axiom: there are things
+fof(axiom2,axiom,(?[X]:'http___www_w3_org_2002_07_owl_Thing'(X))).
+% background axiom: there are literals
+fof(axiom3,axiom,(?[X]:'http___www_w3_org_2000_01_rdf_schema_Literal'(X))).
+% facets can only be applied to literals
+fof(axiom4,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_minExclusive'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom5,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_fractionDigits'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom6,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_pattern'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom7,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_minLength'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom8,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_minInclusive'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom9,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_totalDigits'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom10,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_length'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom11,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_maxExclusive'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom12,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_maxLength'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom13,axiom,(![X,Y]:('http___www_w3_org_1999_02_22_rdf_syntax_ns_langRange'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom14,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_maxInclusive'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% Declaration(Class(<Measure>))
+fof(axiom15,axiom,(![X]:('measure'(X)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% ClassAssertion(<ComplexityClass> <NL>)
+fof(axiom16,axiom,('complexityClass'('nL'))).
+% ClassAssertion(<ComplexityClass> <NL>)
+fof(axiom17,axiom,('http___www_w3_org_2002_07_owl_Thing'('nL'))).
+% FunctionalObjectProperty(<extendsByNondeterminism>)
+fof(axiom18,axiom,(![X0,X1,X2]:(('extendsByNondeterminism'(X0,X1)&'extendsByNondeterminism'(X0,X2))=>(X1=X2)))).
+% ObjectPropertyAssertion(<isReducibleTo_inLogSpace> <BooleanSatisfiability> <_3Colouring>)
+fof(axiom19,axiom,('isReducibleTo_inLogSpace'('booleanSatisfiability','_3Colouring'))).
+% ObjectPropertyAssertion(<isReducibleTo_inLogSpace> <BooleanSatisfiability> <_3Colouring>)
+fof(axiom20,axiom,('http___www_w3_org_2002_07_owl_Thing'('booleanSatisfiability'))).
+% ObjectPropertyAssertion(<isReducibleTo_inLogSpace> <BooleanSatisfiability> <_3Colouring>)
+fof(axiom21,axiom,('http___www_w3_org_2002_07_owl_Thing'('_3Colouring'))).
+% SubClassOf(<DecisionProblem> <Function>)
+fof(axiom22,axiom,(![X0]:('decisionProblem'(X0)=>'function'(X0)))).
+% ClassAssertion(<Bound> <Exp>)
+fof(axiom23,axiom,('bound'('exp'))).
+% ClassAssertion(<Bound> <Exp>)
+fof(axiom24,axiom,('http___www_w3_org_2002_07_owl_Thing'('exp'))).
+% SubObjectPropertyOf(<isStrictSubClassOf> <isSubClassOf>)
+fof(axiom25,axiom,(![X0,X1]:('isStrictSubClassOf'(X0,X1)=>'isSubClassOf'(X0,X1)))).
+% SymmetricObjectProperty(<isEqualTo>)
+fof(axiom26,axiom,(![X0,X1]:('isEqualTo'(X0,X1)=>'isEqualTo'(X1,X0)))).
+% ClassAssertion(<ComplexityClass> <ExpTime>)
+fof(axiom27,axiom,('complexityClass'('expTime'))).
+% ClassAssertion(<ComplexityClass> <ExpTime>)
+fof(axiom28,axiom,('http___www_w3_org_2002_07_owl_Thing'('expTime'))).
+% Declaration(ObjectProperty(<isHardnessWrt>))
+fof(axiom29,axiom,(![X,Y]:('isHardnessWrt'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isHardnessWrt>))
+fof(axiom30,axiom,(![X,Y]:('isHardnessWrt'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_AC_depth> <Depth>)
+fof(axiom31,axiom,('restrictsMeasure'('restriction_AC_depth','depth'))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_AC_depth> <Depth>)
+fof(axiom32,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_AC_depth'))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_AC_depth> <Depth>)
+fof(axiom33,axiom,('http___www_w3_org_2002_07_owl_Thing'('depth'))).
+% ClassAssertion(<Restriction> <restriction_AC0_size>)
+fof(axiom34,axiom,('restriction'('restriction_AC0_size'))).
+% ClassAssertion(<Restriction> <restriction_AC0_size>)
+fof(axiom35,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_AC0_size'))).
+% Declaration(ObjectProperty(<isClassOfComplementsFor>))
+fof(axiom36,axiom,(![X,Y]:('isClassOfComplementsFor'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isClassOfComplementsFor>))
+fof(axiom37,axiom,(![X,Y]:('isClassOfComplementsFor'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ObjectPropertyAssertion(<isFunctionVersionOf> <FAC0> <AC0>)
+fof(axiom38,axiom,('isFunctionVersionOf'('fAC0','aC0'))).
+% ObjectPropertyAssertion(<isFunctionVersionOf> <FAC0> <AC0>)
+fof(axiom39,axiom,('http___www_w3_org_2002_07_owl_Thing'('fAC0'))).
+% ObjectPropertyAssertion(<isFunctionVersionOf> <FAC0> <AC0>)
+fof(axiom40,axiom,('http___www_w3_org_2002_07_owl_Thing'('aC0'))).
+% Declaration(ObjectProperty(<isReducibleTo_inAC0>))
+fof(axiom41,axiom,(![X,Y]:('isReducibleTo_inAC0'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isReducibleTo_inAC0>))
+fof(axiom42,axiom,(![X,Y]:('isReducibleTo_inAC0'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% DisjointClasses(<Function> <FunctionClass>)
+fof(axiom43,axiom,(![X0]:~('function'(X0)&'functionClass'(X0)))).
+% ObjectPropertyDomain(<extends> <ComplexityClass>)
+fof(axiom44,axiom,(![X0,X1]:('extends'(X0,X1)=>'complexityClass'(X0)))).
+% ClassAssertion(<LevelOfHierarhy> <ph_level_1>)
+fof(axiom45,axiom,('levelOfHierarhy'('ph_level_1'))).
+% ClassAssertion(<LevelOfHierarhy> <ph_level_1>)
+fof(axiom46,axiom,('http___www_w3_org_2002_07_owl_Thing'('ph_level_1'))).
+% Declaration(ObjectProperty(<lessLess>))
+fof(axiom47,axiom,(![X,Y]:('lessLess'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<lessLess>))
+fof(axiom48,axiom,(![X,Y]:('lessLess'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ObjectPropertyAssertion(<isClassOfComplementsFor> <coNP> <NP>)
+fof(axiom49,axiom,('isClassOfComplementsFor'('coNP','nP'))).
+% ObjectPropertyAssertion(<isClassOfComplementsFor> <coNP> <NP>)
+fof(axiom50,axiom,('http___www_w3_org_2002_07_owl_Thing'('coNP'))).
+% ObjectPropertyAssertion(<isClassOfComplementsFor> <coNP> <NP>)
+fof(axiom51,axiom,('http___www_w3_org_2002_07_owl_Thing'('nP'))).
+% ObjectPropertyDomain(<dTime> ObjectSomeValuesFrom(<isDefinedFor> ObjectOneOf(<TuringMachine>)))
+fof(axiom52,axiom,(![X0,X1]:('dTime'(X0,X1)=>?[X2]:('isDefinedFor'(X0,X2)&(X2='turingMachine'))))).
+% ClassAssertion(<ComplexityClass> <PH>)
+fof(axiom53,axiom,('complexityClass'('pH'))).
+% ClassAssertion(<ComplexityClass> <PH>)
+fof(axiom54,axiom,('http___www_w3_org_2002_07_owl_Thing'('pH'))).
+% ObjectPropertyAssertion(<isClassOfComplementsFor> <coNL> <NL>)
+fof(axiom55,axiom,('isClassOfComplementsFor'('coNL','nL'))).
+% ObjectPropertyAssertion(<isClassOfComplementsFor> <coNL> <NL>)
+fof(axiom56,axiom,('http___www_w3_org_2002_07_owl_Thing'('coNL'))).
+% ObjectPropertyAssertion(<isClassOfComplementsFor> <coNL> <NL>)
+fof(axiom57,axiom,('http___www_w3_org_2002_07_owl_Thing'('nL'))).
+% Declaration(NamedIndividual(<_2CnfSatisfiability>))
+fof(axiom58,axiom,('http___www_w3_org_2002_07_owl_Thing'('_2CnfSatisfiability'))).
+% ClassAssertion(<ComplexityClass> <ExpSpace>)
+fof(axiom59,axiom,('complexityClass'('expSpace'))).
+% ClassAssertion(<ComplexityClass> <ExpSpace>)
+fof(axiom60,axiom,('http___www_w3_org_2002_07_owl_Thing'('expSpace'))).
+% FunctionalObjectProperty(<hasRestriction_unique_onSpace_TM>)
+fof(axiom61,axiom,(![X0,X1,X2]:(('hasRestriction_unique_onSpace_TM'(X0,X1)&'hasRestriction_unique_onSpace_TM'(X0,X2))=>(X1=X2)))).
+% SubObjectPropertyOf(<pi> <isOnLevel>)
+fof(axiom62,axiom,(![X0,X1]:('pi'(X0,X1)=>'isOnLevel'(X0,X1)))).
+% SubObjectPropertyOf(<dTime> <metaLink>)
+fof(axiom63,axiom,(![X0,X1]:('dTime'(X0,X1)=>'metaLink'(X0,X1)))).
+% Declaration(NamedIndividual(<FAC0>))
+fof(axiom64,axiom,('http___www_w3_org_2002_07_owl_Thing'('fAC0'))).
+% ObjectPropertyAssertion(<lessLess> <Const> <Log>)
+fof(axiom65,axiom,('lessLess'('const','log'))).
+% ObjectPropertyAssertion(<lessLess> <Const> <Log>)
+fof(axiom66,axiom,('http___www_w3_org_2002_07_owl_Thing'('const'))).
+% ObjectPropertyAssertion(<lessLess> <Const> <Log>)
+fof(axiom67,axiom,('http___www_w3_org_2002_07_owl_Thing'('log'))).
+% SubObjectPropertyOf(ObjectPropertyChain( ObjectInverseOf(<isReducibleTo_inLogSpace>) <isHardFor_wrtLogSpace> ) <isHardFor_wrtLogSpace>)
+fof(axiom68,axiom,(![X0,X1]:(?[X2]:('isReducibleTo_inLogSpace'(X2,X0)&'isHardFor_wrtLogSpace'(X2,X1))=>'isHardFor_wrtLogSpace'(X0,X1)))).
+% InverseFunctionalObjectProperty(<hasRestriction>)
+fof(axiom69,axiom,(![X0,X1,X2]:(('hasRestriction'(X1,X0)&'hasRestriction'(X2,X0))=>(X1=X2)))).
+% ObjectPropertyAssertion(<extendsByNondeterminism> <NL> <L>)
+fof(axiom70,axiom,('extendsByNondeterminism'('nL','l'))).
+% ObjectPropertyAssertion(<extendsByNondeterminism> <NL> <L>)
+fof(axiom71,axiom,('http___www_w3_org_2002_07_owl_Thing'('nL'))).
+% ObjectPropertyAssertion(<extendsByNondeterminism> <NL> <L>)
+fof(axiom72,axiom,('http___www_w3_org_2002_07_owl_Thing'('l'))).
+% ClassAssertion(<Model> <BooleanCircuits>)
+fof(axiom73,axiom,('model'('booleanCircuits'))).
+% ClassAssertion(<Model> <BooleanCircuits>)
+fof(axiom74,axiom,('http___www_w3_org_2002_07_owl_Thing'('booleanCircuits'))).
+% ObjectPropertyRange(<isReducibleTo> <DecisionProblem>)
+fof(axiom75,axiom,(![X0,X1]:('isReducibleTo'(X0,X1)=>'decisionProblem'(X1)))).
+% SubObjectPropertyOf(<extends> <isSuperClassOf>)
+fof(axiom76,axiom,(![X0,X1]:('extends'(X0,X1)=>'isSuperClassOf'(X0,X1)))).
+% ObjectPropertyAssertion(<sigma> <Sigma_P_2> <ph_level_2>)
+fof(axiom77,axiom,('sigma'('sigma_P_2','ph_level_2'))).
+% ObjectPropertyAssertion(<sigma> <Sigma_P_2> <ph_level_2>)
+fof(axiom78,axiom,('http___www_w3_org_2002_07_owl_Thing'('sigma_P_2'))).
+% ObjectPropertyAssertion(<sigma> <Sigma_P_2> <ph_level_2>)
+fof(axiom79,axiom,('http___www_w3_org_2002_07_owl_Thing'('ph_level_2'))).
+% ObjectPropertyAssertion(<isMemberOf> <_3Colouring> <NP>)
+fof(axiom80,axiom,('isMemberOf'('_3Colouring','nP'))).
+% ObjectPropertyAssertion(<isMemberOf> <_3Colouring> <NP>)
+fof(axiom81,axiom,('http___www_w3_org_2002_07_owl_Thing'('_3Colouring'))).
+% ObjectPropertyAssertion(<isMemberOf> <_3Colouring> <NP>)
+fof(axiom82,axiom,('http___www_w3_org_2002_07_owl_Thing'('nP'))).
+% ClassAssertion(<Restriction> <restriction_AC_depth>)
+fof(axiom83,axiom,('restriction'('restriction_AC_depth'))).
+% ClassAssertion(<Restriction> <restriction_AC_depth>)
+fof(axiom84,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_AC_depth'))).
+% Declaration(ObjectProperty(<reducesFrom>))
+fof(axiom85,axiom,(![X,Y]:('reducesFrom'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<reducesFrom>))
+fof(axiom86,axiom,(![X,Y]:('reducesFrom'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ClassAssertion(<DecisionProblem> <QbfSatisfiability>)
+fof(axiom87,axiom,('decisionProblem'('qbfSatisfiability'))).
+% ClassAssertion(<DecisionProblem> <QbfSatisfiability>)
+fof(axiom88,axiom,('http___www_w3_org_2002_07_owl_Thing'('qbfSatisfiability'))).
+% ClassAssertion(<Measure> <Space>)
+fof(axiom89,axiom,('measure'('space'))).
+% ClassAssertion(<Measure> <Space>)
+fof(axiom90,axiom,('http___www_w3_org_2002_07_owl_Thing'('space'))).
+% Declaration(ObjectProperty(<isMemberOf>))
+fof(axiom91,axiom,(![X,Y]:('isMemberOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isMemberOf>))
+fof(axiom92,axiom,(![X,Y]:('isMemberOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_ExpSpace> <Exp>)
+fof(axiom93,axiom,('imposesUpperBound'('restriction_ExpSpace','exp'))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_ExpSpace> <Exp>)
+fof(axiom94,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_ExpSpace'))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_ExpSpace> <Exp>)
+fof(axiom95,axiom,('http___www_w3_org_2002_07_owl_Thing'('exp'))).
+% SubObjectPropertyOf(<isHardFor_wrtAC0> <isHardFor_wrtLogSpace>)
+fof(axiom96,axiom,(![X0,X1]:('isHardFor_wrtAC0'(X0,X1)=>'isHardFor_wrtLogSpace'(X0,X1)))).
+% ClassAssertion(<ComplexityClass> <PSpace>)
+fof(axiom97,axiom,('complexityClass'('pSpace'))).
+% ClassAssertion(<ComplexityClass> <PSpace>)
+fof(axiom98,axiom,('http___www_w3_org_2002_07_owl_Thing'('pSpace'))).
+% FunctionalObjectProperty(<hasRestriction_onTime>)
+fof(axiom99,axiom,(![X0,X1,X2]:(('hasRestriction_onTime'(X0,X1)&'hasRestriction_onTime'(X0,X2))=>(X1=X2)))).
+% Declaration(ObjectProperty(<isHardFor>))
+fof(axiom100,axiom,(![X,Y]:('isHardFor'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isHardFor>))
+fof(axiom101,axiom,(![X,Y]:('isHardFor'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ObjectPropertyAssertion(<extendsByNondeterminism> <NP> <P>)
+fof(axiom102,axiom,('extendsByNondeterminism'('nP','p'))).
+% ObjectPropertyAssertion(<extendsByNondeterminism> <NP> <P>)
+fof(axiom103,axiom,('http___www_w3_org_2002_07_owl_Thing'('nP'))).
+% ObjectPropertyAssertion(<extendsByNondeterminism> <NP> <P>)
+fof(axiom104,axiom,('http___www_w3_org_2002_07_owl_Thing'('p'))).
+% SubObjectPropertyOf(<isSubClassOf_SavitchTheorem> <isSubClassOf>)
+fof(axiom105,axiom,(![X0,X1]:('isSubClassOf_SavitchTheorem'(X0,X1)=>'isSubClassOf'(X0,X1)))).
+% SubObjectPropertyOf(<isHardFor_wrtPolyTime> <isHardFor>)
+fof(axiom106,axiom,(![X0,X1]:('isHardFor_wrtPolyTime'(X0,X1)=>'isHardFor'(X0,X1)))).
+% Declaration(NamedIndividual(<PSpace>))
+fof(axiom107,axiom,('http___www_w3_org_2002_07_owl_Thing'('pSpace'))).
+% Declaration(ObjectProperty(<isHardFor_wrtPolyTime>))
+fof(axiom108,axiom,(![X,Y]:('isHardFor_wrtPolyTime'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isHardFor_wrtPolyTime>))
+fof(axiom109,axiom,(![X,Y]:('isHardFor_wrtPolyTime'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(NamedIndividual(<Log>))
+fof(axiom110,axiom,('http___www_w3_org_2002_07_owl_Thing'('log'))).
+% Declaration(NamedIndividual(<QbfSatisfiability>))
+fof(axiom111,axiom,('http___www_w3_org_2002_07_owl_Thing'('qbfSatisfiability'))).
+% Declaration(ObjectProperty(<isHardnessOf>))
+fof(axiom112,axiom,(![X,Y]:('isHardnessOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isHardnessOf>))
+fof(axiom113,axiom,(![X,Y]:('isHardnessOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% SubObjectPropertyOf(<nSpace> <metaLink>)
+fof(axiom114,axiom,(![X0,X1]:('nSpace'(X0,X1)=>'metaLink'(X0,X1)))).
+% ObjectPropertyAssertion(<hasRestriction> <PSpace> <restriction_PSpace>)
+fof(axiom115,axiom,('hasRestriction'('pSpace','restriction_PSpace'))).
+% ObjectPropertyAssertion(<hasRestriction> <PSpace> <restriction_PSpace>)
+fof(axiom116,axiom,('http___www_w3_org_2002_07_owl_Thing'('pSpace'))).
+% ObjectPropertyAssertion(<hasRestriction> <PSpace> <restriction_PSpace>)
+fof(axiom117,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_PSpace'))).
+% Declaration(ObjectProperty(<sigma>))
+fof(axiom118,axiom,(![X,Y]:('sigma'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<sigma>))
+fof(axiom119,axiom,(![X,Y]:('sigma'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% SubObjectPropertyOf(<imposesUpperBound> <metaLink>)
+fof(axiom120,axiom,(![X0,X1]:('imposesUpperBound'(X0,X1)=>'metaLink'(X0,X1)))).
+% ObjectPropertyAssertion(<isHardFor_wrtLogSpace> <_2CnfSatisfiability> <P>)
+fof(axiom121,axiom,('isHardFor_wrtLogSpace'('_2CnfSatisfiability','p'))).
+% ObjectPropertyAssertion(<isHardFor_wrtLogSpace> <_2CnfSatisfiability> <P>)
+fof(axiom122,axiom,('http___www_w3_org_2002_07_owl_Thing'('_2CnfSatisfiability'))).
+% ObjectPropertyAssertion(<isHardFor_wrtLogSpace> <_2CnfSatisfiability> <P>)
+fof(axiom123,axiom,('http___www_w3_org_2002_07_owl_Thing'('p'))).
+% Declaration(ObjectProperty(<imposesUpperBound>))
+fof(axiom124,axiom,(![X,Y]:('imposesUpperBound'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<imposesUpperBound>))
+fof(axiom125,axiom,(![X,Y]:('imposesUpperBound'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(ObjectProperty(<isEqualTo>))
+fof(axiom126,axiom,(![X,Y]:('isEqualTo'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isEqualTo>))
+fof(axiom127,axiom,(![X,Y]:('isEqualTo'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ObjectPropertyAssertion(<isMemberOf> <_2CnfSatisfiability> <P>)
+fof(axiom128,axiom,('isMemberOf'('_2CnfSatisfiability','p'))).
+% ObjectPropertyAssertion(<isMemberOf> <_2CnfSatisfiability> <P>)
+fof(axiom129,axiom,('http___www_w3_org_2002_07_owl_Thing'('_2CnfSatisfiability'))).
+% ObjectPropertyAssertion(<isMemberOf> <_2CnfSatisfiability> <P>)
+fof(axiom130,axiom,('http___www_w3_org_2002_07_owl_Thing'('p'))).
+% Declaration(ObjectProperty(<reducesTo>))
+fof(axiom131,axiom,(![X,Y]:('reducesTo'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<reducesTo>))
+fof(axiom132,axiom,(![X,Y]:('reducesTo'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ClassAssertion(<ComplexityClass> <Sigma_P_2>)
+fof(axiom133,axiom,('complexityClass'('sigma_P_2'))).
+% ClassAssertion(<ComplexityClass> <Sigma_P_2>)
+fof(axiom134,axiom,('http___www_w3_org_2002_07_owl_Thing'('sigma_P_2'))).
+% SymmetricObjectProperty(<isClassOfComplementsFor>)
+fof(axiom135,axiom,(![X0,X1]:('isClassOfComplementsFor'(X0,X1)=>'isClassOfComplementsFor'(X1,X0)))).
+% ClassAssertion(<FunctionClass> <FL>)
+fof(axiom136,axiom,('functionClass'('fL'))).
+% ClassAssertion(<FunctionClass> <FL>)
+fof(axiom137,axiom,('http___www_w3_org_2002_07_owl_Thing'('fL'))).
+% ObjectPropertyAssertion(<isMemberOf> <QbfSatisfiability> <PSpace>)
+fof(axiom138,axiom,('isMemberOf'('qbfSatisfiability','pSpace'))).
+% ObjectPropertyAssertion(<isMemberOf> <QbfSatisfiability> <PSpace>)
+fof(axiom139,axiom,('http___www_w3_org_2002_07_owl_Thing'('qbfSatisfiability'))).
+% ObjectPropertyAssertion(<isMemberOf> <QbfSatisfiability> <PSpace>)
+fof(axiom140,axiom,('http___www_w3_org_2002_07_owl_Thing'('pSpace'))).
+% Declaration(NamedIndividual(<ph_level_1>))
+fof(axiom141,axiom,('http___www_w3_org_2002_07_owl_Thing'('ph_level_1'))).
+% Declaration(NamedIndividual(<BooleanCircuits>))
+fof(axiom142,axiom,('http___www_w3_org_2002_07_owl_Thing'('booleanCircuits'))).
+% SubObjectPropertyOf(<isSubClassOf_SavitchTheorem> <metaLink>)
+fof(axiom143,axiom,(![X0,X1]:('isSubClassOf_SavitchTheorem'(X0,X1)=>'metaLink'(X0,X1)))).
+% ObjectPropertyAssertion(<hasRestriction> <AC0> <restriction_AC0_size>)
+fof(axiom144,axiom,('hasRestriction'('aC0','restriction_AC0_size'))).
+% ObjectPropertyAssertion(<hasRestriction> <AC0> <restriction_AC0_size>)
+fof(axiom145,axiom,('http___www_w3_org_2002_07_owl_Thing'('aC0'))).
+% ObjectPropertyAssertion(<hasRestriction> <AC0> <restriction_AC0_size>)
+fof(axiom146,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_AC0_size'))).
+% ObjectPropertyAssertion(<hasRestriction> <ExpSpace> <restriction_ExpSpace>)
+fof(axiom147,axiom,('hasRestriction'('expSpace','restriction_ExpSpace'))).
+% ObjectPropertyAssertion(<hasRestriction> <ExpSpace> <restriction_ExpSpace>)
+fof(axiom148,axiom,('http___www_w3_org_2002_07_owl_Thing'('expSpace'))).
+% ObjectPropertyAssertion(<hasRestriction> <ExpSpace> <restriction_ExpSpace>)
+fof(axiom149,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_ExpSpace'))).
+% Declaration(NamedIndividual(<NExpSpace>))
+fof(axiom150,axiom,('http___www_w3_org_2002_07_owl_Thing'('nExpSpace'))).
+% Declaration(NamedIndividual(<TuringMachine>))
+fof(axiom151,axiom,('http___www_w3_org_2002_07_owl_Thing'('turingMachine'))).
+% ClassAssertion(<DecisionProblem> <_2CnfSatisfiability>)
+fof(axiom152,axiom,('decisionProblem'('_2CnfSatisfiability'))).
+% ClassAssertion(<DecisionProblem> <_2CnfSatisfiability>)
+fof(axiom153,axiom,('http___www_w3_org_2002_07_owl_Thing'('_2CnfSatisfiability'))).
+% ObjectPropertyAssertion(<pi> <Pi_P_2> <ph_level_2>)
+fof(axiom154,axiom,('pi'('pi_P_2','ph_level_2'))).
+% ObjectPropertyAssertion(<pi> <Pi_P_2> <ph_level_2>)
+fof(axiom155,axiom,('http___www_w3_org_2002_07_owl_Thing'('pi_P_2'))).
+% ObjectPropertyAssertion(<pi> <Pi_P_2> <ph_level_2>)
+fof(axiom156,axiom,('http___www_w3_org_2002_07_owl_Thing'('ph_level_2'))).
+% Declaration(NamedIndividual(<restriction_PTime>))
+fof(axiom157,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_PTime'))).
+% Declaration(Class(<ComplexityClass>))
+fof(axiom158,axiom,(![X]:('complexityClass'(X)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_ExpTime> <Time>)
+fof(axiom159,axiom,('restrictsMeasure'('restriction_ExpTime','time'))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_ExpTime> <Time>)
+fof(axiom160,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_ExpTime'))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_ExpTime> <Time>)
+fof(axiom161,axiom,('http___www_w3_org_2002_07_owl_Thing'('time'))).
+% Declaration(NamedIndividual(<NL>))
+fof(axiom162,axiom,('http___www_w3_org_2002_07_owl_Thing'('nL'))).
+% SubObjectPropertyOf(<sigma> <isOnLevel>)
+fof(axiom163,axiom,(![X0,X1]:('sigma'(X0,X1)=>'isOnLevel'(X0,X1)))).
+% ClassAssertion(<Restriction> <restriction_LogSpace>)
+fof(axiom164,axiom,('restriction'('restriction_LogSpace'))).
+% ClassAssertion(<Restriction> <restriction_LogSpace>)
+fof(axiom165,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_LogSpace'))).
+% ClassAssertion(<FunctionClass> <FP>)
+fof(axiom166,axiom,('functionClass'('fP'))).
+% ClassAssertion(<FunctionClass> <FP>)
+fof(axiom167,axiom,('http___www_w3_org_2002_07_owl_Thing'('fP'))).
+% ClassAssertion(<Restriction> <restriction_AC_size>)
+fof(axiom168,axiom,('restriction'('restriction_AC_size'))).
+% ClassAssertion(<Restriction> <restriction_AC_size>)
+fof(axiom169,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_AC_size'))).
+% ObjectPropertyAssertion(<isDefinedFor> <ExpSpace> <TuringMachine>)
+fof(axiom170,axiom,('isDefinedFor'('expSpace','turingMachine'))).
+% ObjectPropertyAssertion(<isDefinedFor> <ExpSpace> <TuringMachine>)
+fof(axiom171,axiom,('http___www_w3_org_2002_07_owl_Thing'('expSpace'))).
+% ObjectPropertyAssertion(<isDefinedFor> <ExpSpace> <TuringMachine>)
+fof(axiom172,axiom,('http___www_w3_org_2002_07_owl_Thing'('turingMachine'))).
+% ObjectPropertyRange(<extends> <ComplexityClass>)
+fof(axiom173,axiom,(![X0,X1]:('extends'(X0,X1)=>'complexityClass'(X1)))).
+% SubObjectPropertyOf(<isReducibleTo_inAC0> <isReducibleTo_inLogSpace>)
+fof(axiom174,axiom,(![X0,X1]:('isReducibleTo_inAC0'(X0,X1)=>'isReducibleTo_inLogSpace'(X0,X1)))).
+% SubObjectPropertyOf(<delta> <isOnLevel>)
+fof(axiom175,axiom,(![X0,X1]:('delta'(X0,X1)=>'isOnLevel'(X0,X1)))).
+% ObjectPropertyDomain(<lessLess> <Bound>)
+fof(axiom176,axiom,(![X0,X1]:('lessLess'(X0,X1)=>'bound'(X0)))).
+% Declaration(NamedIndividual(<ph_level_0>))
+fof(axiom177,axiom,('http___www_w3_org_2002_07_owl_Thing'('ph_level_0'))).
+% ObjectPropertyAssertion(<lessLess> <Poly> <Exp>)
+fof(axiom178,axiom,('lessLess'('poly','exp'))).
+% ObjectPropertyAssertion(<lessLess> <Poly> <Exp>)
+fof(axiom179,axiom,('http___www_w3_org_2002_07_owl_Thing'('poly'))).
+% ObjectPropertyAssertion(<lessLess> <Poly> <Exp>)
+fof(axiom180,axiom,('http___www_w3_org_2002_07_owl_Thing'('exp'))).
+% ObjectPropertyAssertion(<hasRestriction> <AC> <restriction_AC_size>)
+fof(axiom181,axiom,('hasRestriction'('aC','restriction_AC_size'))).
+% ObjectPropertyAssertion(<hasRestriction> <AC> <restriction_AC_size>)
+fof(axiom182,axiom,('http___www_w3_org_2002_07_owl_Thing'('aC'))).
+% ObjectPropertyAssertion(<hasRestriction> <AC> <restriction_AC_size>)
+fof(axiom183,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_AC_size'))).
+% SubObjectPropertyOf(<hasRestriction> <metaLink>)
+fof(axiom184,axiom,(![X0,X1]:('hasRestriction'(X0,X1)=>'metaLink'(X0,X1)))).
+% Declaration(ObjectProperty(<isHardFor_wrtAC0>))
+fof(axiom185,axiom,(![X,Y]:('isHardFor_wrtAC0'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isHardFor_wrtAC0>))
+fof(axiom186,axiom,(![X,Y]:('isHardFor_wrtAC0'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% SubObjectPropertyOf(<isOnLevel> <metaLink>)
+fof(axiom187,axiom,(![X0,X1]:('isOnLevel'(X0,X1)=>'metaLink'(X0,X1)))).
+% SubObjectPropertyOf(ObjectPropertyChain( <isFromHierarchy> ObjectInverseOf(<isUnionOf>) ) <isSubClassOf>)
+fof(axiom188,axiom,(![X0,X1]:(?[X2]:('isFromHierarchy'(X0,X2)&'isUnionOf'(X1,X2))=>'isSubClassOf'(X0,X1)))).
+% TransitiveObjectProperty(<lessLess>)
+fof(axiom189,axiom,(![X0,X1,X2]:(('lessLess'(X0,X1)&'lessLess'(X1,X2))=>'lessLess'(X0,X2)))).
+% Declaration(NamedIndividual(<FL>))
+fof(axiom190,axiom,('http___www_w3_org_2002_07_owl_Thing'('fL'))).
+% ClassAssertion(<Model> <TuringMachine>)
+fof(axiom191,axiom,('model'('turingMachine'))).
+% ClassAssertion(<Model> <TuringMachine>)
+fof(axiom192,axiom,('http___www_w3_org_2002_07_owl_Thing'('turingMachine'))).
+% Declaration(Class(<Model>))
+fof(axiom193,axiom,(![X]:('model'(X)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(NamedIndividual(<restriction_AC0_depth>))
+fof(axiom194,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_AC0_depth'))).
+% Declaration(ObjectProperty(<isReducibleTo_inLogSpace>))
+fof(axiom195,axiom,(![X,Y]:('isReducibleTo_inLogSpace'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isReducibleTo_inLogSpace>))
+fof(axiom196,axiom,(![X,Y]:('isReducibleTo_inLogSpace'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(NamedIndividual(<Poly>))
+fof(axiom197,axiom,('http___www_w3_org_2002_07_owl_Thing'('poly'))).
+% SubObjectPropertyOf(ObjectPropertyChain( <isOnLevel> <next> ObjectInverseOf(<isOnLevel>) ) <isSubClassOf>)
+fof(axiom198,axiom,(![X0,X1]:(?[X2,X3]:('isOnLevel'(X0,X2)&'next'(X2,X3)&'isOnLevel'(X1,X3))=>'isSubClassOf'(X0,X1)))).
+% ObjectPropertyAssertion(<isFunctionVersionOf> <FL> <L>)
+fof(axiom199,axiom,('isFunctionVersionOf'('fL','l'))).
+% ObjectPropertyAssertion(<isFunctionVersionOf> <FL> <L>)
+fof(axiom200,axiom,('http___www_w3_org_2002_07_owl_Thing'('fL'))).
+% ObjectPropertyAssertion(<isFunctionVersionOf> <FL> <L>)
+fof(axiom201,axiom,('http___www_w3_org_2002_07_owl_Thing'('l'))).
+% SubClassOf(ObjectSomeValuesFrom(<restrictsMeasure> ObjectOneOf(<Space>)) ObjectSomeValuesFrom(ObjectInverseOf(<hasRestriction_onSpace>) owl:Thing))
+fof(axiom202,axiom,(![X0]:(?[X1]:('restrictsMeasure'(X0,X1)&(X1='space'))=>?[X2]:('hasRestriction_onSpace'(X2,X0)&'http___www_w3_org_2002_07_owl_Thing'(X2))))).
+% FunctionalObjectProperty(<hasRestriction_onSpace>)
+fof(axiom203,axiom,(![X0,X1,X2]:(('hasRestriction_onSpace'(X0,X1)&'hasRestriction_onSpace'(X0,X2))=>(X1=X2)))).
+% Declaration(NamedIndividual(<Depth>))
+fof(axiom204,axiom,('http___www_w3_org_2002_07_owl_Thing'('depth'))).
+% Declaration(Class(<__sys_Label>))
+fof(axiom205,axiom,(![X]:('__sys_Label'(X)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(NamedIndividual(<Const>))
+fof(axiom206,axiom,('http___www_w3_org_2002_07_owl_Thing'('const'))).
+% SubObjectPropertyOf(ObjectPropertyChain( <sigma> ObjectInverseOf(<pi>) ) <isClassOfComplementsFor>)
+fof(axiom207,axiom,(![X0,X1]:(?[X2]:('sigma'(X0,X2)&'pi'(X1,X2))=>'isClassOfComplementsFor'(X0,X1)))).
+% ObjectPropertyRange(<hasRestriction> <Restriction>)
+fof(axiom208,axiom,(![X0,X1]:('hasRestriction'(X0,X1)=>'restriction'(X1)))).
+% SubClassOf(ObjectIntersectionOf(ObjectSomeValuesFrom(<hasRestriction_onTime> owl:Thing) ObjectSomeValuesFrom(<isDefinedFor> ObjectOneOf(<TuringMachine>))) ObjectSomeValuesFrom(<hasRestriction_unique_onTime_TM> owl:Thing))
+fof(axiom209,axiom,(![X0]:((?[X1]:('hasRestriction_onTime'(X0,X1)&'http___www_w3_org_2002_07_owl_Thing'(X1))&?[X2]:('isDefinedFor'(X0,X2)&(X2='turingMachine')))=>?[X3]:('hasRestriction_unique_onTime_TM'(X0,X3)&'http___www_w3_org_2002_07_owl_Thing'(X3))))).
+% ClassAssertion(<LevelOfHierarhy> <ph_level_0>)
+fof(axiom210,axiom,('levelOfHierarhy'('ph_level_0'))).
+% ClassAssertion(<LevelOfHierarhy> <ph_level_0>)
+fof(axiom211,axiom,('http___www_w3_org_2002_07_owl_Thing'('ph_level_0'))).
+% SubClassOf(Annotation(rdfs:comment "Savitch's Theorem"^^xsd:string) ObjectSomeValuesFrom(<extendsByNondeterminism> <__sys_SavitchCompatible>) ObjectSomeValuesFrom(<isSubClassOf_SavitchTheorem> owl:Thing))
+fof(axiom212,axiom,(![X0]:(?[X1]:('extendsByNondeterminism'(X0,X1)&'__sys_SavitchCompatible'(X1))=>?[X2]:('isSubClassOf_SavitchTheorem'(X0,X2)&'http___www_w3_org_2002_07_owl_Thing'(X2))))).
+% Declaration(Class(<DecisionProblem>))
+fof(axiom213,axiom,(![X]:('decisionProblem'(X)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% ObjectPropertyDomain(<imposesUpperBound> <Restriction>)
+fof(axiom214,axiom,(![X0,X1]:('imposesUpperBound'(X0,X1)=>'restriction'(X0)))).
+% Declaration(ObjectProperty(<pi>))
+fof(axiom215,axiom,(![X,Y]:('pi'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<pi>))
+fof(axiom216,axiom,(![X,Y]:('pi'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(ObjectProperty(<nTime>))
+fof(axiom217,axiom,(![X,Y]:('nTime'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<nTime>))
+fof(axiom218,axiom,(![X,Y]:('nTime'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(Class(<Bound>))
+fof(axiom219,axiom,(![X]:('bound'(X)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_AC0_size> <Size>)
+fof(axiom220,axiom,('restrictsMeasure'('restriction_AC0_size','size'))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_AC0_size> <Size>)
+fof(axiom221,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_AC0_size'))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_AC0_size> <Size>)
+fof(axiom222,axiom,('http___www_w3_org_2002_07_owl_Thing'('size'))).
+% ObjectPropertyDomain(<isDefinedFor> <ComplexityClass>)
+fof(axiom223,axiom,(![X0,X1]:('isDefinedFor'(X0,X1)=>'complexityClass'(X0)))).
+% Declaration(ObjectProperty(<isHardnessFor>))
+fof(axiom224,axiom,(![X,Y]:('isHardnessFor'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isHardnessFor>))
+fof(axiom225,axiom,(![X,Y]:('isHardnessFor'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ClassAssertion(<DecisionProblem> <UndirectedReachability>)
+fof(axiom226,axiom,('decisionProblem'('undirectedReachability'))).
+% ClassAssertion(<DecisionProblem> <UndirectedReachability>)
+fof(axiom227,axiom,('http___www_w3_org_2002_07_owl_Thing'('undirectedReachability'))).
+% Declaration(NamedIndividual(<restriction_ExpTime>))
+fof(axiom228,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_ExpTime'))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_ExpTime> <Exp>)
+fof(axiom229,axiom,('imposesUpperBound'('restriction_ExpTime','exp'))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_ExpTime> <Exp>)
+fof(axiom230,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_ExpTime'))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_ExpTime> <Exp>)
+fof(axiom231,axiom,('http___www_w3_org_2002_07_owl_Thing'('exp'))).
+% Declaration(ObjectProperty(<isOnLevel>))
+fof(axiom232,axiom,(![X,Y]:('isOnLevel'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isOnLevel>))
+fof(axiom233,axiom,(![X,Y]:('isOnLevel'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% InverseObjectProperties(<isSubClassOf> <isSuperClassOf>)
+fof(axiom234,axiom,(![X0,X1]:('isSubClassOf'(X0,X1)<=>'isSuperClassOf'(X1,X0)))).
+% ClassAssertion(<Restriction> <restriction_PTime>)
+fof(axiom235,axiom,('restriction'('restriction_PTime'))).
+% ClassAssertion(<Restriction> <restriction_PTime>)
+fof(axiom236,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_PTime'))).
+% Declaration(NamedIndividual(<ph_level_2>))
+fof(axiom237,axiom,('http___www_w3_org_2002_07_owl_Thing'('ph_level_2'))).
+% Declaration(Class(<MetaNode>))
+fof(axiom238,axiom,(![X]:('metaNode'(X)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% ObjectPropertyAssertion(<extendsByNondeterminism> <NExpSpace> <ExpSpace>)
+fof(axiom239,axiom,('extendsByNondeterminism'('nExpSpace','expSpace'))).
+% ObjectPropertyAssertion(<extendsByNondeterminism> <NExpSpace> <ExpSpace>)
+fof(axiom240,axiom,('http___www_w3_org_2002_07_owl_Thing'('nExpSpace'))).
+% ObjectPropertyAssertion(<extendsByNondeterminism> <NExpSpace> <ExpSpace>)
+fof(axiom241,axiom,('http___www_w3_org_2002_07_owl_Thing'('expSpace'))).
+% Declaration(NamedIndividual(<restriction_AC_depth>))
+fof(axiom242,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_AC_depth'))).
+% ObjectPropertyRange(<isHardFor> <ComplexityClass>)
+fof(axiom243,axiom,(![X0,X1]:('isHardFor'(X0,X1)=>'complexityClass'(X1)))).
+% ClassAssertion(<FunctionClass> <FAC0>)
+fof(axiom244,axiom,('functionClass'('fAC0'))).
+% ClassAssertion(<FunctionClass> <FAC0>)
+fof(axiom245,axiom,('http___www_w3_org_2002_07_owl_Thing'('fAC0'))).
+% SubObjectPropertyOf(<isReducibleTo_inPolyTime> <isReducibleTo>)
+fof(axiom246,axiom,(![X0,X1]:('isReducibleTo_inPolyTime'(X0,X1)=>'isReducibleTo'(X0,X1)))).
+% ObjectPropertyAssertion(<isLevelOf> <ph_level_0> <ph>)
+fof(axiom247,axiom,('isLevelOf'('ph_level_0','ph'))).
+% ObjectPropertyAssertion(<isLevelOf> <ph_level_0> <ph>)
+fof(axiom248,axiom,('http___www_w3_org_2002_07_owl_Thing'('ph_level_0'))).
+% ObjectPropertyAssertion(<isLevelOf> <ph_level_0> <ph>)
+fof(axiom249,axiom,('http___www_w3_org_2002_07_owl_Thing'('ph'))).
+% ObjectPropertyAssertion(<next> <ph_level_1> <ph_level_2>)
+fof(axiom250,axiom,('next'('ph_level_1','ph_level_2'))).
+% ObjectPropertyAssertion(<next> <ph_level_1> <ph_level_2>)
+fof(axiom251,axiom,('http___www_w3_org_2002_07_owl_Thing'('ph_level_1'))).
+% ObjectPropertyAssertion(<next> <ph_level_1> <ph_level_2>)
+fof(axiom252,axiom,('http___www_w3_org_2002_07_owl_Thing'('ph_level_2'))).
+% ObjectPropertyDomain(<isMemberOf> <Function>)
+fof(axiom253,axiom,(![X0,X1]:('isMemberOf'(X0,X1)=>'function'(X0)))).
+% ObjectPropertyRange(<isMemberOf> <FunctionClass>)
+fof(axiom254,axiom,(![X0,X1]:('isMemberOf'(X0,X1)=>'functionClass'(X1)))).
+% Declaration(ObjectProperty(<extendsByNondeterminism>))
+fof(axiom255,axiom,(![X,Y]:('extendsByNondeterminism'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<extendsByNondeterminism>))
+fof(axiom256,axiom,(![X,Y]:('extendsByNondeterminism'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ObjectPropertyAssertion(<next> <ph_level_0> <ph_level_1>)
+fof(axiom257,axiom,('next'('ph_level_0','ph_level_1'))).
+% ObjectPropertyAssertion(<next> <ph_level_0> <ph_level_1>)
+fof(axiom258,axiom,('http___www_w3_org_2002_07_owl_Thing'('ph_level_0'))).
+% ObjectPropertyAssertion(<next> <ph_level_0> <ph_level_1>)
+fof(axiom259,axiom,('http___www_w3_org_2002_07_owl_Thing'('ph_level_1'))).
+% Declaration(ObjectProperty(<restrictsMeasure>))
+fof(axiom260,axiom,(![X,Y]:('restrictsMeasure'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<restrictsMeasure>))
+fof(axiom261,axiom,(![X,Y]:('restrictsMeasure'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ClassAssertion(<Bound> <PolyLog>)
+fof(axiom262,axiom,('bound'('polyLog'))).
+% ClassAssertion(<Bound> <PolyLog>)
+fof(axiom263,axiom,('http___www_w3_org_2002_07_owl_Thing'('polyLog'))).
+% ObjectPropertyRange(<isDefinedFor> <Model>)
+fof(axiom264,axiom,(![X0,X1]:('isDefinedFor'(X0,X1)=>'model'(X1)))).
+% ObjectPropertyAssertion(<hasRestriction> <AC> <restriction_AC_depth>)
+fof(axiom265,axiom,('hasRestriction'('aC','restriction_AC_depth'))).
+% ObjectPropertyAssertion(<hasRestriction> <AC> <restriction_AC_depth>)
+fof(axiom266,axiom,('http___www_w3_org_2002_07_owl_Thing'('aC'))).
+% ObjectPropertyAssertion(<hasRestriction> <AC> <restriction_AC_depth>)
+fof(axiom267,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_AC_depth'))).
+% Declaration(ObjectProperty(<isUnionOf>))
+fof(axiom268,axiom,(![X,Y]:('isUnionOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isUnionOf>))
+fof(axiom269,axiom,(![X,Y]:('isUnionOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(ObjectProperty(<isLevelOf>))
+fof(axiom270,axiom,(![X,Y]:('isLevelOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isLevelOf>))
+fof(axiom271,axiom,(![X,Y]:('isLevelOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(NamedIndividual(<ph>))
+fof(axiom272,axiom,('http___www_w3_org_2002_07_owl_Thing'('ph'))).
+% Declaration(NamedIndividual(<PH>))
+fof(axiom273,axiom,('http___www_w3_org_2002_07_owl_Thing'('pH'))).
+% ObjectPropertyAssertion(<pi> <P> <ph_level_0>)
+fof(axiom274,axiom,('pi'('p','ph_level_0'))).
+% ObjectPropertyAssertion(<pi> <P> <ph_level_0>)
+fof(axiom275,axiom,('http___www_w3_org_2002_07_owl_Thing'('p'))).
+% ObjectPropertyAssertion(<pi> <P> <ph_level_0>)
+fof(axiom276,axiom,('http___www_w3_org_2002_07_owl_Thing'('ph_level_0'))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_PTime> <Time>)
+fof(axiom277,axiom,('restrictsMeasure'('restriction_PTime','time'))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_PTime> <Time>)
+fof(axiom278,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_PTime'))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_PTime> <Time>)
+fof(axiom279,axiom,('http___www_w3_org_2002_07_owl_Thing'('time'))).
+% Declaration(NamedIndividual(<coNP>))
+fof(axiom280,axiom,('http___www_w3_org_2002_07_owl_Thing'('coNP'))).
+% ClassAssertion(<ComplexityClass> <AC0>)
+fof(axiom281,axiom,('complexityClass'('aC0'))).
+% ClassAssertion(<ComplexityClass> <AC0>)
+fof(axiom282,axiom,('http___www_w3_org_2002_07_owl_Thing'('aC0'))).
+% ClassAssertion(<Restriction> <restriction_ExpSpace>)
+fof(axiom283,axiom,('restriction'('restriction_ExpSpace'))).
+% ClassAssertion(<Restriction> <restriction_ExpSpace>)
+fof(axiom284,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_ExpSpace'))).
+% Declaration(NamedIndividual(<AC>))
+fof(axiom285,axiom,('http___www_w3_org_2002_07_owl_Thing'('aC'))).
+% Declaration(ObjectProperty(<isDefinedFor>))
+fof(axiom286,axiom,(![X,Y]:('isDefinedFor'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isDefinedFor>))
+fof(axiom287,axiom,(![X,Y]:('isDefinedFor'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ObjectPropertyAssertion(<isMemberOf> <DirectedReachability> <NL>)
+fof(axiom288,axiom,('isMemberOf'('directedReachability','nL'))).
+% ObjectPropertyAssertion(<isMemberOf> <DirectedReachability> <NL>)
+fof(axiom289,axiom,('http___www_w3_org_2002_07_owl_Thing'('directedReachability'))).
+% ObjectPropertyAssertion(<isMemberOf> <DirectedReachability> <NL>)
+fof(axiom290,axiom,('http___www_w3_org_2002_07_owl_Thing'('nL'))).
+% Declaration(NamedIndividual(<ExpTime>))
+fof(axiom291,axiom,('http___www_w3_org_2002_07_owl_Thing'('expTime'))).
+% ClassAssertion(<__sys_SavitchCompatible> <Poly>)
+fof(axiom292,axiom,('__sys_SavitchCompatible'('poly'))).
+% ClassAssertion(<__sys_SavitchCompatible> <Poly>)
+fof(axiom293,axiom,('http___www_w3_org_2002_07_owl_Thing'('poly'))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_AC0_size> <Poly>)
+fof(axiom294,axiom,('imposesUpperBound'('restriction_AC0_size','poly'))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_AC0_size> <Poly>)
+fof(axiom295,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_AC0_size'))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_AC0_size> <Poly>)
+fof(axiom296,axiom,('http___www_w3_org_2002_07_owl_Thing'('poly'))).
+% ClassAssertion(<Bound> <Log>)
+fof(axiom297,axiom,('bound'('log'))).
+% ClassAssertion(<Bound> <Log>)
+fof(axiom298,axiom,('http___www_w3_org_2002_07_owl_Thing'('log'))).
+% ObjectPropertyAssertion(<isSubClassOf> <AC0> <AC>)
+fof(axiom299,axiom,('isSubClassOf'('aC0','aC'))).
+% ObjectPropertyAssertion(<isSubClassOf> <AC0> <AC>)
+fof(axiom300,axiom,('http___www_w3_org_2002_07_owl_Thing'('aC0'))).
+% ObjectPropertyAssertion(<isSubClassOf> <AC0> <AC>)
+fof(axiom301,axiom,('http___www_w3_org_2002_07_owl_Thing'('aC'))).
+% ObjectPropertyDomain(<hasRestriction> <ComplexityClass>)
+fof(axiom302,axiom,(![X0,X1]:('hasRestriction'(X0,X1)=>'complexityClass'(X0)))).
+% Declaration(NamedIndividual(<restriction_AC0_size>))
+fof(axiom303,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_AC0_size'))).
+% SubObjectPropertyOf(ObjectPropertyChain( <extendsByNondeterminism> <dTime> ) <nTime>)
+fof(axiom304,axiom,(![X0,X1]:(?[X2]:('extendsByNondeterminism'(X0,X2)&'dTime'(X2,X1))=>'nTime'(X0,X1)))).
+% SubObjectPropertyOf(<isSubClassOf_SavitchTheorem> <extendsByNondeterminism>)
+fof(axiom305,axiom,(![X0,X1]:('isSubClassOf_SavitchTheorem'(X0,X1)=>'extendsByNondeterminism'(X0,X1)))).
+% ObjectPropertyAssertion(<isDefinedFor> <PSpace> <TuringMachine>)
+fof(axiom306,axiom,('isDefinedFor'('pSpace','turingMachine'))).
+% ObjectPropertyAssertion(<isDefinedFor> <PSpace> <TuringMachine>)
+fof(axiom307,axiom,('http___www_w3_org_2002_07_owl_Thing'('pSpace'))).
+% ObjectPropertyAssertion(<isDefinedFor> <PSpace> <TuringMachine>)
+fof(axiom308,axiom,('http___www_w3_org_2002_07_owl_Thing'('turingMachine'))).
+% ObjectPropertyAssertion(<isMemberOf> <UndirectedReachability> <L>)
+fof(axiom309,axiom,('isMemberOf'('undirectedReachability','l'))).
+% ObjectPropertyAssertion(<isMemberOf> <UndirectedReachability> <L>)
+fof(axiom310,axiom,('http___www_w3_org_2002_07_owl_Thing'('undirectedReachability'))).
+% ObjectPropertyAssertion(<isMemberOf> <UndirectedReachability> <L>)
+fof(axiom311,axiom,('http___www_w3_org_2002_07_owl_Thing'('l'))).
+% SubObjectPropertyOf(<isReducibleTo_inLogSpace> <isReducibleTo_inPolyTime>)
+fof(axiom312,axiom,(![X0,X1]:('isReducibleTo_inLogSpace'(X0,X1)=>'isReducibleTo_inPolyTime'(X0,X1)))).
+% SubClassOf(<Hierarchy> <MetaNode>)
+fof(axiom313,axiom,(![X0]:('hierarchy'(X0)=>'metaNode'(X0)))).
+% SubClassOf(ObjectSomeValuesFrom(ObjectInverseOf(<lessLess>) <__sys_SavitchCompatible>) <__sys_SavitchCompatible>)
+fof(axiom314,axiom,(![X0]:(?[X1]:('lessLess'(X1,X0)&'__sys_SavitchCompatible'(X1))=>'__sys_SavitchCompatible'(X0)))).
+% ObjectPropertyAssertion(<sigma> <NP> <ph_level_1>)
+fof(axiom315,axiom,('sigma'('nP','ph_level_1'))).
+% ObjectPropertyAssertion(<sigma> <NP> <ph_level_1>)
+fof(axiom316,axiom,('http___www_w3_org_2002_07_owl_Thing'('nP'))).
+% ObjectPropertyAssertion(<sigma> <NP> <ph_level_1>)
+fof(axiom317,axiom,('http___www_w3_org_2002_07_owl_Thing'('ph_level_1'))).
+% SubClassOf(ObjectSomeValuesFrom(<dSpace> <__sys_SavitchCompatible>) <__sys_SavitchCompatible>)
+fof(axiom318,axiom,(![X0]:(?[X1]:('dSpace'(X0,X1)&'__sys_SavitchCompatible'(X1))=>'__sys_SavitchCompatible'(X0)))).
+% ClassAssertion(<ComplexityClass> <P>)
+fof(axiom319,axiom,('complexityClass'('p'))).
+% ClassAssertion(<ComplexityClass> <P>)
+fof(axiom320,axiom,('http___www_w3_org_2002_07_owl_Thing'('p'))).
+% ObjectPropertyAssertion(<hasRestriction> <AC0> <restriction_AC0_depth>)
+fof(axiom321,axiom,('hasRestriction'('aC0','restriction_AC0_depth'))).
+% ObjectPropertyAssertion(<hasRestriction> <AC0> <restriction_AC0_depth>)
+fof(axiom322,axiom,('http___www_w3_org_2002_07_owl_Thing'('aC0'))).
+% ObjectPropertyAssertion(<hasRestriction> <AC0> <restriction_AC0_depth>)
+fof(axiom323,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_AC0_depth'))).
+% ObjectPropertyDomain(<restrictsMeasure> <Restriction>)
+fof(axiom324,axiom,(![X0,X1]:('restrictsMeasure'(X0,X1)=>'restriction'(X0)))).
+% Declaration(NamedIndividual(<L>))
+fof(axiom325,axiom,('http___www_w3_org_2002_07_owl_Thing'('l'))).
+% ClassAssertion(<Restriction> <restriction_ExpTime>)
+fof(axiom326,axiom,('restriction'('restriction_ExpTime'))).
+% ClassAssertion(<Restriction> <restriction_ExpTime>)
+fof(axiom327,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_ExpTime'))).
+% Declaration(NamedIndividual(<NP>))
+fof(axiom328,axiom,('http___www_w3_org_2002_07_owl_Thing'('nP'))).
+% Declaration(ObjectProperty(<nSpace>))
+fof(axiom329,axiom,(![X,Y]:('nSpace'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<nSpace>))
+fof(axiom330,axiom,(![X,Y]:('nSpace'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ObjectPropertyAssertion(<hasRestriction> <L> <restriction_LogSpace>)
+fof(axiom331,axiom,('hasRestriction'('l','restriction_LogSpace'))).
+% ObjectPropertyAssertion(<hasRestriction> <L> <restriction_LogSpace>)
+fof(axiom332,axiom,('http___www_w3_org_2002_07_owl_Thing'('l'))).
+% ObjectPropertyAssertion(<hasRestriction> <L> <restriction_LogSpace>)
+fof(axiom333,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_LogSpace'))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_LogSpace> <Space>)
+fof(axiom334,axiom,('restrictsMeasure'('restriction_LogSpace','space'))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_LogSpace> <Space>)
+fof(axiom335,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_LogSpace'))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_LogSpace> <Space>)
+fof(axiom336,axiom,('http___www_w3_org_2002_07_owl_Thing'('space'))).
+% ObjectPropertyAssertion(<isHardFor_wrtPolyTime> <QbfSatisfiability> <PSpace>)
+fof(axiom337,axiom,('isHardFor_wrtPolyTime'('qbfSatisfiability','pSpace'))).
+% ObjectPropertyAssertion(<isHardFor_wrtPolyTime> <QbfSatisfiability> <PSpace>)
+fof(axiom338,axiom,('http___www_w3_org_2002_07_owl_Thing'('qbfSatisfiability'))).
+% ObjectPropertyAssertion(<isHardFor_wrtPolyTime> <QbfSatisfiability> <PSpace>)
+fof(axiom339,axiom,('http___www_w3_org_2002_07_owl_Thing'('pSpace'))).
+% ClassAssertion(<Hierarchy> <ph>)
+fof(axiom340,axiom,('hierarchy'('ph'))).
+% ClassAssertion(<Hierarchy> <ph>)
+fof(axiom341,axiom,('http___www_w3_org_2002_07_owl_Thing'('ph'))).
+% SubClassOf(<ComplexityClass> <FunctionClass>)
+fof(axiom342,axiom,(![X0]:('complexityClass'(X0)=>'functionClass'(X0)))).
+% Declaration(NamedIndividual(<DirectedReachability>))
+fof(axiom343,axiom,('http___www_w3_org_2002_07_owl_Thing'('directedReachability'))).
+% TransitiveObjectProperty(<isSubClassOf>)
+fof(axiom344,axiom,(![X0,X1,X2]:(('isSubClassOf'(X0,X1)&'isSubClassOf'(X1,X2))=>'isSubClassOf'(X0,X2)))).
+% ClassAssertion(<DecisionProblem> <DirectedReachability>)
+fof(axiom345,axiom,('decisionProblem'('directedReachability'))).
+% ClassAssertion(<DecisionProblem> <DirectedReachability>)
+fof(axiom346,axiom,('http___www_w3_org_2002_07_owl_Thing'('directedReachability'))).
+% Declaration(NamedIndividual(<restriction_PSpace>))
+fof(axiom347,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_PSpace'))).
+% ObjectPropertyAssertion(<isDefinedFor> <ExpTime> <TuringMachine>)
+fof(axiom348,axiom,('isDefinedFor'('expTime','turingMachine'))).
+% ObjectPropertyAssertion(<isDefinedFor> <ExpTime> <TuringMachine>)
+fof(axiom349,axiom,('http___www_w3_org_2002_07_owl_Thing'('expTime'))).
+% ObjectPropertyAssertion(<isDefinedFor> <ExpTime> <TuringMachine>)
+fof(axiom350,axiom,('http___www_w3_org_2002_07_owl_Thing'('turingMachine'))).
+% ObjectPropertyAssertion(<extendsByNondeterminism> <NPSpace> <PSpace>)
+fof(axiom351,axiom,('extendsByNondeterminism'('nPSpace','pSpace'))).
+% ObjectPropertyAssertion(<extendsByNondeterminism> <NPSpace> <PSpace>)
+fof(axiom352,axiom,('http___www_w3_org_2002_07_owl_Thing'('nPSpace'))).
+% ObjectPropertyAssertion(<extendsByNondeterminism> <NPSpace> <PSpace>)
+fof(axiom353,axiom,('http___www_w3_org_2002_07_owl_Thing'('pSpace'))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_PSpace> <Space>)
+fof(axiom354,axiom,('restrictsMeasure'('restriction_PSpace','space'))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_PSpace> <Space>)
+fof(axiom355,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_PSpace'))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_PSpace> <Space>)
+fof(axiom356,axiom,('http___www_w3_org_2002_07_owl_Thing'('space'))).
+% Declaration(Class(<LevelOfHierarhy>))
+fof(axiom357,axiom,(![X]:('levelOfHierarhy'(X)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% ObjectPropertyRange(<lessLess> <Bound>)
+fof(axiom358,axiom,(![X0,X1]:('lessLess'(X0,X1)=>'bound'(X1)))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_ExpSpace> <Space>)
+fof(axiom359,axiom,('restrictsMeasure'('restriction_ExpSpace','space'))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_ExpSpace> <Space>)
+fof(axiom360,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_ExpSpace'))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_ExpSpace> <Space>)
+fof(axiom361,axiom,('http___www_w3_org_2002_07_owl_Thing'('space'))).
+% ObjectPropertyAssertion(<pi> <coNP> <ph_level_1>)
+fof(axiom362,axiom,('pi'('coNP','ph_level_1'))).
+% ObjectPropertyAssertion(<pi> <coNP> <ph_level_1>)
+fof(axiom363,axiom,('http___www_w3_org_2002_07_owl_Thing'('coNP'))).
+% ObjectPropertyAssertion(<pi> <coNP> <ph_level_1>)
+fof(axiom364,axiom,('http___www_w3_org_2002_07_owl_Thing'('ph_level_1'))).
+% SubObjectPropertyOf(<hasRestriction_onSpace> <hasRestriction>)
+fof(axiom365,axiom,(![X0,X1]:('hasRestriction_onSpace'(X0,X1)=>'hasRestriction'(X0,X1)))).
+% FunctionalObjectProperty(<imposesUpperBound>)
+fof(axiom366,axiom,(![X0,X1,X2]:(('imposesUpperBound'(X0,X1)&'imposesUpperBound'(X0,X2))=>(X1=X2)))).
+% Declaration(NamedIndividual(<restriction_AC_size>))
+fof(axiom367,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_AC_size'))).
+% InverseFunctionalObjectProperty(<extendsByNondeterminism>)
+fof(axiom368,axiom,(![X0,X1,X2]:(('extendsByNondeterminism'(X1,X0)&'extendsByNondeterminism'(X2,X0))=>(X1=X2)))).
+% ClassAssertion(<Measure> <Time>)
+fof(axiom369,axiom,('measure'('time'))).
+% ClassAssertion(<Measure> <Time>)
+fof(axiom370,axiom,('http___www_w3_org_2002_07_owl_Thing'('time'))).
+% SubObjectPropertyOf(<hasRestriction_unique_onSpace_TM> <hasRestriction_onSpace>)
+fof(axiom371,axiom,(![X0,X1]:('hasRestriction_unique_onSpace_TM'(X0,X1)=>'hasRestriction_onSpace'(X0,X1)))).
+% ObjectPropertyAssertion(<isFunctionVersionOf> <FP> <P>)
+fof(axiom372,axiom,('isFunctionVersionOf'('fP','p'))).
+% ObjectPropertyAssertion(<isFunctionVersionOf> <FP> <P>)
+fof(axiom373,axiom,('http___www_w3_org_2002_07_owl_Thing'('fP'))).
+% ObjectPropertyAssertion(<isFunctionVersionOf> <FP> <P>)
+fof(axiom374,axiom,('http___www_w3_org_2002_07_owl_Thing'('p'))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_LogSpace> <Log>)
+fof(axiom375,axiom,('imposesUpperBound'('restriction_LogSpace','log'))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_LogSpace> <Log>)
+fof(axiom376,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_LogSpace'))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_LogSpace> <Log>)
+fof(axiom377,axiom,('http___www_w3_org_2002_07_owl_Thing'('log'))).
+% Declaration(NamedIndividual(<Pi_P_2>))
+fof(axiom378,axiom,('http___www_w3_org_2002_07_owl_Thing'('pi_P_2'))).
+% FunctionalObjectProperty(<restrictsMeasure>)
+fof(axiom379,axiom,(![X0,X1,X2]:(('restrictsMeasure'(X0,X1)&'restrictsMeasure'(X0,X2))=>(X1=X2)))).
+% Declaration(ObjectProperty(<dSpace>))
+fof(axiom380,axiom,(![X,Y]:('dSpace'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<dSpace>))
+fof(axiom381,axiom,(![X,Y]:('dSpace'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% SubClassOf(<Restriction> <MetaNode>)
+fof(axiom382,axiom,(![X0]:('restriction'(X0)=>'metaNode'(X0)))).
+% SubClassOf(ObjectIntersectionOf(ObjectSomeValuesFrom(<hasRestriction_onSpace> owl:Thing) ObjectSomeValuesFrom(<isDefinedFor> ObjectOneOf(<TuringMachine>))) ObjectSomeValuesFrom(<hasRestriction_unique_onSpace_TM> owl:Thing))
+fof(axiom383,axiom,(![X0]:((?[X1]:('hasRestriction_onSpace'(X0,X1)&'http___www_w3_org_2002_07_owl_Thing'(X1))&?[X2]:('isDefinedFor'(X0,X2)&(X2='turingMachine')))=>?[X3]:('hasRestriction_unique_onSpace_TM'(X0,X3)&'http___www_w3_org_2002_07_owl_Thing'(X3))))).
+% Declaration(NamedIndividual(<AC0>))
+fof(axiom384,axiom,('http___www_w3_org_2002_07_owl_Thing'('aC0'))).
+% ClassAssertion(<Bound> <Const>)
+fof(axiom385,axiom,('bound'('const'))).
+% ClassAssertion(<Bound> <Const>)
+fof(axiom386,axiom,('http___www_w3_org_2002_07_owl_Thing'('const'))).
+% Declaration(NamedIndividual(<Size>))
+fof(axiom387,axiom,('http___www_w3_org_2002_07_owl_Thing'('size'))).
+% ClassAssertion(<ComplexityClass> <AC>)
+fof(axiom388,axiom,('complexityClass'('aC'))).
+% ClassAssertion(<ComplexityClass> <AC>)
+fof(axiom389,axiom,('http___www_w3_org_2002_07_owl_Thing'('aC'))).
+% ObjectPropertyAssertion(<lessLess> <Log> <PolyLog>)
+fof(axiom390,axiom,('lessLess'('log','polyLog'))).
+% ObjectPropertyAssertion(<lessLess> <Log> <PolyLog>)
+fof(axiom391,axiom,('http___www_w3_org_2002_07_owl_Thing'('log'))).
+% ObjectPropertyAssertion(<lessLess> <Log> <PolyLog>)
+fof(axiom392,axiom,('http___www_w3_org_2002_07_owl_Thing'('polyLog'))).
+% SubObjectPropertyOf(<isHardFor_wrtLogSpace> <isHardFor_wrtPolyTime>)
+fof(axiom393,axiom,(![X0,X1]:('isHardFor_wrtLogSpace'(X0,X1)=>'isHardFor_wrtPolyTime'(X0,X1)))).
+% ObjectPropertyAssertion(<isDefinedFor> <AC0> <BooleanCircuits>)
+fof(axiom394,axiom,('isDefinedFor'('aC0','booleanCircuits'))).
+% ObjectPropertyAssertion(<isDefinedFor> <AC0> <BooleanCircuits>)
+fof(axiom395,axiom,('http___www_w3_org_2002_07_owl_Thing'('aC0'))).
+% ObjectPropertyAssertion(<isDefinedFor> <AC0> <BooleanCircuits>)
+fof(axiom396,axiom,('http___www_w3_org_2002_07_owl_Thing'('booleanCircuits'))).
+% Declaration(NamedIndividual(<FP>))
+fof(axiom397,axiom,('http___www_w3_org_2002_07_owl_Thing'('fP'))).
+% FunctionalObjectProperty(<hasRestriction_unique_onTime_TM>)
+fof(axiom398,axiom,(![X0,X1,X2]:(('hasRestriction_unique_onTime_TM'(X0,X1)&'hasRestriction_unique_onTime_TM'(X0,X2))=>(X1=X2)))).
+% SubObjectPropertyOf(<isLevelOf> <metaLink>)
+fof(axiom399,axiom,(![X0,X1]:('isLevelOf'(X0,X1)=>'metaLink'(X0,X1)))).
+% ClassAssertion(<Measure> <Size>)
+fof(axiom400,axiom,('measure'('size'))).
+% ClassAssertion(<Measure> <Size>)
+fof(axiom401,axiom,('http___www_w3_org_2002_07_owl_Thing'('size'))).
+% TransitiveObjectProperty(<isStrictSubClassOf>)
+fof(axiom402,axiom,(![X0,X1,X2]:(('isStrictSubClassOf'(X0,X1)&'isStrictSubClassOf'(X1,X2))=>'isStrictSubClassOf'(X0,X2)))).
+% ObjectPropertyAssertion(<lessLess> <PolyLog> <Poly>)
+fof(axiom403,axiom,('lessLess'('polyLog','poly'))).
+% ObjectPropertyAssertion(<lessLess> <PolyLog> <Poly>)
+fof(axiom404,axiom,('http___www_w3_org_2002_07_owl_Thing'('polyLog'))).
+% ObjectPropertyAssertion(<lessLess> <PolyLog> <Poly>)
+fof(axiom405,axiom,('http___www_w3_org_2002_07_owl_Thing'('poly'))).
+% ObjectPropertyAssertion(<isUnionOf> <PH> <ph>)
+fof(axiom406,axiom,('isUnionOf'('pH','ph'))).
+% ObjectPropertyAssertion(<isUnionOf> <PH> <ph>)
+fof(axiom407,axiom,('http___www_w3_org_2002_07_owl_Thing'('pH'))).
+% ObjectPropertyAssertion(<isUnionOf> <PH> <ph>)
+fof(axiom408,axiom,('http___www_w3_org_2002_07_owl_Thing'('ph'))).
+% Declaration(Class(<Function>))
+fof(axiom409,axiom,(![X]:('function'(X)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% SubObjectPropertyOf(<restrictsMeasure> <metaLink>)
+fof(axiom410,axiom,(![X0,X1]:('restrictsMeasure'(X0,X1)=>'metaLink'(X0,X1)))).
+% SubObjectPropertyOf(<dSpace> <metaLink>)
+fof(axiom411,axiom,(![X0,X1]:('dSpace'(X0,X1)=>'metaLink'(X0,X1)))).
+% ClassAssertion(<DecisionProblem> <BooleanSatisfiability>)
+fof(axiom412,axiom,('decisionProblem'('booleanSatisfiability'))).
+% ClassAssertion(<DecisionProblem> <BooleanSatisfiability>)
+fof(axiom413,axiom,('http___www_w3_org_2002_07_owl_Thing'('booleanSatisfiability'))).
+% ClassAssertion(<DecisionProblem> <_3Colouring>)
+fof(axiom414,axiom,('decisionProblem'('_3Colouring'))).
+% ClassAssertion(<DecisionProblem> <_3Colouring>)
+fof(axiom415,axiom,('http___www_w3_org_2002_07_owl_Thing'('_3Colouring'))).
+% ObjectPropertyAssertion(<isDefinedFor> <P> <TuringMachine>)
+fof(axiom416,axiom,('isDefinedFor'('p','turingMachine'))).
+% ObjectPropertyAssertion(<isDefinedFor> <P> <TuringMachine>)
+fof(axiom417,axiom,('http___www_w3_org_2002_07_owl_Thing'('p'))).
+% ObjectPropertyAssertion(<isDefinedFor> <P> <TuringMachine>)
+fof(axiom418,axiom,('http___www_w3_org_2002_07_owl_Thing'('turingMachine'))).
+% Declaration(NamedIndividual(<_3Colouring>))
+fof(axiom419,axiom,('http___www_w3_org_2002_07_owl_Thing'('_3Colouring'))).
+% SubObjectPropertyOf(<extendsByNondeterminism> <extends>)
+fof(axiom420,axiom,(![X0,X1]:('extendsByNondeterminism'(X0,X1)=>'extends'(X0,X1)))).
+% Declaration(NamedIndividual(<UndirectedReachability>))
+fof(axiom421,axiom,('http___www_w3_org_2002_07_owl_Thing'('undirectedReachability'))).
+% ClassAssertion(<ComplexityClass> <coNL>)
+fof(axiom422,axiom,('complexityClass'('coNL'))).
+% ClassAssertion(<ComplexityClass> <coNL>)
+fof(axiom423,axiom,('http___www_w3_org_2002_07_owl_Thing'('coNL'))).
+% ObjectPropertyDomain(<isHardFor> <DecisionProblem>)
+fof(axiom424,axiom,(![X0,X1]:('isHardFor'(X0,X1)=>'decisionProblem'(X0)))).
+% ObjectPropertyAssertion(<sigma> <P> <ph_level_0>)
+fof(axiom425,axiom,('sigma'('p','ph_level_0'))).
+% ObjectPropertyAssertion(<sigma> <P> <ph_level_0>)
+fof(axiom426,axiom,('http___www_w3_org_2002_07_owl_Thing'('p'))).
+% ObjectPropertyAssertion(<sigma> <P> <ph_level_0>)
+fof(axiom427,axiom,('http___www_w3_org_2002_07_owl_Thing'('ph_level_0'))).
+% Declaration(ObjectProperty(<isFunctionVersionOf>))
+fof(axiom428,axiom,(![X,Y]:('isFunctionVersionOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isFunctionVersionOf>))
+fof(axiom429,axiom,(![X,Y]:('isFunctionVersionOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(ObjectProperty(<extends>))
+fof(axiom430,axiom,(![X,Y]:('extends'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<extends>))
+fof(axiom431,axiom,(![X,Y]:('extends'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% SubObjectPropertyOf(<nTime> <metaLink>)
+fof(axiom432,axiom,(![X0,X1]:('nTime'(X0,X1)=>'metaLink'(X0,X1)))).
+% SubObjectPropertyOf(ObjectPropertyChain( <hasRestriction_unique_onTime_TM> <imposesUpperBound> ) <dTime>)
+fof(axiom433,axiom,(![X0,X1]:(?[X2]:('hasRestriction_unique_onTime_TM'(X0,X2)&'imposesUpperBound'(X2,X1))=>'dTime'(X0,X1)))).
+% SubObjectPropertyOf(<hasRestriction_unique_onTime_TM> <hasRestriction_onTime>)
+fof(axiom434,axiom,(![X0,X1]:('hasRestriction_unique_onTime_TM'(X0,X1)=>'hasRestriction_onTime'(X0,X1)))).
+% ClassAssertion(<ComplexityClass> <Pi_P_2>)
+fof(axiom435,axiom,('complexityClass'('pi_P_2'))).
+% ClassAssertion(<ComplexityClass> <Pi_P_2>)
+fof(axiom436,axiom,('http___www_w3_org_2002_07_owl_Thing'('pi_P_2'))).
+% SubObjectPropertyOf(<isEqualTo> <isSubClassOf>)
+fof(axiom437,axiom,(![X0,X1]:('isEqualTo'(X0,X1)=>'isSubClassOf'(X0,X1)))).
+% ObjectPropertyRange(<isSubClassOf> <FunctionClass>)
+fof(axiom438,axiom,(![X0,X1]:('isSubClassOf'(X0,X1)=>'functionClass'(X1)))).
+% SubObjectPropertyOf(ObjectPropertyChain( <hasRestriction_unique_onSpace_TM> <imposesUpperBound> ) <dSpace>)
+fof(axiom439,axiom,(![X0,X1]:(?[X2]:('hasRestriction_unique_onSpace_TM'(X0,X2)&'imposesUpperBound'(X2,X1))=>'dSpace'(X0,X1)))).
+% ClassAssertion(<Restriction> <restriction_AC0_depth>)
+fof(axiom440,axiom,('restriction'('restriction_AC0_depth'))).
+% ClassAssertion(<Restriction> <restriction_AC0_depth>)
+fof(axiom441,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_AC0_depth'))).
+% Declaration(ObjectProperty(<next>))
+fof(axiom442,axiom,(![X,Y]:('next'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<next>))
+fof(axiom443,axiom,(![X,Y]:('next'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(ObjectProperty(<isReducibleTo>))
+fof(axiom444,axiom,(![X,Y]:('isReducibleTo'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isReducibleTo>))
+fof(axiom445,axiom,(![X,Y]:('isReducibleTo'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_PSpace> <Poly>)
+fof(axiom446,axiom,('imposesUpperBound'('restriction_PSpace','poly'))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_PSpace> <Poly>)
+fof(axiom447,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_PSpace'))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_PSpace> <Poly>)
+fof(axiom448,axiom,('http___www_w3_org_2002_07_owl_Thing'('poly'))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_AC_size> <Size>)
+fof(axiom449,axiom,('restrictsMeasure'('restriction_AC_size','size'))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_AC_size> <Size>)
+fof(axiom450,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_AC_size'))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_AC_size> <Size>)
+fof(axiom451,axiom,('http___www_w3_org_2002_07_owl_Thing'('size'))).
+% ObjectPropertyAssertion(<hasRestriction> <P> <restriction_PTime>)
+fof(axiom452,axiom,('hasRestriction'('p','restriction_PTime'))).
+% ObjectPropertyAssertion(<hasRestriction> <P> <restriction_PTime>)
+fof(axiom453,axiom,('http___www_w3_org_2002_07_owl_Thing'('p'))).
+% ObjectPropertyAssertion(<hasRestriction> <P> <restriction_PTime>)
+fof(axiom454,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_PTime'))).
+% Declaration(ObjectProperty(<hasRestriction_unique_onTime_TM>))
+fof(axiom455,axiom,(![X,Y]:('hasRestriction_unique_onTime_TM'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<hasRestriction_unique_onTime_TM>))
+fof(axiom456,axiom,(![X,Y]:('hasRestriction_unique_onTime_TM'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(NamedIndividual(<restriction_ExpSpace>))
+fof(axiom457,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_ExpSpace'))).
+% SubObjectPropertyOf(Annotation(rdfs:comment "Space Hierarchy Theorem"^^xsd:string) ObjectPropertyChain( <dSpace> <lessLess> ObjectInverseOf(<dSpace>) ) <isStrictSubClassOf_SpaceHierarchyTheorem>)
+fof(axiom458,axiom,(![X0,X1]:(?[X2,X3]:('dSpace'(X0,X2)&'lessLess'(X2,X3)&'dSpace'(X1,X3))=>'isStrictSubClassOf_SpaceHierarchyTheorem'(X0,X1)))).
+% ClassAssertion(<Restriction> <restriction_PSpace>)
+fof(axiom459,axiom,('restriction'('restriction_PSpace'))).
+% ClassAssertion(<Restriction> <restriction_PSpace>)
+fof(axiom460,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_PSpace'))).
+% ObjectPropertyAssertion(<isDefinedFor> <AC> <BooleanCircuits>)
+fof(axiom461,axiom,('isDefinedFor'('aC','booleanCircuits'))).
+% ObjectPropertyAssertion(<isDefinedFor> <AC> <BooleanCircuits>)
+fof(axiom462,axiom,('http___www_w3_org_2002_07_owl_Thing'('aC'))).
+% ObjectPropertyAssertion(<isDefinedFor> <AC> <BooleanCircuits>)
+fof(axiom463,axiom,('http___www_w3_org_2002_07_owl_Thing'('booleanCircuits'))).
+% ClassAssertion(<ComplexityClass> <coNP>)
+fof(axiom464,axiom,('complexityClass'('coNP'))).
+% ClassAssertion(<ComplexityClass> <coNP>)
+fof(axiom465,axiom,('http___www_w3_org_2002_07_owl_Thing'('coNP'))).
+% ObjectPropertyAssertion(<isEqualTo> <coNL> <NL>)
+fof(axiom466,axiom,('isEqualTo'('coNL','nL'))).
+% ObjectPropertyAssertion(<isEqualTo> <coNL> <NL>)
+fof(axiom467,axiom,('http___www_w3_org_2002_07_owl_Thing'('coNL'))).
+% ObjectPropertyAssertion(<isEqualTo> <coNL> <NL>)
+fof(axiom468,axiom,('http___www_w3_org_2002_07_owl_Thing'('nL'))).
+% Declaration(ObjectProperty(<hasRestriction_onTime>))
+fof(axiom469,axiom,(![X,Y]:('hasRestriction_onTime'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<hasRestriction_onTime>))
+fof(axiom470,axiom,(![X,Y]:('hasRestriction_onTime'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(ObjectProperty(<hasRestriction_onSpace>))
+fof(axiom471,axiom,(![X,Y]:('hasRestriction_onSpace'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<hasRestriction_onSpace>))
+fof(axiom472,axiom,(![X,Y]:('hasRestriction_onSpace'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(ObjectProperty(<hasOracle>))
+fof(axiom473,axiom,(![X,Y]:('hasOracle'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<hasOracle>))
+fof(axiom474,axiom,(![X,Y]:('hasOracle'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(ObjectProperty(<isStrictSubClassOf_SpaceHierarchyTheorem>))
+fof(axiom475,axiom,(![X,Y]:('isStrictSubClassOf_SpaceHierarchyTheorem'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isStrictSubClassOf_SpaceHierarchyTheorem>))
+fof(axiom476,axiom,(![X,Y]:('isStrictSubClassOf_SpaceHierarchyTheorem'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ObjectPropertyRange(<restrictsMeasure> <Measure>)
+fof(axiom477,axiom,(![X0,X1]:('restrictsMeasure'(X0,X1)=>'measure'(X1)))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_AC0_depth> <Depth>)
+fof(axiom478,axiom,('restrictsMeasure'('restriction_AC0_depth','depth'))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_AC0_depth> <Depth>)
+fof(axiom479,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_AC0_depth'))).
+% ObjectPropertyAssertion(<restrictsMeasure> <restriction_AC0_depth> <Depth>)
+fof(axiom480,axiom,('http___www_w3_org_2002_07_owl_Thing'('depth'))).
+% SubObjectPropertyOf(<hasRestriction_onTime> <hasRestriction>)
+fof(axiom481,axiom,(![X0,X1]:('hasRestriction_onTime'(X0,X1)=>'hasRestriction'(X0,X1)))).
+% ClassAssertion(<LevelOfHierarhy> <ph_level_2>)
+fof(axiom482,axiom,('levelOfHierarhy'('ph_level_2'))).
+% ClassAssertion(<LevelOfHierarhy> <ph_level_2>)
+fof(axiom483,axiom,('http___www_w3_org_2002_07_owl_Thing'('ph_level_2'))).
+% Declaration(NamedIndividual(<Exp>))
+fof(axiom484,axiom,('http___www_w3_org_2002_07_owl_Thing'('exp'))).
+% ObjectPropertyAssertion(<isHardFor_wrtAC0> <UndirectedReachability> <L>)
+fof(axiom485,axiom,('isHardFor_wrtAC0'('undirectedReachability','l'))).
+% ObjectPropertyAssertion(<isHardFor_wrtAC0> <UndirectedReachability> <L>)
+fof(axiom486,axiom,('http___www_w3_org_2002_07_owl_Thing'('undirectedReachability'))).
+% ObjectPropertyAssertion(<isHardFor_wrtAC0> <UndirectedReachability> <L>)
+fof(axiom487,axiom,('http___www_w3_org_2002_07_owl_Thing'('l'))).
+% Declaration(NamedIndividual(<Time>))
+fof(axiom488,axiom,('http___www_w3_org_2002_07_owl_Thing'('time'))).
+% Declaration(NamedIndividual(<P>))
+fof(axiom489,axiom,('http___www_w3_org_2002_07_owl_Thing'('p'))).
+% SubObjectPropertyOf(ObjectPropertyChain( ObjectInverseOf(<next>) <isLevelOf> ) <isLevelOf>)
+fof(axiom490,axiom,(![X0,X1]:(?[X2]:('next'(X2,X0)&'isLevelOf'(X2,X1))=>'isLevelOf'(X0,X1)))).
+% Declaration(Class(<Hierarchy>))
+fof(axiom491,axiom,(![X]:('hierarchy'(X)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(NamedIndividual(<ExpSpace>))
+fof(axiom492,axiom,('http___www_w3_org_2002_07_owl_Thing'('expSpace'))).
+% ObjectPropertyRange(<imposesUpperBound> <Bound>)
+fof(axiom493,axiom,(![X0,X1]:('imposesUpperBound'(X0,X1)=>'bound'(X1)))).
+% SubObjectPropertyOf(ObjectPropertyChain( ObjectInverseOf(<isReducibleTo_inPolyTime>) <isHardFor_wrtPolyTime> ) <isHardFor_wrtPolyTime>)
+fof(axiom494,axiom,(![X0,X1]:(?[X2]:('isReducibleTo_inPolyTime'(X2,X0)&'isHardFor_wrtPolyTime'(X2,X1))=>'isHardFor_wrtPolyTime'(X0,X1)))).
+% FunctionalObjectProperty(<isDefinedFor>)
+fof(axiom495,axiom,(![X0,X1,X2]:(('isDefinedFor'(X0,X1)&'isDefinedFor'(X0,X2))=>(X1=X2)))).
+% ClassAssertion(<ComplexityClass> <L>)
+fof(axiom496,axiom,('complexityClass'('l'))).
+% ClassAssertion(<ComplexityClass> <L>)
+fof(axiom497,axiom,('http___www_w3_org_2002_07_owl_Thing'('l'))).
+% SubObjectPropertyOf(<isStrictSubClassOf_SpaceHierarchyTheorem> <metaLink>)
+fof(axiom498,axiom,(![X0,X1]:('isStrictSubClassOf_SpaceHierarchyTheorem'(X0,X1)=>'metaLink'(X0,X1)))).
+% SubObjectPropertyOf(ObjectPropertyChain( ObjectInverseOf(<isReducibleTo>) <isHardFor> ) <isHardFor>)
+fof(axiom499,axiom,(![X0,X1]:(?[X2]:('isReducibleTo'(X2,X0)&'isHardFor'(X2,X1))=>'isHardFor'(X0,X1)))).
+% ObjectPropertyDomain(<isReducibleTo> <DecisionProblem>)
+fof(axiom500,axiom,(![X0,X1]:('isReducibleTo'(X0,X1)=>'decisionProblem'(X0)))).
+% SubObjectPropertyOf(<isDefinedFor> <metaLink>)
+fof(axiom501,axiom,(![X0,X1]:('isDefinedFor'(X0,X1)=>'metaLink'(X0,X1)))).
+% ObjectPropertyAssertion(<hasRestriction> <ExpTime> <restriction_ExpTime>)
+fof(axiom502,axiom,('hasRestriction'('expTime','restriction_ExpTime'))).
+% ObjectPropertyAssertion(<hasRestriction> <ExpTime> <restriction_ExpTime>)
+fof(axiom503,axiom,('http___www_w3_org_2002_07_owl_Thing'('expTime'))).
+% ObjectPropertyAssertion(<hasRestriction> <ExpTime> <restriction_ExpTime>)
+fof(axiom504,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_ExpTime'))).
+% Declaration(NamedIndividual(<NPSpace>))
+fof(axiom505,axiom,('http___www_w3_org_2002_07_owl_Thing'('nPSpace'))).
+% Declaration(ObjectProperty(<isSubClassOf>))
+fof(axiom506,axiom,(![X,Y]:('isSubClassOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isSubClassOf>))
+fof(axiom507,axiom,(![X,Y]:('isSubClassOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(NamedIndividual(<Sigma_P_2>))
+fof(axiom508,axiom,('http___www_w3_org_2002_07_owl_Thing'('sigma_P_2'))).
+% SubClassOf(ObjectSomeValuesFrom(<restrictsMeasure> ObjectOneOf(<Time>)) ObjectSomeValuesFrom(ObjectInverseOf(<hasRestriction_onTime>) owl:Thing))
+fof(axiom509,axiom,(![X0]:(?[X1]:('restrictsMeasure'(X0,X1)&(X1='time'))=>?[X2]:('hasRestriction_onTime'(X2,X0)&'http___www_w3_org_2002_07_owl_Thing'(X2))))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_AC0_depth> <Const>)
+fof(axiom510,axiom,('imposesUpperBound'('restriction_AC0_depth','const'))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_AC0_depth> <Const>)
+fof(axiom511,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_AC0_depth'))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_AC0_depth> <Const>)
+fof(axiom512,axiom,('http___www_w3_org_2002_07_owl_Thing'('const'))).
+% Declaration(ObjectProperty(<isPowerOf>))
+fof(axiom513,axiom,(![X,Y]:('isPowerOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isPowerOf>))
+fof(axiom514,axiom,(![X,Y]:('isPowerOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ObjectPropertyAssertion(<isHardFor_wrtLogSpace> <BooleanSatisfiability> <NP>)
+fof(axiom515,axiom,('isHardFor_wrtLogSpace'('booleanSatisfiability','nP'))).
+% ObjectPropertyAssertion(<isHardFor_wrtLogSpace> <BooleanSatisfiability> <NP>)
+fof(axiom516,axiom,('http___www_w3_org_2002_07_owl_Thing'('booleanSatisfiability'))).
+% ObjectPropertyAssertion(<isHardFor_wrtLogSpace> <BooleanSatisfiability> <NP>)
+fof(axiom517,axiom,('http___www_w3_org_2002_07_owl_Thing'('nP'))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_AC_size> <Poly>)
+fof(axiom518,axiom,('imposesUpperBound'('restriction_AC_size','poly'))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_AC_size> <Poly>)
+fof(axiom519,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_AC_size'))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_AC_size> <Poly>)
+fof(axiom520,axiom,('http___www_w3_org_2002_07_owl_Thing'('poly'))).
+% ClassAssertion(<Measure> <Depth>)
+fof(axiom521,axiom,('measure'('depth'))).
+% ClassAssertion(<Measure> <Depth>)
+fof(axiom522,axiom,('http___www_w3_org_2002_07_owl_Thing'('depth'))).
+% Declaration(NamedIndividual(<PolyLog>))
+fof(axiom523,axiom,('http___www_w3_org_2002_07_owl_Thing'('polyLog'))).
+% SubObjectPropertyOf(ObjectPropertyChain( <isOnLevel> <isLevelOf> ) <isFromHierarchy>)
+fof(axiom524,axiom,(![X0,X1]:(?[X2]:('isOnLevel'(X0,X2)&'isLevelOf'(X2,X1))=>'isFromHierarchy'(X0,X1)))).
+% Declaration(ObjectProperty(<isStrictSubClassOf>))
+fof(axiom525,axiom,(![X,Y]:('isStrictSubClassOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isStrictSubClassOf>))
+fof(axiom526,axiom,(![X,Y]:('isStrictSubClassOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(ObjectProperty(<hasRestriction>))
+fof(axiom527,axiom,(![X,Y]:('hasRestriction'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<hasRestriction>))
+fof(axiom528,axiom,(![X,Y]:('hasRestriction'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(ObjectProperty(<metaLink>))
+fof(axiom529,axiom,(![X,Y]:('metaLink'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<metaLink>))
+fof(axiom530,axiom,(![X,Y]:('metaLink'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(ObjectProperty(<isFromHierarchy>))
+fof(axiom531,axiom,(![X,Y]:('isFromHierarchy'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isFromHierarchy>))
+fof(axiom532,axiom,(![X,Y]:('isFromHierarchy'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_PTime> <Poly>)
+fof(axiom533,axiom,('imposesUpperBound'('restriction_PTime','poly'))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_PTime> <Poly>)
+fof(axiom534,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_PTime'))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_PTime> <Poly>)
+fof(axiom535,axiom,('http___www_w3_org_2002_07_owl_Thing'('poly'))).
+% Declaration(NamedIndividual(<restriction_LogSpace>))
+fof(axiom536,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_LogSpace'))).
+% Declaration(Class(<__sys_SavitchCompatible>))
+fof(axiom537,axiom,(![X]:('__sys_SavitchCompatible'(X)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% SubClassOf(<LevelOfHierarhy> <MetaNode>)
+fof(axiom538,axiom,(![X0]:('levelOfHierarhy'(X0)=>'metaNode'(X0)))).
+% Declaration(ObjectProperty(<isSubClassOf_SavitchTheorem>))
+fof(axiom539,axiom,(![X,Y]:('isSubClassOf_SavitchTheorem'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isSubClassOf_SavitchTheorem>))
+fof(axiom540,axiom,(![X,Y]:('isSubClassOf_SavitchTheorem'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ClassAssertion(<Bound> <Poly>)
+fof(axiom541,axiom,('bound'('poly'))).
+% ClassAssertion(<Bound> <Poly>)
+fof(axiom542,axiom,('http___www_w3_org_2002_07_owl_Thing'('poly'))).
+% Declaration(NamedIndividual(<BooleanSatisfiability>))
+fof(axiom543,axiom,('http___www_w3_org_2002_07_owl_Thing'('booleanSatisfiability'))).
+% Declaration(ObjectProperty(<isHardFor_wrtLogSpace>))
+fof(axiom544,axiom,(![X,Y]:('isHardFor_wrtLogSpace'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isHardFor_wrtLogSpace>))
+fof(axiom545,axiom,(![X,Y]:('isHardFor_wrtLogSpace'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% SubClassOf(<__sys_SavitchCompatible> <__sys_Label>)
+fof(axiom546,axiom,(![X0]:('__sys_SavitchCompatible'(X0)=>'__sys_Label'(X0)))).
+% Declaration(ObjectProperty(<dTime>))
+fof(axiom547,axiom,(![X,Y]:('dTime'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<dTime>))
+fof(axiom548,axiom,(![X,Y]:('dTime'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(ObjectProperty(<hasRestriction_unique_onSpace_TM>))
+fof(axiom549,axiom,(![X,Y]:('hasRestriction_unique_onSpace_TM'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<hasRestriction_unique_onSpace_TM>))
+fof(axiom550,axiom,(![X,Y]:('hasRestriction_unique_onSpace_TM'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% Declaration(ObjectProperty(<delta>))
+fof(axiom551,axiom,(![X,Y]:('delta'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<delta>))
+fof(axiom552,axiom,(![X,Y]:('delta'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ObjectPropertyAssertion(<isHardFor_wrtAC0> <DirectedReachability> <NL>)
+fof(axiom553,axiom,('isHardFor_wrtAC0'('directedReachability','nL'))).
+% ObjectPropertyAssertion(<isHardFor_wrtAC0> <DirectedReachability> <NL>)
+fof(axiom554,axiom,('http___www_w3_org_2002_07_owl_Thing'('directedReachability'))).
+% ObjectPropertyAssertion(<isHardFor_wrtAC0> <DirectedReachability> <NL>)
+fof(axiom555,axiom,('http___www_w3_org_2002_07_owl_Thing'('nL'))).
+% ObjectPropertyDomain(<isSubClassOf> <FunctionClass>)
+fof(axiom556,axiom,(![X0,X1]:('isSubClassOf'(X0,X1)=>'functionClass'(X0)))).
+% TransitiveObjectProperty(<isEqualTo>)
+fof(axiom557,axiom,(![X0,X1,X2]:(('isEqualTo'(X0,X1)&'isEqualTo'(X1,X2))=>'isEqualTo'(X0,X2)))).
+% SubObjectPropertyOf(ObjectPropertyChain( <extendsByNondeterminism> <dSpace> ) <nSpace>)
+fof(axiom558,axiom,(![X0,X1]:(?[X2]:('extendsByNondeterminism'(X0,X2)&'dSpace'(X2,X1))=>'nSpace'(X0,X1)))).
+% Declaration(Class(<FunctionClass>))
+fof(axiom559,axiom,(![X]:('functionClass'(X)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% SubObjectPropertyOf(ObjectPropertyChain( <isMemberOf> <isSubClassOf> ) <isMemberOf>)
+fof(axiom560,axiom,(![X0,X1]:(?[X2]:('isMemberOf'(X0,X2)&'isSubClassOf'(X2,X1))=>'isMemberOf'(X0,X1)))).
+% Declaration(NamedIndividual(<coNL>))
+fof(axiom561,axiom,('http___www_w3_org_2002_07_owl_Thing'('coNL'))).
+% Declaration(ObjectProperty(<isSuperClassOf>))
+fof(axiom562,axiom,(![X,Y]:('isSuperClassOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isSuperClassOf>))
+fof(axiom563,axiom,(![X,Y]:('isSuperClassOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_AC_depth> <PolyLog>)
+fof(axiom564,axiom,('imposesUpperBound'('restriction_AC_depth','polyLog'))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_AC_depth> <PolyLog>)
+fof(axiom565,axiom,('http___www_w3_org_2002_07_owl_Thing'('restriction_AC_depth'))).
+% ObjectPropertyAssertion(<imposesUpperBound> <restriction_AC_depth> <PolyLog>)
+fof(axiom566,axiom,('http___www_w3_org_2002_07_owl_Thing'('polyLog'))).
+% SubObjectPropertyOf(<isStrictSubClassOf_SpaceHierarchyTheorem> <isStrictSubClassOf>)
+fof(axiom567,axiom,(![X0,X1]:('isStrictSubClassOf_SpaceHierarchyTheorem'(X0,X1)=>'isStrictSubClassOf'(X0,X1)))).
+% Declaration(NamedIndividual(<Space>))
+fof(axiom568,axiom,('http___www_w3_org_2002_07_owl_Thing'('space'))).
+% Declaration(ObjectProperty(<isReducibleTo_inPolyTime>))
+fof(axiom569,axiom,(![X,Y]:('isReducibleTo_inPolyTime'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isReducibleTo_inPolyTime>))
+fof(axiom570,axiom,(![X,Y]:('isReducibleTo_inPolyTime'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ClassAssertion(<ComplexityClass> <NP>)
+fof(axiom571,axiom,('complexityClass'('nP'))).
+% ClassAssertion(<ComplexityClass> <NP>)
+fof(axiom572,axiom,('http___www_w3_org_2002_07_owl_Thing'('nP'))).
+% ObjectPropertyAssertion(<isMemberOf> <BooleanSatisfiability> <NP>)
+fof(axiom573,axiom,('isMemberOf'('booleanSatisfiability','nP'))).
+% ObjectPropertyAssertion(<isMemberOf> <BooleanSatisfiability> <NP>)
+fof(axiom574,axiom,('http___www_w3_org_2002_07_owl_Thing'('booleanSatisfiability'))).
+% ObjectPropertyAssertion(<isMemberOf> <BooleanSatisfiability> <NP>)
+fof(axiom575,axiom,('http___www_w3_org_2002_07_owl_Thing'('nP'))).
+% Declaration(Class(<Restriction>))
+fof(axiom576,axiom,(![X]:('restriction'(X)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% ObjectPropertyAssertion(<isDefinedFor> <L> <TuringMachine>)
+fof(axiom577,axiom,('isDefinedFor'('l','turingMachine'))).
+% ObjectPropertyAssertion(<isDefinedFor> <L> <TuringMachine>)
+fof(axiom578,axiom,('http___www_w3_org_2002_07_owl_Thing'('l'))).
+% ObjectPropertyAssertion(<isDefinedFor> <L> <TuringMachine>)
+fof(axiom579,axiom,('http___www_w3_org_2002_07_owl_Thing'('turingMachine'))).

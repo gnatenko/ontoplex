@@ -13,6 +13,7 @@ Declaration(Class(:DecisionProblem))
 Declaration(Class(:Function))
 Declaration(Class(:FunctionClass))
 Declaration(Class(:Hierarchy))
+Declaration(Class(:LevelOfHierarhy))
 Declaration(Class(:Measure))
 Declaration(Class(:MetaNode))
 Declaration(Class(:Model))
@@ -37,6 +38,7 @@ Declaration(ObjectProperty(:isEqualTo))
 Declaration(ObjectProperty(:isFromHierarchy))
 Declaration(ObjectProperty(:isFunctionVersionOf))
 Declaration(ObjectProperty(:isHardFor))
+Declaration(ObjectProperty(:isHardFor_wrtAC0))
 Declaration(ObjectProperty(:isHardFor_wrtLogSpace))
 Declaration(ObjectProperty(:isHardFor_wrtPolyTime))
 Declaration(ObjectProperty(:isHardnessFor))
@@ -47,6 +49,7 @@ Declaration(ObjectProperty(:isMemberOf))
 Declaration(ObjectProperty(:isOnLevel))
 Declaration(ObjectProperty(:isPowerOf))
 Declaration(ObjectProperty(:isReducibleTo))
+Declaration(ObjectProperty(:isReducibleTo_inAC0))
 Declaration(ObjectProperty(:isReducibleTo_inLogSpace))
 Declaration(ObjectProperty(:isReducibleTo_inPolyTime))
 Declaration(ObjectProperty(:isStrictSubClassOf))
@@ -65,6 +68,8 @@ Declaration(ObjectProperty(:reducesFrom))
 Declaration(ObjectProperty(:reducesTo))
 Declaration(ObjectProperty(:restrictsMeasure))
 Declaration(ObjectProperty(:sigma))
+Declaration(NamedIndividual(:AC))
+Declaration(NamedIndividual(:AC0))
 Declaration(NamedIndividual(:BooleanCircuits))
 Declaration(NamedIndividual(:BooleanSatisfiability))
 Declaration(NamedIndividual(:Const))
@@ -73,6 +78,7 @@ Declaration(NamedIndividual(:DirectedReachability))
 Declaration(NamedIndividual(:Exp))
 Declaration(NamedIndividual(:ExpSpace))
 Declaration(NamedIndividual(:ExpTime))
+Declaration(NamedIndividual(:FAC0))
 Declaration(NamedIndividual(:FL))
 Declaration(NamedIndividual(:FP))
 Declaration(NamedIndividual(:L))
@@ -82,10 +88,13 @@ Declaration(NamedIndividual(:NL))
 Declaration(NamedIndividual(:NP))
 Declaration(NamedIndividual(:NPSpace))
 Declaration(NamedIndividual(:P))
+Declaration(NamedIndividual(:PH))
 Declaration(NamedIndividual(:PSpace))
+Declaration(NamedIndividual(:Pi_P_2))
 Declaration(NamedIndividual(:Poly))
 Declaration(NamedIndividual(:PolyLog))
 Declaration(NamedIndividual(:QbfSatisfiability))
+Declaration(NamedIndividual(:Sigma_P_2))
 Declaration(NamedIndividual(:Size))
 Declaration(NamedIndividual(:Space))
 Declaration(NamedIndividual(:Time))
@@ -93,6 +102,16 @@ Declaration(NamedIndividual(:TuringMachine))
 Declaration(NamedIndividual(:UndirectedReachability))
 Declaration(NamedIndividual(:_2CnfSatisfiability))
 Declaration(NamedIndividual(:_3Colouring))
+Declaration(NamedIndividual(:coNL))
+Declaration(NamedIndividual(:coNP))
+Declaration(NamedIndividual(:ph))
+Declaration(NamedIndividual(:ph_level_0))
+Declaration(NamedIndividual(:ph_level_1))
+Declaration(NamedIndividual(:ph_level_2))
+Declaration(NamedIndividual(:restriction_AC0_depth))
+Declaration(NamedIndividual(:restriction_AC0_size))
+Declaration(NamedIndividual(:restriction_AC_depth))
+Declaration(NamedIndividual(:restriction_AC_size))
 Declaration(NamedIndividual(:restriction_ExpSpace))
 Declaration(NamedIndividual(:restriction_ExpTime))
 Declaration(NamedIndividual(:restriction_LogSpace))
@@ -183,27 +202,48 @@ TransitiveObjectProperty(:isEqualTo)
 
 # Object Property: :isHardFor (:isHardFor)
 
+AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isHardFor "![X, Y]:('isHardFor'(X, Y) <=> ?[H]:('isHardnessOf'(H, X) & 'isHardnessFor'(H, Y)))")
 ObjectPropertyDomain(:isHardFor :DecisionProblem)
 ObjectPropertyRange(:isHardFor :ComplexityClass)
 
+# Object Property: :isHardFor_wrtAC0 (:isHardFor_wrtAC0)
+
+AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isHardFor_wrtAC0 "![X, Y]:('isHardFor_wrtAC0'(X, Y) <=> ?[H]:('isHardnessOf'(H, X) & 'isHardnessFor'(H, Y) & 'isHardnessWtr'(H, 'FAC0')))")
+SubObjectPropertyOf(:isHardFor_wrtAC0 :isHardFor_wrtLogSpace)
+
 # Object Property: :isHardFor_wrtLogSpace (:isHardFor_wrtLogSpace)
 
+AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isHardFor_wrtLogSpace "![X, Y]:('isHardFor_wrtLogSpace'(X, Y) <=> ?[H]:('isHardnessOf'(H, X) & 'isHardnessFor'(H, Y) & 'isHardnessWtr'(H, 'FL')))")
 SubObjectPropertyOf(:isHardFor_wrtLogSpace :isHardFor_wrtPolyTime)
 
 # Object Property: :isHardFor_wrtPolyTime (:isHardFor_wrtPolyTime)
 
+AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isHardFor_wrtPolyTime "![X, Y]:('isHardFor_wrtPolyTime'(X, Y) <=> ?[H]:('isHardnessOf'(H, X) & 'isHardnessFor'(H, Y) & 'isHardnessWtr'(H, 'FP')))")
 SubObjectPropertyOf(:isHardFor_wrtPolyTime :isHardFor)
+
+# Object Property: :isLevelOf (:isLevelOf)
+
+SubObjectPropertyOf(:isLevelOf :metaLink)
 
 # Object Property: :isMemberOf (:isMemberOf)
 
 ObjectPropertyDomain(:isMemberOf :Function)
 ObjectPropertyRange(:isMemberOf :FunctionClass)
 
+# Object Property: :isOnLevel (:isOnLevel)
+
+SubObjectPropertyOf(:isOnLevel :metaLink)
+
 # Object Property: :isReducibleTo (:isReducibleTo)
 
 AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isReducibleTo "![X, Y]:('isReducibleTo'(X, Y) <=> ?[R]:('reducesFrom'(R, X) & 'reducesTo'(R, Y)))")
 ObjectPropertyDomain(:isReducibleTo :DecisionProblem)
 ObjectPropertyRange(:isReducibleTo :DecisionProblem)
+
+# Object Property: :isReducibleTo_inAC0 (:isReducibleTo_inAC0)
+
+AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isReducibleTo_inAC0 "![X, Y]:('isReducibleTo_inAC0'(X, Y) <=> ?[R]:('reducesFrom'(R, X) & 'reducesTo'(R, Y) & 'isMemberOf'(R, 'FAC0')))")
+SubObjectPropertyOf(:isReducibleTo_inAC0 :isReducibleTo_inLogSpace)
 
 # Object Property: :isReducibleTo_inLogSpace (:isReducibleTo_inLogSpace)
 
@@ -291,6 +331,10 @@ DisjointClasses(:Function :FunctionClass)
 
 SubClassOf(:Hierarchy :MetaNode)
 
+# Class: :LevelOfHierarhy (:LevelOfHierarhy)
+
+SubClassOf(:LevelOfHierarhy :MetaNode)
+
 # Class: :Restriction (:Restriction)
 
 SubClassOf(:Restriction :MetaNode)
@@ -303,6 +347,21 @@ SubClassOf(:__sys_SavitchCompatible :__sys_Label)
 ############################
 #   Named Individuals
 ############################
+
+# Individual: :AC (:AC)
+
+ClassAssertion(:ComplexityClass :AC)
+ObjectPropertyAssertion(:hasRestriction :AC :restriction_AC_depth)
+ObjectPropertyAssertion(:hasRestriction :AC :restriction_AC_size)
+ObjectPropertyAssertion(:isDefinedFor :AC :BooleanCircuits)
+
+# Individual: :AC0 (:AC0)
+
+ClassAssertion(:ComplexityClass :AC0)
+ObjectPropertyAssertion(:hasRestriction :AC0 :restriction_AC0_depth)
+ObjectPropertyAssertion(:hasRestriction :AC0 :restriction_AC0_size)
+ObjectPropertyAssertion(:isDefinedFor :AC0 :BooleanCircuits)
+ObjectPropertyAssertion(:isSubClassOf :AC0 :AC)
 
 # Individual: :BooleanCircuits (:BooleanCircuits)
 
@@ -327,6 +386,7 @@ ClassAssertion(:Measure :Depth)
 # Individual: :DirectedReachability (:DirectedReachability)
 
 ClassAssertion(:DecisionProblem :DirectedReachability)
+ObjectPropertyAssertion(:isHardFor_wrtAC0 :DirectedReachability :NL)
 ObjectPropertyAssertion(:isMemberOf :DirectedReachability :NL)
 
 # Individual: :Exp (:Exp)
@@ -344,6 +404,11 @@ ObjectPropertyAssertion(:isDefinedFor :ExpSpace :TuringMachine)
 ClassAssertion(:ComplexityClass :ExpTime)
 ObjectPropertyAssertion(:hasRestriction :ExpTime :restriction_ExpTime)
 ObjectPropertyAssertion(:isDefinedFor :ExpTime :TuringMachine)
+
+# Individual: :FAC0 (:FAC0)
+
+ClassAssertion(:FunctionClass :FAC0)
+ObjectPropertyAssertion(:isFunctionVersionOf :FAC0 :AC0)
 
 # Individual: :FL (:FL)
 
@@ -379,6 +444,7 @@ ObjectPropertyAssertion(:extendsByNondeterminism :NL :L)
 
 ClassAssertion(:ComplexityClass :NP)
 ObjectPropertyAssertion(:extendsByNondeterminism :NP :P)
+ObjectPropertyAssertion(:sigma :NP :ph_level_1)
 
 # Individual: :NPSpace (:NPSpace)
 
@@ -389,12 +455,24 @@ ObjectPropertyAssertion(:extendsByNondeterminism :NPSpace :PSpace)
 ClassAssertion(:ComplexityClass :P)
 ObjectPropertyAssertion(:hasRestriction :P :restriction_PTime)
 ObjectPropertyAssertion(:isDefinedFor :P :TuringMachine)
+ObjectPropertyAssertion(:pi :P :ph_level_0)
+ObjectPropertyAssertion(:sigma :P :ph_level_0)
+
+# Individual: :PH (:PH)
+
+ClassAssertion(:ComplexityClass :PH)
+ObjectPropertyAssertion(:isUnionOf :PH :ph)
 
 # Individual: :PSpace (:PSpace)
 
 ClassAssertion(:ComplexityClass :PSpace)
 ObjectPropertyAssertion(:hasRestriction :PSpace :restriction_PSpace)
 ObjectPropertyAssertion(:isDefinedFor :PSpace :TuringMachine)
+
+# Individual: :Pi_P_2 (:Pi_P_2)
+
+ClassAssertion(:ComplexityClass :Pi_P_2)
+ObjectPropertyAssertion(:pi :Pi_P_2 :ph_level_2)
 
 # Individual: :Poly (:Poly)
 
@@ -410,7 +488,13 @@ ObjectPropertyAssertion(:lessLess :PolyLog :Poly)
 # Individual: :QbfSatisfiability (:QbfSatisfiability)
 
 ClassAssertion(:DecisionProblem :QbfSatisfiability)
+ObjectPropertyAssertion(:isHardFor_wrtPolyTime :QbfSatisfiability :PSpace)
 ObjectPropertyAssertion(:isMemberOf :QbfSatisfiability :PSpace)
+
+# Individual: :Sigma_P_2 (:Sigma_P_2)
+
+ClassAssertion(:ComplexityClass :Sigma_P_2)
+ObjectPropertyAssertion(:sigma :Sigma_P_2 :ph_level_2)
 
 # Individual: :Size (:Size)
 
@@ -431,17 +515,74 @@ ClassAssertion(:Model :TuringMachine)
 # Individual: :UndirectedReachability (:UndirectedReachability)
 
 ClassAssertion(:DecisionProblem :UndirectedReachability)
+ObjectPropertyAssertion(:isHardFor_wrtAC0 :UndirectedReachability :L)
 ObjectPropertyAssertion(:isMemberOf :UndirectedReachability :L)
 
 # Individual: :_2CnfSatisfiability (:_2CnfSatisfiability)
 
 ClassAssertion(:DecisionProblem :_2CnfSatisfiability)
+ObjectPropertyAssertion(:isHardFor_wrtLogSpace :_2CnfSatisfiability :P)
 ObjectPropertyAssertion(:isMemberOf :_2CnfSatisfiability :P)
 
 # Individual: :_3Colouring (:_3Colouring)
 
 ClassAssertion(:DecisionProblem :_3Colouring)
 ObjectPropertyAssertion(:isMemberOf :_3Colouring :NP)
+
+# Individual: :coNL (:coNL)
+
+ClassAssertion(:ComplexityClass :coNL)
+ObjectPropertyAssertion(:isClassOfComplementsFor :coNL :NL)
+ObjectPropertyAssertion(:isEqualTo :coNL :NL)
+
+# Individual: :coNP (:coNP)
+
+ClassAssertion(:ComplexityClass :coNP)
+ObjectPropertyAssertion(:isClassOfComplementsFor :coNP :NP)
+ObjectPropertyAssertion(:pi :coNP :ph_level_1)
+
+# Individual: :ph (:ph)
+
+ClassAssertion(:Hierarchy :ph)
+
+# Individual: :ph_level_0 (:ph_level_0)
+
+ClassAssertion(:LevelOfHierarhy :ph_level_0)
+ObjectPropertyAssertion(:isLevelOf :ph_level_0 :ph)
+ObjectPropertyAssertion(:next :ph_level_0 :ph_level_1)
+
+# Individual: :ph_level_1 (:ph_level_1)
+
+ClassAssertion(:LevelOfHierarhy :ph_level_1)
+ObjectPropertyAssertion(:next :ph_level_1 :ph_level_2)
+
+# Individual: :ph_level_2 (:ph_level_2)
+
+ClassAssertion(:LevelOfHierarhy :ph_level_2)
+
+# Individual: :restriction_AC0_depth (:restriction_AC0_depth)
+
+ClassAssertion(:Restriction :restriction_AC0_depth)
+ObjectPropertyAssertion(:imposesUpperBound :restriction_AC0_depth :Const)
+ObjectPropertyAssertion(:restrictsMeasure :restriction_AC0_depth :Depth)
+
+# Individual: :restriction_AC0_size (:restriction_AC0_size)
+
+ClassAssertion(:Restriction :restriction_AC0_size)
+ObjectPropertyAssertion(:imposesUpperBound :restriction_AC0_size :Poly)
+ObjectPropertyAssertion(:restrictsMeasure :restriction_AC0_size :Size)
+
+# Individual: :restriction_AC_depth (:restriction_AC_depth)
+
+ClassAssertion(:Restriction :restriction_AC_depth)
+ObjectPropertyAssertion(:imposesUpperBound :restriction_AC_depth :PolyLog)
+ObjectPropertyAssertion(:restrictsMeasure :restriction_AC_depth :Depth)
+
+# Individual: :restriction_AC_size (:restriction_AC_size)
+
+ClassAssertion(:Restriction :restriction_AC_size)
+ObjectPropertyAssertion(:imposesUpperBound :restriction_AC_size :Poly)
+ObjectPropertyAssertion(:restrictsMeasure :restriction_AC_size :Size)
 
 # Individual: :restriction_ExpSpace (:restriction_ExpSpace)
 
@@ -490,7 +631,9 @@ SubObjectPropertyOf(ObjectPropertyChain(:isFromHierarchy ObjectInverseOf(:isUnio
 SubObjectPropertyOf(ObjectPropertyChain(:isMemberOf :isSubClassOf) :isMemberOf)
 SubObjectPropertyOf(ObjectPropertyChain(:isOnLevel :isLevelOf) :isFromHierarchy)
 SubObjectPropertyOf(ObjectPropertyChain(:isOnLevel :next ObjectInverseOf(:isOnLevel)) :isSubClassOf)
+SubObjectPropertyOf(ObjectPropertyChain(:sigma ObjectInverseOf(:pi)) :isClassOfComplementsFor)
 SubObjectPropertyOf(ObjectPropertyChain(ObjectInverseOf(:isReducibleTo) :isHardFor) :isHardFor)
 SubObjectPropertyOf(ObjectPropertyChain(ObjectInverseOf(:isReducibleTo_inLogSpace) :isHardFor_wrtLogSpace) :isHardFor_wrtLogSpace)
 SubObjectPropertyOf(ObjectPropertyChain(ObjectInverseOf(:isReducibleTo_inPolyTime) :isHardFor_wrtPolyTime) :isHardFor_wrtPolyTime)
+SubObjectPropertyOf(ObjectPropertyChain(ObjectInverseOf(:next) :isLevelOf) :isLevelOf)
 )
