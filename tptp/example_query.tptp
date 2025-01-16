@@ -1,3 +1,0 @@
-fof (query, conjecture,
-    ?[X]:('problem'(X) & (![Y, Z]:(('hasBase'(Y, 'aM') & 'hasPower'(Y, X) & 'hasBase'(Z, 'qMA') & 'hasPower'(Z, X)) => 'notSubset'(Y, Z))))
-).

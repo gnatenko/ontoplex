@@ -3,214 +3,271 @@ Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
 Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
 Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
 Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
-Prefix(fowl:=<https://github.com/gavel-tool/python-gavel-owl/>)
 Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
 
 
-Ontology(<urn:absolute:Ontoplex/core>
-
+Ontology(
 Declaration(Class(:Bound))
 Declaration(Class(:ComplexityClass))
 Declaration(Class(:DecisionProblem))
-Declaration(Class(:Savitch))
-Declaration(ObjectProperty(:classDefinition))
+Declaration(Class(:Function))
+Declaration(Class(:FunctionClass))
+Declaration(Class(:Hierarchy))
+Declaration(Class(:Measure))
+Declaration(Class(:MetaNode))
+Declaration(Class(:Model))
+Declaration(Class(:Restriction))
+Declaration(Class(:__sys_Label))
+Declaration(Class(:__sys_SavitchCompatible))
 Declaration(ObjectProperty(:dSpace))
 Declaration(ObjectProperty(:dTime))
-Declaration(ObjectProperty(:equals))
-Declaration(ObjectProperty(:hasBase))
-Declaration(ObjectProperty(:hasPower))
-Declaration(ObjectProperty(:in))
-Declaration(ObjectProperty(:isCompleteFor))
-Declaration(ObjectProperty(:isCompleteFor_LogSpace))
-Declaration(ObjectProperty(:isCompleteFor_PolyTime))
-Declaration(ObjectProperty(:isContainedIn))
+Declaration(ObjectProperty(:delta))
+Declaration(ObjectProperty(:extends))
+Declaration(ObjectProperty(:extendsByNondeterminism))
+Declaration(ObjectProperty(:hasOracle))
+Declaration(ObjectProperty(:hasRestriction))
+Declaration(ObjectProperty(:hasRestriction_onSpace))
+Declaration(ObjectProperty(:hasRestriction_onTime))
+Declaration(ObjectProperty(:hasRestriction_unique_onSpace_TM))
+Declaration(ObjectProperty(:hasRestriction_unique_onTime_TM))
+Declaration(ObjectProperty(:imposesUpperBound))
+Declaration(ObjectProperty(:isClassOfComplementsFor))
+Declaration(ObjectProperty(:isDefinedFor))
+Declaration(ObjectProperty(:isEqualTo))
+Declaration(ObjectProperty(:isFromHierarchy))
+Declaration(ObjectProperty(:isFunctionVersionOf))
 Declaration(ObjectProperty(:isHardFor))
-Declaration(ObjectProperty(:isHardFor_LogSpace))
-Declaration(ObjectProperty(:isHardFor_PolyTime))
-Declaration(ObjectProperty(:isReducibleLogSpace))
-Declaration(ObjectProperty(:isReduciblePolyTime))
+Declaration(ObjectProperty(:isHardFor_wrtLogSpace))
+Declaration(ObjectProperty(:isHardFor_wrtPolyTime))
+Declaration(ObjectProperty(:isHardnessFor))
+Declaration(ObjectProperty(:isHardnessOf))
+Declaration(ObjectProperty(:isHardnessWrt))
+Declaration(ObjectProperty(:isLevelOf))
+Declaration(ObjectProperty(:isMemberOf))
+Declaration(ObjectProperty(:isOnLevel))
+Declaration(ObjectProperty(:isPowerOf))
 Declaration(ObjectProperty(:isReducibleTo))
+Declaration(ObjectProperty(:isReducibleTo_inLogSpace))
+Declaration(ObjectProperty(:isReducibleTo_inPolyTime))
+Declaration(ObjectProperty(:isStrictSubClassOf))
+Declaration(ObjectProperty(:isStrictSubClassOf_SpaceHierarchyTheorem))
 Declaration(ObjectProperty(:isSubClassOf))
+Declaration(ObjectProperty(:isSubClassOf_SavitchTheorem))
+Declaration(ObjectProperty(:isSuperClassOf))
+Declaration(ObjectProperty(:isUnionOf))
+Declaration(ObjectProperty(:lessLess))
+Declaration(ObjectProperty(:metaLink))
 Declaration(ObjectProperty(:nSpace))
 Declaration(ObjectProperty(:nTime))
-Declaration(ObjectProperty(:notSubset))
-Declaration(ObjectProperty(:step))
-Declaration(ObjectProperty(:strictSubset))
-Declaration(ObjectProperty(:subset))
-Declaration(ObjectProperty(:tentacleSavitchDSpace))
-Declaration(ObjectProperty(:tentacleSavitchNSpace))
-Declaration(NamedIndividual(:AM))
-Declaration(NamedIndividual(:AM_with_oracle_Ver92))
+Declaration(ObjectProperty(:next))
+Declaration(ObjectProperty(:pi))
+Declaration(ObjectProperty(:reducesFrom))
+Declaration(ObjectProperty(:reducesTo))
+Declaration(ObjectProperty(:restrictsMeasure))
+Declaration(ObjectProperty(:sigma))
+Declaration(NamedIndividual(:BooleanCircuits))
+Declaration(NamedIndividual(:BooleanSatisfiability))
+Declaration(NamedIndividual(:Const))
+Declaration(NamedIndividual(:Depth))
 Declaration(NamedIndividual(:DirectedReachability))
+Declaration(NamedIndividual(:Exp))
 Declaration(NamedIndividual(:ExpSpace))
 Declaration(NamedIndividual(:ExpTime))
+Declaration(NamedIndividual(:FL))
+Declaration(NamedIndividual(:FP))
 Declaration(NamedIndividual(:L))
+Declaration(NamedIndividual(:Log))
 Declaration(NamedIndividual(:NExpSpace))
 Declaration(NamedIndividual(:NL))
 Declaration(NamedIndividual(:NP))
 Declaration(NamedIndividual(:NPSpace))
 Declaration(NamedIndividual(:P))
-Declaration(NamedIndividual(:PP))
-Declaration(NamedIndividual(:PP_with_oracle_Ver92))
 Declaration(NamedIndividual(:PSpace))
-Declaration(NamedIndividual(:QBF))
-Declaration(NamedIndividual(:QMA))
-Declaration(NamedIndividual(:Reg))
-Declaration(NamedIndividual(:SAT))
-Declaration(NamedIndividual(:const))
-Declaration(NamedIndividual(:exp))
-Declaration(NamedIndividual(:log))
-Declaration(NamedIndividual(:oracle_Ver92))
-Declaration(NamedIndividual(:poly))
-Declaration(NamedIndividual(<2ExpTime>))
-Declaration(NamedIndividual(<2exp>))
-Declaration(AnnotationProperty(fowl:tptp_annotation))
+Declaration(NamedIndividual(:Poly))
+Declaration(NamedIndividual(:PolyLog))
+Declaration(NamedIndividual(:QbfSatisfiability))
+Declaration(NamedIndividual(:Size))
+Declaration(NamedIndividual(:Space))
+Declaration(NamedIndividual(:Time))
+Declaration(NamedIndividual(:TuringMachine))
+Declaration(NamedIndividual(:UndirectedReachability))
+Declaration(NamedIndividual(:_2CnfSatisfiability))
+Declaration(NamedIndividual(:_3Colouring))
+Declaration(NamedIndividual(:restriction_ExpSpace))
+Declaration(NamedIndividual(:restriction_ExpTime))
+Declaration(NamedIndividual(:restriction_LogSpace))
+Declaration(NamedIndividual(:restriction_PSpace))
+Declaration(NamedIndividual(:restriction_PTime))
+Declaration(AnnotationProperty(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation>))
 
 ############################
 #   Object Properties
 ############################
 
-# Object Property: :classDefinition (:classDefinition)
-
-ObjectPropertyDomain(:classDefinition :ComplexityClass)
-ObjectPropertyRange(:classDefinition :Bound)
-
 # Object Property: :dSpace (:dSpace)
 
-SubObjectPropertyOf(:dSpace :classDefinition)
-FunctionalObjectProperty(:dSpace)
-InverseFunctionalObjectProperty(:dSpace)
+SubObjectPropertyOf(:dSpace :metaLink)
 
 # Object Property: :dTime (:dTime)
 
-SubObjectPropertyOf(:dTime :classDefinition)
-FunctionalObjectProperty(:dTime)
-InverseFunctionalObjectProperty(:dTime)
+SubObjectPropertyOf(:dTime :metaLink)
+ObjectPropertyDomain(:dTime ObjectSomeValuesFrom(:isDefinedFor ObjectOneOf(:TuringMachine)))
 
-# Object Property: :equals (:equals)
+# Object Property: :delta (:delta)
 
-AnnotationAssertion(fowl:tptp_annotation :equals "![X,Y]:(('subset'(X,Y)&'subset'(Y,X)) => 'equals'(X,Y))")
-SubObjectPropertyOf(:equals :subset)
-SubObjectPropertyOf(:equals ObjectInverseOf(:subset))
-TransitiveObjectProperty(:equals)
+SubObjectPropertyOf(:delta :isOnLevel)
 
-# Object Property: :hasBase (:hasBase)
+# Object Property: :extends (:extends)
 
-AnnotationAssertion(fowl:tptp_annotation :hasBase "![X, Y, U, V]:(('hasBase'(X, U) & 'hasPower'(X, V) & 'hasBase'(Y, U) & 'hasPower'(Y, V)) => X = Y)")
-AnnotationAssertion(fowl:tptp_annotation :hasBase "![X, Y, Z, U, V]:(('hasBase'(X, U) & 'hasBase'(Y, V) & 'hasPower'(X, Z) & 'hasPower'(Y, Z) & 'subset'(U, V)) => 'subset'(X, Y))")
-AnnotationAssertion(fowl:tptp_annotation :hasBase "![X,Y]:(('Class'(X) & 'Problem'(Y)) => ?[Z]:('hasBase'(Z, X) & 'hasPower'(Z, Y)))")
-FunctionalObjectProperty(:hasBase)
-ObjectPropertyDomain(:hasBase :ComplexityClass)
-ObjectPropertyRange(:hasBase :ComplexityClass)
+SubObjectPropertyOf(:extends :isSuperClassOf)
+ObjectPropertyDomain(:extends :ComplexityClass)
+ObjectPropertyRange(:extends :ComplexityClass)
 
-# Object Property: :hasPower (:hasPower)
+# Object Property: :extendsByNondeterminism (:extendsByNondeterminism)
 
-FunctionalObjectProperty(:hasPower)
-ObjectPropertyDomain(:hasPower :ComplexityClass)
+SubObjectPropertyOf(:extendsByNondeterminism :extends)
+FunctionalObjectProperty(:extendsByNondeterminism)
+InverseFunctionalObjectProperty(:extendsByNondeterminism)
 
-# Object Property: :in (:in)
+# Object Property: :hasRestriction (:hasRestriction)
 
-EquivalentObjectProperties(:in :isContainedIn)
-ObjectPropertyDomain(:in :DecisionProblem)
-ObjectPropertyRange(:in :ComplexityClass)
+SubObjectPropertyOf(:hasRestriction :metaLink)
+InverseFunctionalObjectProperty(:hasRestriction)
+ObjectPropertyDomain(:hasRestriction :ComplexityClass)
+ObjectPropertyRange(:hasRestriction :Restriction)
 
-# Object Property: :isCompleteFor (:isCompleteFor)
+# Object Property: :hasRestriction_onSpace (:hasRestriction_onSpace)
 
-AnnotationAssertion(fowl:tptp_annotation :isCompleteFor "![X, Y, Z]:('isComplete'(X, Y, Z) <=> ('isHard'(X, Y, Z) & 'in'(X, Y)))")
+SubObjectPropertyOf(:hasRestriction_onSpace :hasRestriction)
+FunctionalObjectProperty(:hasRestriction_onSpace)
 
-# Object Property: :isCompleteFor_LogSpace (:isCompleteFor_LogSpace)
+# Object Property: :hasRestriction_onTime (:hasRestriction_onTime)
 
-SubObjectPropertyOf(:isCompleteFor_LogSpace :in)
-SubObjectPropertyOf(:isCompleteFor_LogSpace :isCompleteFor_PolyTime)
-SubObjectPropertyOf(:isCompleteFor_LogSpace :isHardFor_LogSpace)
+SubObjectPropertyOf(:hasRestriction_onTime :hasRestriction)
+FunctionalObjectProperty(:hasRestriction_onTime)
 
-# Object Property: :isCompleteFor_PolyTime (:isCompleteFor_PolyTime)
+# Object Property: :hasRestriction_unique_onSpace_TM (:hasRestriction_unique_onSpace_TM)
 
-SubObjectPropertyOf(:isCompleteFor_PolyTime :in)
-SubObjectPropertyOf(:isCompleteFor_PolyTime :isCompleteFor)
-SubObjectPropertyOf(:isCompleteFor_PolyTime :isHardFor_PolyTime)
+SubObjectPropertyOf(:hasRestriction_unique_onSpace_TM :hasRestriction_onSpace)
+FunctionalObjectProperty(:hasRestriction_unique_onSpace_TM)
+
+# Object Property: :hasRestriction_unique_onTime_TM (:hasRestriction_unique_onTime_TM)
+
+SubObjectPropertyOf(:hasRestriction_unique_onTime_TM :hasRestriction_onTime)
+FunctionalObjectProperty(:hasRestriction_unique_onTime_TM)
+
+# Object Property: :imposesUpperBound (:imposesUpperBound)
+
+SubObjectPropertyOf(:imposesUpperBound :metaLink)
+FunctionalObjectProperty(:imposesUpperBound)
+ObjectPropertyDomain(:imposesUpperBound :Restriction)
+ObjectPropertyRange(:imposesUpperBound :Bound)
+
+# Object Property: :isClassOfComplementsFor (:isClassOfComplementsFor)
+
+SymmetricObjectProperty(:isClassOfComplementsFor)
+
+# Object Property: :isDefinedFor (:isDefinedFor)
+
+SubObjectPropertyOf(:isDefinedFor :metaLink)
+FunctionalObjectProperty(:isDefinedFor)
+ObjectPropertyDomain(:isDefinedFor :ComplexityClass)
+ObjectPropertyRange(:isDefinedFor :Model)
+
+# Object Property: :isEqualTo (:isEqualTo)
+
+AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isEqualTo "![X, Y]:('isEqualTo'(X, Y) <=> ('isSubClassOf'(X, Y) & 'isSubClassOf'(Y, X)''))")
+SubObjectPropertyOf(:isEqualTo :isSubClassOf)
+SymmetricObjectProperty(:isEqualTo)
+TransitiveObjectProperty(:isEqualTo)
 
 # Object Property: :isHardFor (:isHardFor)
 
-SubObjectPropertyOf(:isHardFor owl:topObjectProperty)
 ObjectPropertyDomain(:isHardFor :DecisionProblem)
+ObjectPropertyRange(:isHardFor :ComplexityClass)
 
-# Object Property: :isHardFor_LogSpace (:isHardFor_LogSpace)
+# Object Property: :isHardFor_wrtLogSpace (:isHardFor_wrtLogSpace)
 
-AnnotationAssertion(fowl:tptp_annotation :isHardFor_LogSpace "![X,Y]:('isHardLogSpace'(X, Y) <=> 'isHard'(X, Y, 'log'))")
-SubObjectPropertyOf(:isHardFor_LogSpace :isHardFor_PolyTime)
+SubObjectPropertyOf(:isHardFor_wrtLogSpace :isHardFor_wrtPolyTime)
 
-# Object Property: :isHardFor_PolyTime (:isHardFor_PolyTime)
+# Object Property: :isHardFor_wrtPolyTime (:isHardFor_wrtPolyTime)
 
-AnnotationAssertion(fowl:tptp_annotation :isHardFor_PolyTime "![X,Y]:('isHardPolyTime'(X, Y) <=> 'isHard'(X, Y, 'poly'))")
-SubObjectPropertyOf(:isHardFor_PolyTime :isHardFor)
+SubObjectPropertyOf(:isHardFor_wrtPolyTime :isHardFor)
 
-# Object Property: :isReducibleLogSpace (:isReducibleLogSpace)
+# Object Property: :isMemberOf (:isMemberOf)
 
-AnnotationAssertion(fowl:tptp_annotation :isReducibleLogSpace "![X,Y]:('isReducibleLogSpace'(X, Y) <=> 'isReducible'(X, Y, 'log'))")
-SubObjectPropertyOf(:isReducibleLogSpace :isReduciblePolyTime)
-TransitiveObjectProperty(:isReducibleLogSpace)
-
-# Object Property: :isReduciblePolyTime (:isReduciblePolyTime)
-
-AnnotationAssertion(fowl:tptp_annotation :isReduciblePolyTime "![X,Y]:('isReduciblePolyTime'(X, Y) <=> 'isReducible'(X, Y, 'poly'))")
-SubObjectPropertyOf(:isReduciblePolyTime :isReducibleTo)
-TransitiveObjectProperty(:isReduciblePolyTime)
+ObjectPropertyDomain(:isMemberOf :Function)
+ObjectPropertyRange(:isMemberOf :FunctionClass)
 
 # Object Property: :isReducibleTo (:isReducibleTo)
 
+AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isReducibleTo "![X, Y]:('isReducibleTo'(X, Y) <=> ?[R]:('reducesFrom'(R, X) & 'reducesTo'(R, Y)))")
 ObjectPropertyDomain(:isReducibleTo :DecisionProblem)
 ObjectPropertyRange(:isReducibleTo :DecisionProblem)
 
+# Object Property: :isReducibleTo_inLogSpace (:isReducibleTo_inLogSpace)
+
+AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isReducibleTo_inLogSpace "![X, Y]:('isReducibleTo_inLogSpace'(X, Y) <=> ?[R]:('reducesFrom'(R, X) & 'reducesTo'(R, Y) & 'isMemberOf'(R, 'FL')))")
+SubObjectPropertyOf(:isReducibleTo_inLogSpace :isReducibleTo_inPolyTime)
+
+# Object Property: :isReducibleTo_inPolyTime (:isReducibleTo_inPolyTime)
+
+AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isReducibleTo_inPolyTime "![X, Y]:('isReducibleTo_inPolyTime'(X, Y) <=> ?[R]:('reducesFrom'(R, X) & 'reducesTo'(R, Y) & 'isMemberOf'(R, 'FP')))")
+SubObjectPropertyOf(:isReducibleTo_inPolyTime :isReducibleTo)
+
+# Object Property: :isStrictSubClassOf (:isStrictSubClassOf)
+
+AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isStrictSubClassOf "![X, Y]:('isStrictSubClassOf'(X, Y) <=> ('isSubClassOf'(X, Y) & ~'isSubClassOf'(Y, X)''))")
+SubObjectPropertyOf(:isStrictSubClassOf :isSubClassOf)
+TransitiveObjectProperty(:isStrictSubClassOf)
+
+# Object Property: :isStrictSubClassOf_SpaceHierarchyTheorem (:isStrictSubClassOf_SpaceHierarchyTheorem)
+
+SubObjectPropertyOf(:isStrictSubClassOf_SpaceHierarchyTheorem :isStrictSubClassOf)
+SubObjectPropertyOf(:isStrictSubClassOf_SpaceHierarchyTheorem :metaLink)
+
 # Object Property: :isSubClassOf (:isSubClassOf)
 
-EquivalentObjectProperties(:isSubClassOf :subset)
+AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isSubClassOf "![X, Y]:('isSubClass'(X, Y) <=> (![Z]:('isMemberOf'(Z, X) => 'isMemberOf'(Z, Y))))")
+InverseObjectProperties(:isSubClassOf :isSuperClassOf)
+TransitiveObjectProperty(:isSubClassOf)
+ObjectPropertyDomain(:isSubClassOf :FunctionClass)
+ObjectPropertyRange(:isSubClassOf :FunctionClass)
+
+# Object Property: :isSubClassOf_SavitchTheorem (:isSubClassOf_SavitchTheorem)
+
+SubObjectPropertyOf(:isSubClassOf_SavitchTheorem :extendsByNondeterminism)
+SubObjectPropertyOf(:isSubClassOf_SavitchTheorem :isSubClassOf)
+SubObjectPropertyOf(:isSubClassOf_SavitchTheorem :metaLink)
+
+# Object Property: :lessLess (:lessLess)
+
+TransitiveObjectProperty(:lessLess)
+ObjectPropertyDomain(:lessLess :Bound)
+ObjectPropertyRange(:lessLess :Bound)
 
 # Object Property: :nSpace (:nSpace)
 
-SubObjectPropertyOf(:nSpace :classDefinition)
-FunctionalObjectProperty(:nSpace)
-InverseFunctionalObjectProperty(:nSpace)
+SubObjectPropertyOf(:nSpace :metaLink)
 
 # Object Property: :nTime (:nTime)
 
-SubObjectPropertyOf(:nTime :classDefinition)
-FunctionalObjectProperty(:nTime)
-InverseFunctionalObjectProperty(:nTime)
+SubObjectPropertyOf(:nTime :metaLink)
 
-# Object Property: :notSubset (:notSubset)
+# Object Property: :pi (:pi)
 
-AnnotationAssertion(fowl:tptp_annotation :notSubset "![X,Y]:(~'subset'(X, Y) | ~'notSubset'(X,Y))")
-ObjectPropertyDomain(:notSubset :ComplexityClass)
-ObjectPropertyRange(:notSubset :ComplexityClass)
+SubObjectPropertyOf(:pi :isOnLevel)
 
-# Object Property: :step (:step)
+# Object Property: :restrictsMeasure (:restrictsMeasure)
 
-FunctionalObjectProperty(:step)
-InverseFunctionalObjectProperty(:step)
-ObjectPropertyDomain(:step :Bound)
-ObjectPropertyRange(:step :Bound)
+SubObjectPropertyOf(:restrictsMeasure :metaLink)
+FunctionalObjectProperty(:restrictsMeasure)
+ObjectPropertyDomain(:restrictsMeasure :Restriction)
+ObjectPropertyRange(:restrictsMeasure :Measure)
 
-# Object Property: :strictSubset (:strictSubset)
+# Object Property: :sigma (:sigma)
 
-AnnotationAssertion(fowl:tptp_annotation :strictSubset "![X,Y]:(('strictSubset'(X,Y)) => ?[Z]:('in'(Z,Y) & ~'in'(Z, X)))")
-AnnotationAssertion(fowl:tptp_annotation :strictSubset "![X,Y]:(('strictSubset'(X,Y)) => ~'equals'(X,Y))")
-SubObjectPropertyOf(:strictSubset :subset)
-TransitiveObjectProperty(:strictSubset)
-
-# Object Property: :subset (:subset)
-
-TransitiveObjectProperty(:subset)
-ObjectPropertyDomain(:subset :ComplexityClass)
-ObjectPropertyRange(:subset :ComplexityClass)
-
-# Object Property: :tentacleSavitchDSpace (:tentacleSavitchDSpace)
-
-SubObjectPropertyOf(:tentacleSavitchDSpace :dSpace)
-
-# Object Property: :tentacleSavitchNSpace (:tentacleSavitchNSpace)
-
-SubObjectPropertyOf(:tentacleSavitchNSpace :nSpace)
+SubObjectPropertyOf(:sigma :isOnLevel)
 
 
 
@@ -218,157 +275,222 @@ SubObjectPropertyOf(:tentacleSavitchNSpace :nSpace)
 #   Classes
 ############################
 
-# Class: :Bound (:Bound)
-
-SubClassOf(:Bound ObjectSomeValuesFrom(ObjectInverseOf(:dSpace) owl:Thing))
-SubClassOf(:Bound ObjectSomeValuesFrom(ObjectInverseOf(:dTime) owl:Thing))
-SubClassOf(:Bound ObjectSomeValuesFrom(ObjectInverseOf(:nSpace) owl:Thing))
-SubClassOf(:Bound ObjectSomeValuesFrom(ObjectInverseOf(:nTime) owl:Thing))
-
 # Class: :ComplexityClass (:ComplexityClass)
 
+SubClassOf(:ComplexityClass :FunctionClass)
 
 # Class: :DecisionProblem (:DecisionProblem)
 
+SubClassOf(:DecisionProblem :Function)
 
-# Class: :Savitch (:Savitch)
+# Class: :Function (:Function)
 
-SubClassOf(:Savitch ObjectSomeValuesFrom(:step :Savitch))
-SubClassOf(:Savitch ObjectSomeValuesFrom(ObjectInverseOf(:tentacleSavitchDSpace) owl:Thing))
-SubClassOf(:Savitch ObjectSomeValuesFrom(ObjectInverseOf(:tentacleSavitchNSpace) owl:Thing))
+DisjointClasses(:Function :FunctionClass)
+
+# Class: :Hierarchy (:Hierarchy)
+
+SubClassOf(:Hierarchy :MetaNode)
+
+# Class: :Restriction (:Restriction)
+
+SubClassOf(:Restriction :MetaNode)
+
+# Class: :__sys_SavitchCompatible (:__sys_SavitchCompatible)
+
+SubClassOf(:__sys_SavitchCompatible :__sys_Label)
 
 
 ############################
 #   Named Individuals
 ############################
 
-# Individual: :AM (:AM)
+# Individual: :BooleanCircuits (:BooleanCircuits)
 
-ClassAssertion(:ComplexityClass :AM)
+ClassAssertion(:Model :BooleanCircuits)
 
-# Individual: :AM_with_oracle_Ver92 (:AM_with_oracle_Ver92)
+# Individual: :BooleanSatisfiability (:BooleanSatisfiability)
 
-ObjectPropertyAssertion(:hasBase :AM_with_oracle_Ver92 :AM)
-ObjectPropertyAssertion(:hasPower :AM_with_oracle_Ver92 :oracle_Ver92)
-ObjectPropertyAssertion(:notSubset :AM_with_oracle_Ver92 :PP_with_oracle_Ver92)
+ClassAssertion(:DecisionProblem :BooleanSatisfiability)
+ObjectPropertyAssertion(:isHardFor_wrtLogSpace :BooleanSatisfiability :NP)
+ObjectPropertyAssertion(:isMemberOf :BooleanSatisfiability :NP)
+ObjectPropertyAssertion(:isReducibleTo_inLogSpace :BooleanSatisfiability :_3Colouring)
+
+# Individual: :Const (:Const)
+
+ClassAssertion(:Bound :Const)
+ObjectPropertyAssertion(:lessLess :Const :Log)
+
+# Individual: :Depth (:Depth)
+
+ClassAssertion(:Measure :Depth)
 
 # Individual: :DirectedReachability (:DirectedReachability)
 
-ObjectPropertyAssertion(:isCompleteFor_LogSpace :DirectedReachability :NL)
+ClassAssertion(:DecisionProblem :DirectedReachability)
+ObjectPropertyAssertion(:isMemberOf :DirectedReachability :NL)
+
+# Individual: :Exp (:Exp)
+
+ClassAssertion(:Bound :Exp)
 
 # Individual: :ExpSpace (:ExpSpace)
 
-ObjectPropertyAssertion(:dSpace :ExpSpace :exp)
+ClassAssertion(:ComplexityClass :ExpSpace)
+ObjectPropertyAssertion(:hasRestriction :ExpSpace :restriction_ExpSpace)
+ObjectPropertyAssertion(:isDefinedFor :ExpSpace :TuringMachine)
 
 # Individual: :ExpTime (:ExpTime)
 
-ObjectPropertyAssertion(:dTime :ExpTime :exp)
+ClassAssertion(:ComplexityClass :ExpTime)
+ObjectPropertyAssertion(:hasRestriction :ExpTime :restriction_ExpTime)
+ObjectPropertyAssertion(:isDefinedFor :ExpTime :TuringMachine)
+
+# Individual: :FL (:FL)
+
+ClassAssertion(:FunctionClass :FL)
+ObjectPropertyAssertion(:isFunctionVersionOf :FL :L)
+
+# Individual: :FP (:FP)
+
+ClassAssertion(:FunctionClass :FP)
+ObjectPropertyAssertion(:isFunctionVersionOf :FP :P)
 
 # Individual: :L (:L)
 
-ObjectPropertyAssertion(:dSpace :L :log)
+ClassAssertion(:ComplexityClass :L)
+ObjectPropertyAssertion(:hasRestriction :L :restriction_LogSpace)
+ObjectPropertyAssertion(:isDefinedFor :L :TuringMachine)
+
+# Individual: :Log (:Log)
+
+ClassAssertion(:Bound :Log)
+ObjectPropertyAssertion(:lessLess :Log :PolyLog)
 
 # Individual: :NExpSpace (:NExpSpace)
 
-ObjectPropertyAssertion(:nSpace :NExpSpace :exp)
+ObjectPropertyAssertion(:extendsByNondeterminism :NExpSpace :ExpSpace)
 
 # Individual: :NL (:NL)
 
-ObjectPropertyAssertion(:nSpace :NL :log)
+ClassAssertion(:ComplexityClass :NL)
+ObjectPropertyAssertion(:extendsByNondeterminism :NL :L)
 
 # Individual: :NP (:NP)
 
-ObjectPropertyAssertion(:nTime :NP :poly)
+ClassAssertion(:ComplexityClass :NP)
+ObjectPropertyAssertion(:extendsByNondeterminism :NP :P)
 
 # Individual: :NPSpace (:NPSpace)
 
-ObjectPropertyAssertion(:nSpace :NPSpace :poly)
+ObjectPropertyAssertion(:extendsByNondeterminism :NPSpace :PSpace)
 
 # Individual: :P (:P)
 
-ObjectPropertyAssertion(:dTime :P :poly)
-
-# Individual: :PP (:PP)
-
-ClassAssertion(:ComplexityClass :PP)
-
-# Individual: :PP_with_oracle_Ver92 (:PP_with_oracle_Ver92)
-
-ObjectPropertyAssertion(:hasBase :PP_with_oracle_Ver92 :PP)
-ObjectPropertyAssertion(:hasPower :PP_with_oracle_Ver92 :oracle_Ver92)
+ClassAssertion(:ComplexityClass :P)
+ObjectPropertyAssertion(:hasRestriction :P :restriction_PTime)
+ObjectPropertyAssertion(:isDefinedFor :P :TuringMachine)
 
 # Individual: :PSpace (:PSpace)
 
-ObjectPropertyAssertion(:dSpace :PSpace :poly)
+ClassAssertion(:ComplexityClass :PSpace)
+ObjectPropertyAssertion(:hasRestriction :PSpace :restriction_PSpace)
+ObjectPropertyAssertion(:isDefinedFor :PSpace :TuringMachine)
 
-# Individual: :QBF (:QBF)
+# Individual: :Poly (:Poly)
 
-ObjectPropertyAssertion(:isCompleteFor_PolyTime :QBF :PSpace)
+ClassAssertion(:Bound :Poly)
+ClassAssertion(:__sys_SavitchCompatible :Poly)
+ObjectPropertyAssertion(:lessLess :Poly :Exp)
 
-# Individual: :QMA (:QMA)
+# Individual: :PolyLog (:PolyLog)
 
-ClassAssertion(:ComplexityClass :QMA)
-ObjectPropertyAssertion(:subset :QMA :PP)
+ClassAssertion(:Bound :PolyLog)
+ObjectPropertyAssertion(:lessLess :PolyLog :Poly)
 
-# Individual: :Reg (:Reg)
+# Individual: :QbfSatisfiability (:QbfSatisfiability)
 
-ObjectPropertyAssertion(:dSpace :Reg :const)
+ClassAssertion(:DecisionProblem :QbfSatisfiability)
+ObjectPropertyAssertion(:isMemberOf :QbfSatisfiability :PSpace)
 
-# Individual: :SAT (:SAT)
+# Individual: :Size (:Size)
 
-ClassAssertion(:DecisionProblem :SAT)
-ObjectPropertyAssertion(:isCompleteFor_PolyTime :SAT :NP)
+ClassAssertion(:Measure :Size)
 
-# Individual: :const (:const)
+# Individual: :Space (:Space)
 
-ClassAssertion(:Bound :const)
-ClassAssertion(ObjectSomeValuesFrom(:step owl:Thing) :const)
-ClassAssertion(ObjectMaxCardinality(0 ObjectInverseOf(:step)) :const)
-ObjectPropertyAssertion(:step :const :log)
+ClassAssertion(:Measure :Space)
 
-# Individual: :exp (:exp)
+# Individual: :Time (:Time)
 
-ClassAssertion(:Bound :exp)
-ObjectPropertyAssertion(:step :exp <2exp>)
+ClassAssertion(:Measure :Time)
 
-# Individual: :log (:log)
+# Individual: :TuringMachine (:TuringMachine)
 
-ObjectPropertyAssertion(:step :log :poly)
+ClassAssertion(:Model :TuringMachine)
 
-# Individual: :oracle_Ver92 (:oracle_Ver92)
+# Individual: :UndirectedReachability (:UndirectedReachability)
 
-ClassAssertion(:DecisionProblem :oracle_Ver92)
+ClassAssertion(:DecisionProblem :UndirectedReachability)
+ObjectPropertyAssertion(:isMemberOf :UndirectedReachability :L)
 
-# Individual: :poly (:poly)
+# Individual: :_2CnfSatisfiability (:_2CnfSatisfiability)
 
-ClassAssertion(:Savitch :poly)
-ObjectPropertyAssertion(:step :poly :exp)
+ClassAssertion(:DecisionProblem :_2CnfSatisfiability)
+ObjectPropertyAssertion(:isMemberOf :_2CnfSatisfiability :P)
 
-# Individual: <2ExpTime> (<2ExpTime>)
+# Individual: :_3Colouring (:_3Colouring)
 
-ClassAssertion(:ComplexityClass <2ExpTime>)
-ObjectPropertyAssertion(:dTime <2ExpTime> <2exp>)
+ClassAssertion(:DecisionProblem :_3Colouring)
+ObjectPropertyAssertion(:isMemberOf :_3Colouring :NP)
 
-# Individual: <2exp> (<2exp>)
+# Individual: :restriction_ExpSpace (:restriction_ExpSpace)
 
-ClassAssertion(:Bound <2exp>)
+ClassAssertion(:Restriction :restriction_ExpSpace)
+ObjectPropertyAssertion(:imposesUpperBound :restriction_ExpSpace :Exp)
+ObjectPropertyAssertion(:restrictsMeasure :restriction_ExpSpace :Space)
+
+# Individual: :restriction_ExpTime (:restriction_ExpTime)
+
+ClassAssertion(:Restriction :restriction_ExpTime)
+ObjectPropertyAssertion(:imposesUpperBound :restriction_ExpTime :Exp)
+ObjectPropertyAssertion(:restrictsMeasure :restriction_ExpTime :Time)
+
+# Individual: :restriction_LogSpace (:restriction_LogSpace)
+
+ClassAssertion(:Restriction :restriction_LogSpace)
+ObjectPropertyAssertion(:imposesUpperBound :restriction_LogSpace :Log)
+ObjectPropertyAssertion(:restrictsMeasure :restriction_LogSpace :Space)
+
+# Individual: :restriction_PSpace (:restriction_PSpace)
+
+ClassAssertion(:Restriction :restriction_PSpace)
+ObjectPropertyAssertion(:imposesUpperBound :restriction_PSpace :Poly)
+ObjectPropertyAssertion(:restrictsMeasure :restriction_PSpace :Space)
+
+# Individual: :restriction_PTime (:restriction_PTime)
+
+ClassAssertion(:Restriction :restriction_PTime)
+ObjectPropertyAssertion(:imposesUpperBound :restriction_PTime :Poly)
+ObjectPropertyAssertion(:restrictsMeasure :restriction_PTime :Time)
 
 
-SubClassOf(ObjectSomeValuesFrom(ObjectInverseOf(:step) owl:Thing) ObjectSomeValuesFrom(:step owl:Thing))
-DisjointClasses(:Bound :ComplexityClass :DecisionProblem)
-SubObjectPropertyOf(ObjectPropertyChain(:dSpace :step ObjectInverseOf(:dSpace)) :strictSubset)
-SubObjectPropertyOf(ObjectPropertyChain(:dSpace ObjectInverseOf(:nSpace)) :subset)
-SubObjectPropertyOf(ObjectPropertyChain(:dTime :step ObjectInverseOf(:dTime)) :strictSubset)
-SubObjectPropertyOf(ObjectPropertyChain(:dTime ObjectInverseOf(:dSpace)) :subset)
-SubObjectPropertyOf(ObjectPropertyChain(:dTime ObjectInverseOf(:nTime)) :subset)
-SubObjectPropertyOf(ObjectPropertyChain(:in :subset) :in)
-SubObjectPropertyOf(ObjectPropertyChain(:isHardFor_LogSpace ObjectInverseOf(:subset)) :isHardFor_LogSpace)
-SubObjectPropertyOf(ObjectPropertyChain(:isHardFor_PolyTime ObjectInverseOf(:subset)) :isHardFor_PolyTime)
-SubObjectPropertyOf(ObjectPropertyChain(:nSpace :step ObjectInverseOf(:dTime)) :subset)
-SubObjectPropertyOf(ObjectPropertyChain(:nTime :step ObjectInverseOf(:dTime)) :subset)
-SubObjectPropertyOf(ObjectPropertyChain(:nTime ObjectInverseOf(:nSpace)) :subset)
-SubObjectPropertyOf(ObjectPropertyChain(:notSubset ObjectInverseOf(:subset)) :notSubset)
-SubObjectPropertyOf(ObjectPropertyChain(:tentacleSavitchNSpace ObjectInverseOf(:tentacleSavitchDSpace)) :subset)
-SubObjectPropertyOf(ObjectPropertyChain(ObjectInverseOf(:isReducibleLogSpace) :isHardFor_LogSpace) :isHardFor_LogSpace)
-SubObjectPropertyOf(ObjectPropertyChain(ObjectInverseOf(:isReduciblePolyTime) :isHardFor_PolyTime) :isHardFor_PolyTime)
+SubClassOf(ObjectIntersectionOf(ObjectSomeValuesFrom(:hasRestriction_onSpace owl:Thing) ObjectSomeValuesFrom(:isDefinedFor ObjectOneOf(:TuringMachine))) ObjectSomeValuesFrom(:hasRestriction_unique_onSpace_TM owl:Thing))
+SubClassOf(ObjectIntersectionOf(ObjectSomeValuesFrom(:hasRestriction_onTime owl:Thing) ObjectSomeValuesFrom(:isDefinedFor ObjectOneOf(:TuringMachine))) ObjectSomeValuesFrom(:hasRestriction_unique_onTime_TM owl:Thing))
+SubClassOf(ObjectSomeValuesFrom(:dSpace :__sys_SavitchCompatible) :__sys_SavitchCompatible)
+SubClassOf(Annotation(rdfs:comment "Savitch's Theorem") ObjectSomeValuesFrom(:extendsByNondeterminism :__sys_SavitchCompatible) ObjectSomeValuesFrom(:isSubClassOf_SavitchTheorem owl:Thing))
+SubClassOf(ObjectSomeValuesFrom(:restrictsMeasure ObjectOneOf(:Space)) ObjectSomeValuesFrom(ObjectInverseOf(:hasRestriction_onSpace) owl:Thing))
+SubClassOf(ObjectSomeValuesFrom(:restrictsMeasure ObjectOneOf(:Time)) ObjectSomeValuesFrom(ObjectInverseOf(:hasRestriction_onTime) owl:Thing))
+SubClassOf(ObjectSomeValuesFrom(ObjectInverseOf(:lessLess) :__sys_SavitchCompatible) :__sys_SavitchCompatible)
+SubObjectPropertyOf(Annotation(rdfs:comment "Space Hierarchy Theorem") ObjectPropertyChain(:dSpace :lessLess ObjectInverseOf(:dSpace)) :isStrictSubClassOf_SpaceHierarchyTheorem)
+SubObjectPropertyOf(ObjectPropertyChain(:extendsByNondeterminism :dSpace) :nSpace)
+SubObjectPropertyOf(ObjectPropertyChain(:extendsByNondeterminism :dTime) :nTime)
+SubObjectPropertyOf(ObjectPropertyChain(:hasRestriction_unique_onSpace_TM :imposesUpperBound) :dSpace)
+SubObjectPropertyOf(ObjectPropertyChain(:hasRestriction_unique_onTime_TM :imposesUpperBound) :dTime)
+SubObjectPropertyOf(ObjectPropertyChain(:isFromHierarchy ObjectInverseOf(:isUnionOf)) :isSubClassOf)
+SubObjectPropertyOf(ObjectPropertyChain(:isMemberOf :isSubClassOf) :isMemberOf)
+SubObjectPropertyOf(ObjectPropertyChain(:isOnLevel :isLevelOf) :isFromHierarchy)
+SubObjectPropertyOf(ObjectPropertyChain(:isOnLevel :next ObjectInverseOf(:isOnLevel)) :isSubClassOf)
+SubObjectPropertyOf(ObjectPropertyChain(ObjectInverseOf(:isReducibleTo) :isHardFor) :isHardFor)
+SubObjectPropertyOf(ObjectPropertyChain(ObjectInverseOf(:isReducibleTo_inLogSpace) :isHardFor_wrtLogSpace) :isHardFor_wrtLogSpace)
+SubObjectPropertyOf(ObjectPropertyChain(ObjectInverseOf(:isReducibleTo_inPolyTime) :isHardFor_wrtPolyTime) :isHardFor_wrtPolyTime)
 )
