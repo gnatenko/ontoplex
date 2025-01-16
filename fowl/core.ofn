@@ -119,6 +119,7 @@ Declaration(NamedIndividual(:restriction_ExpTime))
 Declaration(NamedIndividual(:restriction_LogSpace))
 Declaration(NamedIndividual(:restriction_PSpace))
 Declaration(NamedIndividual(:restriction_PTime))
+Declaration(AnnotationProperty(rdfs:Reference))
 Declaration(AnnotationProperty(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation>))
 
 ############################
@@ -490,6 +491,7 @@ ClassAssertion(:Model :BooleanCircuits)
 
 # Individual: :Const (:Const)
 
+AnnotationAssertion(rdfs:comment :Const "Class of functions f(n) = const, for all n")
 ClassAssertion(:Bound :Const)
 ObjectPropertyAssertion(:lessLess :Const :Log)
 
@@ -505,6 +507,7 @@ ObjectPropertyAssertion(:isMemberOf :DirectedReachability :NL)
 
 # Individual: :Exp (:Exp)
 
+AnnotationAssertion(rdfs:comment :Exp "Class of functions f(n) = 2^{n^k}, k = const")
 ClassAssertion(:Bound :Exp)
 
 # Individual: :ExpSpace (:ExpSpace)
@@ -542,6 +545,7 @@ ObjectPropertyAssertion(:isDefinedFor :L :TuringMachine)
 
 # Individual: :Log (:Log)
 
+AnnotationAssertion(rdfs:comment :Log "Class of functions f(n) = c * log n, c = const")
 ClassAssertion(:Bound :Log)
 ObjectPropertyAssertion(:lessLess :Log :PolyLog)
 
@@ -592,12 +596,14 @@ ObjectPropertyAssertion(:pi :Pi_P_2 :ph_level_2)
 
 # Individual: :Poly (:Poly)
 
+AnnotationAssertion(rdfs:comment :Poly "Class of functions f(n) = c * n^k, c,k = const")
 ClassAssertion(:Bound :Poly)
 ClassAssertion(:__sys_SavitchCompatible :Poly)
 ObjectPropertyAssertion(:lessLess :Poly :Exp)
 
 # Individual: :PolyLog (:PolyLog)
 
+AnnotationAssertion(rdfs:comment :PolyLog "Class of functions f(n) = c * (log n)^k, c,k = const")
 ClassAssertion(:Bound :PolyLog)
 ObjectPropertyAssertion(:lessLess :PolyLog :Poly)
 
