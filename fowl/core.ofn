@@ -7,8 +7,7 @@ Prefix(fowl:=<https://github.com/gavel-tool/python-gavel-owl/>)
 Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
 
 
-Ontology(<urn:absolute:Ontoplex/core>
-
+Ontology(
 Declaration(Class(:Bound))
 Declaration(Class(:ComplexityClass))
 Declaration(Class(:DecisionProblem))
@@ -56,14 +55,14 @@ Declaration(NamedIndividual(:PSpace))
 Declaration(NamedIndividual(:QBF))
 Declaration(NamedIndividual(:QMA))
 Declaration(NamedIndividual(:Reg))
-Declaration(NamedIndividual(:SAT))
 Declaration(NamedIndividual(:const))
 Declaration(NamedIndividual(:exp))
 Declaration(NamedIndividual(:log))
 Declaration(NamedIndividual(:oracle_Ver92))
 Declaration(NamedIndividual(:poly))
-Declaration(NamedIndividual(<2ExpTime>))
-Declaration(NamedIndividual(<2exp>))
+Declaration(NamedIndividual(<urn:absolute:Ontoplex/SAT>))
+Declaration(NamedIndividual(<urn:absolute:Ontoplex:2ExpTime>))
+Declaration(NamedIndividual(<urn:absolute:Ontoplex:2exp>))
 Declaration(AnnotationProperty(fowl:tptp_annotation))
 
 ############################
@@ -314,11 +313,6 @@ ObjectPropertyAssertion(:subset :QMA :PP)
 
 ObjectPropertyAssertion(:dSpace :Reg :const)
 
-# Individual: :SAT (:SAT)
-
-ClassAssertion(:DecisionProblem :SAT)
-ObjectPropertyAssertion(:isCompleteFor_PolyTime :SAT :NP)
-
 # Individual: :const (:const)
 
 ClassAssertion(:Bound :const)
@@ -329,7 +323,7 @@ ObjectPropertyAssertion(:step :const :log)
 # Individual: :exp (:exp)
 
 ClassAssertion(:Bound :exp)
-ObjectPropertyAssertion(:step :exp <2exp>)
+ObjectPropertyAssertion(:step :exp <urn:absolute:Ontoplex:2exp>)
 
 # Individual: :log (:log)
 
@@ -344,14 +338,19 @@ ClassAssertion(:DecisionProblem :oracle_Ver92)
 ClassAssertion(:Savitch :poly)
 ObjectPropertyAssertion(:step :poly :exp)
 
-# Individual: <2ExpTime> (<2ExpTime>)
+# Individual: <urn:absolute:Ontoplex/SAT> (<urn:absolute:Ontoplex/SAT>)
 
-ClassAssertion(:ComplexityClass <2ExpTime>)
-ObjectPropertyAssertion(:dTime <2ExpTime> <2exp>)
+ClassAssertion(:DecisionProblem <urn:absolute:Ontoplex/SAT>)
+ObjectPropertyAssertion(:isCompleteFor_PolyTime <urn:absolute:Ontoplex/SAT> :NP)
 
-# Individual: <2exp> (<2exp>)
+# Individual: <urn:absolute:Ontoplex:2ExpTime> (<urn:absolute:Ontoplex:2ExpTime>)
 
-ClassAssertion(:Bound <2exp>)
+ClassAssertion(:ComplexityClass <urn:absolute:Ontoplex:2ExpTime>)
+ObjectPropertyAssertion(:dTime <urn:absolute:Ontoplex:2ExpTime> <urn:absolute:Ontoplex:2exp>)
+
+# Individual: <urn:absolute:Ontoplex:2exp> (<urn:absolute:Ontoplex:2exp>)
+
+ClassAssertion(:Bound <urn:absolute:Ontoplex:2exp>)
 
 
 SubClassOf(ObjectSomeValuesFrom(ObjectInverseOf(:step) owl:Thing) ObjectSomeValuesFrom(:step owl:Thing))
