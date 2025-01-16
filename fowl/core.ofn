@@ -12,6 +12,7 @@ Declaration(Class(:ComplexityClass))
 Declaration(Class(:DecisionProblem))
 Declaration(Class(:Function))
 Declaration(Class(:FunctionClass))
+Declaration(Class(:Hardness))
 Declaration(Class(:Hierarchy))
 Declaration(Class(:LevelOfHierarhy))
 Declaration(Class(:Measure))
@@ -126,10 +127,12 @@ Declaration(AnnotationProperty(<https://github.com/gavel-tool/python-gavel-owl/t
 
 # Object Property: :dSpace (:dSpace)
 
+AnnotationAssertion(rdfs:comment :dSpace "dSpace(C, b) means C is defined for b-space bounded deterministic Turing machines")
 SubObjectPropertyOf(:dSpace :metaLink)
 
 # Object Property: :dTime (:dTime)
 
+AnnotationAssertion(rdfs:comment :dTime "dTime(C, b) means C is defined for b-time bounded deterministic Turing machines")
 SubObjectPropertyOf(:dTime :metaLink)
 ObjectPropertyDomain(:dTime ObjectSomeValuesFrom(:isDefinedFor ObjectOneOf(:TuringMachine)))
 
@@ -139,18 +142,26 @@ SubObjectPropertyOf(:delta :isOnLevel)
 
 # Object Property: :extends (:extends)
 
+AnnotationAssertion(rdfs:comment :extends "The relation between a class C and a class D obtained from C by extending the definition with a more capable model of computation")
 SubObjectPropertyOf(:extends :isSuperClassOf)
 ObjectPropertyDomain(:extends :ComplexityClass)
 ObjectPropertyRange(:extends :ComplexityClass)
 
 # Object Property: :extendsByNondeterminism (:extendsByNondeterminism)
 
+AnnotationAssertion(rdfs:comment :extendsByNondeterminism "The relation between a class C and a class D obtained by allowing nondeterminism")
 SubObjectPropertyOf(:extendsByNondeterminism :extends)
 FunctionalObjectProperty(:extendsByNondeterminism)
 InverseFunctionalObjectProperty(:extendsByNondeterminism)
 
+# Object Property: :hasOracle (:hasOracle)
+
+AnnotationAssertion(rdfs:comment :hasOracle "The relation between classes C^D and D or class and problem C^A and A")
+FunctionalObjectProperty(:hasOracle)
+
 # Object Property: :hasRestriction (:hasRestriction)
 
+AnnotationAssertion(rdfs:comment :hasRestriction "A connection between a class and the representative node for the restriction on complexity in its definition. With variants needed for internal reasoning")
 SubObjectPropertyOf(:hasRestriction :metaLink)
 InverseFunctionalObjectProperty(:hasRestriction)
 ObjectPropertyDomain(:hasRestriction :ComplexityClass)
@@ -178,6 +189,7 @@ FunctionalObjectProperty(:hasRestriction_unique_onTime_TM)
 
 # Object Property: :imposesUpperBound (:imposesUpperBound)
 
+AnnotationAssertion(rdfs:comment :imposesUpperBound "The relation between a restriction and a bound on a complexity measure that it imposes")
 SubObjectPropertyOf(:imposesUpperBound :metaLink)
 FunctionalObjectProperty(:imposesUpperBound)
 ObjectPropertyDomain(:imposesUpperBound :Restriction)
@@ -185,18 +197,21 @@ ObjectPropertyRange(:imposesUpperBound :Bound)
 
 # Object Property: :isClassOfComplementsFor (:isClassOfComplementsFor)
 
+AnnotationAssertion(rdfs:comment :isClassOfComplementsFor "The relation between classes C and coC = {P | complement of P is in C}")
 SymmetricObjectProperty(:isClassOfComplementsFor)
 ObjectPropertyDomain(:isClassOfComplementsFor :ComplexityClass)
 ObjectPropertyRange(:isClassOfComplementsFor :ComplexityClass)
 
 # Object Property: :isComplementOf (:isComplementOf)
 
+AnnotationAssertion(rdfs:comment :isComplementOf "The relation between problems A and notA = {0, 1}* \\ A")
 SymmetricObjectProperty(:isComplementOf)
 ObjectPropertyDomain(:isComplementOf :DecisionProblem)
 ObjectPropertyRange(:isComplementOf :DecisionProblem)
 
 # Object Property: :isDefinedFor (:isDefinedFor)
 
+AnnotationAssertion(rdfs:comment :isDefinedFor "A relation between a class and a model of computation it is defined for")
 SubObjectPropertyOf(:isDefinedFor :metaLink)
 FunctionalObjectProperty(:isDefinedFor)
 ObjectPropertyDomain(:isDefinedFor :ComplexityClass)
@@ -209,47 +224,78 @@ SubObjectPropertyOf(:isEqualTo :isSubClassOf)
 SymmetricObjectProperty(:isEqualTo)
 TransitiveObjectProperty(:isEqualTo)
 
+# Object Property: :isFromHierarchy (:isFromHierarchy)
+
+AnnotationAssertion(rdfs:comment :isFromHierarchy "The relation between a class from a hierarchy and that hierarchy representative node")
+
+# Object Property: :isFunctionVersionOf (:isFunctionVersionOf)
+
+AnnotationAssertion(rdfs:comment :isFunctionVersionOf "The relation between the functional class and the respective class of problems, e.g. FP and P")
+
 # Object Property: :isHardFor (:isHardFor)
 
+AnnotationAssertion(rdfs:comment :isHardFor "The relation between a problem and a class it is hard for (with variants)")
 AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isHardFor "![X, Y]:('isHardFor'(X, Y) <=> ?[H]:('isHardnessOf'(H, X) & 'isHardnessFor'(H, Y)))")
-AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isHardFor "![coP, P, C, coC]:('isComplementOf'(coP, P) & 'isHardFor'(P, C) & 'isClassOfComplementsFor'(C, coC) => 'isHardFor'(coP, coC))")
+AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isHardFor "![notA, A, C, coC]:('isComplementOf'(notA, A) & 'isHardFor'(A, C) & 'isClassOfComplementsFor'(C, coC) => 'isHardFor'(notA, coC))")
 ObjectPropertyDomain(:isHardFor :DecisionProblem)
 ObjectPropertyRange(:isHardFor :ComplexityClass)
 
 # Object Property: :isHardFor_wrtAC0 (:isHardFor_wrtAC0)
 
 AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isHardFor_wrtAC0 "![X, Y]:('isHardFor_wrtAC0'(X, Y) <=> ?[H]:('isHardnessOf'(H, X) & 'isHardnessFor'(H, Y) & 'isHardnessWtr'(H, 'FAC0')))")
-AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isHardFor_wrtAC0 "![coP, P, C, coC]:('isComplementOf'(coP, P) & 'isHardFor_wrtAC0'(P, C) & 'isClassOfComplementsFor'(C, coC) => 'isHardFor_wrtAC0'(coP, coC))")
+AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isHardFor_wrtAC0 "![notA, A, C, coC]:('isComplementOf'(notA, A) & 'isHardFor_wrtAC0'(A, C) & 'isClassOfComplementsFor'(C, coC) => 'isHardFor_wrtAC0'(notA, coC))")
 SubObjectPropertyOf(:isHardFor_wrtAC0 :isHardFor_wrtLogSpace)
 
 # Object Property: :isHardFor_wrtLogSpace (:isHardFor_wrtLogSpace)
 
 AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isHardFor_wrtLogSpace "![X, Y]:('isHardFor_wrtLogSpace'(X, Y) <=> ?[H]:('isHardnessOf'(H, X) & 'isHardnessFor'(H, Y) & 'isHardnessWtr'(H, 'FL')))")
-AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isHardFor_wrtLogSpace "![coP, P, C, coC]:('isComplementOf'(coP, P) & 'isHardFor_wrtLogSpace'(P, C) & 'isClassOfComplementsFor'(C, coC) => 'isHardFor_wrtLogSpace'(coP, coC))")
+AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isHardFor_wrtLogSpace "![notA, A, C, coC]:('isComplementOf'(notA, A) & 'isHardFor_wrtLogSpace'(A, C) & 'isClassOfComplementsFor'(C, coC) => 'isHardFor_wrtLogSpace'(notA, coC))")
 SubObjectPropertyOf(:isHardFor_wrtLogSpace :isHardFor_wrtPolyTime)
 
 # Object Property: :isHardFor_wrtPolyTime (:isHardFor_wrtPolyTime)
 
 AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isHardFor_wrtPolyTime "![X, Y]:('isHardFor_wrtPolyTime'(X, Y) <=> ?[H]:('isHardnessOf'(H, X) & 'isHardnessFor'(H, Y) & 'isHardnessWtr'(H, 'FP')))")
-AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isHardFor_wrtPolyTime "![coP, P, C, coC]:('isComplementOf'(coP, P) & 'isHardFor_wrtPolyTime'(P, C) & 'isClassOfComplementsFor'(C, coC) => 'isHardFor_wrtPolyTime'(coP, coC))")
+AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isHardFor_wrtPolyTime "![notA, A, C, coC]:('isComplementOf'(notA, A) & 'isHardFor_wrtPolyTime'(A, C) & 'isClassOfComplementsFor'(C, coC) => 'isHardFor_wrtPolyTime'(notA, coC))")
 SubObjectPropertyOf(:isHardFor_wrtPolyTime :isHardFor)
+
+# Object Property: :isHardnessFor (:isHardnessFor)
+
+AnnotationAssertion(rdfs:comment :isHardnessFor "The relation between \"hardness of A for C wrt reductions computible in F\" and C")
+
+# Object Property: :isHardnessOf (:isHardnessOf)
+
+AnnotationAssertion(rdfs:comment :isHardnessOf "The relation between \"hardness of A for C wrt reductions computible in F\" and A")
+
+# Object Property: :isHardnessWrt (:isHardnessWrt)
+
+AnnotationAssertion(rdfs:comment :isHardnessWrt "The relation between \"hardness of A for C wrt reductions computible in F\" and F")
 
 # Object Property: :isLevelOf (:isLevelOf)
 
+AnnotationAssertion(rdfs:comment :isLevelOf "A relation between a representative of a level of a hierarchy and the representative of that hierarchy")
 SubObjectPropertyOf(:isLevelOf :metaLink)
 
 # Object Property: :isMemberOf (:isMemberOf)
 
+AnnotationAssertion(rdfs:comment :isMemberOf "The relation between a problem and a class it belongs to")
 ObjectPropertyDomain(:isMemberOf :Function)
 ObjectPropertyRange(:isMemberOf :FunctionClass)
 
 # Object Property: :isOnLevel (:isOnLevel)
 
+AnnotationAssertion(rdfs:comment :isOnLevel "A relation between a member class of a hierarchy and its level. With variants")
 SubObjectPropertyOf(:isOnLevel :metaLink)
+
+# Object Property: :isPowerOf (:isPowerOf)
+
+AnnotationAssertion(rdfs:comment :isPowerOf "The relation between classes C^D and C")
+SubObjectPropertyOf(:isPowerOf :isSuperClassOf)
 
 # Object Property: :isReducibleTo (:isReducibleTo)
 
+AnnotationAssertion(rdfs:comment :isReducibleTo "The relation of Karp reducibility between problems (with variants)")
 AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isReducibleTo "![X, Y]:('isReducibleTo'(X, Y) <=> ?[R]:('reducesFrom'(R, X) & 'reducesTo'(R, Y)))")
+AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isReducibleTo "The relation of reducibility between problems (with variants)")
 ObjectPropertyDomain(:isReducibleTo :DecisionProblem)
 ObjectPropertyRange(:isReducibleTo :DecisionProblem)
 
@@ -276,6 +322,7 @@ TransitiveObjectProperty(:isStrictSubClassOf)
 
 # Object Property: :isStrictSubClassOf_SpaceHierarchyTheorem (:isStrictSubClassOf_SpaceHierarchyTheorem)
 
+AnnotationAssertion(rdfs:comment :isStrictSubClassOf_SpaceHierarchyTheorem "A strict subclass relation that is imposed by the Space Hierarchy Theorem")
 SubObjectPropertyOf(:isStrictSubClassOf_SpaceHierarchyTheorem :isStrictSubClassOf)
 SubObjectPropertyOf(:isStrictSubClassOf_SpaceHierarchyTheorem :metaLink)
 
@@ -289,30 +336,55 @@ ObjectPropertyRange(:isSubClassOf :FunctionClass)
 
 # Object Property: :isSubClassOf_SavitchTheorem (:isSubClassOf_SavitchTheorem)
 
+AnnotationAssertion(rdfs:comment :isSubClassOf_SavitchTheorem "A subclass relation that is imposed by Savitch's Theorem")
 SubObjectPropertyOf(:isSubClassOf_SavitchTheorem :extendsByNondeterminism)
 SubObjectPropertyOf(:isSubClassOf_SavitchTheorem :isSubClassOf)
 SubObjectPropertyOf(:isSubClassOf_SavitchTheorem :metaLink)
 
+# Object Property: :isUnionOf (:isUnionOf)
+
+AnnotationAssertion(rdfs:comment :isUnionOf "The relation between the union of a hierarchy and the representative node of that hierarchy")
+
 # Object Property: :lessLess (:lessLess)
 
+AnnotationAssertion(rdfs:comment :lessLess "The relation between two classes of bounds F and G, such that for each f \\in F there exists g \\in G, such that (f log f) = o(g)")
 TransitiveObjectProperty(:lessLess)
 ObjectPropertyDomain(:lessLess :Bound)
 ObjectPropertyRange(:lessLess :Bound)
 
+# Object Property: :metaLink (:metaLink)
+
+AnnotationAssertion(rdfs:comment :metaLink "A type of relations that are used in definitions and axiomatisations, but not studied directly in complexity theory")
+
 # Object Property: :nSpace (:nSpace)
 
+AnnotationAssertion(rdfs:comment :nSpace "nSpace(C, b) means C is the nondeterministic version of D, dSpace(D, b)")
 SubObjectPropertyOf(:nSpace :metaLink)
 
 # Object Property: :nTime (:nTime)
 
+AnnotationAssertion(rdfs:comment :nTime "nTime(C, b) means C is the nondeterministic version of D, dTime(D, b)")
 SubObjectPropertyOf(:nTime :metaLink)
+
+# Object Property: :next (:next)
+
+AnnotationAssertion(rdfs:comment :next "The successor relation between the layers of a hierarchy")
 
 # Object Property: :pi (:pi)
 
 SubObjectPropertyOf(:pi :isOnLevel)
 
+# Object Property: :reducesFrom (:reducesFrom)
+
+AnnotationAssertion(rdfs:comment :reducesFrom "The relation between a reduction and from what it reduces")
+
+# Object Property: :reducesTo (:reducesTo)
+
+AnnotationAssertion(rdfs:comment :reducesTo "The relation between a reduction and to what it reduces")
+
 # Object Property: :restrictsMeasure (:restrictsMeasure)
 
+AnnotationAssertion(rdfs:comment :restrictsMeasure "The relation between a restriction and the complexity measure that it restricts")
 SubObjectPropertyOf(:restrictsMeasure :metaLink)
 FunctionalObjectProperty(:restrictsMeasure)
 ObjectPropertyDomain(:restrictsMeasure :Restriction)
@@ -328,32 +400,68 @@ SubObjectPropertyOf(:sigma :isOnLevel)
 #   Classes
 ############################
 
+# Class: :Bound (:Bound)
+
+AnnotationAssertion(rdfs:comment :Bound "The type of classes of functions \\N -> \\N")
+
 # Class: :ComplexityClass (:ComplexityClass)
 
+AnnotationAssertion(rdfs:comment :ComplexityClass "The type of complexity classes of decision problems")
 SubClassOf(:ComplexityClass :FunctionClass)
 
 # Class: :DecisionProblem (:DecisionProblem)
 
+AnnotationAssertion(rdfs:comment :DecisionProblem "The type of Yes/No computational problems, i.e. mappings {0, 1}* -> {0, 1}")
 SubClassOf(:DecisionProblem :Function)
 
 # Class: :Function (:Function)
 
+AnnotationAssertion(rdfs:comment :Function "The type of mappings {0, 1}* -> {0, 1}*")
 DisjointClasses(:Function :FunctionClass)
+
+# Class: :FunctionClass (:FunctionClass)
+
+AnnotationAssertion(rdfs:comment :FunctionClass "The type of functional complexity classes")
+
+# Class: :Hardness (:Hardness)
+
+AnnotationAssertion(rdfs:comment :Hardness "The type of nodes certifying the \"hardness\" of a problem for a class")
+SubClassOf(:Hardness :MetaNode)
 
 # Class: :Hierarchy (:Hierarchy)
 
+AnnotationAssertion(rdfs:comment :Hierarchy "The type of nodes that represent hierarchies \"as a whole\"")
 SubClassOf(:Hierarchy :MetaNode)
 
 # Class: :LevelOfHierarhy (:LevelOfHierarhy)
 
+AnnotationAssertion(rdfs:comment :LevelOfHierarhy "The type of levels of hierarchies")
 SubClassOf(:LevelOfHierarhy :MetaNode)
+
+# Class: :Measure (:Measure)
+
+AnnotationAssertion(rdfs:comment :Measure "The type of complexity measures: time, space, circuit size, ...")
+
+# Class: :MetaNode (:MetaNode)
+
+AnnotationAssertion(rdfs:comment :MetaNode "The type of entities used for the internal representation")
+
+# Class: :Model (:Model)
+
+AnnotationAssertion(rdfs:comment :Model "The type of models of computation")
 
 # Class: :Restriction (:Restriction)
 
+AnnotationAssertion(rdfs:comment :Restriction "The type of restrictions -- such as the polynomial restriction on the time measure in the definition of class P")
 SubClassOf(:Restriction :MetaNode)
+
+# Class: :__sys_Label (:__sys_Label)
+
+AnnotationAssertion(rdfs:comment :__sys_Label "System labels are used in axioms for axiliary purposes. They do not have a meaning in complexity theory")
 
 # Class: :__sys_SavitchCompatible (:__sys_SavitchCompatible)
 
+AnnotationAssertion(rdfs:comment :__sys_SavitchCompatible "A system label used in the axiomatisation of Savitch's theorem")
 SubClassOf(:__sys_SavitchCompatible :__sys_Label)
 
 
