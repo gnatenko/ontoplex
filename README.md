@@ -24,6 +24,11 @@ You will find two folders:
     (a) The *core.tptp* file is a translation of *core.ofn* to the [TPTP syntax](https://tptp.org/TPTP/SyntaxBNF.html) of first-order reasoners. The translation was made by [*gavel-owl*](https://github.com/gavel-tool/python-gavel-owl), a tool by the authors of the [FOWL framework](https://doi.org/10.3233/SW-243440).
 
 
+### There is not much yet...    
+
+There will be more. We are currently working on an automated approach to extract facts about complexity classes from natural language texts. 
+
+
 ## Using Ontoplex
 
 You can work with *core.ofn* file directly in Protégé. For using first-order axioms you will need a suitable reasoner, such as [Vampire](https://vprover.github.io). 
