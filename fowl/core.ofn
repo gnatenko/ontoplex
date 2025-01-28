@@ -4,6 +4,7 @@ Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
 Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
 Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
 Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(fowl:=<https://github.com/gavel-tool/python-gavel-owl/>)
 
 
 Ontology(
@@ -120,7 +121,7 @@ Declaration(NamedIndividual(:restriction_LogSpace))
 Declaration(NamedIndividual(:restriction_PSpace))
 Declaration(NamedIndividual(:restriction_PTime))
 Declaration(AnnotationProperty(rdfs:Reference))
-Declaration(AnnotationProperty(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation>))
+Declaration(AnnotationProperty(fowl:tptp_annotation))
 
 ############################
 #   Object Properties
@@ -198,14 +199,14 @@ ObjectPropertyRange(:imposesUpperBound :Bound)
 
 # Object Property: :isClassOfComplementsFor (:isClassOfComplementsFor)
 
-AnnotationAssertion(rdfs:comment :isClassOfComplementsFor "The relation between classes C and coC = {P | complement of P is in C}")
+AnnotationAssertion(rdfs:comment :isClassOfComplementsFor "The relation between classes C and CO_C = {P | complement of P is in C}")
 SymmetricObjectProperty(:isClassOfComplementsFor)
 ObjectPropertyDomain(:isClassOfComplementsFor :ComplexityClass)
 ObjectPropertyRange(:isClassOfComplementsFor :ComplexityClass)
 
 # Object Property: :isComplementOf (:isComplementOf)
 
-AnnotationAssertion(rdfs:comment :isComplementOf "The relation between problems A and notA = {0, 1}* \\ A")
+AnnotationAssertion(rdfs:comment :isComplementOf "The relation between problems A and NOT_A = {0, 1}* \\ A")
 SymmetricObjectProperty(:isComplementOf)
 ObjectPropertyDomain(:isComplementOf :DecisionProblem)
 ObjectPropertyRange(:isComplementOf :DecisionProblem)
@@ -220,7 +221,7 @@ ObjectPropertyRange(:isDefinedFor :Model)
 
 # Object Property: :isEqualTo (:isEqualTo)
 
-AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isEqualTo "![X, Y]:('isEqualTo'(X, Y) <=> ('isSubClassOf'(X, Y) & 'isSubClassOf'(Y, X)''))")
+AnnotationAssertion(fowl:tptp_annotation :isEqualTo "![X, Y]:('isEqualTo'(X, Y) <=> ('isSubClassOf'(X, Y) & 'isSubClassOf'(Y, X) ) )")
 SubObjectPropertyOf(:isEqualTo :isSubClassOf)
 SymmetricObjectProperty(:isEqualTo)
 TransitiveObjectProperty(:isEqualTo)
@@ -236,27 +237,27 @@ AnnotationAssertion(rdfs:comment :isFunctionVersionOf "The relation between the 
 # Object Property: :isHardFor (:isHardFor)
 
 AnnotationAssertion(rdfs:comment :isHardFor "The relation between a problem and a class it is hard for (with variants)")
-AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isHardFor "![X, Y]:('isHardFor'(X, Y) <=> ?[H]:('isHardnessOf'(H, X) & 'isHardnessFor'(H, Y)))")
-AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isHardFor "![notA, A, C, coC]:('isComplementOf'(notA, A) & 'isHardFor'(A, C) & 'isClassOfComplementsFor'(C, coC) => 'isHardFor'(notA, coC))")
+AnnotationAssertion(fowl:tptp_annotation :isHardFor "![X, Y]:('isHardFor'(X, Y) <=> ?[H]:('isHardnessOf'(H, X) & 'isHardnessFor'(H, Y)))")
+AnnotationAssertion(fowl:tptp_annotation :isHardFor "![NOT_A, A, C, CO_C]:('isComplementOf'(NOT_A, A) & 'isHardFor'(A, C) & 'isClassOfComplementsFor'(C, CO_C) => 'isHardFor'(NOT_A, CO_C))")
 ObjectPropertyDomain(:isHardFor :DecisionProblem)
 ObjectPropertyRange(:isHardFor :ComplexityClass)
 
 # Object Property: :isHardFor_wrtAC0 (:isHardFor_wrtAC0)
 
-AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isHardFor_wrtAC0 "![X, Y]:('isHardFor_wrtAC0'(X, Y) <=> ?[H]:('isHardnessOf'(H, X) & 'isHardnessFor'(H, Y) & 'isHardnessWtr'(H, 'FAC0')))")
-AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isHardFor_wrtAC0 "![notA, A, C, coC]:('isComplementOf'(notA, A) & 'isHardFor_wrtAC0'(A, C) & 'isClassOfComplementsFor'(C, coC) => 'isHardFor_wrtAC0'(notA, coC))")
+AnnotationAssertion(fowl:tptp_annotation :isHardFor_wrtAC0 "![X, Y]:('isHardFor_wrtAC0'(X, Y) <=> ?[H]:('isHardnessOf'(H, X) & 'isHardnessFor'(H, Y) & 'isHardnessWtr'(H, 'FAC0')))")
+AnnotationAssertion(fowl:tptp_annotation :isHardFor_wrtAC0 "![NOT_A, A, C, CO_C]:('isComplementOf'(NOT_A, A) & 'isHardFor_wrtAC0'(A, C) & 'isClassOfComplementsFor'(C, CO_C) => 'isHardFor_wrtAC0'(NOT_A, CO_C))")
 SubObjectPropertyOf(:isHardFor_wrtAC0 :isHardFor_wrtLogSpace)
 
 # Object Property: :isHardFor_wrtLogSpace (:isHardFor_wrtLogSpace)
 
-AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isHardFor_wrtLogSpace "![X, Y]:('isHardFor_wrtLogSpace'(X, Y) <=> ?[H]:('isHardnessOf'(H, X) & 'isHardnessFor'(H, Y) & 'isHardnessWtr'(H, 'FL')))")
-AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isHardFor_wrtLogSpace "![notA, A, C, coC]:('isComplementOf'(notA, A) & 'isHardFor_wrtLogSpace'(A, C) & 'isClassOfComplementsFor'(C, coC) => 'isHardFor_wrtLogSpace'(notA, coC))")
+AnnotationAssertion(fowl:tptp_annotation :isHardFor_wrtLogSpace "![X, Y]:('isHardFor_wrtLogSpace'(X, Y) <=> ?[H]:('isHardnessOf'(H, X) & 'isHardnessFor'(H, Y) & 'isHardnessWtr'(H, 'FL')))")
+AnnotationAssertion(fowl:tptp_annotation :isHardFor_wrtLogSpace "![NOT_A, A, C, CO_C]:('isComplementOf'(NOT_A, A) & 'isHardFor_wrtLogSpace'(A, C) & 'isClassOfComplementsFor'(C, CO_C) => 'isHardFor_wrtLogSpace'(NOT_A, CO_C))")
 SubObjectPropertyOf(:isHardFor_wrtLogSpace :isHardFor_wrtPolyTime)
 
 # Object Property: :isHardFor_wrtPolyTime (:isHardFor_wrtPolyTime)
 
-AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isHardFor_wrtPolyTime "![X, Y]:('isHardFor_wrtPolyTime'(X, Y) <=> ?[H]:('isHardnessOf'(H, X) & 'isHardnessFor'(H, Y) & 'isHardnessWtr'(H, 'FP')))")
-AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isHardFor_wrtPolyTime "![notA, A, C, coC]:('isComplementOf'(notA, A) & 'isHardFor_wrtPolyTime'(A, C) & 'isClassOfComplementsFor'(C, coC) => 'isHardFor_wrtPolyTime'(notA, coC))")
+AnnotationAssertion(fowl:tptp_annotation :isHardFor_wrtPolyTime "![X, Y]:('isHardFor_wrtPolyTime'(X, Y) <=> ?[H]:('isHardnessOf'(H, X) & 'isHardnessFor'(H, Y) & 'isHardnessWtr'(H, 'FP')))")
+AnnotationAssertion(fowl:tptp_annotation :isHardFor_wrtPolyTime "![NOT_A, A, C, CO_C]:('isComplementOf'(NOT_A, A) & 'isHardFor_wrtPolyTime'(A, C) & 'isClassOfComplementsFor'(C, CO_C) => 'isHardFor_wrtPolyTime'(NOT_A, CO_C))")
 SubObjectPropertyOf(:isHardFor_wrtPolyTime :isHardFor)
 
 # Object Property: :isHardnessFor (:isHardnessFor)
@@ -295,29 +296,29 @@ SubObjectPropertyOf(:isPowerOf :isSuperClassOf)
 # Object Property: :isReducibleTo (:isReducibleTo)
 
 AnnotationAssertion(rdfs:comment :isReducibleTo "The relation of Karp reducibility between problems (with variants)")
-AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isReducibleTo "![X, Y]:('isReducibleTo'(X, Y) <=> ?[R]:('reducesFrom'(R, X) & 'reducesTo'(R, Y)))")
-AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isReducibleTo "The relation of reducibility between problems (with variants)")
+AnnotationAssertion(fowl:tptp_annotation :isReducibleTo "![X, Y]:('isReducibleTo'(X, Y) <=> ?[R]:('reducesFrom'(R, X) & 'reducesTo'(R, Y)))")
+AnnotationAssertion(rdfs:comment :isReducibleTo "The relation of reducibility between problems (with variants)")
 ObjectPropertyDomain(:isReducibleTo :DecisionProblem)
 ObjectPropertyRange(:isReducibleTo :DecisionProblem)
 
 # Object Property: :isReducibleTo_inAC0 (:isReducibleTo_inAC0)
 
-AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isReducibleTo_inAC0 "![X, Y]:('isReducibleTo_inAC0'(X, Y) <=> ?[R]:('reducesFrom'(R, X) & 'reducesTo'(R, Y) & 'isMemberOf'(R, 'FAC0')))")
+AnnotationAssertion(fowl:tptp_annotation :isReducibleTo_inAC0 "![X, Y]:('isReducibleTo_inAC0'(X, Y) <=> ?[R]:('reducesFrom'(R, X) & 'reducesTo'(R, Y) & 'isMemberOf'(R, 'FAC0')))")
 SubObjectPropertyOf(:isReducibleTo_inAC0 :isReducibleTo_inLogSpace)
 
 # Object Property: :isReducibleTo_inLogSpace (:isReducibleTo_inLogSpace)
 
-AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isReducibleTo_inLogSpace "![X, Y]:('isReducibleTo_inLogSpace'(X, Y) <=> ?[R]:('reducesFrom'(R, X) & 'reducesTo'(R, Y) & 'isMemberOf'(R, 'FL')))")
+AnnotationAssertion(fowl:tptp_annotation :isReducibleTo_inLogSpace "![X, Y]:('isReducibleTo_inLogSpace'(X, Y) <=> ?[R]:('reducesFrom'(R, X) & 'reducesTo'(R, Y) & 'isMemberOf'(R, 'FL')))")
 SubObjectPropertyOf(:isReducibleTo_inLogSpace :isReducibleTo_inPolyTime)
 
 # Object Property: :isReducibleTo_inPolyTime (:isReducibleTo_inPolyTime)
 
-AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isReducibleTo_inPolyTime "![X, Y]:('isReducibleTo_inPolyTime'(X, Y) <=> ?[R]:('reducesFrom'(R, X) & 'reducesTo'(R, Y) & 'isMemberOf'(R, 'FP')))")
+AnnotationAssertion(fowl:tptp_annotation :isReducibleTo_inPolyTime "![X, Y]:('isReducibleTo_inPolyTime'(X, Y) <=> ?[R]:('reducesFrom'(R, X) & 'reducesTo'(R, Y) & 'isMemberOf'(R, 'FP')))")
 SubObjectPropertyOf(:isReducibleTo_inPolyTime :isReducibleTo)
 
 # Object Property: :isStrictSubClassOf (:isStrictSubClassOf)
 
-AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isStrictSubClassOf "![X, Y]:('isStrictSubClassOf'(X, Y) <=> ('isSubClassOf'(X, Y) & ~'isSubClassOf'(Y, X)''))")
+AnnotationAssertion(fowl:tptp_annotation :isStrictSubClassOf "![X, Y]:('isStrictSubClassOf'(X, Y) <=> ('isSubClassOf'(X, Y) & ~'isSubClassOf'(Y, X)))")
 SubObjectPropertyOf(:isStrictSubClassOf :isSubClassOf)
 TransitiveObjectProperty(:isStrictSubClassOf)
 
@@ -329,7 +330,7 @@ SubObjectPropertyOf(:isStrictSubClassOf_SpaceHierarchyTheorem :metaLink)
 
 # Object Property: :isSubClassOf (:isSubClassOf)
 
-AnnotationAssertion(<https://github.com/gavel-tool/python-gavel-owl/tptp_annotation> :isSubClassOf "![X, Y]:('isSubClass'(X, Y) <=> (![Z]:('isMemberOf'(Z, X) => 'isMemberOf'(Z, Y))))")
+AnnotationAssertion(fowl:tptp_annotation :isSubClassOf "![X, Y]:('isSubClass'(X, Y) <=> (![Z]:('isMemberOf'(Z, X) => 'isMemberOf'(Z, Y))))")
 InverseObjectProperties(:isSubClassOf :isSuperClassOf)
 TransitiveObjectProperty(:isSubClassOf)
 ObjectPropertyDomain(:isSubClassOf :FunctionClass)
