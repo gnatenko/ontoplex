@@ -1,0 +1,304 @@
+Prefix(:=<>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(fowl:=<https://github.com/gavel-tool/python-gavel-owl/>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(
+Declaration(Class(:AbstractEntity))
+Declaration(Class(:Bound))
+Declaration(Class(:Class))
+Declaration(Class(:Hierarchy))
+Declaration(Class(:LevelOfHierarchy))
+Declaration(Class(:Oracle))
+Declaration(Class(:Problem))
+Declaration(ObjectProperty(:AbstractRelation))
+Declaration(ObjectProperty(:SpaceHierarchy))
+Declaration(ObjectProperty(:TimeHierarchy))
+Declaration(ObjectProperty(:bpTime))
+Declaration(ObjectProperty(:dSpace))
+Declaration(ObjectProperty(:dTime))
+Declaration(ObjectProperty(:definitionRelation))
+Declaration(ObjectProperty(:extends))
+Declaration(ObjectProperty(:extendsByAdvice))
+Declaration(ObjectProperty(:extendsByAdvice_logarithmic))
+Declaration(ObjectProperty(:extendsByAdvice_polynomial))
+Declaration(ObjectProperty(:extendsByBoundedProbability))
+Declaration(ObjectProperty(:extendsByNondeterminism))
+Declaration(ObjectProperty(:extendsByRandomness))
+Declaration(ObjectProperty(:hasBase))
+Declaration(ObjectProperty(:hasPower))
+Declaration(ObjectProperty(:isClassOfComplementsFor))
+Declaration(ObjectProperty(:isEqualTo))
+Declaration(ObjectProperty(:isFromHierarchy))
+Declaration(ObjectProperty(:isHardFor))
+Declaration(ObjectProperty(:isHardFor_wrtLogSpaceReductions))
+Declaration(ObjectProperty(:isHardFor_wrtPolyTimeReductions))
+Declaration(ObjectProperty(:isLevelOf))
+Declaration(ObjectProperty(:isLowFor))
+Declaration(ObjectProperty(:isMemberOf))
+Declaration(ObjectProperty(:isNotSubClassOf))
+Declaration(ObjectProperty(:isOnLevel))
+Declaration(ObjectProperty(:isParityVersionOf))
+Declaration(ObjectProperty(:isReducibleTo))
+Declaration(ObjectProperty(:isReducibleTo_inLogSpace))
+Declaration(ObjectProperty(:isReducibleTo_inPolyTime))
+Declaration(ObjectProperty(:isStrictSubClassOf))
+Declaration(ObjectProperty(:isSubClassOf))
+Declaration(ObjectProperty(:isUnionOf))
+Declaration(ObjectProperty(:lessless))
+Declaration(ObjectProperty(:modifierRelation))
+Declaration(ObjectProperty(:nSpace))
+Declaration(ObjectProperty(:nTime))
+Declaration(ObjectProperty(:next_Level_PH))
+Declaration(ObjectProperty(:rTime))
+Declaration(AnnotationProperty(<Ontoplex/ZooEntry>))
+Declaration(AnnotationProperty(<Ontoplex/hypothesis>))
+Declaration(AnnotationProperty(<Ontoplex/reference>))
+Declaration(AnnotationProperty(fowl:tptp_annotation))
+
+############################
+#   Object Properties
+############################
+
+# Object Property: :SpaceHierarchy (:SpaceHierarchy)
+
+SubObjectPropertyOf(:SpaceHierarchy :isStrictSubClassOf)
+
+# Object Property: :TimeHierarchy (:TimeHierarchy)
+
+SubObjectPropertyOf(:TimeHierarchy :isStrictSubClassOf)
+
+# Object Property: :bpTime (:bpTime)
+
+SubObjectPropertyOf(:bpTime :definitionRelation)
+
+# Object Property: :dSpace (:dSpace)
+
+SubObjectPropertyOf(:dSpace :definitionRelation)
+
+# Object Property: :dTime (:dTime)
+
+SubObjectPropertyOf(:dTime :definitionRelation)
+
+# Object Property: :definitionRelation (:definitionRelation)
+
+FunctionalObjectProperty(:definitionRelation)
+AsymmetricObjectProperty(:definitionRelation)
+IrreflexiveObjectProperty(:definitionRelation)
+ObjectPropertyDomain(:definitionRelation :Class)
+ObjectPropertyRange(:definitionRelation :Bound)
+
+# Object Property: :extends (:extends)
+
+SubObjectPropertyOf(:extends :modifierRelation)
+SubObjectPropertyOf(:extends ObjectInverseOf(:isSubClassOf))
+
+# Object Property: :extendsByAdvice (:extendsByAdvice)
+
+SubObjectPropertyOf(:extendsByAdvice :extends)
+
+# Object Property: :extendsByAdvice_logarithmic (:extendsByAdvice_logarithmic)
+
+SubObjectPropertyOf(:extendsByAdvice_logarithmic :extendsByAdvice)
+
+# Object Property: :extendsByAdvice_polynomial (:extendsByAdvice_polynomial)
+
+SubObjectPropertyOf(:extendsByAdvice_polynomial :extendsByAdvice)
+
+# Object Property: :extendsByBoundedProbability (:extendsByBoundedProbability)
+
+SubObjectPropertyOf(:extendsByBoundedProbability :extends)
+
+# Object Property: :extendsByNondeterminism (:extendsByNondeterminism)
+
+SubObjectPropertyOf(:extendsByNondeterminism :extends)
+
+# Object Property: :extendsByRandomness (:extendsByRandomness)
+
+SubObjectPropertyOf(:extendsByRandomness :extends)
+
+# Object Property: :hasBase (:hasBase)
+
+AnnotationAssertion(fowl:tptp_annotation :hasBase "![X, Y, Z, U, V]:('hasPower'(X, Z) & 'hasPower'(Y, Z) & 'hasBase'(X, U) & 'hasBase'(Y, V) & 'isSubClassOf(U, V)' => 'isSubClassOf'(X, Y) )")
+SubObjectPropertyOf(:hasBase ObjectInverseOf(:isSubClassOf))
+FunctionalObjectProperty(:hasBase)
+AsymmetricObjectProperty(:hasBase)
+IrreflexiveObjectProperty(:hasBase)
+ObjectPropertyDomain(:hasBase :Class)
+ObjectPropertyRange(:hasBase :Class)
+
+# Object Property: :hasPower (:hasPower)
+
+FunctionalObjectProperty(:hasPower)
+AsymmetricObjectProperty(:hasPower)
+IrreflexiveObjectProperty(:hasPower)
+ObjectPropertyDomain(:hasPower :Class)
+ObjectPropertyRange(:hasPower :Problem)
+
+# Object Property: :isClassOfComplementsFor (:isClassOfComplementsFor)
+
+SubObjectPropertyOf(:isClassOfComplementsFor :modifierRelation)
+SymmetricObjectProperty(:isClassOfComplementsFor)
+
+# Object Property: :isEqualTo (:isEqualTo)
+
+AnnotationAssertion(fowl:tptp_annotation :isEqualTo "![X, Y]:( ~ ( 'isEqualTo'(X, Y) & 'isStrictSubClassOf'(X, Y) ) )")
+AnnotationAssertion(fowl:tptp_annotation :isEqualTo "![X, Y]:('isEqualTo'(X, Y) <=> ('isSubClassOf'(X, Y) & 'isSubClassOf'(Y, X) ) )")
+SubObjectPropertyOf(:isEqualTo :isSubClassOf)
+SymmetricObjectProperty(:isEqualTo)
+TransitiveObjectProperty(:isEqualTo)
+
+# Object Property: :isFromHierarchy (:isFromHierarchy)
+
+FunctionalObjectProperty(:isFromHierarchy)
+AsymmetricObjectProperty(:isFromHierarchy)
+IrreflexiveObjectProperty(:isFromHierarchy)
+ObjectPropertyDomain(:isFromHierarchy :Class)
+ObjectPropertyRange(:isFromHierarchy :Hierarchy)
+
+# Object Property: :isHardFor (:isHardFor)
+
+ObjectPropertyDomain(:isHardFor :Problem)
+ObjectPropertyRange(:isHardFor :Class)
+
+# Object Property: :isHardFor_wrtLogSpaceReductions (:isHardFor_wrtLogSpaceReductions)
+
+SubObjectPropertyOf(:isHardFor_wrtLogSpaceReductions :isHardFor)
+
+# Object Property: :isHardFor_wrtPolyTimeReductions (:isHardFor_wrtPolyTimeReductions)
+
+SubObjectPropertyOf(:isHardFor_wrtPolyTimeReductions :isHardFor)
+
+# Object Property: :isLevelOf (:isLevelOf)
+
+FunctionalObjectProperty(:isLevelOf)
+AsymmetricObjectProperty(:isLevelOf)
+IrreflexiveObjectProperty(:isLevelOf)
+ObjectPropertyDomain(:isLevelOf :LevelOfHierarchy)
+ObjectPropertyRange(:isLevelOf :Hierarchy)
+
+# Object Property: :isLowFor (:isLowFor)
+
+ObjectPropertyDomain(:isLowFor :Class)
+ObjectPropertyRange(:isLowFor :Class)
+
+# Object Property: :isMemberOf (:isMemberOf)
+
+ObjectPropertyDomain(:isMemberOf :Problem)
+ObjectPropertyRange(:isMemberOf :Class)
+
+# Object Property: :isNotSubClassOf (:isNotSubClassOf)
+
+AnnotationAssertion(fowl:tptp_annotation :isNotSubClassOf "![X, Y]:('isNotSubClassOf'(X, Y) <=> ~ 'isSubClassOf'(X, Y) )")
+
+# Object Property: :isOnLevel (:isOnLevel)
+
+AsymmetricObjectProperty(:isOnLevel)
+IrreflexiveObjectProperty(:isOnLevel)
+ObjectPropertyDomain(:isOnLevel :Class)
+ObjectPropertyRange(:isOnLevel :LevelOfHierarchy)
+
+# Object Property: :isParityVersionOf (:isParityVersionOf)
+
+SubObjectPropertyOf(:isParityVersionOf :modifierRelation)
+
+# Object Property: :isReducibleTo (:isReducibleTo)
+
+ObjectPropertyDomain(:isReducibleTo :Problem)
+ObjectPropertyRange(:isReducibleTo :Problem)
+
+# Object Property: :isReducibleTo_inLogSpace (:isReducibleTo_inLogSpace)
+
+SubObjectPropertyOf(:isReducibleTo_inLogSpace :isReducibleTo)
+TransitiveObjectProperty(:isReducibleTo_inLogSpace)
+
+# Object Property: :isReducibleTo_inPolyTime (:isReducibleTo_inPolyTime)
+
+SubObjectPropertyOf(:isReducibleTo_inPolyTime :isReducibleTo)
+TransitiveObjectProperty(:isReducibleTo_inPolyTime)
+
+# Object Property: :isStrictSubClassOf (:isStrictSubClassOf)
+
+AnnotationAssertion(fowl:tptp_annotation :isStrictSubClassOf "![X, Y]:( 'isStrictSubClassOf(X, Y)' <=> ('isSubClassOf'(X, Y) & (~ 'isEqualTo'(X, Y) ) ) )")
+SubObjectPropertyOf(:isStrictSubClassOf :isSubClassOf)
+TransitiveObjectProperty(:isStrictSubClassOf)
+
+# Object Property: :isSubClassOf (:isSubClassOf)
+
+TransitiveObjectProperty(:isSubClassOf)
+ObjectPropertyDomain(:isSubClassOf :Class)
+ObjectPropertyRange(:isSubClassOf :Class)
+
+# Object Property: :isUnionOf (:isUnionOf)
+
+AsymmetricObjectProperty(:isUnionOf)
+IrreflexiveObjectProperty(:isUnionOf)
+ObjectPropertyDomain(:isUnionOf :Class)
+ObjectPropertyRange(:isUnionOf :Hierarchy)
+
+# Object Property: :lessless (:lessless)
+
+ObjectPropertyDomain(:lessless :Bound)
+ObjectPropertyRange(:lessless :Bound)
+
+# Object Property: :modifierRelation (:modifierRelation)
+
+ObjectPropertyDomain(:modifierRelation :Class)
+ObjectPropertyRange(:modifierRelation :Class)
+
+# Object Property: :nSpace (:nSpace)
+
+SubObjectPropertyOf(:nSpace :definitionRelation)
+
+# Object Property: :nTime (:nTime)
+
+SubObjectPropertyOf(:nTime :definitionRelation)
+
+# Object Property: :next_Level_PH (:next_Level_PH)
+
+SubObjectPropertyOf(:next_Level_PH :AbstractRelation)
+FunctionalObjectProperty(:next_Level_PH)
+InverseFunctionalObjectProperty(:next_Level_PH)
+AsymmetricObjectProperty(:next_Level_PH)
+IrreflexiveObjectProperty(:next_Level_PH)
+
+# Object Property: :rTime (:rTime)
+
+SubObjectPropertyOf(:rTime :definitionRelation)
+
+
+
+############################
+#   Classes
+############################
+
+# Class: :LevelOfHierarchy (:LevelOfHierarchy)
+
+SubClassOf(:LevelOfHierarchy :AbstractEntity)
+
+# Class: :Oracle (:Oracle)
+
+SubClassOf(:Oracle :Problem)
+
+# Class: owl:Thing (owl:Thing)
+
+DisjointUnion(owl:Thing :AbstractEntity :Bound :Class :Hierarchy :Problem)
+
+
+SubObjectPropertyOf(ObjectPropertyChain(:bpTime ObjectInverseOf(:dTime)) :extendsByBoundedProbability)
+SubObjectPropertyOf(ObjectPropertyChain(:dSpace :lessless ObjectInverseOf(:dSpace)) :SpaceHierarchy)
+SubObjectPropertyOf(ObjectPropertyChain(:dTime :lessless ObjectInverseOf(:dTime)) :TimeHierarchy)
+SubObjectPropertyOf(ObjectPropertyChain(:isMemberOf :isSubClassOf) :isMemberOf)
+SubObjectPropertyOf(ObjectPropertyChain(:isNotSubClassOf ObjectInverseOf(:isSubClassOf)) :isNotSubClassOf)
+SubObjectPropertyOf(ObjectPropertyChain(:isOnLevel :isLevelOf ObjectInverseOf(:isUnionOf)) :isSubClassOf)
+SubObjectPropertyOf(ObjectPropertyChain(:nSpace ObjectInverseOf(:dSpace)) :extendsByNondeterminism)
+SubObjectPropertyOf(ObjectPropertyChain(:nTime ObjectInverseOf(:dTime)) :extendsByNondeterminism)
+SubObjectPropertyOf(ObjectPropertyChain(ObjectInverseOf(:isReducibleTo) :isHardFor) :isHardFor)
+SubObjectPropertyOf(ObjectPropertyChain(ObjectInverseOf(:isReducibleTo_inLogSpace) :isHardFor_wrtLogSpaceReductions) :isHardFor_wrtLogSpaceReductions)
+SubObjectPropertyOf(ObjectPropertyChain(ObjectInverseOf(:isReducibleTo_inPolyTime) :isHardFor_wrtPolyTimeReductions) :isHardFor_wrtPolyTimeReductions)
+SubObjectPropertyOf(ObjectPropertyChain(ObjectInverseOf(:isSubClassOf) :isNotSubClassOf) :isNotSubClassOf)
+)

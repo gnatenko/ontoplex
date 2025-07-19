@@ -1,0 +1,184 @@
+Prefix(:=<>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(fowl:=<https://github.com/gavel-tool/python-gavel-owl/>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(
+Declaration(Class(:Bound))
+Declaration(Class(:ComplexityClass))
+Declaration(Class(:DecisionProblem))
+Declaration(Class(:Hierarchy))
+Declaration(Class(:Oracle))
+Declaration(ObjectProperty(:SpaceHierarchy))
+Declaration(ObjectProperty(:TimeHierarchy))
+Declaration(ObjectProperty(:bpTime))
+Declaration(ObjectProperty(:dSpace))
+Declaration(ObjectProperty(:dTime))
+Declaration(ObjectProperty(:definitionRelation))
+Declaration(ObjectProperty(:extendsByAdvice))
+Declaration(ObjectProperty(:extendsByAdvice_logarithmic))
+Declaration(ObjectProperty(:extendsByAdvice_polynomial))
+Declaration(ObjectProperty(:extendsByBoundedProbability))
+Declaration(ObjectProperty(:extendsByNondeterminism))
+Declaration(ObjectProperty(:hasBase))
+Declaration(ObjectProperty(:hasPower))
+Declaration(ObjectProperty(:isClassOfComplementsFor))
+Declaration(ObjectProperty(:isEqualTo))
+Declaration(ObjectProperty(:isFromHierarchy))
+Declaration(ObjectProperty(:isHardFor))
+Declaration(ObjectProperty(:isHardFor_wrtLogSpaceReductions))
+Declaration(ObjectProperty(:isHardFor_wrtPolyTimeReductions))
+Declaration(ObjectProperty(:isLevelOf))
+Declaration(ObjectProperty(:isLowFor))
+Declaration(ObjectProperty(:isMemberOf))
+Declaration(ObjectProperty(:isOnLevel))
+Declaration(ObjectProperty(:isParityVersionOf))
+Declaration(ObjectProperty(:isReducibleTo))
+Declaration(ObjectProperty(:isReducibleTo_inLogSpace))
+Declaration(ObjectProperty(:isReducibleTo_inPolyTime))
+Declaration(ObjectProperty(:isStrictSubClassOf))
+Declaration(ObjectProperty(:isSubClassOf))
+Declaration(ObjectProperty(:isUnionOf))
+Declaration(ObjectProperty(:lessless))
+Declaration(ObjectProperty(:modifierRelation))
+Declaration(ObjectProperty(:nSpace))
+Declaration(ObjectProperty(:nTime))
+Declaration(ObjectProperty(:next_inPH))
+Declaration(ObjectProperty(:rTime))
+Declaration(NamedIndividual(:BPP))
+Declaration(NamedIndividual(:Elementary))
+Declaration(NamedIndividual(:Exp))
+Declaration(NamedIndividual(:ExpTime))
+Declaration(NamedIndividual(:GraphIsomorphism))
+Declaration(NamedIndividual(:L))
+Declaration(NamedIndividual(:Log))
+Declaration(NamedIndividual(:NExpTime))
+Declaration(NamedIndividual(:NL))
+Declaration(NamedIndividual(:NP))
+Declaration(NamedIndividual(:NPSpace))
+Declaration(NamedIndividual(:P))
+Declaration(NamedIndividual(:PSpace))
+Declaration(NamedIndividual(:Poly))
+Declaration(NamedIndividual(:Tower))
+Declaration(NamedIndividual(:coNL))
+Declaration(NamedIndividual(:coNP))
+Declaration(NamedIndividual(:oracle-for-Parity-P))
+Declaration(NamedIndividual(<2Exp>))
+Declaration(NamedIndividual(<2ExpTime>))
+Declaration(AnnotationProperty(<Ontoplex/ZooEntry>))
+Declaration(AnnotationProperty(<Ontoplex/hypothesis>))
+Declaration(AnnotationProperty(<Ontoplex/reference>))
+Declaration(AnnotationProperty(fowl:tptp_annotation))
+
+
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: :BPP (:BPP)
+
+ClassAssertion(:ComplexityClass :BPP)
+ObjectPropertyAssertion(:extendsByBoundedProbability :BPP :P)
+
+# Individual: :Elementary (:Elementary)
+
+ClassAssertion(:ComplexityClass :Elementary)
+ObjectPropertyAssertion(:dTime :Elementary :Tower)
+
+# Individual: :Exp (:Exp)
+
+ClassAssertion(:Bound :Exp)
+ObjectPropertyAssertion(:lessless :Exp <2Exp>)
+
+# Individual: :ExpTime (:ExpTime)
+
+ClassAssertion(:ComplexityClass :ExpTime)
+ObjectPropertyAssertion(:dTime :ExpTime :Exp)
+
+# Individual: :GraphIsomorphism (:GraphIsomorphism)
+
+ClassAssertion(:DecisionProblem :GraphIsomorphism)
+
+# Individual: :L (:L)
+
+ClassAssertion(:ComplexityClass :L)
+ObjectPropertyAssertion(:dSpace :L :Log)
+
+# Individual: :Log (:Log)
+
+ClassAssertion(:Bound :Log)
+ObjectPropertyAssertion(:lessless :Log :Poly)
+
+# Individual: :NExpTime (:NExpTime)
+
+ClassAssertion(:ComplexityClass :NExpTime)
+ObjectPropertyAssertion(:extendsByNondeterminism :NExpTime :ExpTime)
+
+# Individual: :NL (:NL)
+
+ClassAssertion(:ComplexityClass :NL)
+ObjectPropertyAssertion(:extendsByNondeterminism :NL :L)
+
+# Individual: :NP (:NP)
+
+ClassAssertion(:ComplexityClass :NP)
+ObjectPropertyAssertion(:extendsByNondeterminism :NP :P)
+
+# Individual: :NPSpace (:NPSpace)
+
+ClassAssertion(:ComplexityClass :NPSpace)
+ObjectPropertyAssertion(:extendsByNondeterminism :NPSpace :PSpace)
+
+# Individual: :P (:P)
+
+ClassAssertion(:ComplexityClass :P)
+ObjectPropertyAssertion(:dTime :P :Poly)
+
+# Individual: :PSpace (:PSpace)
+
+ClassAssertion(:ComplexityClass :PSpace)
+ObjectPropertyAssertion(:dSpace :PSpace :Poly)
+
+# Individual: :Poly (:Poly)
+
+ClassAssertion(:Bound :Poly)
+ObjectPropertyAssertion(:lessless :Poly :Exp)
+
+# Individual: :Tower (:Tower)
+
+ClassAssertion(:Bound :Tower)
+
+# Individual: :coNL (:coNL)
+
+ClassAssertion(:ComplexityClass :coNL)
+ObjectPropertyAssertion(:isClassOfComplementsFor :coNL :NL)
+ObjectPropertyAssertion(:isEqualTo :coNL :coNL)
+
+# Individual: :coNP (:coNP)
+
+ClassAssertion(:ComplexityClass :coNP)
+ObjectPropertyAssertion(:isClassOfComplementsFor :coNP :NP)
+
+# Individual: :oracle-for-Parity-P (:oracle-for-Parity-P)
+
+AnnotationAssertion(<Ontoplex/reference> :oracle-for-Parity-P "[BBF98] R. Beigel, H. Buhrman, and L. Fortnow. NP might not be as easy as detecting unique solutions, Proceedings of ACM STOC'98, pp. 203-208, 1998. http://people.cs.uchicago.edu/~fortnow/papers/newiso.ps.")
+ClassAssertion(:Oracle :oracle-for-Parity-P)
+
+# Individual: <2Exp> (<2Exp>)
+
+ClassAssertion(:Bound <2Exp>)
+ObjectPropertyAssertion(:lessless <2Exp> :Tower)
+
+# Individual: <2ExpTime> (<2ExpTime>)
+
+ClassAssertion(:ComplexityClass <2ExpTime>)
+ObjectPropertyAssertion(:dTime <2ExpTime> <2Exp>)
+
+
+)

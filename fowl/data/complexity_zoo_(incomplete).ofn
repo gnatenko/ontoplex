@@ -12,12 +12,16 @@ Declaration(Class(:Bound))
 Declaration(Class(:ComplexityClass))
 Declaration(Class(:DecisionProblem))
 Declaration(Class(:Hierarchy))
+Declaration(Class(:Oracle))
 Declaration(ObjectProperty(:SpaceHierarchy))
 Declaration(ObjectProperty(:TimeHierarchy))
 Declaration(ObjectProperty(:bpTime))
 Declaration(ObjectProperty(:dSpace))
 Declaration(ObjectProperty(:dTime))
 Declaration(ObjectProperty(:definitionRelation))
+Declaration(ObjectProperty(:extendsByAdvice))
+Declaration(ObjectProperty(:extendsByAdvice_logarithmic))
+Declaration(ObjectProperty(:extendsByAdvice_polynomial))
 Declaration(ObjectProperty(:extendsByBoundedProbability))
 Declaration(ObjectProperty(:extendsByNondeterminism))
 Declaration(ObjectProperty(:hasBase))
@@ -29,8 +33,10 @@ Declaration(ObjectProperty(:isHardFor))
 Declaration(ObjectProperty(:isHardFor_wrtLogSpaceReductions))
 Declaration(ObjectProperty(:isHardFor_wrtPolyTimeReductions))
 Declaration(ObjectProperty(:isLevelOf))
+Declaration(ObjectProperty(:isLowFor))
 Declaration(ObjectProperty(:isMemberOf))
 Declaration(ObjectProperty(:isOnLevel))
+Declaration(ObjectProperty(:isParityVersionOf))
 Declaration(ObjectProperty(:isReducibleTo))
 Declaration(ObjectProperty(:isReducibleTo_inLogSpace))
 Declaration(ObjectProperty(:isReducibleTo_inPolyTime))
@@ -43,24 +49,26 @@ Declaration(ObjectProperty(:nSpace))
 Declaration(ObjectProperty(:nTime))
 Declaration(ObjectProperty(:next_inPH))
 Declaration(ObjectProperty(:rTime))
-Declaration(NamedIndividual(:BPP))
-Declaration(NamedIndividual(:Elementary))
+Declaration(NamedIndividual(:CFL))
 Declaration(NamedIndividual(:Exp))
-Declaration(NamedIndividual(:ExpTime))
-Declaration(NamedIndividual(:L))
+Declaration(NamedIndividual(:FewP))
+Declaration(NamedIndividual(:GraphIsomorphism))
 Declaration(NamedIndividual(:Log))
-Declaration(NamedIndividual(:NExpTime))
-Declaration(NamedIndividual(:NL))
+Declaration(NamedIndividual(:LogCFL))
 Declaration(NamedIndividual(:NP))
-Declaration(NamedIndividual(:NPSpace))
+Declaration(NamedIndividual(:NP_C))
 Declaration(NamedIndividual(:P))
-Declaration(NamedIndividual(:PSpace))
+Declaration(NamedIndividual(:Parity-P))
 Declaration(NamedIndividual(:Poly))
 Declaration(NamedIndividual(:Tower))
-Declaration(NamedIndividual(:coNL))
-Declaration(NamedIndividual(:coNP))
+Declaration(NamedIndividual(:oracle-for-Parity-P))
+Declaration(NamedIndividual(<0-1-NP_C>))
+Declaration(NamedIndividual(<1NAuxPDAp>))
 Declaration(NamedIndividual(<2Exp>))
-Declaration(NamedIndividual(<2ExpTime>))
+Declaration(NamedIndividual(<3SUM-Hard>))
+Declaration(AnnotationProperty(<Ontoplex/ZooEntry>))
+Declaration(AnnotationProperty(<Ontoplex/hypothesis>))
+Declaration(AnnotationProperty(<Ontoplex/reference>))
 Declaration(AnnotationProperty(fowl:tptp_annotation))
 
 ############################
@@ -93,6 +101,19 @@ FunctionalObjectProperty(:definitionRelation)
 ObjectPropertyDomain(:definitionRelation :ComplexityClass)
 ObjectPropertyRange(:definitionRelation :Bound)
 
+# Object Property: :extendsByAdvice (:extendsByAdvice)
+
+SubObjectPropertyOf(:extendsByAdvice :modifierRelation)
+SubObjectPropertyOf(:extendsByAdvice ObjectInverseOf(:isSubClassOf))
+
+# Object Property: :extendsByAdvice_logarithmic (:extendsByAdvice_logarithmic)
+
+SubObjectPropertyOf(:extendsByAdvice_logarithmic :extendsByAdvice)
+
+# Object Property: :extendsByAdvice_polynomial (:extendsByAdvice_polynomial)
+
+SubObjectPropertyOf(:extendsByAdvice_polynomial :extendsByAdvice)
+
 # Object Property: :extendsByBoundedProbability (:extendsByBoundedProbability)
 
 SubObjectPropertyOf(:extendsByBoundedProbability :modifierRelation)
@@ -100,6 +121,7 @@ SubObjectPropertyOf(:extendsByBoundedProbability :modifierRelation)
 # Object Property: :extendsByNondeterminism (:extendsByNondeterminism)
 
 SubObjectPropertyOf(:extendsByNondeterminism :modifierRelation)
+SubObjectPropertyOf(:extendsByNondeterminism ObjectInverseOf(:isSubClassOf))
 
 # Object Property: :isClassOfComplementsFor (:isClassOfComplementsFor)
 
@@ -128,10 +150,18 @@ SubObjectPropertyOf(:isHardFor_wrtPolyTimeReductions :isHardFor)
 
 FunctionalObjectProperty(:isLevelOf)
 
+# Object Property: :isLowFor (:isLowFor)
+
+ObjectPropertyRange(:isLowFor :ComplexityClass)
+
 # Object Property: :isMemberOf (:isMemberOf)
 
 ObjectPropertyDomain(:isMemberOf :DecisionProblem)
 ObjectPropertyRange(:isMemberOf :ComplexityClass)
+
+# Object Property: :isParityVersionOf (:isParityVersionOf)
+
+SubObjectPropertyOf(:isParityVersionOf :modifierRelation)
 
 # Object Property: :isReducibleTo_inLogSpace (:isReducibleTo_inLogSpace)
 
@@ -180,70 +210,84 @@ SubObjectPropertyOf(:rTime :definitionRelation)
 
 
 
+############################
+#   Classes
+############################
+
+# Class: :Oracle (:Oracle)
+
+SubClassOf(:Oracle :DecisionProblem)
+
 
 ############################
 #   Named Individuals
 ############################
 
-# Individual: :BPP (:BPP)
+# Individual: :CFL (:CFL)
 
-ClassAssertion(:ComplexityClass :BPP)
-ObjectPropertyAssertion(:extendsByBoundedProbability :BPP :P)
-
-# Individual: :Elementary (:Elementary)
-
-ClassAssertion(:ComplexityClass :Elementary)
-ObjectPropertyAssertion(:dTime :Elementary :Tower)
+ClassAssertion(:ComplexityClass :CFL)
+ObjectPropertyAssertion(:isStrictSubClassOf :CFL <1NAuxPDAp>)
 
 # Individual: :Exp (:Exp)
 
 ClassAssertion(:Bound :Exp)
 ObjectPropertyAssertion(:lessless :Exp <2Exp>)
 
-# Individual: :ExpTime (:ExpTime)
+# Individual: :FewP (:FewP)
 
-ClassAssertion(:ComplexityClass :ExpTime)
-ObjectPropertyAssertion(:dTime :ExpTime :Exp)
+ClassAssertion(:ComplexityClass :FewP)
+ObjectPropertyAssertion(Annotation(<Ontoplex/reference> "J.-Y. Cai and L. A. Hemachandra. On the power of parity polynomial time, Proceedings of the Symposium on Theoretical Aspects of Computer Science (STACS), Lecture Notes in Computer Science 349, pp. 229-240, Springer, 1989.") :isSubClassOf :FewP :Parity-P)
 
-# Individual: :L (:L)
+# Individual: :GraphIsomorphism (:GraphIsomorphism)
 
-ClassAssertion(:ComplexityClass :L)
-ObjectPropertyAssertion(:dSpace :L :Log)
+ClassAssertion(:DecisionProblem :GraphIsomorphism)
+ObjectPropertyAssertion(Annotation(<Ontoplex/reference> "V. Arvind and P. Kurur. Graph isomorphism is in SPP, Information and Computation, 204(5):835-852, 2006 ECCC TR02-037") :isLowFor :GraphIsomorphism :Parity-P)
+ObjectPropertyAssertion(:isMemberOf :GraphIsomorphism :Parity-P)
 
 # Individual: :Log (:Log)
 
 ClassAssertion(:Bound :Log)
 ObjectPropertyAssertion(:lessless :Log :Poly)
 
-# Individual: :NExpTime (:NExpTime)
+# Individual: :LogCFL (:LogCFL)
 
-ClassAssertion(:ComplexityClass :NExpTime)
-ObjectPropertyAssertion(:extendsByNondeterminism :NExpTime :ExpTime)
-
-# Individual: :NL (:NL)
-
-ClassAssertion(:ComplexityClass :NL)
-ObjectPropertyAssertion(:extendsByNondeterminism :NL :L)
+ClassAssertion(:ComplexityClass :LogCFL)
 
 # Individual: :NP (:NP)
 
 ClassAssertion(:ComplexityClass :NP)
 ObjectPropertyAssertion(:extendsByNondeterminism :NP :P)
+ObjectPropertyAssertion(:isSubClassOf :NP <0-1-NP_C>)
 
-# Individual: :NPSpace (:NPSpace)
+# Individual: :NP_C (:NP_C)
 
-ClassAssertion(:ComplexityClass :NPSpace)
-ObjectPropertyAssertion(:extendsByNondeterminism :NPSpace :PSpace)
+ClassAssertion(:ComplexityClass :NP_C)
 
 # Individual: :P (:P)
 
 ClassAssertion(:ComplexityClass :P)
 ObjectPropertyAssertion(:dTime :P :Poly)
+ObjectPropertyAssertion(:isSubClassOf :P :Parity-P)
 
-# Individual: :PSpace (:PSpace)
+# Individual: :Parity-P (:Parity-P)
 
-ClassAssertion(:ComplexityClass :PSpace)
-ObjectPropertyAssertion(:dSpace :PSpace :Poly)
+AnnotationAssertion(<Ontoplex/ZooEntry> :Parity-P "⊕P: Parity P
+The class of decision problems solvable by an NP machine such that
+
+If the answer is 'yes,' then the number of accepting paths is odd.
+If the answer is 'no,' then the number of accepting paths is even.
+Defined in [PZ83].
+
+Contains Graph Isomorphism; indeed, Graph Isomorphism is low for ⊕P [AK02].
+
+Contains FewP [CH89].
+
+There exists an oracle relative to which P = ⊕P but P is not equal to NP (and indeed NP = EXP) [BBF98].
+
+Equals Mod2^mP for every positive integer m.")
+AnnotationAssertion(<Ontoplex/reference> :Parity-P "C. H. Papadimitriou and S. Zachos. Two remarks on the power of counting, Proceedings of the 6th GI Conference in Theoretical Computer Science, Lecture Notes in Computer Science Vol. 145, Springer-Verlag, pp. 269-276, 1983. doi:10.1007/BFb0009651")
+ClassAssertion(:ComplexityClass :Parity-P)
+ObjectPropertyAssertion(:isParityVersionOf :Parity-P :P)
 
 # Individual: :Poly (:Poly)
 
@@ -254,26 +298,54 @@ ObjectPropertyAssertion(:lessless :Poly :Exp)
 
 ClassAssertion(:Bound :Tower)
 
-# Individual: :coNL (:coNL)
+# Individual: :oracle-for-Parity-P (:oracle-for-Parity-P)
 
-ClassAssertion(:ComplexityClass :coNL)
-ObjectPropertyAssertion(:isClassOfComplementsFor :coNL :NL)
-ObjectPropertyAssertion(:isEqualTo :coNL :coNL)
+AnnotationAssertion(<Ontoplex/reference> :oracle-for-Parity-P "[BBF98] R. Beigel, H. Buhrman, and L. Fortnow. NP might not be as easy as detecting unique solutions, Proceedings of ACM STOC'98, pp. 203-208, 1998. http://people.cs.uchicago.edu/~fortnow/papers/newiso.ps.")
+ClassAssertion(:Oracle :oracle-for-Parity-P)
 
-# Individual: :coNP (:coNP)
+# Individual: <0-1-NP_C> (<0-1-NP_C>)
 
-ClassAssertion(:ComplexityClass :coNP)
-ObjectPropertyAssertion(:isClassOfComplementsFor :coNP :NP)
+AnnotationAssertion(<Ontoplex/ZooEntry> <0-1-NP_C> "0-1-NPC: Binary Restriction of NP Over The Complex Numbers
+The intersection of NPC with {0,1}* (i.e. the set of binary strings).
+
+Contains NP.
+
+Is contained in PSPACE, and in AM assuming the Extended Riemann Hypothesis [Koi96].")
+ClassAssertion(:ComplexityClass <0-1-NP_C>)
+ObjectPropertyAssertion(:isSubClassOf <0-1-NP_C> :NP_C)
+
+# Individual: <1NAuxPDAp> (<1NAuxPDAp>)
+
+AnnotationAssertion(<Ontoplex/ZooEntry> <1NAuxPDAp> "1NAuxPDAp: One-Way NAuxPDAp
+
+Defined in [Bra77], where it was also shown that 1NAuxPDAp strictly contains CFL and is strictly contained in LOGCFL. The class corresponds to the closure of CFL under one-way log-space reductions.")
+AnnotationAssertion(<Ontoplex/reference> <1NAuxPDAp> "F.-J. Brandenburg. On one-way auxiliary pushdown automata, Proceedings of the Third GI-Conference on Theoretical Computer Science, Springer LNCS vol. 48, pp. 132-144, 1977.")
+ClassAssertion(:ComplexityClass <1NAuxPDAp>)
+ObjectPropertyAssertion(:isStrictSubClassOf <1NAuxPDAp> :LogCFL)
 
 # Individual: <2Exp> (<2Exp>)
 
 ClassAssertion(:Bound <2Exp>)
 ObjectPropertyAssertion(:lessless <2Exp> :Tower)
 
-# Individual: <2ExpTime> (<2ExpTime>)
+# Individual: <3SUM-Hard> (<3SUM-Hard>)
 
-ClassAssertion(:ComplexityClass <2ExpTime>)
-ObjectPropertyAssertion(:dTime <2ExpTime> <2Exp>)
+AnnotationAssertion(<Ontoplex/ZooEntry> <3SUM-Hard> "3SUM-hard: Problems hard for 3SUM
+Defined in [GO95], 3SUM-hard is the set of problems 
+P for which 3SUM is reducible to a constant number of instances of P
+with additional time o(n^2), using a real RAM model of computation as opposed to a Turing machine. That is, a problem is 3SUM-hard if 3SUM is reducible to it in sub-quadratic time.
+
+Known to contain many problems from computational geometry, including:
+
+3SUM': do there exist a, b, c, such that a + b = c
+
+3-Points-On-Line: given a set of points on the plane, does a line exist connecting three of them?
+
+In [GO95], the authors list many more computational geometry problems in 3SUM-hard.
+
+Using a model of computation strictly weaker than the real RAM machine model, a lower bound of Ω(n^2) has been shown, but this model is weak enough that not all problems in 3SUM-hard are even decidable under the model.")
+AnnotationAssertion(<Ontoplex/reference> <3SUM-Hard> "A. Gajentaan and M. Overmars. On a class of O(n^2) problems in computational geometry, Computational Geometry, Volume 5, Issue 3, October 1995, pages 165-185.")
+ClassAssertion(:ComplexityClass <3SUM-Hard>)
 
 
 SubObjectPropertyOf(ObjectPropertyChain(:dSpace :lessless ObjectInverseOf(:dSpace)) :SpaceHierarchy)
