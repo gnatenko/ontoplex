@@ -3,557 +3,222 @@ Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
 Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
 Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
 Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
-Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
 Prefix(fowl:=<https://github.com/gavel-tool/python-gavel-owl/>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
 
 
 Ontology(
 Declaration(Class(:Bound))
 Declaration(Class(:ComplexityClass))
 Declaration(Class(:DecisionProblem))
-Declaration(Class(:Function))
-Declaration(Class(:FunctionClass))
-Declaration(Class(:Hardness))
 Declaration(Class(:Hierarchy))
-Declaration(Class(:LevelOfHierarhy))
-Declaration(Class(:Measure))
-Declaration(Class(:MetaNode))
-Declaration(Class(:Model))
-Declaration(Class(:Restriction))
-Declaration(Class(:__sys_Label))
-Declaration(Class(:__sys_SavitchCompatible))
+Declaration(ObjectProperty(:SpaceHierarchy))
+Declaration(ObjectProperty(:TimeHierarchy))
+Declaration(ObjectProperty(:bpTime))
 Declaration(ObjectProperty(:dSpace))
 Declaration(ObjectProperty(:dTime))
-Declaration(ObjectProperty(:delta))
-Declaration(ObjectProperty(:extends))
+Declaration(ObjectProperty(:definitionRelation))
+Declaration(ObjectProperty(:extendsByBoundedProbability))
 Declaration(ObjectProperty(:extendsByNondeterminism))
-Declaration(ObjectProperty(:hasOracle))
-Declaration(ObjectProperty(:hasRestriction))
-Declaration(ObjectProperty(:hasRestriction_onSpace))
-Declaration(ObjectProperty(:hasRestriction_onTime))
-Declaration(ObjectProperty(:hasRestriction_unique_onSpace_TM))
-Declaration(ObjectProperty(:hasRestriction_unique_onTime_TM))
-Declaration(ObjectProperty(:imposesUpperBound))
+Declaration(ObjectProperty(:hasBase))
+Declaration(ObjectProperty(:hasPower))
 Declaration(ObjectProperty(:isClassOfComplementsFor))
-Declaration(ObjectProperty(:isComplementOf))
-Declaration(ObjectProperty(:isDefinedFor))
 Declaration(ObjectProperty(:isEqualTo))
 Declaration(ObjectProperty(:isFromHierarchy))
-Declaration(ObjectProperty(:isFunctionVersionOf))
 Declaration(ObjectProperty(:isHardFor))
-Declaration(ObjectProperty(:isHardFor_wrtAC0))
-Declaration(ObjectProperty(:isHardFor_wrtLogSpace))
-Declaration(ObjectProperty(:isHardFor_wrtPolyTime))
-Declaration(ObjectProperty(:isHardnessFor))
-Declaration(ObjectProperty(:isHardnessOf))
-Declaration(ObjectProperty(:isHardnessWrt))
+Declaration(ObjectProperty(:isHardFor_wrtLogSpaceReductions))
+Declaration(ObjectProperty(:isHardFor_wrtPolyTimeReductions))
 Declaration(ObjectProperty(:isLevelOf))
 Declaration(ObjectProperty(:isMemberOf))
 Declaration(ObjectProperty(:isOnLevel))
-Declaration(ObjectProperty(:isPowerOf))
 Declaration(ObjectProperty(:isReducibleTo))
-Declaration(ObjectProperty(:isReducibleTo_inAC0))
 Declaration(ObjectProperty(:isReducibleTo_inLogSpace))
 Declaration(ObjectProperty(:isReducibleTo_inPolyTime))
 Declaration(ObjectProperty(:isStrictSubClassOf))
-Declaration(ObjectProperty(:isStrictSubClassOf_SpaceHierarchyTheorem))
 Declaration(ObjectProperty(:isSubClassOf))
-Declaration(ObjectProperty(:isSubClassOf_SavitchTheorem))
-Declaration(ObjectProperty(:isSuperClassOf))
 Declaration(ObjectProperty(:isUnionOf))
-Declaration(ObjectProperty(:lessLess))
-Declaration(ObjectProperty(:metaLink))
+Declaration(ObjectProperty(:lessless))
+Declaration(ObjectProperty(:modifierRelation))
 Declaration(ObjectProperty(:nSpace))
 Declaration(ObjectProperty(:nTime))
-Declaration(ObjectProperty(:next))
-Declaration(ObjectProperty(:pi))
-Declaration(ObjectProperty(:reducesFrom))
-Declaration(ObjectProperty(:reducesTo))
-Declaration(ObjectProperty(:restrictsMeasure))
-Declaration(ObjectProperty(:sigma))
-Declaration(NamedIndividual(:AC))
-Declaration(NamedIndividual(:AC0))
-Declaration(NamedIndividual(:BooleanCircuits))
-Declaration(NamedIndividual(:Const))
-Declaration(NamedIndividual(:Depth))
-Declaration(NamedIndividual(:DirectedReachability))
+Declaration(ObjectProperty(:next_inPH))
+Declaration(ObjectProperty(:rTime))
+Declaration(NamedIndividual(:BPP))
+Declaration(NamedIndividual(:Elementary))
 Declaration(NamedIndividual(:Exp))
-Declaration(NamedIndividual(:ExpSpace))
 Declaration(NamedIndividual(:ExpTime))
-Declaration(NamedIndividual(:FAC0))
-Declaration(NamedIndividual(:FL))
-Declaration(NamedIndividual(:FP))
 Declaration(NamedIndividual(:L))
 Declaration(NamedIndividual(:Log))
-Declaration(NamedIndividual(:NExpSpace))
+Declaration(NamedIndividual(:NExpTime))
 Declaration(NamedIndividual(:NL))
 Declaration(NamedIndividual(:NP))
 Declaration(NamedIndividual(:NPSpace))
 Declaration(NamedIndividual(:P))
-Declaration(NamedIndividual(:PH))
 Declaration(NamedIndividual(:PSpace))
-Declaration(NamedIndividual(:Pi_P_2))
 Declaration(NamedIndividual(:Poly))
-Declaration(NamedIndividual(:PolyLog))
-Declaration(NamedIndividual(:QbfSatisfiability))
-Declaration(NamedIndividual(:Sigma_P_2))
-Declaration(NamedIndividual(:Size))
-Declaration(NamedIndividual(:Space))
-Declaration(NamedIndividual(:Time))
-Declaration(NamedIndividual(:TuringMachine))
-Declaration(NamedIndividual(:UndirectedReachability))
-Declaration(NamedIndividual(:_2CnfSatisfiability))
-Declaration(NamedIndividual(:_3CnfSatisfiability))
-Declaration(NamedIndividual(:_3Colouring))
+Declaration(NamedIndividual(:Tower))
 Declaration(NamedIndividual(:coNL))
 Declaration(NamedIndividual(:coNP))
-Declaration(NamedIndividual(:ph))
-Declaration(NamedIndividual(:ph_level_0))
-Declaration(NamedIndividual(:ph_level_1))
-Declaration(NamedIndividual(:ph_level_2))
-Declaration(NamedIndividual(:restriction_AC0_depth))
-Declaration(NamedIndividual(:restriction_AC0_size))
-Declaration(NamedIndividual(:restriction_AC_depth))
-Declaration(NamedIndividual(:restriction_AC_size))
-Declaration(NamedIndividual(:restriction_ExpSpace))
-Declaration(NamedIndividual(:restriction_ExpTime))
-Declaration(NamedIndividual(:restriction_LogSpace))
-Declaration(NamedIndividual(:restriction_PSpace))
-Declaration(NamedIndividual(:restriction_PTime))
-Declaration(AnnotationProperty(rdfs:Reference))
+Declaration(NamedIndividual(<2Exp>))
+Declaration(NamedIndividual(<2ExpTime>))
 Declaration(AnnotationProperty(fowl:tptp_annotation))
 
 ############################
 #   Object Properties
 ############################
 
+# Object Property: :SpaceHierarchy (:SpaceHierarchy)
+
+SubObjectPropertyOf(:SpaceHierarchy :isStrictSubClassOf)
+
+# Object Property: :TimeHierarchy (:TimeHierarchy)
+
+SubObjectPropertyOf(:TimeHierarchy :isStrictSubClassOf)
+
+# Object Property: :bpTime (:bpTime)
+
+SubObjectPropertyOf(:bpTime :definitionRelation)
+
 # Object Property: :dSpace (:dSpace)
 
-AnnotationAssertion(rdfs:comment :dSpace "dSpace(C, b) means C is defined for b-space bounded deterministic Turing machines")
-SubObjectPropertyOf(:dSpace :metaLink)
+SubObjectPropertyOf(:dSpace :definitionRelation)
 
 # Object Property: :dTime (:dTime)
 
-AnnotationAssertion(rdfs:comment :dTime "dTime(C, b) means C is defined for b-time bounded deterministic Turing machines")
-SubObjectPropertyOf(:dTime :metaLink)
-ObjectPropertyDomain(:dTime ObjectSomeValuesFrom(:isDefinedFor ObjectOneOf(:TuringMachine)))
+SubObjectPropertyOf(:dTime :definitionRelation)
 
-# Object Property: :delta (:delta)
+# Object Property: :definitionRelation (:definitionRelation)
 
-SubObjectPropertyOf(:delta :isOnLevel)
+FunctionalObjectProperty(:definitionRelation)
+ObjectPropertyDomain(:definitionRelation :ComplexityClass)
+ObjectPropertyRange(:definitionRelation :Bound)
 
-# Object Property: :extends (:extends)
+# Object Property: :extendsByBoundedProbability (:extendsByBoundedProbability)
 
-AnnotationAssertion(rdfs:comment :extends "The relation between a class C and a class D obtained from C by extending the definition with a more capable model of computation")
-SubObjectPropertyOf(:extends :isSuperClassOf)
-ObjectPropertyDomain(:extends :ComplexityClass)
-ObjectPropertyRange(:extends :ComplexityClass)
+SubObjectPropertyOf(:extendsByBoundedProbability :modifierRelation)
 
 # Object Property: :extendsByNondeterminism (:extendsByNondeterminism)
 
-AnnotationAssertion(rdfs:comment :extendsByNondeterminism "The relation between a class C and a class D obtained by allowing nondeterminism")
-SubObjectPropertyOf(:extendsByNondeterminism :extends)
-FunctionalObjectProperty(:extendsByNondeterminism)
-InverseFunctionalObjectProperty(:extendsByNondeterminism)
-
-# Object Property: :hasOracle (:hasOracle)
-
-AnnotationAssertion(rdfs:comment :hasOracle "The relation between classes C^D and D or class and problem C^A and A")
-FunctionalObjectProperty(:hasOracle)
-
-# Object Property: :hasRestriction (:hasRestriction)
-
-AnnotationAssertion(rdfs:comment :hasRestriction "A connection between a class and the representative node for the restriction on complexity in its definition. With variants needed for internal reasoning")
-SubObjectPropertyOf(:hasRestriction :metaLink)
-InverseFunctionalObjectProperty(:hasRestriction)
-ObjectPropertyDomain(:hasRestriction :ComplexityClass)
-ObjectPropertyRange(:hasRestriction :Restriction)
-
-# Object Property: :hasRestriction_onSpace (:hasRestriction_onSpace)
-
-SubObjectPropertyOf(:hasRestriction_onSpace :hasRestriction)
-FunctionalObjectProperty(:hasRestriction_onSpace)
-
-# Object Property: :hasRestriction_onTime (:hasRestriction_onTime)
-
-SubObjectPropertyOf(:hasRestriction_onTime :hasRestriction)
-FunctionalObjectProperty(:hasRestriction_onTime)
-
-# Object Property: :hasRestriction_unique_onSpace_TM (:hasRestriction_unique_onSpace_TM)
-
-SubObjectPropertyOf(:hasRestriction_unique_onSpace_TM :hasRestriction_onSpace)
-FunctionalObjectProperty(:hasRestriction_unique_onSpace_TM)
-
-# Object Property: :hasRestriction_unique_onTime_TM (:hasRestriction_unique_onTime_TM)
-
-SubObjectPropertyOf(:hasRestriction_unique_onTime_TM :hasRestriction_onTime)
-FunctionalObjectProperty(:hasRestriction_unique_onTime_TM)
-
-# Object Property: :imposesUpperBound (:imposesUpperBound)
-
-AnnotationAssertion(rdfs:comment :imposesUpperBound "The relation between a restriction and a bound on a complexity measure that it imposes")
-SubObjectPropertyOf(:imposesUpperBound :metaLink)
-FunctionalObjectProperty(:imposesUpperBound)
-ObjectPropertyDomain(:imposesUpperBound :Restriction)
-ObjectPropertyRange(:imposesUpperBound :Bound)
+SubObjectPropertyOf(:extendsByNondeterminism :modifierRelation)
 
 # Object Property: :isClassOfComplementsFor (:isClassOfComplementsFor)
 
-AnnotationAssertion(rdfs:comment :isClassOfComplementsFor "The relation between classes C and CO_C = {P | complement of P is in C}")
+SubObjectPropertyOf(:isClassOfComplementsFor :modifierRelation)
+FunctionalObjectProperty(:isClassOfComplementsFor)
+InverseFunctionalObjectProperty(:isClassOfComplementsFor)
 SymmetricObjectProperty(:isClassOfComplementsFor)
-ObjectPropertyDomain(:isClassOfComplementsFor :ComplexityClass)
-ObjectPropertyRange(:isClassOfComplementsFor :ComplexityClass)
-
-# Object Property: :isComplementOf (:isComplementOf)
-
-AnnotationAssertion(rdfs:comment :isComplementOf "The relation between problems A and NOT_A = {0, 1}* \\ A")
-SymmetricObjectProperty(:isComplementOf)
-ObjectPropertyDomain(:isComplementOf :DecisionProblem)
-ObjectPropertyRange(:isComplementOf :DecisionProblem)
-
-# Object Property: :isDefinedFor (:isDefinedFor)
-
-AnnotationAssertion(rdfs:comment :isDefinedFor "A relation between a class and a model of computation it is defined for")
-SubObjectPropertyOf(:isDefinedFor :metaLink)
-FunctionalObjectProperty(:isDefinedFor)
-ObjectPropertyDomain(:isDefinedFor :ComplexityClass)
-ObjectPropertyRange(:isDefinedFor :Model)
 
 # Object Property: :isEqualTo (:isEqualTo)
 
+AnnotationAssertion(fowl:tptp_annotation :isEqualTo "![X, Y]:( ~ ( 'isEqualTo'(X, Y) & 'isStrictSubClassOf'(X, Y) ) )")
 AnnotationAssertion(fowl:tptp_annotation :isEqualTo "![X, Y]:('isEqualTo'(X, Y) <=> ('isSubClassOf'(X, Y) & 'isSubClassOf'(Y, X) ) )")
 SubObjectPropertyOf(:isEqualTo :isSubClassOf)
 SymmetricObjectProperty(:isEqualTo)
 TransitiveObjectProperty(:isEqualTo)
 
-# Object Property: :isFromHierarchy (:isFromHierarchy)
+# Object Property: :isHardFor_wrtLogSpaceReductions (:isHardFor_wrtLogSpaceReductions)
 
-AnnotationAssertion(rdfs:comment :isFromHierarchy "The relation between a class from a hierarchy and that hierarchy representative node")
+SubObjectPropertyOf(:isHardFor_wrtLogSpaceReductions :isHardFor)
 
-# Object Property: :isFunctionVersionOf (:isFunctionVersionOf)
+# Object Property: :isHardFor_wrtPolyTimeReductions (:isHardFor_wrtPolyTimeReductions)
 
-AnnotationAssertion(rdfs:comment :isFunctionVersionOf "The relation between the functional class and the respective class of problems, e.g. FP and P")
-
-# Object Property: :isHardFor (:isHardFor)
-
-AnnotationAssertion(rdfs:comment :isHardFor "The relation between a problem and a class it is hard for (with variants)")
-AnnotationAssertion(fowl:tptp_annotation :isHardFor "![X, Y]:('isHardFor'(X, Y) <=> ?[H]:('isHardnessOf'(H, X) & 'isHardnessFor'(H, Y)))")
-AnnotationAssertion(fowl:tptp_annotation :isHardFor "![NOT_A, A, C, CO_C]:('isComplementOf'(NOT_A, A) & 'isHardFor'(A, C) & 'isClassOfComplementsFor'(C, CO_C) => 'isHardFor'(NOT_A, CO_C))")
-ObjectPropertyDomain(:isHardFor :DecisionProblem)
-ObjectPropertyRange(:isHardFor :ComplexityClass)
-
-# Object Property: :isHardFor_wrtAC0 (:isHardFor_wrtAC0)
-
-AnnotationAssertion(fowl:tptp_annotation :isHardFor_wrtAC0 "![X, Y]:('isHardFor_wrtAC0'(X, Y) <=> ?[H]:('isHardnessOf'(H, X) & 'isHardnessFor'(H, Y) & 'isHardnessWtr'(H, 'FAC0')))")
-AnnotationAssertion(fowl:tptp_annotation :isHardFor_wrtAC0 "![NOT_A, A, C, CO_C]:('isComplementOf'(NOT_A, A) & 'isHardFor_wrtAC0'(A, C) & 'isClassOfComplementsFor'(C, CO_C) => 'isHardFor_wrtAC0'(NOT_A, CO_C))")
-SubObjectPropertyOf(:isHardFor_wrtAC0 :isHardFor_wrtLogSpace)
-
-# Object Property: :isHardFor_wrtLogSpace (:isHardFor_wrtLogSpace)
-
-AnnotationAssertion(fowl:tptp_annotation :isHardFor_wrtLogSpace "![X, Y]:('isHardFor_wrtLogSpace'(X, Y) <=> ?[H]:('isHardnessOf'(H, X) & 'isHardnessFor'(H, Y) & 'isHardnessWtr'(H, 'FL')))")
-AnnotationAssertion(fowl:tptp_annotation :isHardFor_wrtLogSpace "![NOT_A, A, C, CO_C]:('isComplementOf'(NOT_A, A) & 'isHardFor_wrtLogSpace'(A, C) & 'isClassOfComplementsFor'(C, CO_C) => 'isHardFor_wrtLogSpace'(NOT_A, CO_C))")
-SubObjectPropertyOf(:isHardFor_wrtLogSpace :isHardFor_wrtPolyTime)
-
-# Object Property: :isHardFor_wrtPolyTime (:isHardFor_wrtPolyTime)
-
-AnnotationAssertion(fowl:tptp_annotation :isHardFor_wrtPolyTime "![X, Y]:('isHardFor_wrtPolyTime'(X, Y) <=> ?[H]:('isHardnessOf'(H, X) & 'isHardnessFor'(H, Y) & 'isHardnessWtr'(H, 'FP')))")
-AnnotationAssertion(fowl:tptp_annotation :isHardFor_wrtPolyTime "![NOT_A, A, C, CO_C]:('isComplementOf'(NOT_A, A) & 'isHardFor_wrtPolyTime'(A, C) & 'isClassOfComplementsFor'(C, CO_C) => 'isHardFor_wrtPolyTime'(NOT_A, CO_C))")
-SubObjectPropertyOf(:isHardFor_wrtPolyTime :isHardFor)
-
-# Object Property: :isHardnessFor (:isHardnessFor)
-
-AnnotationAssertion(rdfs:comment :isHardnessFor "The relation between \"hardness of A for C wrt reductions computible in F\" and C")
-
-# Object Property: :isHardnessOf (:isHardnessOf)
-
-AnnotationAssertion(rdfs:comment :isHardnessOf "The relation between \"hardness of A for C wrt reductions computible in F\" and A")
-
-# Object Property: :isHardnessWrt (:isHardnessWrt)
-
-AnnotationAssertion(rdfs:comment :isHardnessWrt "The relation between \"hardness of A for C wrt reductions computible in F\" and F")
+SubObjectPropertyOf(:isHardFor_wrtPolyTimeReductions :isHardFor)
 
 # Object Property: :isLevelOf (:isLevelOf)
 
-AnnotationAssertion(rdfs:comment :isLevelOf "A relation between a representative of a level of a hierarchy and the representative of that hierarchy")
-SubObjectPropertyOf(:isLevelOf :metaLink)
+FunctionalObjectProperty(:isLevelOf)
 
 # Object Property: :isMemberOf (:isMemberOf)
 
-AnnotationAssertion(rdfs:comment :isMemberOf "The relation between a problem and a class it belongs to")
-ObjectPropertyDomain(:isMemberOf :Function)
-ObjectPropertyRange(:isMemberOf :FunctionClass)
-
-# Object Property: :isOnLevel (:isOnLevel)
-
-AnnotationAssertion(rdfs:comment :isOnLevel "A relation between a member class of a hierarchy and its level. With variants")
-SubObjectPropertyOf(:isOnLevel :metaLink)
-
-# Object Property: :isPowerOf (:isPowerOf)
-
-AnnotationAssertion(rdfs:comment :isPowerOf "The relation between classes C^D and C")
-SubObjectPropertyOf(:isPowerOf :isSuperClassOf)
-
-# Object Property: :isReducibleTo (:isReducibleTo)
-
-AnnotationAssertion(rdfs:comment :isReducibleTo "The relation of Karp reducibility between problems (with variants)")
-AnnotationAssertion(fowl:tptp_annotation :isReducibleTo "![X, Y]:('isReducibleTo'(X, Y) <=> ?[R]:('reducesFrom'(R, X) & 'reducesTo'(R, Y)))")
-AnnotationAssertion(rdfs:comment :isReducibleTo "The relation of reducibility between problems (with variants)")
-ObjectPropertyDomain(:isReducibleTo :DecisionProblem)
-ObjectPropertyRange(:isReducibleTo :DecisionProblem)
-
-# Object Property: :isReducibleTo_inAC0 (:isReducibleTo_inAC0)
-
-AnnotationAssertion(fowl:tptp_annotation :isReducibleTo_inAC0 "![X, Y]:('isReducibleTo_inAC0'(X, Y) <=> ?[R]:('reducesFrom'(R, X) & 'reducesTo'(R, Y) & 'isMemberOf'(R, 'FAC0')))")
-SubObjectPropertyOf(:isReducibleTo_inAC0 :isReducibleTo_inLogSpace)
+ObjectPropertyDomain(:isMemberOf :DecisionProblem)
+ObjectPropertyRange(:isMemberOf :ComplexityClass)
 
 # Object Property: :isReducibleTo_inLogSpace (:isReducibleTo_inLogSpace)
 
-AnnotationAssertion(fowl:tptp_annotation :isReducibleTo_inLogSpace "![X, Y]:('isReducibleTo_inLogSpace'(X, Y) <=> ?[R]:('reducesFrom'(R, X) & 'reducesTo'(R, Y) & 'isMemberOf'(R, 'FL')))")
-SubObjectPropertyOf(:isReducibleTo_inLogSpace :isReducibleTo_inPolyTime)
+SubObjectPropertyOf(:isReducibleTo_inLogSpace :isReducibleTo)
+TransitiveObjectProperty(:isReducibleTo_inLogSpace)
 
 # Object Property: :isReducibleTo_inPolyTime (:isReducibleTo_inPolyTime)
 
-AnnotationAssertion(fowl:tptp_annotation :isReducibleTo_inPolyTime "![X, Y]:('isReducibleTo_inPolyTime'(X, Y) <=> ?[R]:('reducesFrom'(R, X) & 'reducesTo'(R, Y) & 'isMemberOf'(R, 'FP')))")
 SubObjectPropertyOf(:isReducibleTo_inPolyTime :isReducibleTo)
+TransitiveObjectProperty(:isReducibleTo_inPolyTime)
 
 # Object Property: :isStrictSubClassOf (:isStrictSubClassOf)
 
-AnnotationAssertion(fowl:tptp_annotation :isStrictSubClassOf "![X, Y]:('isStrictSubClassOf'(X, Y) <=> ('isSubClassOf'(X, Y) & ~'isSubClassOf'(Y, X)))")
+AnnotationAssertion(fowl:tptp_annotation :isStrictSubClassOf "![X, Y]:( 'isStrictSubClassOf(X, Y)' <=> ('isSubClassOf'(X, Y) & (~ 'isEqualTo'(X, Y) ) ) )")
 SubObjectPropertyOf(:isStrictSubClassOf :isSubClassOf)
 TransitiveObjectProperty(:isStrictSubClassOf)
 
-# Object Property: :isStrictSubClassOf_SpaceHierarchyTheorem (:isStrictSubClassOf_SpaceHierarchyTheorem)
-
-AnnotationAssertion(rdfs:comment :isStrictSubClassOf_SpaceHierarchyTheorem "A strict subclass relation that is imposed by the Space Hierarchy Theorem")
-SubObjectPropertyOf(:isStrictSubClassOf_SpaceHierarchyTheorem :isStrictSubClassOf)
-SubObjectPropertyOf(:isStrictSubClassOf_SpaceHierarchyTheorem :metaLink)
-
 # Object Property: :isSubClassOf (:isSubClassOf)
 
-AnnotationAssertion(fowl:tptp_annotation :isSubClassOf "![X, Y]:('isSubClass'(X, Y) <=> (![Z]:('isMemberOf'(Z, X) => 'isMemberOf'(Z, Y))))")
-InverseObjectProperties(:isSubClassOf :isSuperClassOf)
 TransitiveObjectProperty(:isSubClassOf)
-ObjectPropertyDomain(:isSubClassOf :FunctionClass)
-ObjectPropertyRange(:isSubClassOf :FunctionClass)
+ObjectPropertyDomain(:isSubClassOf :ComplexityClass)
+ObjectPropertyRange(:isSubClassOf :ComplexityClass)
 
-# Object Property: :isSubClassOf_SavitchTheorem (:isSubClassOf_SavitchTheorem)
+# Object Property: :lessless (:lessless)
 
-AnnotationAssertion(rdfs:comment :isSubClassOf_SavitchTheorem "A subclass relation that is imposed by Savitch's Theorem")
-SubObjectPropertyOf(:isSubClassOf_SavitchTheorem :extendsByNondeterminism)
-SubObjectPropertyOf(:isSubClassOf_SavitchTheorem :isSubClassOf)
-SubObjectPropertyOf(:isSubClassOf_SavitchTheorem :metaLink)
+TransitiveObjectProperty(:lessless)
+ObjectPropertyDomain(:lessless :Bound)
+ObjectPropertyRange(:lessless :Bound)
 
-# Object Property: :isUnionOf (:isUnionOf)
+# Object Property: :modifierRelation (:modifierRelation)
 
-AnnotationAssertion(rdfs:comment :isUnionOf "The relation between the union of a hierarchy and the representative node of that hierarchy")
-
-# Object Property: :lessLess (:lessLess)
-
-AnnotationAssertion(rdfs:comment :lessLess "The relation between two classes of bounds F and G, such that for each f \\in F there exists g \\in G, such that (f log f) = o(g)")
-TransitiveObjectProperty(:lessLess)
-ObjectPropertyDomain(:lessLess :Bound)
-ObjectPropertyRange(:lessLess :Bound)
-
-# Object Property: :metaLink (:metaLink)
-
-AnnotationAssertion(rdfs:comment :metaLink "A type of relations that are used in definitions and axiomatisations, but not studied directly in complexity theory")
+ObjectPropertyDomain(:modifierRelation :ComplexityClass)
+ObjectPropertyRange(:modifierRelation :ComplexityClass)
 
 # Object Property: :nSpace (:nSpace)
 
-AnnotationAssertion(rdfs:comment :nSpace "nSpace(C, b) means C is the nondeterministic version of D, dSpace(D, b)")
-SubObjectPropertyOf(:nSpace :metaLink)
+SubObjectPropertyOf(:nSpace :definitionRelation)
 
 # Object Property: :nTime (:nTime)
 
-AnnotationAssertion(rdfs:comment :nTime "nTime(C, b) means C is the nondeterministic version of D, dTime(D, b)")
-SubObjectPropertyOf(:nTime :metaLink)
+SubObjectPropertyOf(:nTime :definitionRelation)
 
-# Object Property: :next (:next)
+# Object Property: :rTime (:rTime)
 
-AnnotationAssertion(rdfs:comment :next "The successor relation between the layers of a hierarchy")
-
-# Object Property: :pi (:pi)
-
-SubObjectPropertyOf(:pi :isOnLevel)
-
-# Object Property: :reducesFrom (:reducesFrom)
-
-AnnotationAssertion(rdfs:comment :reducesFrom "The relation between a reduction and from what it reduces")
-
-# Object Property: :reducesTo (:reducesTo)
-
-AnnotationAssertion(rdfs:comment :reducesTo "The relation between a reduction and to what it reduces")
-
-# Object Property: :restrictsMeasure (:restrictsMeasure)
-
-AnnotationAssertion(rdfs:comment :restrictsMeasure "The relation between a restriction and the complexity measure that it restricts")
-SubObjectPropertyOf(:restrictsMeasure :metaLink)
-FunctionalObjectProperty(:restrictsMeasure)
-ObjectPropertyDomain(:restrictsMeasure :Restriction)
-ObjectPropertyRange(:restrictsMeasure :Measure)
-
-# Object Property: :sigma (:sigma)
-
-SubObjectPropertyOf(:sigma :isOnLevel)
+SubObjectPropertyOf(:rTime :definitionRelation)
 
 
-
-############################
-#   Classes
-############################
-
-# Class: :Bound (:Bound)
-
-AnnotationAssertion(rdfs:comment :Bound "The type of classes of functions \\N -> \\N")
-
-# Class: :ComplexityClass (:ComplexityClass)
-
-AnnotationAssertion(rdfs:comment :ComplexityClass "The type of complexity classes of decision problems")
-SubClassOf(:ComplexityClass :FunctionClass)
-
-# Class: :DecisionProblem (:DecisionProblem)
-
-AnnotationAssertion(rdfs:comment :DecisionProblem "The type of Yes/No computational problems, i.e. mappings {0, 1}* -> {0, 1}")
-SubClassOf(:DecisionProblem :Function)
-
-# Class: :Function (:Function)
-
-AnnotationAssertion(rdfs:comment :Function "The type of mappings {0, 1}* -> {0, 1}*")
-DisjointClasses(:Function :FunctionClass)
-
-# Class: :FunctionClass (:FunctionClass)
-
-AnnotationAssertion(rdfs:comment :FunctionClass "The type of functional complexity classes")
-
-# Class: :Hardness (:Hardness)
-
-AnnotationAssertion(rdfs:comment :Hardness "The type of nodes certifying the \"hardness\" of a problem for a class")
-SubClassOf(:Hardness :MetaNode)
-
-# Class: :Hierarchy (:Hierarchy)
-
-AnnotationAssertion(rdfs:comment :Hierarchy "The type of nodes that represent hierarchies \"as a whole\"")
-SubClassOf(:Hierarchy :MetaNode)
-
-# Class: :LevelOfHierarhy (:LevelOfHierarhy)
-
-AnnotationAssertion(rdfs:comment :LevelOfHierarhy "The type of levels of hierarchies")
-SubClassOf(:LevelOfHierarhy :MetaNode)
-
-# Class: :Measure (:Measure)
-
-AnnotationAssertion(rdfs:comment :Measure "The type of complexity measures: time, space, circuit size, ...")
-
-# Class: :MetaNode (:MetaNode)
-
-AnnotationAssertion(rdfs:comment :MetaNode "The type of entities used for the internal representation")
-
-# Class: :Model (:Model)
-
-AnnotationAssertion(rdfs:comment :Model "The type of models of computation")
-
-# Class: :Restriction (:Restriction)
-
-AnnotationAssertion(rdfs:comment :Restriction "The type of restrictions -- such as the polynomial restriction on the time measure in the definition of class P")
-SubClassOf(:Restriction :MetaNode)
-
-# Class: :__sys_Label (:__sys_Label)
-
-AnnotationAssertion(rdfs:comment :__sys_Label "System labels are used in axioms for axiliary purposes. They do not have a meaning in complexity theory")
-
-# Class: :__sys_SavitchCompatible (:__sys_SavitchCompatible)
-
-AnnotationAssertion(rdfs:comment :__sys_SavitchCompatible "A system label used in the axiomatisation of Savitch's theorem")
-SubClassOf(:__sys_SavitchCompatible :__sys_Label)
 
 
 ############################
 #   Named Individuals
 ############################
 
-# Individual: :AC (:AC)
+# Individual: :BPP (:BPP)
 
-ClassAssertion(:ComplexityClass :AC)
-ObjectPropertyAssertion(:hasRestriction :AC :restriction_AC_depth)
-ObjectPropertyAssertion(:hasRestriction :AC :restriction_AC_size)
-ObjectPropertyAssertion(:isDefinedFor :AC :BooleanCircuits)
+ClassAssertion(:ComplexityClass :BPP)
+ObjectPropertyAssertion(:extendsByBoundedProbability :BPP :P)
 
-# Individual: :AC0 (:AC0)
+# Individual: :Elementary (:Elementary)
 
-ClassAssertion(:ComplexityClass :AC0)
-ObjectPropertyAssertion(:hasRestriction :AC0 :restriction_AC0_depth)
-ObjectPropertyAssertion(:hasRestriction :AC0 :restriction_AC0_size)
-ObjectPropertyAssertion(:isDefinedFor :AC0 :BooleanCircuits)
-ObjectPropertyAssertion(:isSubClassOf :AC0 :AC)
-
-# Individual: :BooleanCircuits (:BooleanCircuits)
-
-ClassAssertion(:Model :BooleanCircuits)
-
-# Individual: :Const (:Const)
-
-AnnotationAssertion(rdfs:comment :Const "Class of functions f(n) = const, for all n")
-ClassAssertion(:Bound :Const)
-ObjectPropertyAssertion(:lessLess :Const :Log)
-
-# Individual: :Depth (:Depth)
-
-ClassAssertion(:Measure :Depth)
-
-# Individual: :DirectedReachability (:DirectedReachability)
-
-ClassAssertion(:DecisionProblem :DirectedReachability)
-ObjectPropertyAssertion(:isHardFor_wrtAC0 :DirectedReachability :NL)
-ObjectPropertyAssertion(:isMemberOf :DirectedReachability :NL)
+ClassAssertion(:ComplexityClass :Elementary)
+ObjectPropertyAssertion(:dTime :Elementary :Tower)
 
 # Individual: :Exp (:Exp)
 
-AnnotationAssertion(rdfs:comment :Exp "Class of functions f(n) = 2^{n^k}, k = const")
 ClassAssertion(:Bound :Exp)
-
-# Individual: :ExpSpace (:ExpSpace)
-
-ClassAssertion(:ComplexityClass :ExpSpace)
-ObjectPropertyAssertion(:hasRestriction :ExpSpace :restriction_ExpSpace)
-ObjectPropertyAssertion(:isDefinedFor :ExpSpace :TuringMachine)
+ObjectPropertyAssertion(:lessless :Exp <2Exp>)
 
 # Individual: :ExpTime (:ExpTime)
 
 ClassAssertion(:ComplexityClass :ExpTime)
-ObjectPropertyAssertion(:hasRestriction :ExpTime :restriction_ExpTime)
-ObjectPropertyAssertion(:isDefinedFor :ExpTime :TuringMachine)
-
-# Individual: :FAC0 (:FAC0)
-
-ClassAssertion(:FunctionClass :FAC0)
-ObjectPropertyAssertion(:isFunctionVersionOf :FAC0 :AC0)
-
-# Individual: :FL (:FL)
-
-ClassAssertion(:FunctionClass :FL)
-ObjectPropertyAssertion(:isFunctionVersionOf :FL :L)
-
-# Individual: :FP (:FP)
-
-ClassAssertion(:FunctionClass :FP)
-ObjectPropertyAssertion(:isFunctionVersionOf :FP :P)
+ObjectPropertyAssertion(:dTime :ExpTime :Exp)
 
 # Individual: :L (:L)
 
 ClassAssertion(:ComplexityClass :L)
-ObjectPropertyAssertion(:hasRestriction :L :restriction_LogSpace)
-ObjectPropertyAssertion(:isDefinedFor :L :TuringMachine)
+ObjectPropertyAssertion(:dSpace :L :Log)
 
 # Individual: :Log (:Log)
 
-AnnotationAssertion(rdfs:comment :Log "Class of functions f(n) = c * log n, c = const")
 ClassAssertion(:Bound :Log)
-ObjectPropertyAssertion(:lessLess :Log :PolyLog)
+ObjectPropertyAssertion(:lessless :Log :Poly)
 
-# Individual: :NExpSpace (:NExpSpace)
+# Individual: :NExpTime (:NExpTime)
 
-ClassAssertion(:ComplexityClass :NExpSpace)
-ObjectPropertyAssertion(:extendsByNondeterminism :NExpSpace :ExpSpace)
+ClassAssertion(:ComplexityClass :NExpTime)
+ObjectPropertyAssertion(:extendsByNondeterminism :NExpTime :ExpTime)
 
 # Individual: :NL (:NL)
 
@@ -564,7 +229,6 @@ ObjectPropertyAssertion(:extendsByNondeterminism :NL :L)
 
 ClassAssertion(:ComplexityClass :NP)
 ObjectPropertyAssertion(:extendsByNondeterminism :NP :P)
-ObjectPropertyAssertion(:sigma :NP :ph_level_1)
 
 # Individual: :NPSpace (:NPSpace)
 
@@ -574,197 +238,53 @@ ObjectPropertyAssertion(:extendsByNondeterminism :NPSpace :PSpace)
 # Individual: :P (:P)
 
 ClassAssertion(:ComplexityClass :P)
-ObjectPropertyAssertion(:hasRestriction :P :restriction_PTime)
-ObjectPropertyAssertion(:isDefinedFor :P :TuringMachine)
-ObjectPropertyAssertion(:pi :P :ph_level_0)
-ObjectPropertyAssertion(:sigma :P :ph_level_0)
-
-# Individual: :PH (:PH)
-
-ClassAssertion(:ComplexityClass :PH)
-ObjectPropertyAssertion(:isUnionOf :PH :ph)
+ObjectPropertyAssertion(:dTime :P :Poly)
 
 # Individual: :PSpace (:PSpace)
 
 ClassAssertion(:ComplexityClass :PSpace)
-ObjectPropertyAssertion(:hasRestriction :PSpace :restriction_PSpace)
-ObjectPropertyAssertion(:isDefinedFor :PSpace :TuringMachine)
-
-# Individual: :Pi_P_2 (:Pi_P_2)
-
-ClassAssertion(:ComplexityClass :Pi_P_2)
-ObjectPropertyAssertion(:pi :Pi_P_2 :ph_level_2)
+ObjectPropertyAssertion(:dSpace :PSpace :Poly)
 
 # Individual: :Poly (:Poly)
 
-AnnotationAssertion(rdfs:comment :Poly "Class of functions f(n) = c * n^k, c,k = const")
 ClassAssertion(:Bound :Poly)
-ClassAssertion(:__sys_SavitchCompatible :Poly)
-ObjectPropertyAssertion(:lessLess :Poly :Exp)
+ObjectPropertyAssertion(:lessless :Poly :Exp)
 
-# Individual: :PolyLog (:PolyLog)
+# Individual: :Tower (:Tower)
 
-AnnotationAssertion(rdfs:comment :PolyLog "Class of functions f(n) = c * (log n)^k, c,k = const")
-ClassAssertion(:Bound :PolyLog)
-ObjectPropertyAssertion(:lessLess :PolyLog :Poly)
-
-# Individual: :QbfSatisfiability (:QbfSatisfiability)
-
-ClassAssertion(:DecisionProblem :QbfSatisfiability)
-ObjectPropertyAssertion(:isHardFor_wrtPolyTime :QbfSatisfiability :PSpace)
-ObjectPropertyAssertion(:isMemberOf :QbfSatisfiability :PSpace)
-
-# Individual: :Sigma_P_2 (:Sigma_P_2)
-
-ClassAssertion(:ComplexityClass :Sigma_P_2)
-ObjectPropertyAssertion(:sigma :Sigma_P_2 :ph_level_2)
-
-# Individual: :Size (:Size)
-
-ClassAssertion(:Measure :Size)
-
-# Individual: :Space (:Space)
-
-ClassAssertion(:Measure :Space)
-
-# Individual: :Time (:Time)
-
-ClassAssertion(:Measure :Time)
-
-# Individual: :TuringMachine (:TuringMachine)
-
-ClassAssertion(:Model :TuringMachine)
-
-# Individual: :UndirectedReachability (:UndirectedReachability)
-
-ClassAssertion(:DecisionProblem :UndirectedReachability)
-ObjectPropertyAssertion(:isHardFor_wrtAC0 :UndirectedReachability :L)
-ObjectPropertyAssertion(:isMemberOf :UndirectedReachability :L)
-
-# Individual: :_2CnfSatisfiability (:_2CnfSatisfiability)
-
-ClassAssertion(:DecisionProblem :_2CnfSatisfiability)
-ObjectPropertyAssertion(:isHardFor_wrtLogSpace :_2CnfSatisfiability :P)
-ObjectPropertyAssertion(:isMemberOf :_2CnfSatisfiability :P)
-
-# Individual: :_3CnfSatisfiability (:_3CnfSatisfiability)
-
-ClassAssertion(:DecisionProblem :_3CnfSatisfiability)
-ObjectPropertyAssertion(:isHardFor_wrtLogSpace :_3CnfSatisfiability :NP)
-ObjectPropertyAssertion(:isMemberOf :_3CnfSatisfiability :NP)
-ObjectPropertyAssertion(:isReducibleTo_inLogSpace :_3CnfSatisfiability :_3Colouring)
-
-# Individual: :_3Colouring (:_3Colouring)
-
-ClassAssertion(:DecisionProblem :_3Colouring)
-ObjectPropertyAssertion(:isMemberOf :_3Colouring :NP)
+ClassAssertion(:Bound :Tower)
 
 # Individual: :coNL (:coNL)
 
 ClassAssertion(:ComplexityClass :coNL)
 ObjectPropertyAssertion(:isClassOfComplementsFor :coNL :NL)
-ObjectPropertyAssertion(:isEqualTo :coNL :NL)
+ObjectPropertyAssertion(:isEqualTo :coNL :coNL)
 
 # Individual: :coNP (:coNP)
 
 ClassAssertion(:ComplexityClass :coNP)
 ObjectPropertyAssertion(:isClassOfComplementsFor :coNP :NP)
-ObjectPropertyAssertion(:pi :coNP :ph_level_1)
 
-# Individual: :ph (:ph)
+# Individual: <2Exp> (<2Exp>)
 
-ClassAssertion(:Hierarchy :ph)
+ClassAssertion(:Bound <2Exp>)
+ObjectPropertyAssertion(:lessless <2Exp> :Tower)
 
-# Individual: :ph_level_0 (:ph_level_0)
+# Individual: <2ExpTime> (<2ExpTime>)
 
-ClassAssertion(:LevelOfHierarhy :ph_level_0)
-ObjectPropertyAssertion(:isLevelOf :ph_level_0 :ph)
-ObjectPropertyAssertion(:next :ph_level_0 :ph_level_1)
-
-# Individual: :ph_level_1 (:ph_level_1)
-
-ClassAssertion(:LevelOfHierarhy :ph_level_1)
-ObjectPropertyAssertion(:next :ph_level_1 :ph_level_2)
-
-# Individual: :ph_level_2 (:ph_level_2)
-
-ClassAssertion(:LevelOfHierarhy :ph_level_2)
-
-# Individual: :restriction_AC0_depth (:restriction_AC0_depth)
-
-ClassAssertion(:Restriction :restriction_AC0_depth)
-ObjectPropertyAssertion(:imposesUpperBound :restriction_AC0_depth :Const)
-ObjectPropertyAssertion(:restrictsMeasure :restriction_AC0_depth :Depth)
-
-# Individual: :restriction_AC0_size (:restriction_AC0_size)
-
-ClassAssertion(:Restriction :restriction_AC0_size)
-ObjectPropertyAssertion(:imposesUpperBound :restriction_AC0_size :Poly)
-ObjectPropertyAssertion(:restrictsMeasure :restriction_AC0_size :Size)
-
-# Individual: :restriction_AC_depth (:restriction_AC_depth)
-
-ClassAssertion(:Restriction :restriction_AC_depth)
-ObjectPropertyAssertion(:imposesUpperBound :restriction_AC_depth :PolyLog)
-ObjectPropertyAssertion(:restrictsMeasure :restriction_AC_depth :Depth)
-
-# Individual: :restriction_AC_size (:restriction_AC_size)
-
-ClassAssertion(:Restriction :restriction_AC_size)
-ObjectPropertyAssertion(:imposesUpperBound :restriction_AC_size :Poly)
-ObjectPropertyAssertion(:restrictsMeasure :restriction_AC_size :Size)
-
-# Individual: :restriction_ExpSpace (:restriction_ExpSpace)
-
-ClassAssertion(:Restriction :restriction_ExpSpace)
-ObjectPropertyAssertion(:imposesUpperBound :restriction_ExpSpace :Exp)
-ObjectPropertyAssertion(:restrictsMeasure :restriction_ExpSpace :Space)
-
-# Individual: :restriction_ExpTime (:restriction_ExpTime)
-
-ClassAssertion(:Restriction :restriction_ExpTime)
-ObjectPropertyAssertion(:imposesUpperBound :restriction_ExpTime :Exp)
-ObjectPropertyAssertion(:restrictsMeasure :restriction_ExpTime :Time)
-
-# Individual: :restriction_LogSpace (:restriction_LogSpace)
-
-ClassAssertion(:Restriction :restriction_LogSpace)
-ObjectPropertyAssertion(:imposesUpperBound :restriction_LogSpace :Log)
-ObjectPropertyAssertion(:restrictsMeasure :restriction_LogSpace :Space)
-
-# Individual: :restriction_PSpace (:restriction_PSpace)
-
-ClassAssertion(:Restriction :restriction_PSpace)
-ObjectPropertyAssertion(:imposesUpperBound :restriction_PSpace :Poly)
-ObjectPropertyAssertion(:restrictsMeasure :restriction_PSpace :Space)
-
-# Individual: :restriction_PTime (:restriction_PTime)
-
-ClassAssertion(:Restriction :restriction_PTime)
-ObjectPropertyAssertion(:imposesUpperBound :restriction_PTime :Poly)
-ObjectPropertyAssertion(:restrictsMeasure :restriction_PTime :Time)
+ClassAssertion(:ComplexityClass <2ExpTime>)
+ObjectPropertyAssertion(:dTime <2ExpTime> <2Exp>)
 
 
-SubClassOf(ObjectIntersectionOf(ObjectSomeValuesFrom(:hasRestriction_onSpace owl:Thing) ObjectSomeValuesFrom(:isDefinedFor ObjectOneOf(:TuringMachine))) ObjectSomeValuesFrom(:hasRestriction_unique_onSpace_TM owl:Thing))
-SubClassOf(ObjectIntersectionOf(ObjectSomeValuesFrom(:hasRestriction_onTime owl:Thing) ObjectSomeValuesFrom(:isDefinedFor ObjectOneOf(:TuringMachine))) ObjectSomeValuesFrom(:hasRestriction_unique_onTime_TM owl:Thing))
-SubClassOf(ObjectSomeValuesFrom(:dSpace :__sys_SavitchCompatible) :__sys_SavitchCompatible)
-SubClassOf(Annotation(rdfs:comment "Savitch's Theorem") ObjectSomeValuesFrom(:extendsByNondeterminism :__sys_SavitchCompatible) ObjectSomeValuesFrom(:isSubClassOf_SavitchTheorem owl:Thing))
-SubClassOf(ObjectSomeValuesFrom(:restrictsMeasure ObjectOneOf(:Space)) ObjectSomeValuesFrom(ObjectInverseOf(:hasRestriction_onSpace) owl:Thing))
-SubClassOf(ObjectSomeValuesFrom(:restrictsMeasure ObjectOneOf(:Time)) ObjectSomeValuesFrom(ObjectInverseOf(:hasRestriction_onTime) owl:Thing))
-SubClassOf(ObjectSomeValuesFrom(ObjectInverseOf(:lessLess) :__sys_SavitchCompatible) :__sys_SavitchCompatible)
-SubObjectPropertyOf(Annotation(rdfs:comment "Space Hierarchy Theorem") ObjectPropertyChain(:dSpace :lessLess ObjectInverseOf(:dSpace)) :isStrictSubClassOf_SpaceHierarchyTheorem)
-SubObjectPropertyOf(ObjectPropertyChain(:extendsByNondeterminism :dSpace) :nSpace)
-SubObjectPropertyOf(ObjectPropertyChain(:extendsByNondeterminism :dTime) :nTime)
-SubObjectPropertyOf(ObjectPropertyChain(:hasRestriction_unique_onSpace_TM :imposesUpperBound) :dSpace)
-SubObjectPropertyOf(ObjectPropertyChain(:hasRestriction_unique_onTime_TM :imposesUpperBound) :dTime)
-SubObjectPropertyOf(ObjectPropertyChain(:isFromHierarchy ObjectInverseOf(:isUnionOf)) :isSubClassOf)
+SubObjectPropertyOf(ObjectPropertyChain(:dSpace :lessless ObjectInverseOf(:dSpace)) :SpaceHierarchy)
+SubObjectPropertyOf(ObjectPropertyChain(:dTime :lessless ObjectInverseOf(:dTime)) :TimeHierarchy)
 SubObjectPropertyOf(ObjectPropertyChain(:isMemberOf :isSubClassOf) :isMemberOf)
 SubObjectPropertyOf(ObjectPropertyChain(:isOnLevel :isLevelOf) :isFromHierarchy)
-SubObjectPropertyOf(ObjectPropertyChain(:isOnLevel :next ObjectInverseOf(:isOnLevel)) :isSubClassOf)
-SubObjectPropertyOf(ObjectPropertyChain(:sigma ObjectInverseOf(:pi)) :isClassOfComplementsFor)
+SubObjectPropertyOf(ObjectPropertyChain(:isOnLevel :next_inPH ObjectInverseOf(:isOnLevel)) :isSubClassOf)
+SubObjectPropertyOf(ObjectPropertyChain(:nSpace ObjectInverseOf(:dSpace)) :extendsByNondeterminism)
+SubObjectPropertyOf(ObjectPropertyChain(:nTime ObjectInverseOf(:dTime)) :extendsByNondeterminism)
+SubObjectPropertyOf(ObjectPropertyChain(ObjectInverseOf(:extendsByNondeterminism)) :isSubClassOf)
 SubObjectPropertyOf(ObjectPropertyChain(ObjectInverseOf(:isReducibleTo) :isHardFor) :isHardFor)
-SubObjectPropertyOf(ObjectPropertyChain(ObjectInverseOf(:isReducibleTo_inAC0) :isHardFor_wrtAC0) :isHardFor_wrtAC0)
-SubObjectPropertyOf(ObjectPropertyChain(ObjectInverseOf(:isReducibleTo_inLogSpace) :isHardFor_wrtLogSpace) :isHardFor_wrtLogSpace)
-SubObjectPropertyOf(ObjectPropertyChain(ObjectInverseOf(:isReducibleTo_inPolyTime) :isHardFor_wrtPolyTime) :isHardFor_wrtPolyTime)
-SubObjectPropertyOf(ObjectPropertyChain(ObjectInverseOf(:next) :isLevelOf) :isLevelOf)
+SubObjectPropertyOf(ObjectPropertyChain(ObjectInverseOf(:isReducibleTo_inLogSpace) :isHardFor_wrtLogSpaceReductions) :isHardFor_wrtLogSpaceReductions)
+SubObjectPropertyOf(ObjectPropertyChain(ObjectInverseOf(:isReducibleTo_inPolyTime) :isHardFor_wrtPolyTimeReductions) :isHardFor_wrtPolyTimeReductions)
 )
