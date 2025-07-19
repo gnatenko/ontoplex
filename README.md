@@ -1,6 +1,8 @@
 # ontoplex
 OWL/FO Ontology on Computational Complexity by [Anton Gnatenko](https://gnatenko.github.io), [Oliver Kutz](https://www.inf.unibz.it/~okutz/) and [Nicolas Troquard](https://gssi.it/people/professors/lectures-computer-science/item/24936-troquard-nicolas).
 
+We rely on the materials of [Complexity Zoo](https://complexityzoo.net/Complexity_Zoo) and often use texts from there for annotations.
+
 
 ## Intro
 
