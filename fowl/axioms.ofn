@@ -11,6 +11,7 @@ Ontology(
 Declaration(Class(:AbstractEntity))
 Declaration(Class(:Bound))
 Declaration(Class(:Class))
+Declaration(Class(:Class.Relative))
 Declaration(Class(:Hierarchy))
 Declaration(Class(:LevelOfHierarchy))
 Declaration(Class(:Oracle))
@@ -34,12 +35,13 @@ Declaration(ObjectProperty(:hasPower))
 Declaration(ObjectProperty(:isClassOfComplementsFor))
 Declaration(ObjectProperty(:isEqualTo))
 Declaration(ObjectProperty(:isFromHierarchy))
+Declaration(ObjectProperty(:isFunctionVersionOf))
 Declaration(ObjectProperty(:isHardFor))
 Declaration(ObjectProperty(:isHardFor_wrtLogSpaceReductions))
 Declaration(ObjectProperty(:isHardFor_wrtPolyTimeReductions))
 Declaration(ObjectProperty(:isLevelOf))
-Declaration(ObjectProperty(:isLowFor))
 Declaration(ObjectProperty(:isMemberOf))
+Declaration(ObjectProperty(:isNextLevel))
 Declaration(ObjectProperty(:isNotSubClassOf))
 Declaration(ObjectProperty(:isOnLevel))
 Declaration(ObjectProperty(:isParityVersionOf))
@@ -53,9 +55,9 @@ Declaration(ObjectProperty(:lessless))
 Declaration(ObjectProperty(:modifierRelation))
 Declaration(ObjectProperty(:nSpace))
 Declaration(ObjectProperty(:nTime))
-Declaration(ObjectProperty(:next_Level_PH))
 Declaration(ObjectProperty(:rTime))
 Declaration(AnnotationProperty(<Ontoplex/ZooEntry>))
+Declaration(AnnotationProperty(<Ontoplex/comment>))
 Declaration(AnnotationProperty(<Ontoplex/hypothesis>))
 Declaration(AnnotationProperty(<Ontoplex/reference>))
 Declaration(AnnotationProperty(fowl:tptp_annotation))
@@ -63,6 +65,10 @@ Declaration(AnnotationProperty(fowl:tptp_annotation))
 ############################
 #   Object Properties
 ############################
+
+# Object Property: :AbstractRelation (:AbstractRelation)
+
+AnnotationAssertion(<Ontoplex/comment> :AbstractRelation "Relations whose domain and/or range is AbstractEntity")
 
 # Object Property: :SpaceHierarchy (:SpaceHierarchy)
 
@@ -75,27 +81,29 @@ SubObjectPropertyOf(:TimeHierarchy :isStrictSubClassOf)
 # Object Property: :bpTime (:bpTime)
 
 SubObjectPropertyOf(:bpTime :definitionRelation)
+FunctionalObjectProperty(:bpTime)
 
 # Object Property: :dSpace (:dSpace)
 
 SubObjectPropertyOf(:dSpace :definitionRelation)
+FunctionalObjectProperty(:dSpace)
 
 # Object Property: :dTime (:dTime)
 
 SubObjectPropertyOf(:dTime :definitionRelation)
+FunctionalObjectProperty(:dTime)
 
 # Object Property: :definitionRelation (:definitionRelation)
 
-FunctionalObjectProperty(:definitionRelation)
-AsymmetricObjectProperty(:definitionRelation)
-IrreflexiveObjectProperty(:definitionRelation)
 ObjectPropertyDomain(:definitionRelation :Class)
 ObjectPropertyRange(:definitionRelation :Bound)
 
 # Object Property: :extends (:extends)
 
+AnnotationAssertion(fowl:tptp_annotation :extends "![X, Y]:(~ ('extends'(X, Y) & 'extends'(Y, X) ) )")
+AnnotationAssertion(fowl:tptp_annotation :extends "![X]:(~ 'extends'(X, X))")
+SubObjectPropertyOf(:extends :isSubClassOf)
 SubObjectPropertyOf(:extends :modifierRelation)
-SubObjectPropertyOf(:extends ObjectInverseOf(:isSubClassOf))
 
 # Object Property: :extendsByAdvice (:extendsByAdvice)
 
@@ -103,7 +111,9 @@ SubObjectPropertyOf(:extendsByAdvice :extends)
 
 # Object Property: :extendsByAdvice_logarithmic (:extendsByAdvice_logarithmic)
 
-SubObjectPropertyOf(:extendsByAdvice_logarithmic :extendsByAdvice)
+SubObjectPropertyOf(:extendsByAdvice_logarithmic :extendsByAdvice_polynomial)
+FunctionalObjectProperty(:extendsByAdvice_logarithmic)
+IrreflexiveObjectProperty(:extendsByAdvice_logarithmic)
 
 # Object Property: :extendsByAdvice_polynomial (:extendsByAdvice_polynomial)
 
@@ -123,42 +133,47 @@ SubObjectPropertyOf(:extendsByRandomness :extends)
 
 # Object Property: :hasBase (:hasBase)
 
-AnnotationAssertion(fowl:tptp_annotation :hasBase "![X, Y, Z, U, V]:('hasPower'(X, Z) & 'hasPower'(Y, Z) & 'hasBase'(X, U) & 'hasBase'(Y, V) & 'isSubClassOf(U, V)' => 'isSubClassOf'(X, Y) )")
 SubObjectPropertyOf(:hasBase ObjectInverseOf(:isSubClassOf))
 FunctionalObjectProperty(:hasBase)
 AsymmetricObjectProperty(:hasBase)
 IrreflexiveObjectProperty(:hasBase)
-ObjectPropertyDomain(:hasBase :Class)
+ObjectPropertyDomain(:hasBase :Class.Relative)
 ObjectPropertyRange(:hasBase :Class)
 
 # Object Property: :hasPower (:hasPower)
 
 FunctionalObjectProperty(:hasPower)
-AsymmetricObjectProperty(:hasPower)
-IrreflexiveObjectProperty(:hasPower)
-ObjectPropertyDomain(:hasPower :Class)
-ObjectPropertyRange(:hasPower :Problem)
+ObjectPropertyDomain(:hasPower :Class.Relative)
+ObjectPropertyRange(:hasPower :Oracle)
 
 # Object Property: :isClassOfComplementsFor (:isClassOfComplementsFor)
 
 SubObjectPropertyOf(:isClassOfComplementsFor :modifierRelation)
+FunctionalObjectProperty(:isClassOfComplementsFor)
+InverseFunctionalObjectProperty(:isClassOfComplementsFor)
 SymmetricObjectProperty(:isClassOfComplementsFor)
 
 # Object Property: :isEqualTo (:isEqualTo)
 
-AnnotationAssertion(fowl:tptp_annotation :isEqualTo "![X, Y]:( ~ ( 'isEqualTo'(X, Y) & 'isStrictSubClassOf'(X, Y) ) )")
-AnnotationAssertion(fowl:tptp_annotation :isEqualTo "![X, Y]:('isEqualTo'(X, Y) <=> ('isSubClassOf'(X, Y) & 'isSubClassOf'(Y, X) ) )")
 SubObjectPropertyOf(:isEqualTo :isSubClassOf)
+SubObjectPropertyOf(:isEqualTo ObjectInverseOf(:isSubClassOf))
 SymmetricObjectProperty(:isEqualTo)
 TransitiveObjectProperty(:isEqualTo)
 
 # Object Property: :isFromHierarchy (:isFromHierarchy)
 
-FunctionalObjectProperty(:isFromHierarchy)
-AsymmetricObjectProperty(:isFromHierarchy)
-IrreflexiveObjectProperty(:isFromHierarchy)
+AnnotationAssertion(<Ontoplex/comment> :isFromHierarchy "Points from a member class of a hierarchy to that hierarchy, e.g. from \\Sigma^p_2 to _ph")
+SubObjectPropertyOf(:isFromHierarchy :AbstractRelation)
 ObjectPropertyDomain(:isFromHierarchy :Class)
 ObjectPropertyRange(:isFromHierarchy :Hierarchy)
+
+# Object Property: :isFunctionVersionOf (:isFunctionVersionOf)
+
+SubObjectPropertyOf(:isFunctionVersionOf :modifierRelation)
+FunctionalObjectProperty(:isFunctionVersionOf)
+InverseFunctionalObjectProperty(:isFunctionVersionOf)
+AsymmetricObjectProperty(:isFunctionVersionOf)
+IrreflexiveObjectProperty(:isFunctionVersionOf)
 
 # Object Property: :isHardFor (:isHardFor)
 
@@ -167,7 +182,7 @@ ObjectPropertyRange(:isHardFor :Class)
 
 # Object Property: :isHardFor_wrtLogSpaceReductions (:isHardFor_wrtLogSpaceReductions)
 
-SubObjectPropertyOf(:isHardFor_wrtLogSpaceReductions :isHardFor)
+SubObjectPropertyOf(:isHardFor_wrtLogSpaceReductions :isHardFor_wrtPolyTimeReductions)
 
 # Object Property: :isHardFor_wrtPolyTimeReductions (:isHardFor_wrtPolyTimeReductions)
 
@@ -175,45 +190,58 @@ SubObjectPropertyOf(:isHardFor_wrtPolyTimeReductions :isHardFor)
 
 # Object Property: :isLevelOf (:isLevelOf)
 
-FunctionalObjectProperty(:isLevelOf)
-AsymmetricObjectProperty(:isLevelOf)
-IrreflexiveObjectProperty(:isLevelOf)
+AnnotationAssertion(<Ontoplex/comment> :isLevelOf "Points from an object standing for a level of a hierarchy to that hierarchy")
+SubObjectPropertyOf(:isLevelOf :AbstractRelation)
 ObjectPropertyDomain(:isLevelOf :LevelOfHierarchy)
 ObjectPropertyRange(:isLevelOf :Hierarchy)
-
-# Object Property: :isLowFor (:isLowFor)
-
-ObjectPropertyDomain(:isLowFor :Class)
-ObjectPropertyRange(:isLowFor :Class)
 
 # Object Property: :isMemberOf (:isMemberOf)
 
 ObjectPropertyDomain(:isMemberOf :Problem)
 ObjectPropertyRange(:isMemberOf :Class)
 
+# Object Property: :isNextLevel (:isNextLevel)
+
+SubObjectPropertyOf(:isNextLevel :AbstractRelation)
+FunctionalObjectProperty(:isNextLevel)
+InverseFunctionalObjectProperty(:isNextLevel)
+AsymmetricObjectProperty(:isNextLevel)
+IrreflexiveObjectProperty(:isNextLevel)
+ObjectPropertyDomain(:isNextLevel :LevelOfHierarchy)
+ObjectPropertyRange(:isNextLevel :LevelOfHierarchy)
+
 # Object Property: :isNotSubClassOf (:isNotSubClassOf)
 
-AnnotationAssertion(fowl:tptp_annotation :isNotSubClassOf "![X, Y]:('isNotSubClassOf'(X, Y) <=> ~ 'isSubClassOf'(X, Y) )")
+AnnotationAssertion(rdfs:comment :isNotSubClassOf "![X, Y]:('isNotSubClassOf'(X, Y) <=> ~ 'isSubClassOf'(X, Y))")
+AnnotationAssertion(fowl:tptp_annotation :isNotSubClassOf "![X, Y]:(~ ( 'isSubClassOf'(X, Y) & 'isNotSubClassOf'(X, Y) ) )")
+AnnotationAssertion(fowl:tptp_annotation :isNotSubClassOf "![X] : (~ 'isNotSubClassOf'(X, X) )")
+ObjectPropertyDomain(:isNotSubClassOf :Class)
+ObjectPropertyRange(:isNotSubClassOf :Class)
 
 # Object Property: :isOnLevel (:isOnLevel)
 
-AsymmetricObjectProperty(:isOnLevel)
-IrreflexiveObjectProperty(:isOnLevel)
+SubObjectPropertyOf(:isOnLevel :AbstractRelation)
+FunctionalObjectProperty(:isOnLevel)
 ObjectPropertyDomain(:isOnLevel :Class)
 ObjectPropertyRange(:isOnLevel :LevelOfHierarchy)
 
 # Object Property: :isParityVersionOf (:isParityVersionOf)
 
 SubObjectPropertyOf(:isParityVersionOf :modifierRelation)
+FunctionalObjectProperty(:isParityVersionOf)
+InverseFunctionalObjectProperty(:isParityVersionOf)
+AsymmetricObjectProperty(:isParityVersionOf)
+IrreflexiveObjectProperty(:isParityVersionOf)
 
 # Object Property: :isReducibleTo (:isReducibleTo)
 
+TransitiveObjectProperty(:isReducibleTo)
 ObjectPropertyDomain(:isReducibleTo :Problem)
 ObjectPropertyRange(:isReducibleTo :Problem)
 
 # Object Property: :isReducibleTo_inLogSpace (:isReducibleTo_inLogSpace)
 
-SubObjectPropertyOf(:isReducibleTo_inLogSpace :isReducibleTo)
+SubObjectPropertyOf(:isReducibleTo_inLogSpace :isReducibleTo_inPolyTime)
 TransitiveObjectProperty(:isReducibleTo_inLogSpace)
 
 # Object Property: :isReducibleTo_inPolyTime (:isReducibleTo_inPolyTime)
@@ -223,7 +251,9 @@ TransitiveObjectProperty(:isReducibleTo_inPolyTime)
 
 # Object Property: :isStrictSubClassOf (:isStrictSubClassOf)
 
-AnnotationAssertion(fowl:tptp_annotation :isStrictSubClassOf "![X, Y]:( 'isStrictSubClassOf(X, Y)' <=> ('isSubClassOf'(X, Y) & (~ 'isEqualTo'(X, Y) ) ) )")
+AnnotationAssertion(fowl:tptp_annotation :isStrictSubClassOf "![X, Y, Z]:(('isStrictSubClassOf'(X, Y) & 'isSubClassOf'(Y, Z)) => 'isStrictSubClassOf'(X, Z))")
+AnnotationAssertion(fowl:tptp_annotation :isStrictSubClassOf "![X, Y, Z]:(('isSubClassOf'(X, Y) & 'isStrictSubClassOf'(Y, Z)) => 'isStrictSubClassOf'(X, Z))")
+AnnotationAssertion(fowl:tptp_annotation :isStrictSubClassOf "![X]:(~ 'isStrictSubClassOf'(X, X))")
 SubObjectPropertyOf(:isStrictSubClassOf :isSubClassOf)
 TransitiveObjectProperty(:isStrictSubClassOf)
 
@@ -235,13 +265,16 @@ ObjectPropertyRange(:isSubClassOf :Class)
 
 # Object Property: :isUnionOf (:isUnionOf)
 
-AsymmetricObjectProperty(:isUnionOf)
-IrreflexiveObjectProperty(:isUnionOf)
+SubObjectPropertyOf(:isUnionOf :AbstractRelation)
+FunctionalObjectProperty(:isUnionOf)
 ObjectPropertyDomain(:isUnionOf :Class)
 ObjectPropertyRange(:isUnionOf :Hierarchy)
 
 # Object Property: :lessless (:lessless)
 
+AnnotationAssertion(fowl:tptp_annotation :lessless "![X, Y]:(~ ('lessless'(X, Y) & 'lessless'(Y, X) ) )")
+AnnotationAssertion(fowl:tptp_annotation :lessless "![X]:(~ 'lessless'(X, X) )")
+TransitiveObjectProperty(:lessless)
 ObjectPropertyDomain(:lessless :Bound)
 ObjectPropertyRange(:lessless :Bound)
 
@@ -253,22 +286,17 @@ ObjectPropertyRange(:modifierRelation :Class)
 # Object Property: :nSpace (:nSpace)
 
 SubObjectPropertyOf(:nSpace :definitionRelation)
+FunctionalObjectProperty(:nSpace)
 
 # Object Property: :nTime (:nTime)
 
 SubObjectPropertyOf(:nTime :definitionRelation)
-
-# Object Property: :next_Level_PH (:next_Level_PH)
-
-SubObjectPropertyOf(:next_Level_PH :AbstractRelation)
-FunctionalObjectProperty(:next_Level_PH)
-InverseFunctionalObjectProperty(:next_Level_PH)
-AsymmetricObjectProperty(:next_Level_PH)
-IrreflexiveObjectProperty(:next_Level_PH)
+FunctionalObjectProperty(:nTime)
 
 # Object Property: :rTime (:rTime)
 
 SubObjectPropertyOf(:rTime :definitionRelation)
+FunctionalObjectProperty(:rTime)
 
 
 
@@ -276,27 +304,63 @@ SubObjectPropertyOf(:rTime :definitionRelation)
 #   Classes
 ############################
 
+# Class: :AbstractEntity (:AbstractEntity)
+
+AnnotationAssertion(<Ontoplex/comment> :AbstractEntity "Abstract objects used to represent hierarchies, hardness of problems (through reification), etc. Their names should start with _underscore")
+
+# Class: :Bound (:Bound)
+
+AnnotationAssertion(<Ontoplex/comment> :Bound "\"Classes\" of functions \\N --> \\N used in complexity theory. E.g. :
+
+Poly : Bound stands for {n^k | k \\in \\N}
+Exp : Bound stands for {2^(n^k) | k \\in \\N}")
+
+# Class: :Class (:Class)
+
+AnnotationAssertion(<Ontoplex/comment> :Class "Complexity classes")
+
+# Class: :Class.Relative (:Class.Relative)
+
+AnnotationAssertion(<Ontoplex/comment> :Class.Relative "A technical subtype, populated by classes defined as other classes relative to certain oracles")
+AnnotationAssertion(fowl:tptp_annotation :Class.Relative "![X, Y, Z, U, V]:(('hasPower'(X, Z) & 'hasPower'(Y, Z) & 'hasBase'(X, U) & 'hasBase'(Y, V) & 'isSubClassOf'(U, V)) => 'isSubClassOf'(X, Y) )")
+AnnotationAssertion(fowl:tptp_annotation :Class.Relative "![X, Y]:(('Class'(X) & 'Problem'(Y)) => ( ?[Z]:('hasBase'(Z, X) & 'hasPower'(Z, Y) ) ) )")
+SubClassOf(:Class.Relative :Class)
+
+# Class: :Hierarchy (:Hierarchy)
+
+AnnotationAssertion(<Ontoplex/comment> :Hierarchy "Objects that represent hierarchies as abstract entities. E.g. _ph for the polynomial hierarchy. Note that _ph and PH are not the same thing: the first is an abstract object standing for the hierarchy as a whole. The second is a Class, such that \\isUnionOf(PH, _ph)")
+SubClassOf(:Hierarchy :AbstractEntity)
+
 # Class: :LevelOfHierarchy (:LevelOfHierarchy)
 
+AnnotationAssertion(<Ontoplex/comment> :LevelOfHierarchy "Objects that represent levels of hierarchies. E.g. the 0th, the 1st, the 2nd, etc levels of the polynomial hierarchy")
 SubClassOf(:LevelOfHierarchy :AbstractEntity)
 
 # Class: :Oracle (:Oracle)
 
+AnnotationAssertion(<Ontoplex/comment> :Oracle "A technical subtype populated by problems from the literature that were specifically constructed to be oracles (any other X : Problem can be used as an oracle either)")
 SubClassOf(:Oracle :Problem)
 
-# Class: owl:Thing (owl:Thing)
+# Class: :Problem (:Problem)
 
-DisjointUnion(owl:Thing :AbstractEntity :Bound :Class :Hierarchy :Problem)
+AnnotationAssertion(<Ontoplex/comment> :Problem "Decision problems")
 
 
 SubObjectPropertyOf(ObjectPropertyChain(:bpTime ObjectInverseOf(:dTime)) :extendsByBoundedProbability)
 SubObjectPropertyOf(ObjectPropertyChain(:dSpace :lessless ObjectInverseOf(:dSpace)) :SpaceHierarchy)
 SubObjectPropertyOf(ObjectPropertyChain(:dTime :lessless ObjectInverseOf(:dTime)) :TimeHierarchy)
+SubObjectPropertyOf(ObjectPropertyChain(:isFromHierarchy ObjectInverseOf(:isUnionOf)) :isSubClassOf)
 SubObjectPropertyOf(ObjectPropertyChain(:isMemberOf :isSubClassOf) :isMemberOf)
+SubObjectPropertyOf(ObjectPropertyChain(:isMemberOf ObjectInverseOf(:isHardFor)) :isReducibleTo)
+SubObjectPropertyOf(ObjectPropertyChain(:isMemberOf ObjectInverseOf(:isHardFor_wrtLogSpaceReductions)) :isReducibleTo_inLogSpace)
+SubObjectPropertyOf(ObjectPropertyChain(:isMemberOf ObjectInverseOf(:isHardFor_wrtPolyTimeReductions)) :isReducibleTo_inPolyTime)
+SubObjectPropertyOf(ObjectPropertyChain(:isNextLevel :isLevelOf) :isLevelOf)
 SubObjectPropertyOf(ObjectPropertyChain(:isNotSubClassOf ObjectInverseOf(:isSubClassOf)) :isNotSubClassOf)
-SubObjectPropertyOf(ObjectPropertyChain(:isOnLevel :isLevelOf ObjectInverseOf(:isUnionOf)) :isSubClassOf)
+SubObjectPropertyOf(ObjectPropertyChain(:isOnLevel :isLevelOf) :isFromHierarchy)
+SubObjectPropertyOf(ObjectPropertyChain(:isOnLevel ObjectInverseOf(:isNextLevel) ObjectInverseOf(:isOnLevel)) :isSubClassOf)
 SubObjectPropertyOf(ObjectPropertyChain(:nSpace ObjectInverseOf(:dSpace)) :extendsByNondeterminism)
 SubObjectPropertyOf(ObjectPropertyChain(:nTime ObjectInverseOf(:dTime)) :extendsByNondeterminism)
+SubObjectPropertyOf(ObjectPropertyChain(:rTime ObjectInverseOf(:dTime)) :extendsByRandomness)
 SubObjectPropertyOf(ObjectPropertyChain(ObjectInverseOf(:isReducibleTo) :isHardFor) :isHardFor)
 SubObjectPropertyOf(ObjectPropertyChain(ObjectInverseOf(:isReducibleTo_inLogSpace) :isHardFor_wrtLogSpaceReductions) :isHardFor_wrtLogSpaceReductions)
 SubObjectPropertyOf(ObjectPropertyChain(ObjectInverseOf(:isReducibleTo_inPolyTime) :isHardFor_wrtPolyTimeReductions) :isHardFor_wrtPolyTimeReductions)

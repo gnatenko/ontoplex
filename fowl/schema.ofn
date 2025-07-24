@@ -11,17 +11,17 @@ Ontology(
 Declaration(Class(:AbstractEntity))
 Declaration(Class(:Bound))
 Declaration(Class(:Class))
+Declaration(Class(:Class.Relative))
 Declaration(Class(:Hierarchy))
 Declaration(Class(:LevelOfHierarchy))
 Declaration(Class(:Oracle))
 Declaration(Class(:Problem))
 Declaration(ObjectProperty(:AbstractRelation))
-Declaration(ObjectProperty(:SpaceHierarchy))
-Declaration(ObjectProperty(:TimeHierarchy))
 Declaration(ObjectProperty(:bpTime))
 Declaration(ObjectProperty(:dSpace))
 Declaration(ObjectProperty(:dTime))
 Declaration(ObjectProperty(:definitionRelation))
+Declaration(ObjectProperty(:extends))
 Declaration(ObjectProperty(:extendsByAdvice))
 Declaration(ObjectProperty(:extendsByAdvice_logarithmic))
 Declaration(ObjectProperty(:extendsByAdvice_polynomial))
@@ -33,12 +33,13 @@ Declaration(ObjectProperty(:hasPower))
 Declaration(ObjectProperty(:isClassOfComplementsFor))
 Declaration(ObjectProperty(:isEqualTo))
 Declaration(ObjectProperty(:isFromHierarchy))
+Declaration(ObjectProperty(:isFunctionVersionOf))
 Declaration(ObjectProperty(:isHardFor))
 Declaration(ObjectProperty(:isHardFor_wrtLogSpaceReductions))
 Declaration(ObjectProperty(:isHardFor_wrtPolyTimeReductions))
 Declaration(ObjectProperty(:isLevelOf))
-Declaration(ObjectProperty(:isLowFor))
 Declaration(ObjectProperty(:isMemberOf))
+Declaration(ObjectProperty(:isNextLevel))
 Declaration(ObjectProperty(:isNotSubClassOf))
 Declaration(ObjectProperty(:isOnLevel))
 Declaration(ObjectProperty(:isParityVersionOf))
@@ -52,9 +53,9 @@ Declaration(ObjectProperty(:lessless))
 Declaration(ObjectProperty(:modifierRelation))
 Declaration(ObjectProperty(:nSpace))
 Declaration(ObjectProperty(:nTime))
-Declaration(ObjectProperty(:next_Level_PH))
 Declaration(ObjectProperty(:rTime))
 Declaration(AnnotationProperty(<Ontoplex/ZooEntry>))
+Declaration(AnnotationProperty(<Ontoplex/comment>))
 Declaration(AnnotationProperty(<Ontoplex/hypothesis>))
 Declaration(AnnotationProperty(<Ontoplex/reference>))
 Declaration(AnnotationProperty(fowl:tptp_annotation))
@@ -63,61 +64,71 @@ Declaration(AnnotationProperty(fowl:tptp_annotation))
 #   Object Properties
 ############################
 
-# Object Property: :SpaceHierarchy (:SpaceHierarchy)
-
-SubObjectPropertyOf(:SpaceHierarchy :isStrictSubClassOf)
-
-# Object Property: :TimeHierarchy (:TimeHierarchy)
-
-SubObjectPropertyOf(:TimeHierarchy :isStrictSubClassOf)
-
 # Object Property: :bpTime (:bpTime)
 
 SubObjectPropertyOf(:bpTime :definitionRelation)
+FunctionalObjectProperty(:bpTime)
+AsymmetricObjectProperty(:bpTime)
+IrreflexiveObjectProperty(:bpTime)
+ObjectPropertyDomain(:bpTime :Class)
 
 # Object Property: :dSpace (:dSpace)
 
 SubObjectPropertyOf(:dSpace :definitionRelation)
+FunctionalObjectProperty(:dSpace)
+AsymmetricObjectProperty(:dSpace)
+IrreflexiveObjectProperty(:dSpace)
 
 # Object Property: :dTime (:dTime)
 
 SubObjectPropertyOf(:dTime :definitionRelation)
+FunctionalObjectProperty(:dTime)
+AsymmetricObjectProperty(:dTime)
+IrreflexiveObjectProperty(:dTime)
 
 # Object Property: :definitionRelation (:definitionRelation)
 
-FunctionalObjectProperty(:definitionRelation)
 AsymmetricObjectProperty(:definitionRelation)
 IrreflexiveObjectProperty(:definitionRelation)
 ObjectPropertyDomain(:definitionRelation :Class)
 ObjectPropertyRange(:definitionRelation :Bound)
 
+# Object Property: :extends (:extends)
+
+SubObjectPropertyOf(:extends :modifierRelation)
+FunctionalObjectProperty(:extends)
+AsymmetricObjectProperty(:extends)
+IrreflexiveObjectProperty(:extends)
+
 # Object Property: :extendsByAdvice (:extendsByAdvice)
 
-SubObjectPropertyOf(:extendsByAdvice :modifierRelation)
+SubObjectPropertyOf(:extendsByAdvice :extends)
 
 # Object Property: :extendsByAdvice_logarithmic (:extendsByAdvice_logarithmic)
 
-SubObjectPropertyOf(:extendsByAdvice_logarithmic :extendsByAdvice)
+SubObjectPropertyOf(:extendsByAdvice_logarithmic :extends)
 
 # Object Property: :extendsByAdvice_polynomial (:extendsByAdvice_polynomial)
 
-SubObjectPropertyOf(:extendsByAdvice_polynomial :extendsByAdvice)
+SubObjectPropertyOf(:extendsByAdvice_polynomial :extends)
 
 # Object Property: :extendsByBoundedProbability (:extendsByBoundedProbability)
 
-SubObjectPropertyOf(:extendsByBoundedProbability :modifierRelation)
+SubObjectPropertyOf(:extendsByBoundedProbability :extends)
 
 # Object Property: :extendsByNondeterminism (:extendsByNondeterminism)
 
-SubObjectPropertyOf(:extendsByNondeterminism :modifierRelation)
+SubObjectPropertyOf(:extendsByNondeterminism :extends)
 
 # Object Property: :extendsByRandomness (:extendsByRandomness)
 
-SubObjectPropertyOf(:extendsByRandomness :modifierRelation)
+SubObjectPropertyOf(:extendsByRandomness :extends)
 
 # Object Property: :hasBase (:hasBase)
 
 FunctionalObjectProperty(:hasBase)
+AsymmetricObjectProperty(:hasBase)
+IrreflexiveObjectProperty(:hasBase)
 ObjectPropertyDomain(:hasBase :Class)
 ObjectPropertyRange(:hasBase :Class)
 
@@ -132,20 +143,30 @@ ObjectPropertyRange(:hasPower :Problem)
 # Object Property: :isClassOfComplementsFor (:isClassOfComplementsFor)
 
 SubObjectPropertyOf(:isClassOfComplementsFor :modifierRelation)
-SymmetricObjectProperty(:isClassOfComplementsFor)
+FunctionalObjectProperty(:isClassOfComplementsFor)
+InverseFunctionalObjectProperty(:isClassOfComplementsFor)
 
 # Object Property: :isEqualTo (:isEqualTo)
 
 SubObjectPropertyOf(:isEqualTo :isSubClassOf)
-DisjointObjectProperties(:isEqualTo :isStrictSubClassOf)
+SymmetricObjectProperty(:isEqualTo)
+ReflexiveObjectProperty(:isEqualTo)
 
 # Object Property: :isFromHierarchy (:isFromHierarchy)
 
+SubObjectPropertyOf(:isFromHierarchy :AbstractRelation)
 FunctionalObjectProperty(:isFromHierarchy)
 AsymmetricObjectProperty(:isFromHierarchy)
 IrreflexiveObjectProperty(:isFromHierarchy)
 ObjectPropertyDomain(:isFromHierarchy :Class)
 ObjectPropertyRange(:isFromHierarchy :Hierarchy)
+
+# Object Property: :isFunctionVersionOf (:isFunctionVersionOf)
+
+SubObjectPropertyOf(:isFunctionVersionOf :modifierRelation)
+FunctionalObjectProperty(:isFunctionVersionOf)
+AsymmetricObjectProperty(:isFunctionVersionOf)
+IrreflexiveObjectProperty(:isFunctionVersionOf)
 
 # Object Property: :isHardFor (:isHardFor)
 
@@ -156,24 +177,24 @@ ObjectPropertyRange(:isHardFor :Class)
 
 # Object Property: :isHardFor_wrtLogSpaceReductions (:isHardFor_wrtLogSpaceReductions)
 
-SubObjectPropertyOf(:isHardFor_wrtLogSpaceReductions :isHardFor)
+SubObjectPropertyOf(:isHardFor_wrtLogSpaceReductions :isHardFor_wrtPolyTimeReductions)
+AsymmetricObjectProperty(:isHardFor_wrtLogSpaceReductions)
+IrreflexiveObjectProperty(:isHardFor_wrtLogSpaceReductions)
 
 # Object Property: :isHardFor_wrtPolyTimeReductions (:isHardFor_wrtPolyTimeReductions)
 
 SubObjectPropertyOf(:isHardFor_wrtPolyTimeReductions :isHardFor)
+AsymmetricObjectProperty(:isHardFor_wrtPolyTimeReductions)
+IrreflexiveObjectProperty(:isHardFor_wrtPolyTimeReductions)
 
 # Object Property: :isLevelOf (:isLevelOf)
 
+SubObjectPropertyOf(:isLevelOf :AbstractRelation)
 FunctionalObjectProperty(:isLevelOf)
 AsymmetricObjectProperty(:isLevelOf)
 IrreflexiveObjectProperty(:isLevelOf)
 ObjectPropertyDomain(:isLevelOf :LevelOfHierarchy)
 ObjectPropertyRange(:isLevelOf :Hierarchy)
-
-# Object Property: :isLowFor (:isLowFor)
-
-ObjectPropertyDomain(:isLowFor :Class)
-ObjectPropertyRange(:isLowFor :Class)
 
 # Object Property: :isMemberOf (:isMemberOf)
 
@@ -182,20 +203,34 @@ IrreflexiveObjectProperty(:isMemberOf)
 ObjectPropertyDomain(:isMemberOf :Problem)
 ObjectPropertyRange(:isMemberOf :Class)
 
+# Object Property: :isNextLevel (:isNextLevel)
+
+SubObjectPropertyOf(:isNextLevel :AbstractRelation)
+FunctionalObjectProperty(:isNextLevel)
+InverseFunctionalObjectProperty(:isNextLevel)
+AsymmetricObjectProperty(:isNextLevel)
+IrreflexiveObjectProperty(:isNextLevel)
+ObjectPropertyDomain(:isNextLevel :LevelOfHierarchy)
+ObjectPropertyRange(:isNextLevel :LevelOfHierarchy)
+
 # Object Property: :isNotSubClassOf (:isNotSubClassOf)
 
-DisjointObjectProperties(:isNotSubClassOf :isSubClassOf)
+IrreflexiveObjectProperty(:isNotSubClassOf)
+ObjectPropertyDomain(:isNotSubClassOf :Class)
+ObjectPropertyRange(:isNotSubClassOf :Class)
 
 # Object Property: :isOnLevel (:isOnLevel)
 
+SubObjectPropertyOf(:isOnLevel :isLevelOf)
 AsymmetricObjectProperty(:isOnLevel)
 IrreflexiveObjectProperty(:isOnLevel)
-ObjectPropertyDomain(:isOnLevel :Class)
-ObjectPropertyRange(:isOnLevel :LevelOfHierarchy)
 
 # Object Property: :isParityVersionOf (:isParityVersionOf)
 
 SubObjectPropertyOf(:isParityVersionOf :modifierRelation)
+FunctionalObjectProperty(:isParityVersionOf)
+AsymmetricObjectProperty(:isParityVersionOf)
+IrreflexiveObjectProperty(:isParityVersionOf)
 
 # Object Property: :isReducibleTo (:isReducibleTo)
 
@@ -204,25 +239,28 @@ ObjectPropertyRange(:isReducibleTo :Problem)
 
 # Object Property: :isReducibleTo_inLogSpace (:isReducibleTo_inLogSpace)
 
-SubObjectPropertyOf(:isReducibleTo_inLogSpace :isReducibleTo)
-TransitiveObjectProperty(:isReducibleTo_inLogSpace)
+SubObjectPropertyOf(:isReducibleTo_inLogSpace :isReducibleTo_inPolyTime)
 
 # Object Property: :isReducibleTo_inPolyTime (:isReducibleTo_inPolyTime)
 
 SubObjectPropertyOf(:isReducibleTo_inPolyTime :isReducibleTo)
-TransitiveObjectProperty(:isReducibleTo_inPolyTime)
 
 # Object Property: :isStrictSubClassOf (:isStrictSubClassOf)
 
 SubObjectPropertyOf(:isStrictSubClassOf :isSubClassOf)
+AsymmetricObjectProperty(:isStrictSubClassOf)
+IrreflexiveObjectProperty(:isStrictSubClassOf)
 
 # Object Property: :isSubClassOf (:isSubClassOf)
 
+ReflexiveObjectProperty(:isSubClassOf)
 ObjectPropertyDomain(:isSubClassOf :Class)
 ObjectPropertyRange(:isSubClassOf :Class)
 
 # Object Property: :isUnionOf (:isUnionOf)
 
+SubObjectPropertyOf(:isUnionOf :AbstractRelation)
+FunctionalObjectProperty(:isUnionOf)
 AsymmetricObjectProperty(:isUnionOf)
 IrreflexiveObjectProperty(:isUnionOf)
 ObjectPropertyDomain(:isUnionOf :Class)
@@ -230,40 +268,60 @@ ObjectPropertyRange(:isUnionOf :Hierarchy)
 
 # Object Property: :lessless (:lessless)
 
+AsymmetricObjectProperty(:lessless)
+IrreflexiveObjectProperty(:lessless)
 ObjectPropertyDomain(:lessless :Bound)
 ObjectPropertyRange(:lessless :Bound)
 
 # Object Property: :modifierRelation (:modifierRelation)
 
-FunctionalObjectProperty(:modifierRelation)
-InverseFunctionalObjectProperty(:modifierRelation)
+AsymmetricObjectProperty(:modifierRelation)
+IrreflexiveObjectProperty(:modifierRelation)
 ObjectPropertyDomain(:modifierRelation :Class)
 ObjectPropertyRange(:modifierRelation :Class)
 
 # Object Property: :nSpace (:nSpace)
 
 SubObjectPropertyOf(:nSpace :definitionRelation)
+FunctionalObjectProperty(:nSpace)
+AsymmetricObjectProperty(:nSpace)
+IrreflexiveObjectProperty(:nSpace)
 
 # Object Property: :nTime (:nTime)
 
 SubObjectPropertyOf(:nTime :definitionRelation)
-
-# Object Property: :next_Level_PH (:next_Level_PH)
-
-SubObjectPropertyOf(:next_Level_PH :AbstractRelation)
-FunctionalObjectProperty(:next_Level_PH)
-InverseFunctionalObjectProperty(:next_Level_PH)
-AsymmetricObjectProperty(:next_Level_PH)
-IrreflexiveObjectProperty(:next_Level_PH)
+FunctionalObjectProperty(:nTime)
+AsymmetricObjectProperty(:nTime)
+IrreflexiveObjectProperty(:nTime)
 
 # Object Property: :rTime (:rTime)
 
 SubObjectPropertyOf(:rTime :definitionRelation)
+FunctionalObjectProperty(:rTime)
+AsymmetricObjectProperty(:rTime)
+IrreflexiveObjectProperty(:rTime)
 
 
 ############################
 #   Classes
 ############################
+
+# Class: :AbstractEntity (:AbstractEntity)
+
+
+# Class: :Bound (:Bound)
+
+
+# Class: :Class (:Class)
+
+
+# Class: :Class.Relative (:Class.Relative)
+
+SubClassOf(:Class.Relative :Class)
+
+# Class: :Hierarchy (:Hierarchy)
+
+SubClassOf(:Hierarchy :AbstractEntity)
 
 # Class: :LevelOfHierarchy (:LevelOfHierarchy)
 
@@ -273,9 +331,9 @@ SubClassOf(:LevelOfHierarchy :AbstractEntity)
 
 SubClassOf(:Oracle :Problem)
 
-# Class: owl:Thing (owl:Thing)
-
-DisjointUnion(owl:Thing :AbstractEntity :Bound :Class :Hierarchy :Problem)
+# Class: :Problem (:Problem)
 
 
+
+DisjointClasses(:AbstractEntity :Bound :Class :Problem)
 )

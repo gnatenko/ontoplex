@@ -1,0 +1,190 @@
+% ![X]:(~ 'isStrictSubClassOf'(X, X))
+fof(annotation_axiom0,axiom,(![X]:~'isStrictSubClassOf'(X,X))).
+% ![X, Y, Z]:(('isStrictSubClassOf'(X, Y) & 'isSubClassOf'(Y, Z)) => 'isStrictSubClassOf'(X, Z))
+fof(annotation_axiom1,axiom,(![X,Y,Z]:(('isStrictSubClassOf'(X,Y)&'isSubClassOf'(Y,Z))=>'isStrictSubClassOf'(X,Z)))).
+% ![X, Y, Z]:(('isSubClassOf'(X, Y) & 'isStrictSubClassOf'(Y, Z)) => 'isStrictSubClassOf'(X, Z))
+fof(annotation_axiom2,axiom,(![X,Y,Z]:(('isSubClassOf'(X,Y)&'isStrictSubClassOf'(Y,Z))=>'isStrictSubClassOf'(X,Z)))).
+% ![X, Y]:(('Class'(X) & 'Problem'(Y)) => ( ?[Z]:('hasBase'(Z, X) & 'hasPower'(Z, Y) ) ) )
+fof(annotation_axiom3,axiom,(![X,Y]:(('class'(X)&'problem'(Y))=>?[Z]:('hasBase'(Z,X)&'hasPower'(Z,Y))))).
+% ![X, Y, Z, U, V]:(('hasPower'(X, Z) & 'hasPower'(Y, Z) & 'hasBase'(X, U) & 'hasBase'(Y, V) & 'isSubClassOf'(U, V)) => 'isSubClassOf'(X, Y) )
+fof(annotation_axiom4,axiom,(![X,Y,Z,U,V]:(('hasPower'(X,Z)&'hasPower'(Y,Z)&'hasBase'(X,U)&'hasBase'(Y,V)&'isSubClassOf'(U,V))=>'isSubClassOf'(X,Y)))).
+% background axiom: domain consists of objects and data
+fof(axiom0,axiom,(![X]:('http___www_w3_org_2002_07_owl_Thing'(X)|'http___www_w3_org_2000_01_rdf_schema_Literal'(X)))).
+% background axiom: object domain and data domain are disjoint
+fof(axiom1,axiom,(![X]:('http___www_w3_org_2002_07_owl_Thing'(X)=>~'http___www_w3_org_2000_01_rdf_schema_Literal'(X)))).
+% background axiom: there are things
+fof(axiom2,axiom,(?[X]:'http___www_w3_org_2002_07_owl_Thing'(X))).
+% background axiom: there are literals
+fof(axiom3,axiom,(?[X]:'http___www_w3_org_2000_01_rdf_schema_Literal'(X))).
+% facets can only be applied to literals
+fof(axiom4,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_minExclusive'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom5,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_fractionDigits'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom6,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_pattern'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom7,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_minLength'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom8,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_minInclusive'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom9,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_totalDigits'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom10,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_length'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom11,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_maxExclusive'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom12,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_maxLength'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom13,axiom,(![X,Y]:('http___www_w3_org_1999_02_22_rdf_syntax_ns_langRange'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% facets can only be applied to literals
+fof(axiom14,axiom,(![X,Y]:('http___www_w3_org_2001_XMLSchema_maxInclusive'(X,Y)=>('http___www_w3_org_2000_01_rdf_schema_Literal'(X)&'http___www_w3_org_2000_01_rdf_schema_Literal'(Y))))).
+% Declaration(Class(<Class>))
+fof(axiom15,axiom,(![X]:('class'(X)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% ObjectPropertyAssertion(<isNotSubClassOf> <AM^Ver> <PP^Ver>)
+fof(axiom16,axiom,('isNotSubClassOf'('aM^Ver','pP^Ver'))).
+% ObjectPropertyAssertion(<isNotSubClassOf> <AM^Ver> <PP^Ver>)
+fof(axiom17,axiom,('http___www_w3_org_2002_07_owl_Thing'('aM^Ver'))).
+% ObjectPropertyAssertion(<isNotSubClassOf> <AM^Ver> <PP^Ver>)
+fof(axiom18,axiom,('http___www_w3_org_2002_07_owl_Thing'('pP^Ver'))).
+% ObjectPropertyDomain(<isSubClassOf> <Class>)
+fof(axiom19,axiom,(![X0,X1]:('isSubClassOf'(X0,X1)=>'class'(X0)))).
+% Declaration(ObjectProperty(<isNotSubClassOf>))
+fof(axiom20,axiom,(![X,Y]:('isNotSubClassOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isNotSubClassOf>))
+fof(axiom21,axiom,(![X,Y]:('isNotSubClassOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% SubObjectPropertyOf(<isStrictSubClassOf> <isSubClassOf>)
+fof(axiom22,axiom,(![X0,X1]:('isStrictSubClassOf'(X0,X1)=>'isSubClassOf'(X0,X1)))).
+% Declaration(ObjectProperty(<TimeHierarchy>))
+fof(axiom23,axiom,(![X,Y]:('timeHierarchy'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<TimeHierarchy>))
+fof(axiom24,axiom,(![X,Y]:('timeHierarchy'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% SymmetricObjectProperty(<isEqualTo>)
+fof(axiom25,axiom,(![X0,X1]:('isEqualTo'(X0,X1)=>'isEqualTo'(X1,X0)))).
+% Declaration(ObjectProperty(<hasBase>))
+fof(axiom26,axiom,(![X,Y]:('hasBase'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<hasBase>))
+fof(axiom27,axiom,(![X,Y]:('hasBase'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ObjectPropertyAssertion(<hasPower> <PP^Ver> <Ver>)
+fof(axiom28,axiom,('hasPower'('pP^Ver','ver'))).
+% ObjectPropertyAssertion(<hasPower> <PP^Ver> <Ver>)
+fof(axiom29,axiom,('http___www_w3_org_2002_07_owl_Thing'('pP^Ver'))).
+% ObjectPropertyAssertion(<hasPower> <PP^Ver> <Ver>)
+fof(axiom30,axiom,('http___www_w3_org_2002_07_owl_Thing'('ver'))).
+% SubClassOf(<Class.Relative> <Class>)
+fof(axiom31,axiom,(![X0]:('class_Relative'(X0)=>'class'(X0)))).
+% SubClassOf(<Oracle> <Problem>)
+fof(axiom32,axiom,(![X0]:('oracle'(X0)=>'problem'(X0)))).
+% ClassAssertion(<Class> <PP>)
+fof(axiom33,axiom,('class'('pP'))).
+% ClassAssertion(<Class> <PP>)
+fof(axiom34,axiom,('http___www_w3_org_2002_07_owl_Thing'('pP'))).
+% ObjectPropertyRange(<hasBase> <Class>)
+fof(axiom35,axiom,(![X0,X1]:('hasBase'(X0,X1)=>'class'(X1)))).
+% SubObjectPropertyOf(<isEqualTo> ObjectInverseOf(<isSubClassOf>))
+fof(axiom36,axiom,(![X0,X1]:('isEqualTo'(X0,X1)=>'isSubClassOf'(X1,X0)))).
+% TransitiveObjectProperty(<isSubClassOf>)
+fof(axiom37,axiom,(![X0,X1,X2]:(('isSubClassOf'(X0,X1)&'isSubClassOf'(X1,X2))=>'isSubClassOf'(X0,X2)))).
+% Declaration(ObjectProperty(<hasPower>))
+fof(axiom38,axiom,(![X,Y]:('hasPower'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<hasPower>))
+fof(axiom39,axiom,(![X,Y]:('hasPower'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% SubObjectPropertyOf(<SpaceHierarchy> <isStrictSubClassOf>)
+fof(axiom40,axiom,(![X0,X1]:('spaceHierarchy'(X0,X1)=>'isStrictSubClassOf'(X0,X1)))).
+% Declaration(Class(<Class.Relative>))
+fof(axiom41,axiom,(![X]:('class_Relative'(X)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% IrreflexiveObjectProperty(<hasBase>)
+fof(axiom42,axiom,(![X0]:~'hasBase'(X0,X0))).
+% Declaration(ObjectProperty(<isSubClassOf>))
+fof(axiom43,axiom,(![X,Y]:('isSubClassOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isSubClassOf>))
+fof(axiom44,axiom,(![X,Y]:('isSubClassOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ObjectPropertyAssertion(<isSubClassOf> <QMA> <PP>)
+fof(axiom45,axiom,('isSubClassOf'('qMA','pP'))).
+% ObjectPropertyAssertion(<isSubClassOf> <QMA> <PP>)
+fof(axiom46,axiom,('http___www_w3_org_2002_07_owl_Thing'('qMA'))).
+% ObjectPropertyAssertion(<isSubClassOf> <QMA> <PP>)
+fof(axiom47,axiom,('http___www_w3_org_2002_07_owl_Thing'('pP'))).
+% SubObjectPropertyOf(ObjectPropertyChain( <isNotSubClassOf> ObjectInverseOf(<isSubClassOf>) ) <isNotSubClassOf>)
+fof(axiom48,axiom,(![X0,X1]:(?[X2]:('isNotSubClassOf'(X0,X2)&'isSubClassOf'(X1,X2))=>'isNotSubClassOf'(X0,X1)))).
+% ClassAssertion(<Class.Relative> <PP^Ver>)
+fof(axiom49,axiom,('class_Relative'('pP^Ver'))).
+% ClassAssertion(<Class.Relative> <PP^Ver>)
+fof(axiom50,axiom,('http___www_w3_org_2002_07_owl_Thing'('pP^Ver'))).
+% Declaration(Class(<Oracle>))
+fof(axiom51,axiom,(![X]:('oracle'(X)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% SubObjectPropertyOf(ObjectPropertyChain( ObjectInverseOf(<isSubClassOf>) <isNotSubClassOf> ) <isNotSubClassOf>)
+fof(axiom52,axiom,(![X0,X1]:(?[X2]:('isSubClassOf'(X2,X0)&'isNotSubClassOf'(X2,X1))=>'isNotSubClassOf'(X0,X1)))).
+% ObjectPropertyDomain(<hasPower> <Class.Relative>)
+fof(axiom53,axiom,(![X0,X1]:('hasPower'(X0,X1)=>'class_Relative'(X0)))).
+% ClassAssertion(<Class> <AM>)
+fof(axiom54,axiom,('class'('aM'))).
+% ClassAssertion(<Class> <AM>)
+fof(axiom55,axiom,('http___www_w3_org_2002_07_owl_Thing'('aM'))).
+% ObjectPropertyAssertion(<hasPower> <AM^Ver> <Ver>)
+fof(axiom56,axiom,('hasPower'('aM^Ver','ver'))).
+% ObjectPropertyAssertion(<hasPower> <AM^Ver> <Ver>)
+fof(axiom57,axiom,('http___www_w3_org_2002_07_owl_Thing'('aM^Ver'))).
+% ObjectPropertyAssertion(<hasPower> <AM^Ver> <Ver>)
+fof(axiom58,axiom,('http___www_w3_org_2002_07_owl_Thing'('ver'))).
+% ObjectPropertyAssertion(<hasBase> <PP^Ver> <PP>)
+fof(axiom59,axiom,('hasBase'('pP^Ver','pP'))).
+% ObjectPropertyAssertion(<hasBase> <PP^Ver> <PP>)
+fof(axiom60,axiom,('http___www_w3_org_2002_07_owl_Thing'('pP^Ver'))).
+% ObjectPropertyAssertion(<hasBase> <PP^Ver> <PP>)
+fof(axiom61,axiom,('http___www_w3_org_2002_07_owl_Thing'('pP'))).
+% Declaration(ObjectProperty(<isStrictSubClassOf>))
+fof(axiom62,axiom,(![X,Y]:('isStrictSubClassOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isStrictSubClassOf>))
+fof(axiom63,axiom,(![X,Y]:('isStrictSubClassOf'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% AsymmetricObjectProperty(<hasBase>)
+fof(axiom64,axiom,(![X0,X1]:~('hasBase'(X0,X1)&'hasBase'(X1,X0)))).
+% ClassAssertion(<Oracle> <Ver>)
+fof(axiom65,axiom,('oracle'('ver'))).
+% ClassAssertion(<Oracle> <Ver>)
+fof(axiom66,axiom,('http___www_w3_org_2002_07_owl_Thing'('ver'))).
+% Declaration(ObjectProperty(<SpaceHierarchy>))
+fof(axiom67,axiom,(![X,Y]:('spaceHierarchy'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<SpaceHierarchy>))
+fof(axiom68,axiom,(![X,Y]:('spaceHierarchy'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% TransitiveObjectProperty(<isStrictSubClassOf>)
+fof(axiom69,axiom,(![X0,X1,X2]:(('isStrictSubClassOf'(X0,X1)&'isStrictSubClassOf'(X1,X2))=>'isStrictSubClassOf'(X0,X2)))).
+% ObjectPropertyRange(<isSubClassOf> <Class>)
+fof(axiom70,axiom,(![X0,X1]:('isSubClassOf'(X0,X1)=>'class'(X1)))).
+% SubObjectPropertyOf(<TimeHierarchy> <isStrictSubClassOf>)
+fof(axiom71,axiom,(![X0,X1]:('timeHierarchy'(X0,X1)=>'isStrictSubClassOf'(X0,X1)))).
+% TransitiveObjectProperty(<isEqualTo>)
+fof(axiom72,axiom,(![X0,X1,X2]:(('isEqualTo'(X0,X1)&'isEqualTo'(X1,X2))=>'isEqualTo'(X0,X2)))).
+% FunctionalObjectProperty(<hasPower>)
+fof(axiom73,axiom,(![X0,X1,X2]:(('hasPower'(X0,X1)&'hasPower'(X0,X2))=>(X1=X2)))).
+% ObjectPropertyDomain(<hasBase> <Class.Relative>)
+fof(axiom74,axiom,(![X0,X1]:('hasBase'(X0,X1)=>'class_Relative'(X0)))).
+% Declaration(ObjectProperty(<isEqualTo>))
+fof(axiom75,axiom,(![X,Y]:('isEqualTo'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% Declaration(ObjectProperty(<isEqualTo>))
+fof(axiom76,axiom,(![X,Y]:('isEqualTo'(X,Y)=>'http___www_w3_org_2002_07_owl_Thing'(Y)))).
+% ObjectPropertyRange(<isNotSubClassOf> <Class>)
+fof(axiom77,axiom,(![X0,X1]:('isNotSubClassOf'(X0,X1)=>'class'(X1)))).
+% ObjectPropertyRange(<hasPower> <Oracle>)
+fof(axiom78,axiom,(![X0,X1]:('hasPower'(X0,X1)=>'oracle'(X1)))).
+% Declaration(Class(<Problem>))
+fof(axiom79,axiom,(![X]:('problem'(X)=>'http___www_w3_org_2002_07_owl_Thing'(X)))).
+% ClassAssertion(<Class> <QMA>)
+fof(axiom80,axiom,('class'('qMA'))).
+% ClassAssertion(<Class> <QMA>)
+fof(axiom81,axiom,('http___www_w3_org_2002_07_owl_Thing'('qMA'))).
+% ObjectPropertyAssertion(<hasBase> <AM^Ver> <AM>)
+fof(axiom82,axiom,('hasBase'('aM^Ver','aM'))).
+% ObjectPropertyAssertion(<hasBase> <AM^Ver> <AM>)
+fof(axiom83,axiom,('http___www_w3_org_2002_07_owl_Thing'('aM^Ver'))).
+% ObjectPropertyAssertion(<hasBase> <AM^Ver> <AM>)
+fof(axiom84,axiom,('http___www_w3_org_2002_07_owl_Thing'('aM'))).
+% SubObjectPropertyOf(<isEqualTo> <isSubClassOf>)
+fof(axiom85,axiom,(![X0,X1]:('isEqualTo'(X0,X1)=>'isSubClassOf'(X0,X1)))).
+% FunctionalObjectProperty(<hasBase>)
+fof(axiom86,axiom,(![X0,X1,X2]:(('hasBase'(X0,X1)&'hasBase'(X0,X2))=>(X1=X2)))).
+% ObjectPropertyDomain(<isNotSubClassOf> <Class>)
+fof(axiom87,axiom,(![X0,X1]:('isNotSubClassOf'(X0,X1)=>'class'(X0)))).
+% ClassAssertion(<Class.Relative> <AM^Ver>)
+fof(axiom88,axiom,('class_Relative'('aM^Ver'))).
+% ClassAssertion(<Class.Relative> <AM^Ver>)
+fof(axiom89,axiom,('http___www_w3_org_2002_07_owl_Thing'('aM^Ver'))).

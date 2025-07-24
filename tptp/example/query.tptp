@@ -1,0 +1,1 @@
+fof(conj, conjecture, ~(?[X, Y, Z]:('hasBase'(X, 'aM') & 'hasPower'(X, Z) & 'hasBase'(Y, 'qMA') & 'hasPower'(Y, Z) & 'isNotSubClassOf'(X, Y)) )).

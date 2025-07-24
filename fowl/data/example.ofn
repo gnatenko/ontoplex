@@ -1,0 +1,108 @@
+Prefix(:=<>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(fowl:=<https://github.com/gavel-tool/python-gavel-owl/>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(
+Declaration(Class(:AbstractEntity))
+Declaration(Class(:Bound))
+Declaration(Class(:Class))
+Declaration(Class(:Class.Relative))
+Declaration(Class(:Hierarchy))
+Declaration(Class(:LevelOfHierarchy))
+Declaration(Class(:Oracle))
+Declaration(Class(:Problem))
+Declaration(ObjectProperty(:AbstractRelation))
+Declaration(ObjectProperty(:SpaceHierarchy))
+Declaration(ObjectProperty(:TimeHierarchy))
+Declaration(ObjectProperty(:bpTime))
+Declaration(ObjectProperty(:dSpace))
+Declaration(ObjectProperty(:dTime))
+Declaration(ObjectProperty(:definitionRelation))
+Declaration(ObjectProperty(:extends))
+Declaration(ObjectProperty(:extendsByAdvice))
+Declaration(ObjectProperty(:extendsByAdvice_logarithmic))
+Declaration(ObjectProperty(:extendsByAdvice_polynomial))
+Declaration(ObjectProperty(:extendsByBoundedProbability))
+Declaration(ObjectProperty(:extendsByNondeterminism))
+Declaration(ObjectProperty(:extendsByRandomness))
+Declaration(ObjectProperty(:hasBase))
+Declaration(ObjectProperty(:hasPower))
+Declaration(ObjectProperty(:isClassOfComplementsFor))
+Declaration(ObjectProperty(:isEqualTo))
+Declaration(ObjectProperty(:isFromHierarchy))
+Declaration(ObjectProperty(:isHardFor))
+Declaration(ObjectProperty(:isHardFor_wrtLogSpaceReductions))
+Declaration(ObjectProperty(:isHardFor_wrtPolyTimeReductions))
+Declaration(ObjectProperty(:isLevelOf))
+Declaration(ObjectProperty(:isLowFor))
+Declaration(ObjectProperty(:isMemberOf))
+Declaration(ObjectProperty(:isNotSubClassOf))
+Declaration(ObjectProperty(:isOnLevel))
+Declaration(ObjectProperty(:isParityVersionOf))
+Declaration(ObjectProperty(:isReducibleTo))
+Declaration(ObjectProperty(:isReducibleTo_inLogSpace))
+Declaration(ObjectProperty(:isReducibleTo_inPolyTime))
+Declaration(ObjectProperty(:isStrictSubClassOf))
+Declaration(ObjectProperty(:isSubClassOf))
+Declaration(ObjectProperty(:isUnionOf))
+Declaration(ObjectProperty(:lessless))
+Declaration(ObjectProperty(:modifierRelation))
+Declaration(ObjectProperty(:nSpace))
+Declaration(ObjectProperty(:nTime))
+Declaration(ObjectProperty(:next_Level_PH))
+Declaration(ObjectProperty(:rTime))
+Declaration(NamedIndividual(:AM))
+Declaration(NamedIndividual(:PP))
+Declaration(NamedIndividual(:QMA))
+Declaration(NamedIndividual(:Ver))
+Declaration(NamedIndividual(<AM^Ver>))
+Declaration(NamedIndividual(<PP^Ver>))
+Declaration(AnnotationProperty(<Ontoplex/ZooEntry>))
+Declaration(AnnotationProperty(<Ontoplex/comment>))
+Declaration(AnnotationProperty(<Ontoplex/hypothesis>))
+Declaration(AnnotationProperty(<Ontoplex/reference>))
+Declaration(AnnotationProperty(fowl:tptp_annotation))
+
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: :AM (:AM)
+
+ClassAssertion(:Class :AM)
+
+# Individual: :PP (:PP)
+
+ClassAssertion(:Class :PP)
+
+# Individual: :QMA (:QMA)
+
+ClassAssertion(:Class :QMA)
+ObjectPropertyAssertion(:isSubClassOf :QMA :PP)
+
+# Individual: :Ver (:Ver)
+
+ClassAssertion(:Oracle :Ver)
+
+# Individual: <AM^Ver> (<AM^Ver>)
+
+ClassAssertion(:Class.Relative <AM^Ver>)
+ObjectPropertyAssertion(:hasBase <AM^Ver> :AM)
+ObjectPropertyAssertion(:hasPower <AM^Ver> :Ver)
+ObjectPropertyAssertion(:isNotSubClassOf <AM^Ver> <PP^Ver>)
+
+# Individual: <PP^Ver> (<PP^Ver>)
+
+ClassAssertion(:Class.Relative <PP^Ver>)
+ObjectPropertyAssertion(:hasBase <PP^Ver> :PP)
+ObjectPropertyAssertion(:hasPower <PP^Ver> :Ver)
+
+
+)

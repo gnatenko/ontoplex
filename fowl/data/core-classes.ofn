@@ -8,22 +8,27 @@ Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
 
 
 Ontology(
+Declaration(Class(:AbstractEntity))
 Declaration(Class(:Bound))
-Declaration(Class(:ComplexityClass))
-Declaration(Class(:DecisionProblem))
+Declaration(Class(:Class))
 Declaration(Class(:Hierarchy))
+Declaration(Class(:LevelOfHierarchy))
 Declaration(Class(:Oracle))
+Declaration(Class(:Problem))
+Declaration(ObjectProperty(:AbstractRelation))
 Declaration(ObjectProperty(:SpaceHierarchy))
 Declaration(ObjectProperty(:TimeHierarchy))
 Declaration(ObjectProperty(:bpTime))
 Declaration(ObjectProperty(:dSpace))
 Declaration(ObjectProperty(:dTime))
 Declaration(ObjectProperty(:definitionRelation))
+Declaration(ObjectProperty(:extends))
 Declaration(ObjectProperty(:extendsByAdvice))
 Declaration(ObjectProperty(:extendsByAdvice_logarithmic))
 Declaration(ObjectProperty(:extendsByAdvice_polynomial))
 Declaration(ObjectProperty(:extendsByBoundedProbability))
 Declaration(ObjectProperty(:extendsByNondeterminism))
+Declaration(ObjectProperty(:extendsByRandomness))
 Declaration(ObjectProperty(:hasBase))
 Declaration(ObjectProperty(:hasPower))
 Declaration(ObjectProperty(:isClassOfComplementsFor))
@@ -35,6 +40,7 @@ Declaration(ObjectProperty(:isHardFor_wrtPolyTimeReductions))
 Declaration(ObjectProperty(:isLevelOf))
 Declaration(ObjectProperty(:isLowFor))
 Declaration(ObjectProperty(:isMemberOf))
+Declaration(ObjectProperty(:isNotSubClassOf))
 Declaration(ObjectProperty(:isOnLevel))
 Declaration(ObjectProperty(:isParityVersionOf))
 Declaration(ObjectProperty(:isReducibleTo))
@@ -47,33 +53,31 @@ Declaration(ObjectProperty(:lessless))
 Declaration(ObjectProperty(:modifierRelation))
 Declaration(ObjectProperty(:nSpace))
 Declaration(ObjectProperty(:nTime))
-Declaration(ObjectProperty(:next_inPH))
+Declaration(ObjectProperty(:next_Level_PH))
 Declaration(ObjectProperty(:rTime))
 Declaration(NamedIndividual(:BPP))
-Declaration(NamedIndividual(:Elementary))
+Declaration(NamedIndividual(:DIRECTED_REACHABILITY))
 Declaration(NamedIndividual(:Exp))
 Declaration(NamedIndividual(:ExpTime))
-Declaration(NamedIndividual(:GraphIsomorphism))
+Declaration(NamedIndividual(:GENERALISED_CHESS))
+Declaration(NamedIndividual(:INDIRECTED_REACHABILITY))
 Declaration(NamedIndividual(:L))
 Declaration(NamedIndividual(:Log))
-Declaration(NamedIndividual(:NExpTime))
 Declaration(NamedIndividual(:NL))
 Declaration(NamedIndividual(:NP))
-Declaration(NamedIndividual(:NPSpace))
 Declaration(NamedIndividual(:P))
 Declaration(NamedIndividual(:PSpace))
 Declaration(NamedIndividual(:Poly))
-Declaration(NamedIndividual(:Tower))
-Declaration(NamedIndividual(:coNL))
+Declaration(NamedIndividual(:RP))
+Declaration(NamedIndividual(:SAT))
 Declaration(NamedIndividual(:coNP))
-Declaration(NamedIndividual(:oracle-for-Parity-P))
-Declaration(NamedIndividual(<2Exp>))
-Declaration(NamedIndividual(<2ExpTime>))
+Declaration(NamedIndividual(:coRP))
+Declaration(NamedIndividual(<3COLOR>))
 Declaration(AnnotationProperty(<Ontoplex/ZooEntry>))
+Declaration(AnnotationProperty(<Ontoplex/comment>))
 Declaration(AnnotationProperty(<Ontoplex/hypothesis>))
 Declaration(AnnotationProperty(<Ontoplex/reference>))
 Declaration(AnnotationProperty(fowl:tptp_annotation))
-
 
 
 
@@ -83,31 +87,36 @@ Declaration(AnnotationProperty(fowl:tptp_annotation))
 
 # Individual: :BPP (:BPP)
 
-ClassAssertion(:ComplexityClass :BPP)
+ClassAssertion(:Class :BPP)
 ObjectPropertyAssertion(:extendsByBoundedProbability :BPP :P)
 
-# Individual: :Elementary (:Elementary)
+# Individual: :DIRECTED_REACHABILITY (:DIRECTED_REACHABILITY)
 
-ClassAssertion(:ComplexityClass :Elementary)
-ObjectPropertyAssertion(:dTime :Elementary :Tower)
+ClassAssertion(:Problem :DIRECTED_REACHABILITY)
+ObjectPropertyAssertion(:isHardFor :DIRECTED_REACHABILITY :NL)
+ObjectPropertyAssertion(:isMemberOf :DIRECTED_REACHABILITY :NL)
 
 # Individual: :Exp (:Exp)
 
 ClassAssertion(:Bound :Exp)
-ObjectPropertyAssertion(:lessless :Exp <2Exp>)
 
 # Individual: :ExpTime (:ExpTime)
 
-ClassAssertion(:ComplexityClass :ExpTime)
+ClassAssertion(:Class :ExpTime)
 ObjectPropertyAssertion(:dTime :ExpTime :Exp)
 
-# Individual: :GraphIsomorphism (:GraphIsomorphism)
+# Individual: :GENERALISED_CHESS (:GENERALISED_CHESS)
 
-ClassAssertion(:DecisionProblem :GraphIsomorphism)
+ClassAssertion(:Problem :GENERALISED_CHESS)
+ObjectPropertyAssertion(:isHardFor :GENERALISED_CHESS :ExpTime)
+
+# Individual: :INDIRECTED_REACHABILITY (:INDIRECTED_REACHABILITY)
+
+ClassAssertion(:Problem :INDIRECTED_REACHABILITY)
 
 # Individual: :L (:L)
 
-ClassAssertion(:ComplexityClass :L)
+ClassAssertion(:Class :L)
 ObjectPropertyAssertion(:dSpace :L :Log)
 
 # Individual: :Log (:Log)
@@ -115,34 +124,24 @@ ObjectPropertyAssertion(:dSpace :L :Log)
 ClassAssertion(:Bound :Log)
 ObjectPropertyAssertion(:lessless :Log :Poly)
 
-# Individual: :NExpTime (:NExpTime)
-
-ClassAssertion(:ComplexityClass :NExpTime)
-ObjectPropertyAssertion(:extendsByNondeterminism :NExpTime :ExpTime)
-
 # Individual: :NL (:NL)
 
-ClassAssertion(:ComplexityClass :NL)
+ClassAssertion(:Class :NL)
 ObjectPropertyAssertion(:extendsByNondeterminism :NL :L)
 
 # Individual: :NP (:NP)
 
-ClassAssertion(:ComplexityClass :NP)
+ClassAssertion(:Class :NP)
 ObjectPropertyAssertion(:extendsByNondeterminism :NP :P)
-
-# Individual: :NPSpace (:NPSpace)
-
-ClassAssertion(:ComplexityClass :NPSpace)
-ObjectPropertyAssertion(:extendsByNondeterminism :NPSpace :PSpace)
 
 # Individual: :P (:P)
 
-ClassAssertion(:ComplexityClass :P)
+ClassAssertion(:Class :P)
 ObjectPropertyAssertion(:dTime :P :Poly)
 
 # Individual: :PSpace (:PSpace)
 
-ClassAssertion(:ComplexityClass :PSpace)
+ClassAssertion(:Class :PSpace)
 ObjectPropertyAssertion(:dSpace :PSpace :Poly)
 
 # Individual: :Poly (:Poly)
@@ -150,35 +149,32 @@ ObjectPropertyAssertion(:dSpace :PSpace :Poly)
 ClassAssertion(:Bound :Poly)
 ObjectPropertyAssertion(:lessless :Poly :Exp)
 
-# Individual: :Tower (:Tower)
+# Individual: :RP (:RP)
 
-ClassAssertion(:Bound :Tower)
+ClassAssertion(:Class :RP)
+ObjectPropertyAssertion(:extendsByRandomness :RP :P)
 
-# Individual: :coNL (:coNL)
+# Individual: :SAT (:SAT)
 
-ClassAssertion(:ComplexityClass :coNL)
-ObjectPropertyAssertion(:isClassOfComplementsFor :coNL :NL)
-ObjectPropertyAssertion(:isEqualTo :coNL :coNL)
+ClassAssertion(:Problem :SAT)
+ObjectPropertyAssertion(:isHardFor_wrtLogSpaceReductions :SAT :NP)
+ObjectPropertyAssertion(:isMemberOf :SAT :NP)
+ObjectPropertyAssertion(:isReducibleTo_inLogSpace :SAT <3COLOR>)
 
 # Individual: :coNP (:coNP)
 
-ClassAssertion(:ComplexityClass :coNP)
+ClassAssertion(:Class :coNP)
 ObjectPropertyAssertion(:isClassOfComplementsFor :coNP :NP)
 
-# Individual: :oracle-for-Parity-P (:oracle-for-Parity-P)
+# Individual: :coRP (:coRP)
 
-AnnotationAssertion(<Ontoplex/reference> :oracle-for-Parity-P "[BBF98] R. Beigel, H. Buhrman, and L. Fortnow. NP might not be as easy as detecting unique solutions, Proceedings of ACM STOC'98, pp. 203-208, 1998. http://people.cs.uchicago.edu/~fortnow/papers/newiso.ps.")
-ClassAssertion(:Oracle :oracle-for-Parity-P)
+ClassAssertion(:Class :coRP)
+ObjectPropertyAssertion(:isClassOfComplementsFor :coRP :RP)
 
-# Individual: <2Exp> (<2Exp>)
+# Individual: <3COLOR> (<3COLOR>)
 
-ClassAssertion(:Bound <2Exp>)
-ObjectPropertyAssertion(:lessless <2Exp> :Tower)
-
-# Individual: <2ExpTime> (<2ExpTime>)
-
-ClassAssertion(:ComplexityClass <2ExpTime>)
-ObjectPropertyAssertion(:dTime <2ExpTime> <2Exp>)
+ClassAssertion(:Problem <3COLOR>)
+ObjectPropertyAssertion(:isMemberOf <3COLOR> :NP)
 
 
 )
