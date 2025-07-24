@@ -1,5 +1,5 @@
 # ontoplex
-OWL/FO Ontology on Computational Complexity by [Anton Gnatenko](https://gnatenko.github.io), [Oliver Kutz](https://www.inf.unibz.it/~okutz/) and [Nicolas Troquard](https://gssi.it/people/professors/lectures-computer-science/item/24936-troquard-nicolas).
+OWL/FO Ontology of Computational Complexity by [Anton Gnatenko](https://gnatenko.github.io), [Oliver Kutz](https://www.inf.unibz.it/~okutz/) and [Nicolas Troquard](https://gssi.it/people/professors/lectures-computer-science/item/24936-troquard-nicolas).
 
 
 ## Intro
