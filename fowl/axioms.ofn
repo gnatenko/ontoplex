@@ -1,65 +1,159 @@
-Prefix(:=<>)
-Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
-Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
-Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
-Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(:=<ontoplex/>)
 Prefix(fowl:=<https://github.com/gavel-tool/python-gavel-owl/>)
 Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
 
 
 Ontology(
 Declaration(Class(:AbstractEntity))
+AnnotationAssertion(:comment :AbstractEntity "The type of abstract objects used for reification and similar purposes. Their names usually start with an _underscore")
+
 Declaration(Class(:Bound))
+AnnotationAssertion(:comment :Bound "The type of classes of functions N --> N, e.g. Poly : Bound represents the class of polynomials")
+
 Declaration(Class(:Class))
+AnnotationAssertion(:comment :Class "Complexity classes")
+
 Declaration(Class(:Class.Relative))
+AnnotationAssertion(:comment :Class.Relative "A technical sybtype of type :Class used to mark classes that are defined as relative to oracles, e.g. P[power][sharp]P")
+
 Declaration(Class(:Hierarchy))
+AnnotationAssertion(:comment :Hierarchy "Abstract objects representing hierarchies, e.g. _ph for the polynomial hierarchy. Note that _ph is different from PH, which is the union of classes in _ph, and has type :Class")
+
 Declaration(Class(:LevelOfHierarchy))
+AnnotationAssertion(:comment :LevelOfHierarchy "Abstract objects representing the levels of hierarchies")
+
 Declaration(Class(:Oracle))
+AnnotationAssertion(:comment :Oracle "A technical subtype of type :Problem used to mark problems that are defined in the literature with a purpose to serve as oracles")
+
 Declaration(Class(:Problem))
+AnnotationAssertion(:comment :Problem "Decision problems")
+
 Declaration(ObjectProperty(:AbstractRelation))
+AnnotationAssertion(:comment :AbstractRelation "Relations whose domain and/or range is :AbstractEntity")
+
 Declaration(ObjectProperty(:SpaceHierarchy))
+AnnotationAssertion(:comment :SpaceHierarchy "A technical relation used for the Space Hierarchy theorem. Do not use in data!")
+
 Declaration(ObjectProperty(:TimeHierarchy))
+AnnotationAssertion(:comment :TimeHierarchy "A technical relation used for the Time Hierarchy theorem. Do not use in data!")
+
 Declaration(ObjectProperty(:bpTime))
+AnnotationAssertion(:comment :bpTime "A defining relation standing for BPTIME. E.g. :BPP is defined as :bpTime(:BPP, :Poly)")
+
 Declaration(ObjectProperty(:dSpace))
+AnnotationAssertion(:comment :dSpace "A defining relation standing for DSPACE. E.g. :PSpace is defined as :dSpace(:PSpace, :Poly)")
+
 Declaration(ObjectProperty(:dTime))
+AnnotationAssertion(:comment :dTime "A defining relation standing for DTIME. E.g. :P is defined as :dTime(:P, :Poly)")
+
 Declaration(ObjectProperty(:definitionRelation))
+AnnotationAssertion(:comment :definitionRelation "Relations used for representing class definitions")
+
 Declaration(ObjectProperty(:extends))
+AnnotationAssertion(:comment :extends "Relations used to express that the definition of the source class is obtained by extending (by additional computational power) the definition of the target class")
+
 Declaration(ObjectProperty(:extendsByAdvice))
+AnnotationAssertion(:comment :extendsByAdvice "Relations used to express that the source class is a nonuniform version of the target class")
+
 Declaration(ObjectProperty(:extendsByAdvice_logarithmic))
+AnnotationAssertion(:comment :extendsByAdvice_logarithmic "Expresses the relation that is e.g. between :P/log and :P")
+
 Declaration(ObjectProperty(:extendsByAdvice_polynomial))
+AnnotationAssertion(:comment :extendsByAdvice_polynomial "Expresses the relation that is e.g. between :P/poly and :P")
+
 Declaration(ObjectProperty(:extendsByBoundedProbability))
+AnnotationAssertion(:comment :extendsByBoundedProbability "Expresses the relation that is e.g. between :BPP and :P")
+
 Declaration(ObjectProperty(:extendsByNondeterminism))
+AnnotationAssertion(:comment :extendsByNondeterminism "Expresses the relation that is e.g. between :NP and :P")
+
 Declaration(ObjectProperty(:extendsByRandomness))
+AnnotationAssertion(:comment :extendsByRandomness "Expresses the relation that is e.g. between :RP and :P")
+
 Declaration(ObjectProperty(:hasBase))
+AnnotationAssertion(:comment :hasBase "Expresses the relation between the relativesed class and the base class")
+
 Declaration(ObjectProperty(:hasPower))
+AnnotationAssertion(:comment :hasPower "Expresses the relation between the relativised class and the oracle")
+
 Declaration(ObjectProperty(:isClassOfComplementsFor))
+AnnotationAssertion(:comment :isClassOfComplementsFor "Expresses the relation that is e.g. between :coNP and :NP")
+
 Declaration(ObjectProperty(:isEqualTo))
+AnnotationAssertion(:comment :isEqualTo "Says that the source class is equal (as a set of decision problems) to the target class")
+
 Declaration(ObjectProperty(:isFromHierarchy))
+AnnotationAssertion(:comment :isFromHierarchy "Expresses that a class makes part of a hierarchy, e.g. :isFromHierarchy(Sigma^p_2, +ph)")
+
 Declaration(ObjectProperty(:isFunctionVersionOf))
+AnnotationAssertion(:comment :isFunctionVersionOf "Expresses the relation that is between e.g. :FP and :P")
+
 Declaration(ObjectProperty(:isHardFor))
+AnnotationAssertion(:comment :isHardFor "Says that a problem is hard for a class")
+
 Declaration(ObjectProperty(:isHardFor_wrtLogSpaceReductions))
+AnnotationAssertion(:comment :isHardFor_wrtLogSpaceReductions "Says that a problem is hard for a class w.r.t. reductions computable in logarithmic space")
+
 Declaration(ObjectProperty(:isHardFor_wrtPolyTimeReductions))
+AnnotationAssertion(:comment :isHardFor_wrtPolyTimeReductions "Says that a problem is hard for a class w.r.t. reductions computable in polynomial time")
+
 Declaration(ObjectProperty(:isLevelOf))
+AnnotationAssertion(:comment :isLevelOf "An abstract relation between an object representing a level of a hierarchy and the object standing for that hierarchy")
+
 Declaration(ObjectProperty(:isMemberOf))
+AnnotationAssertion(:comment :isMemberOf "Says that a problem is a member of a class")
+
 Declaration(ObjectProperty(:isNextLevel))
+AnnotationAssertion(:comment :isNextLevel "An abstract relation pointing from an object standing for a level of a hierarchy to that standing for the next level")
+
 Declaration(ObjectProperty(:isNotSubClassOf))
+AnnotationAssertion(:comment :isNotSubClassOf "Says that the source class is _not_ a subset of the target class")
+
 Declaration(ObjectProperty(:isOnLevel))
+AnnotationAssertion(:comment :isOnLevel "An abstract relation saying that a class belongs to a level [of a hierarchy]")
+
 Declaration(ObjectProperty(:isParityVersionOf))
+AnnotationAssertion(:comment :isParityVersionOf "Expresses the relation that is e.g. between [plus]P and P")
+
 Declaration(ObjectProperty(:isReducibleTo))
+AnnotationAssertion(:comment :isReducibleTo "Says that the source problem is reducible to the target problem")
+
 Declaration(ObjectProperty(:isReducibleTo_inLogSpace))
+AnnotationAssertion(:comment :isReducibleTo_inLogSpace "Says that the source problem is reducible to the target problem in logarithmic space")
+
 Declaration(ObjectProperty(:isReducibleTo_inPolyTime))
+AnnotationAssertion(:comment :isReducibleTo_inPolyTime "Says that the source problem is reducible to the target problem in polynomial time")
+
 Declaration(ObjectProperty(:isStrictSubClassOf))
+AnnotationAssertion(:comment :isStrictSubClassOf "Sats that the source class is a strict subset of the target class")
+
 Declaration(ObjectProperty(:isSubClassOf))
+AnnotationAssertion(:comment :isSubClassOf "Says that the source class is a subset of the target class")
+
 Declaration(ObjectProperty(:isUnionOf))
+AnnotationAssertion(:comment :isUnionOf "An abstract relation between a class that is a union of all classes in a certain hierarchy and the object standing for that hierarchy, e.g. :isUnionOf(:PH, :_ph)")
+
 Declaration(ObjectProperty(:lessless))
+AnnotationAssertion(:comment :lessless "A relation between classes of functions N --> N, :lessless(F, G) means that for every function f from F there is a function g from G such that (f log f) is o(g)")
+
 Declaration(ObjectProperty(:modifierRelation))
+
+AnnotationAssertion(:comment :modifierRelation "Relations used to express that the definition of the source class is obtained by a modification of the definition of the target class, e.g. going from :P to :[sharp]P")
+
 Declaration(ObjectProperty(:nSpace))
+AnnotationAssertion(:comment :nSpace "A defining relation standing for NSPACE. E.g. :NL can be defined as :nSpace(:NL, :Log)")
+
 Declaration(ObjectProperty(:nTime))
+AnnotationAssertion(:comment :nTime "A defining relation standing for NSPACE. E.g. :NP can be defined as :nTime(:NP, :Poly)")
+
 Declaration(ObjectProperty(:rTime))
-Declaration(AnnotationProperty(<Ontoplex/ZooEntry>))
-Declaration(AnnotationProperty(<Ontoplex/comment>))
-Declaration(AnnotationProperty(<Ontoplex/hypothesis>))
-Declaration(AnnotationProperty(<Ontoplex/reference>))
+AnnotationAssertion(:comment :rTime "A defining relation standing for RTIME. E.g. :RP can be defined as :rTime(:RP, :Poly)")
+
+Declaration(AnnotationProperty(:zoo/body))
+Declaration(AnnotationProperty(:zoo/head))
+
+Declaration(AnnotationProperty(:hypothesis))
+Declaration(AnnotationProperty(:reference))
 Declaration(AnnotationProperty(fowl:tptp_annotation))
 
 ############################
@@ -67,8 +161,6 @@ Declaration(AnnotationProperty(fowl:tptp_annotation))
 ############################
 
 # Object Property: :AbstractRelation (:AbstractRelation)
-
-AnnotationAssertion(<Ontoplex/comment> :AbstractRelation "Relations whose domain and/or range is AbstractEntity")
 
 # Object Property: :SpaceHierarchy (:SpaceHierarchy)
 
@@ -162,7 +254,6 @@ TransitiveObjectProperty(:isEqualTo)
 
 # Object Property: :isFromHierarchy (:isFromHierarchy)
 
-AnnotationAssertion(<Ontoplex/comment> :isFromHierarchy "Points from a member class of a hierarchy to that hierarchy, e.g. from \\Sigma^p_2 to _ph")
 SubObjectPropertyOf(:isFromHierarchy :AbstractRelation)
 ObjectPropertyDomain(:isFromHierarchy :Class)
 ObjectPropertyRange(:isFromHierarchy :Hierarchy)
@@ -190,7 +281,6 @@ SubObjectPropertyOf(:isHardFor_wrtPolyTimeReductions :isHardFor)
 
 # Object Property: :isLevelOf (:isLevelOf)
 
-AnnotationAssertion(<Ontoplex/comment> :isLevelOf "Points from an object standing for a level of a hierarchy to that hierarchy")
 SubObjectPropertyOf(:isLevelOf :AbstractRelation)
 ObjectPropertyDomain(:isLevelOf :LevelOfHierarchy)
 ObjectPropertyRange(:isLevelOf :Hierarchy)
@@ -306,44 +396,32 @@ FunctionalObjectProperty(:rTime)
 
 # Class: :AbstractEntity (:AbstractEntity)
 
-AnnotationAssertion(<Ontoplex/comment> :AbstractEntity "Abstract objects used to represent hierarchies, hardness of problems (through reification), etc. Their names should start with _underscore")
 
 # Class: :Bound (:Bound)
 
-AnnotationAssertion(<Ontoplex/comment> :Bound "\"Classes\" of functions \\N --> \\N used in complexity theory. E.g. :
-
-Poly : Bound stands for {n^k | k \\in \\N}
-Exp : Bound stands for {2^(n^k) | k \\in \\N}")
-
 # Class: :Class (:Class)
 
-AnnotationAssertion(<Ontoplex/comment> :Class "Complexity classes")
 
 # Class: :Class.Relative (:Class.Relative)
 
-AnnotationAssertion(<Ontoplex/comment> :Class.Relative "A technical subtype, populated by classes defined as other classes relative to certain oracles")
 AnnotationAssertion(fowl:tptp_annotation :Class.Relative "![X, Y, Z, U, V]:(('hasPower'(X, Z) & 'hasPower'(Y, Z) & 'hasBase'(X, U) & 'hasBase'(Y, V) & 'isSubClassOf'(U, V)) => 'isSubClassOf'(X, Y) )")
 AnnotationAssertion(fowl:tptp_annotation :Class.Relative "![X, Y]:(('Class'(X) & 'Problem'(Y)) => ( ?[Z]:('hasBase'(Z, X) & 'hasPower'(Z, Y) ) ) )")
 SubClassOf(:Class.Relative :Class)
 
 # Class: :Hierarchy (:Hierarchy)
 
-AnnotationAssertion(<Ontoplex/comment> :Hierarchy "Objects that represent hierarchies as abstract entities. E.g. _ph for the polynomial hierarchy. Note that _ph and PH are not the same thing: the first is an abstract object standing for the hierarchy as a whole. The second is a Class, such that \\isUnionOf(PH, _ph)")
 SubClassOf(:Hierarchy :AbstractEntity)
 
 # Class: :LevelOfHierarchy (:LevelOfHierarchy)
 
-AnnotationAssertion(<Ontoplex/comment> :LevelOfHierarchy "Objects that represent levels of hierarchies. E.g. the 0th, the 1st, the 2nd, etc levels of the polynomial hierarchy")
 SubClassOf(:LevelOfHierarchy :AbstractEntity)
 
 # Class: :Oracle (:Oracle)
 
-AnnotationAssertion(<Ontoplex/comment> :Oracle "A technical subtype populated by problems from the literature that were specifically constructed to be oracles (any other X : Problem can be used as an oracle either)")
 SubClassOf(:Oracle :Problem)
 
 # Class: :Problem (:Problem)
 
-AnnotationAssertion(<Ontoplex/comment> :Problem "Decision problems")
 
 
 SubObjectPropertyOf(ObjectPropertyChain(:bpTime ObjectInverseOf(:dTime)) :extendsByBoundedProbability)
